@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
   <style>
     .filter-container {
@@ -81,15 +81,20 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html#about">Γιατί Εμάς</a></li>
         <li><a href="trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="index.html#reviews">Κριτικές</a></li>
         <li><a href="index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="index.html#contact" class="btn btn-primary">Σχεδιάστε το Ταξίδι</a></li>
       </ul>
       <div class="nav-right">
-        <a href="#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
+        <a href="index.html#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -124,64 +129,64 @@
       <!-- Thailand -->
       <div class="card trip-card trip-card-catalog" data-category="asia" data-title="ταιλανδη thailand phuket phi phi island james bond island phang nga bay bangkok">
         <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1755564662325-a84a76c742ba?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 10 - 20 ΝΟΕΜΒΡΙΟΥ 2026 • 11 ΗΜΕΡΕΣ</span>
+            <span class="trip-dates">📅 10 - 20 ΝΟΕΜΒΡΙΟΥ 2026 • 10 ΗΜΕΡΕΣ</span>
             <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ταϊλάνδη & Τροπικά Νησιά</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πουκέτ, Phi Phi Islands, James Bond Island, Phang Nga Bay & διήμερη ξενάγηση στη ζωντανή Μπανγκόκ.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις & Διαμονή από <span>1.480€</span></div>
-          <a href="trips/thailand/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <a href="trips/thailand/phuket" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
-      <!-- Peru & Ausangate Glacier -->
+      <!-- Peru -->
       <div class="card trip-card trip-card-catalog" data-category="americas" data-title="περου peru machu picchu ausangate glacier παγετωνας cusco lima ινκας">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 02 - 14 ΜΑΪΟΥ 2027 • 13 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Περού: Machu Picchu & Ausangate Glacier</h3>
+            <span class="trip-dates">📅 02 - 14 ΜΑΪΟΥ 2027 • 6 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Περού: Εξερευνώντας το Machu Picchu</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Machu Picchu, Ιερή Κοιλάδα των Ίνκας, Κούσκο & σπάνια εμπειρία πεζοπορίας στον παγετώνα Ausangate (Walk on Ice).</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>2.890€</span> / άτομο</div>
-          <a href="trips/peru/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <a href="trips/peru/cusco" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
-      <!-- Egypt Cairo & Pyramids -->
+      <!-- Egypt -->
       <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="αιγυπτος egypt καϊρο cairo πυραμιδες pyramids γκιζα giza cleopatra statue κλεοπατρα νειλος">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
             <span class="trip-dates">📅 22 - 28 ΟΚΤΩΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Κάιρο, Πυραμίδες & Αίγυπτος</h3>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Κάιρο: Πυραμίδες & Αρχαία Αίγυπτος</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πυραμίδες της Γκίζας, Σφίγγα, Μεγάλο Αρχαιολογικό Μουσείο Καΐρου & ατμοσφαιρική κρουαζιέρα στον Νείλο.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>1.150€</span> / άτομο</div>
-          <a href="trips/egypt/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.000€</span> / άτομο</div>
+          <a href="trips/egypt/cairo" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- Lapland -->
-      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="λαπωνια lapland φινλανδια ρονβανιεμι aurora borealis husky santa">
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="λαπωνια lapland φινλανδια ρονβανιεμι aurora borealis husky santa βορειο σελας">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 10 - 16 ΔΕΚΕΜΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Λαπωνία & Βόρειο Σέλας</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Κυνήγι Βόρειου Σέλαος, βόλτα με έλκηθρο Huskies, επίσκεψη στο Χωριό του Αϊ-Βασίλη & Ice Floating στη Ranua.</p>
+            <span class="trip-dates">📅 10 - 16 ΙΑΝΟΥΑΡΙΟΥ 2027 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Φινλανδία: Κυνηγώντας το Βόρειο Σέλας</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Περιλαμβάνει κυνήγι για το Βόρειο Σέλας, βόλτα σε έλκηθρο με ταράνδους, επίσκεψη στο Χωριό του Αϊ-Βασίλη & ζωολογικό κήπο με αρκτικά ζώα.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>1.620€</span> / άτομο</div>
-          <a href="trips/lapland/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <a href="trips/finland/lapland" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
@@ -190,14 +195,14 @@
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 18 - 25 ΝΟΕΜΒΡΙΟΥ 2026 • 8 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Νέα Υόρκη & Manhattan</h3>
+            <span class="trip-dates">📅 18 - 25 ΝΟΕΜΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Νέα Υόρκη: Η Μαγεία του Μανχάτταν</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Times Square, Central Park, Άγαλμα της Ελευθερίας, Empire State Building, SUMMIT One Vanderbilt & παράσταση Broadway.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>1.980€</span> / άτομο</div>
-          <a href="trips/newyork/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <a href="trips/newyork/nyc" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
@@ -218,18 +223,18 @@
       </div>
 
       <!-- Dubai -->
-      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="ντουμπαϊ dubai σαφαρι burj khalifa safari 4x4">
+      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="ντουμπαϊ dubai σαφαρι burj khalifa safari 4x4 μελλον">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
             <span class="trip-dates">📅 15 - 21 ΙΑΝΟΥΑΡΙΟΥ 2027 • 7 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ντουμπάι, Έρημος & Μέλλον</h3>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ντουμπάι: Η πόλη του μέλλοντος</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Desert Safari 4x4 με δείπνο κάτω από τα αστερια, Quad Bikes, Burj Khalifa, Museum of the Future & βόλτα στο Παλιό Ντουμπάι.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>990€</span> / άτομο</div>
-          <a href="trips/dubai/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <a href="trips/dubai/dxb" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
@@ -321,7 +326,7 @@
     <div class="container" style="max-width: 800px; text-align: center;">
       <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 2rem;">Δεν βρήκατε τον προορισμό που ψάχνετε;</h2>
       <p style="margin: 16px 0 24px 0; color: var(--text-muted);">Σχεδιάζουμε custom ταξιδιωτικές εμπειρίες προσαρμοσμένες 100% στις δικές σας προτιμήσεις, το budget και τις ημερομηνίες που επιθυμείτε.</p>
-      <a href="#contact" class="btn btn-primary">Ζητήστε Custom Σχεδιασμό</a>
+      <a href="index.html#contact" class="btn btn-primary">Ζητήστε Custom Σχεδιασμό</a>
     </div>
   </section>
 
