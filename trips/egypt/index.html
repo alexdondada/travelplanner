@@ -9,12 +9,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
-    .trip-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
-    @media (max-width: 900px) { .trip-grid { grid-template-columns: 1fr; } }
-    .itinerary-day { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-    .itinerary-day h3 { font-family: var(--font-heading); color: var(--primary, #1b2a4a); font-size: 1.25rem; margin-bottom: 12px; }
-    .sidebar-card { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 24px; position: sticky; top: 100px; }
+    .trip-hero { 
+      background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
+      padding: 120px 24px; 
+      color: white; 
+      text-align: center; 
+    }
+    
+    .trip-grid { 
+      display: grid; 
+      grid-template-columns: 2fr 1fr; 
+      gap: 40px; 
+      margin-top: 40px; 
+      align-items: start; /* Ensures sticky sidebar operates properly */
+    }
+    
+    @media (max-width: 900px) { 
+      .trip-grid { grid-template-columns: 1fr; } 
+    }
+
+    /* Itinerary Day Box with Low Transparency Background Images */
+    .itinerary-day { 
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      margin-bottom: 24px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Day Background Image Overlays */
+    .day-1-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1544885935-98dd03b09034?auto=format&fit=crop&w=1000&q=80'); }
+    .day-2-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1000&q=80'); }
+    .day-3-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80'); }
+    .day-4-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1553913861-c0fddf2619ee?auto=format&fit=crop&w=1000&q=80'); }
+    .day-5-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1572252821143-02f064821f00?auto=format&fit=crop&w=1000&q=80'); }
+    .day-6-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80'); }
+    .day-7-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=80'); }
+
+    .itinerary-day h3 { 
+      font-family: var(--font-heading); 
+      color: var(--primary, #1b2a4a); 
+      font-size: 1.3rem; 
+      margin-bottom: 12px; 
+      position: relative;
+      z-index: 1;
+    }
+    
+    .itinerary-day p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #2d3748;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Sticky Sidebar Card */
+    .sidebar-card { 
+      background: #ffffff; 
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      position: sticky; 
+      top: 100px; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+
     .inc-exc-list { list-style: none; padding: 0; margin: 0; }
     .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
     .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
@@ -47,47 +113,48 @@
   <main class="container section">
     <div class="trip-grid">
       
+      <!-- Left Column: Itinerary Days -->
       <div>
         <span class="badge-date">📅 22 - 28 ΟΚΤΩΒΡΙΟΥ 2026</span>
         <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-1-bg">
           <h3>Ημέρα 1: Αθήνα - Κάιρο & Αγορά Khan El Khalili</h3>
           <p>Απευθείας πτήση από Αθήνα για το Κάιρο. Άφιξη, συνάντηση με τον ελληνόφωνο διπλωματούχο ξεναγό μας και μεταφορά στο 5* ξενοδοχείο. Το απόγευμα επίσκεψη στην ιστορική ανατολίτικη αγορά Khan El Khalili για τσάι με μέντα στο ιστορικό καφενείο El Fishawy.</p>
         </div>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-2-bg">
           <h3>Ημέρα 2: Πυραμίδες της Γκίζας, Σφίγγα & Σακκάρα</h3>
           <p>Ολοήμερη ξενάγηση στα θαύματα του αρχαίου κόσμου: Πυραμίδες Χέοπα, Χεφρήνου & Μυκερίνου. Επίσκεψη στην αινιγματική Σφίγγα και τον Ναό της Βαλσαμώσεως. Στη συνέχεια επίσκεψη στην αρχαιότερη βαθμιδωτή Πυραμίδα του Ζοζέρ στη Σακκάρα. Γεύμα σε εστιατόριο με θέα τις Πυραμίδες.</p>
         </div>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-3-bg">
           <h3>Ημέρα 3: Μεγάλο Αιγυπτιακό Μουσείο (GEM) & Θησαυροί Τουταγχαμών</h3>
           <p>Επίσκεψη στο εντυπωσιακό νέο Μεγάλο Αιγυπτιακό Μουσείο (Grand Egyptian Museum). Θαυμάζουμε ολόκληρη τη συλλογή του Τουταγχαμών, τη χρυσή μάσκα, καθώς και τα σπάνια αγάλματα της πτολεμαϊκής περιόδου και της βασίλισσας Κλεοπάτρας.</p>
         </div>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-4-bg">
           <h3>Ημέρα 4: Ημερήσια Εκδρομή στην Αλεξάνδρεια (Πόλη της Κλεοπάτρας)</h3>
           <p>Πρωινή αναχώρηση για την Αλεξάνδρεια στις ακτές της Μεσογείου. Επίσκεψη στη νέα Βιβλιοθήκη της Αλεξάνδρειας, το κάστρο Qaitbay (στη θέση του αρχαίου Φάρου), τις κατακόμβες Kom El Shoqafa και τα υποθαλάσσια ευρήματα της Κλεοπάτρας στο Μουσείο.</p>
         </div>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-5-bg">
           <h3>Ημέρα 5: Ισλαμικό & Κοπτικό Κάιρο - Ακρόπολη Saladin</h3>
           <p>Ξενάγηση στην Ακρόπολη του Σαλαδίν και το Τζαμί του Μωχάμετ Άλη (Αλαβαστρινό Τζαμί). Περιήγηση στο Κοπτικό Κάιρο με την Κρεμαστή Εκκλησία (Hanging Church) και την Εκκλησία του Αγίου Γεωργίου.</p>
         </div>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-6-bg">
           <h3>Ημέρα 6: Κρουαζιέρα με Φελούκα στον Νείλο & Δείπνο onboard</h3>
           <p>Πρωινός ελεύθερος χρόνος. Το απόγευμα παραδοσιακή βόλτα με αιγυπτιακή φελούκα στα νερά του Νείλου κατά το ηλιοβασίλεμα. Το βράδυ πολυτελές δείπνο σε πλωτό εστιατόριο με φολκλορικό σόου και χορό της κοιλιάς.</p>
         </div>
 
-        <div class="itinerary-day">
+        <div class="itinerary-day day-7-bg">
           <h3>Ημέρα 7: Κάιρο - Αθήνα</h3>
           <p>Πρωινό στο ξενοδοχείο, τελευταία αγορά ενθυμίων και μεταφορά στο αεροδρόμιο του Καΐρου για την πτήση επιστροφής στην Αθήνα.</p>
         </div>
       </div>
 
-      <!-- Sidebar -->
+      <!-- Right Column: Static Sticky Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
@@ -113,7 +180,7 @@
             <li>Ποτά κατά τα γεύματα</li>
           </ul>
 
-          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center;">
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">890€</div>
             <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο)</span>
