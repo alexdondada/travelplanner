@@ -3,64 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Περού & Παγετώνας Quelccaya | Vanguard Travel</title>
+  <title>Ταϊλάνδη, Phi Phi & James Bond Island | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
-    .itinerary-list { list-style: none; padding: 0; margin: 24px 0; }
-    .itinerary-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e2dfd7; margin-bottom: 16px; }
-    .itinerary-item h4 { color: var(--primary); margin-bottom: 8px; font-family: var(--font-heading); }
+    .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
+    .trip-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+    @media (max-width: 900px) { .trip-grid { grid-template-columns: 1fr; } }
+    .itinerary-day { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .itinerary-day h3 { font-family: var(--font-heading); color: var(--primary, #1b2a4a); font-size: 1.25rem; margin-bottom: 12px; }
+    .sidebar-card { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 24px; position: sticky; top: 100px; }
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
   </style>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
-        <li><a href="../../trips.html">Όλα τα Πακέτα</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
       </ul>
-      <div class="nav-right"><a href="#contact" class="btn btn-primary nav-btn">Κράτηση</a></div>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">SOUTH AMERICA EXOTIC</span>
-    <h1 style="font-size:2.5rem; margin-top:10px;">Περού: Machu Picchu & Walk on Ice</h1>
-    <p>13 Ημέρες • Cusco, Sacred Valley, Machu Picchu & Quelccaya Glacier Trek</p>
+    <span class="badge">ASIA EXOTIC ESCAPE</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ταϊλάνδη, Phi Phi Islands & James Bond Island</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">11 Ημέρες • Πουκέτ • Νησιά Phi Phi • Phang Nga Bay • Μπανγκόκ</p>
   </header>
 
-  <section class="section container" style="max-width: 900px;">
-    <h2>Μία Σπάνια & Off-the-Beaten-Path Εμπειρία</h2>
-    <p style="margin-bottom:24px;">Συνδυάστε το θρυλικό Machu Picchu με μία σπάνια αποστολή στον <strong>παγετώνα Quelccaya</strong> — τον μεγαλύτερο τροπικό παγετώνα στον κόσμο! Περπατήστε πάνω στον αιώνιο πάγο σε υψόμετρο άνω των 5.000 μέτρων.</p>
+  <main class="container section">
+    <div class="trip-grid">
+      
+      <!-- Main Detailed Itinerary -->
+      <div>
+        <span class="badge-date">📅 10 - 20 ΝΟΕΜΒΡΙΟΥ 2026</span>
+        <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
 
-    <h3>Πρόγραμμα Εκδρομής</h3>
-    <div class="itinerary-list">
-      <div class="itinerary-item">
-        <h4>Ημέρα 1-3: Λίμα & Cusco (Εγκλιματισμός)</h4>
-        <p>Άφιξη στη Λίμα, πτήση για το Cusco και εγκλιματισμός στο υψόμετρο με περιήγηση στην ιστορική πρωτεύουσα των Ίνκας.</p>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Αναχώρηση από Αθήνα για Πουκέτ</h3>
+          <p>Συνάντηση στο αεροδρόμιο Ελευθέριος Βενιζέλος και πτήση μέσω ενδιάμεσου σταθμού για το τροπικό Πουκέτ. Νυχτερινή πτήση, ξεκούραση στο αεροσκάφος.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Άφιξη στο Πουκέτ & Πρώτη Γνωριμία</h3>
+          <p>Άφιξη στο διεθνές αεροδρόμιο του Πουκέτ. Μεταφορά στο πολυτελές παραθαλάσσιο resort. Χρόνος για χαλάρωση στην πισίνα ή την παραλία και το βράδυ πρώτη βόλτα στην τοπική αγορά night market για παραδοσιακό street food (Pad Thai, Mango Sticky Rice).</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Ολοήμερη Κρουαζιέρα στα Νησιά Phi Phi & Maya Bay</h3>
+          <p>Πρωινή αναχώρηση με ταχύπλοο (speedboat) για το αρχιπέλαγος Phi Phi. Επίσκεψη στο διάσημο Maya Bay (από την ταινία "The Beach"), κολύμπι στα κρυφά γαλαζοπράσινα νερά του Pileh Lagoon, snorkeling με τροπικά ψάρια και γεύμα σε παραθαλάσσιο εστιατόριο στο Phi Phi Don.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Phang Nga Bay, James Bond Island & Καγιάκ σε Σπηλιές</h3>
+          <p>Εξερεύνηση του εθνικού πάρκου Phang Nga. Επίσκεψη στο θρυλικό James Bond Island (Khao Phing Kan) με τους επιβλητικούς ασβεστολιθικούς βράχους. Θαλάσσιο καγιάκ στις κρυφές σπηλιές του Ko Panak και επίσκεψη στο πλωτό χωριό των μουσουλμάνων ψαράδων Koh Panyee.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5: Ηθικό Καταφύγιο Ελεφάντων (Elephant Sanctuary)</h3>
+          <p>Μία μοναδική εμπειρία σε εγκεκριμένο ηθικό καταφύγιο ελεφάντων. Μαθαίνουμε για τη διάσωσή τους, τους ταΐζουμε φρούτα και προαιρετικά τους συνοδεύουμε στο λασπόλουτρο και το ποτάμι. Ελεύθερο απόγευμα για ταϊλανδέζικο μασάζ.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 6-7: Ελεύθερες Ημέρες στο Πουκέτ & Προαιρετικό Coral Island</h3>
+          <p>Δύο γεμάτες μέρες για να απολαύσετε τις παραλίες Kata, Karon ή Patong, να κάνετε water sports ή να πάρετε μέρος σε προαιρετική ημερήσια εκδρομή στα παρθένα νησιά Similan ή Coral Island.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 8: Πτήση για Μπανγκόκ & Νυχτερινή Κρουαζιέρα στον Ποταμό Chao Phraya</h3>
+          <p>Πρωινή πτήση για την πρωτεύουσα Μπανγκόκ. Τακτοποίηση στο ξενοδοχείο. Το βράδυ επιβίβαση σε πολυτελές ποταμόπλοιο για δείπνο με ζωντανή μουσική και θέα τους φωτισμένους ναούς Wat Arun & Wat Phra Kaew.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 9: Μεγάλο Παλάτι (Grand Palace), Wat Pho & Πλωτές Αγορές</h3>
+          <p>Πλήρης ξενάγηση στο εντυπωσιακό Μεγάλο Παλάτι και τον Ναό του Σμαραγδένιου Βούδα. Επίσκεψη στον Wat Pho με τον γιγαντιαίο Ξαπλωμένο Βούδα. Το απόγευμα βόλτα με παραδοσιακό longtail boat στα κανάλια (Klongs) της πόλης.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 10-11: Αγορές στη Μπανγκόκ & Πτήση Επιστροφής στην Αθήνα</h3>
+          <p>Ελεύθερος χρόνος για τελευταία ψώνια στα εμπορικά κέντρα Siam Paragon & ICONSIAM. Το βράδυ της 10ης ημέρας μεταφορά στο αεροδρόμιο Suvarnabhumi και πτήση επιστροφής. Άφιξη στην Αθήνα την 11η ημέρα.</p>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 4-6: Sacred Valley & Machu Picchu</h4>
-        <p>Εξερεύνηση της Ιερής Κοιλάδας των Ίνκας, διαδρομή με το γραφικό τρένο Vistadome και ολοήμερη ξενάγηση στο Machu Picchu.</p>
+
+      <!-- Sidebar Info & Package Details -->
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Διεθνείς πτήσεις Αθήνα - Πουκέτ / Μπανγκόκ - Αθήνα με επιστροφή</li>
+            <li>Εσωτερική πτήση Πουκέτ - Μπανγκόκ</li>
+            <li>5 διανυκτερεύσεις σε 5* Resort στο Πουκέτ με πρωινό</li>
+            <li>3 διανυκτερεύσεις σε 5* Ξενοδοχείο στη Μπανγκόκ με πρωινό</li>
+            <li>Όλες οι μεταφορές με κλιματιζόμενα πούλμαν</li>
+            <li>Ολοήμερη εκδρομή με ταχύπλοο στα Phi Phi Islands (με γεύμα)</li>
+            <li>Ολοήμερη εκδρομή στο James Bond Island & Phang Nga Bay</li>
+            <li>Επίσκεψη σε ηθικό Elephant Sanctuary</li>
+            <li>Νυχτερινή κρουαζιέρα με δείπνο στον ποταμό Chao Phraya</li>
+            <li>Ελληνόφωνος ή αγγλόφωνος συνοδός/ξεναγός</li>
+            <li>Ασφάλεια αστικής ευθύνης & ταξιδιωτική ασφάλιση</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Φόροι αεροδρομίων & επίναυλος καυσίμων (~280€)</li>
+            <li>Φόροι εθνικών πάρκων (πληρωτέοι τοπικά ~20€)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς & ξεναγούς</li>
+            <li>Προσωπικά έξοδα & προαιρετικές δραστηριότητες</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center;">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">1.490€</div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Βάσει δίκλινου δωματίου)</span>
+          </div>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 7-10: Αποστολή στον Παγετώνα Quelccaya (Walk on Ice)</h4>
-        <p>Ταξίδι προς την οροσειρά Vilcanota. Πεζοπορία με εξειδικευμένους οδηγούς στον παγετώνα Quelccaya (περπάτημα με κραμπόν στον πάγο & θέα στις παγετωνικές λίμνες).</p>
-      </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 11-13: Rainbow Mountain & Επιστροφή</h4>
-        <p>Επίσκεψη στο πολύχρωμο Βουνό των 7 Χρωμάτων (Vinicunca), επιστροφή στο Cusco και πτήση επιστροφής.</p>
-      </div>
+
     </div>
+  </main>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="../../trips.html#contact" class="btn btn-primary">Εκδήλωση Ενδιαφέροντος</a>
+  <!-- Contact Form Section -->
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Ενδιαφέρεστε για το Ταξίδι στην Ταϊλάνδη;</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τα στοιχεία σας και ένας ταξιδιωτικός μας σύμβουλος θα επικοινωνήσει μαζί σας εντός 24 ωρών.</p>
+      
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Νίκος Παπαδόπουλος">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="nikos@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <div class="form-group">
+          <label for="guests">Αριθμός Ατόμων</label>
+          <input type="number" id="guests" value="2" min="1">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος Κράτησης</button>
+      </form>
     </div>
   </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
