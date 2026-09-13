@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Smooth scroll handler for anchor links
+  // Smooth scroll with custom slow timing
   const links = document.querySelectorAll('a[href^="#"]');
   links.forEach(link => {
     link.addEventListener("click", function (e) {
