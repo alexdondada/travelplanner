@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ακτή Αμάλφι, Πομπηία & Ηφαίστειο Βεζούβιος | Vanguard Travel Design</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .trip-hero { 
+      background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
+      padding: 120px 24px; 
+      color: white; 
+      text-align: center; 
+    }
+    
+    .itinerary-header {
+      margin-top: 40px;
+      margin-bottom: 24px;
+    }
+
+    .trip-grid { 
+      display: grid; 
+      grid-template-columns: 2fr 1fr; 
+      gap: 40px; 
+      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+    }
+    
+    @media (max-width: 900px) { 
+      .trip-grid { grid-template-columns: 1fr; } 
+    }
+
+    /* Clean Itinerary Day Box */
+    .itinerary-day { 
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      margin-bottom: 24px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    }
+
+    .itinerary-day h3 { 
+      font-family: var(--font-heading); 
+      color: var(--primary, #1b2a4a); 
+      font-size: 1.3rem; 
+      margin-bottom: 12px; 
+    }
+    
+    .itinerary-day p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #2d3748;
+      margin: 0;
+    }
+
+    /* Sticky Sidebar Card top-aligned with Day 1 card */
+    .sidebar-card { 
+      background: #ffffff; 
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      position: sticky; 
+      top: 100px; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
+
+    /* Photo Album Collage Grid */
+    .photo-album-section {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border, #e2dfd7);
+    }
+    
+    .photo-album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Collage Variations */
+    .photo-large { grid-column: span 2; grid-row: span 2; }
+    .photo-wide { grid-column: span 2; }
+
+    @media (max-width: 768px) {
+      .photo-album-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 200px;
+      }
+      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
+        <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="trip-hero">
+    <span class="badge">ITALIAN ESCAPE</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ακτή Αμάλφι, Πομπηία & Ηφαίστειο Βεζούβιος</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Νάπολη • Πομπηία • Βεζούβιος • Σορρέντο • Ποζιτάνο • Αμάλφι • Καπρί</p>
+  </header>
+
+  <main class="container section">
+
+    <!-- Title & Date Header (Outside & Above Grid) -->
+    <div class="itinerary-header">
+      <span class="badge-date">📅 18 - 23 ΜΑΪΟΥ 2027</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
+    </div>
+
+    <div class="trip-grid">
+      
+      <!-- Left Column: Sequential Non-stop Itinerary -->
+      <div>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Άφιξη στη Νάπολη & Περιήγηση στην Ιστορική Πόλη</h3>
+          <p>Συνάντηση στο αεροδρόμιο αναχώρησης, πτήση και άφιξη στη ζωντανή Νάπολη. Υποδοχή από τον Ελληνόφωνο συνοδό μας και πρώτη γνωριμία με την πόλη. Επισκεπτόμαστε την Plaza del Plebiscito, το Βασιλικό Παλάτι, τη στοά Galleria Umberto I και το επιβλητικό Castel Nuovo. Το βράδυ απολαμβάνουμε αυθεντική ναπολιτάνικη pizza Margherita σε παραδοσιακή trattoria. Διανυκτέρευση στη Νάπολη.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Αρχαία Πομπηία & Ανάβαση στον Κρατήρα του Βεζούβιου</h3>
+          <p>Πρωινή αναχώρηση για τον αρχαιολογικό χώρο της Πομπηίας (UNESCO). Με επίσημο ξεναγό περιηγούμαστε στους διατηρημένους ρωμαϊκούς δρόμους, τα θέατρα, τις επαύλεις και την Αγορά. Στη συνέχεια, ανεβαίνουμε στο Εθνικό Πάρκο του Βεζούβιου. Πραγματοποιούμε πεζοπορία ως το χείλος του κρατήρα του ενεργού ηφαιστείου, απολαμβάνοντας τη μοναδική πανοραμική θέα στον Κόλπο της Νάπολης. Το απόγευμα μεταφερόμαστε στο παραθαλάσσιο Σορρέντο για διανυκτέρευση.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Σορρέντο & Πανοραμική Διαδρομή της Ακτής Αμάλφι (Ποζιτάνο & Αμάλφι)</h3>
+          <p>Ξεκινάμε με σύντομη βόλτα στο γραφικό Σορρέντο και τις λεμονιές του. Στη συνέχεια διασχίζουμε τη διάσημη πανοραμική διαδρομή της Ακτής Αμάλφι (Amalfi Drive). Σταματάμε στο κοσμοπολίτικο Ποζιτάνο με τα πολύχρωμα σπίτια που κατηφορίζουν στη θάλασσα και συνεχίζουμε στο ιστορικό Αμάλφι, όπου επισκεπτόμαστε τον επιβλητικό Καθεδρικό Ναό του Αγίου Ανδρέα (Duomo di Amalfi). Διανυκτέρευση στην περιοχή της Ακτής Αμάλφι.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Ραβέλλο & Κρουαζιέρα στο Νησί Κάπρι (Γαλάζια Σπηλιά)</h3>
+          <p>Επισκεπτόμαστε το αριστοκρατικό Ραβέλλο και τις περίφημες βίλες Villa Rufolo και Villa Cimbrone με τα μπαλκόνια που αιωρούνται πάνω από την Τυρρηνική Θάλασσα. Στη συνέχεια επιβιβαζόμαστε σε ταχύπλοο με προορισμό το κοσμοπολίτικο νησί Κάπρι. Εξερευνούμε την Piazzetta, τους Κήπους του Αυγούστου με θέα τους βράχους Faraglioni, και εφόσον το επιτρέπουν οι καιρικές συνθήκες, κάνουμε βόλτα με βάρκα στη Γαλάζια Σπηλιά (Grotta Azzurra).</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5: Salerno, Δοκιμή Limoncello & Ελεύθερος Χρόνος</h3>
+          <p>Κατηφορίζουμε προς το Σαλέρνο, περνώντας από το γραφικό ψαροχώρι Cetara. Επισκεπτόμαστε παραδοσιακό εργαστήριο παραγωγής Limoncello για να δοκιμάσουμε το περίφημο τοπικό ηδύποτο από φρέσκα λεμόνια του Αμάλφι. Το απόγευμα είναι ελεύθερο για ψώνια, χαλάρωση στα café της ακτής ή βουτιά στις δαντελωτές παραλίες της περιοχής.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 6: Σαλέρνο / Νάπολη – Πτήση Επιστροφής</h3>
+          <p>Πρωινό στο ξενοδοχείο και ελεύθερος χρόνος για τις τελευταίες αγορές τοπικών προϊόντων (ζυμαρικά, ελαιόλαδο, κεραμικά). Στη συνέχεια μεταφορά στο αεροδρόμιο της Νάπολης για την πτήση της επιστροφής στην Ελλάδα, γεμάτοι εικόνες, γεύσεις και αρώματα από τη μαγευτική Ακτή Αμάλφι.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Top-Aligned Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Απευθείας διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Νάπολη με επιστροφή</li>
+            <li>1 διανυκτέρευση σε 4* ξενοδοχείο στη Νάπολη με πρωινό</li>
+            <li>1 διανυκτέρευση σε 4* ξενοδοχείο στο Σορρέντο με πρωινό</li>
+            <li>3 διανυκτερεύσεις σε 4* παραθαλάσσιο ξενοδοχείο στην Ακτή Αμάλφι με πρωινό</li>
+            <li>Μεταφορές με πολυτελές κλιματιζόμενο πούλμαν καθ' όλη τη διάρκεια</li>
+            <li>Επίσημος διπλωματούχος ξεναγός στον Αρχαιολογικό Χώρο της Πομπηίας</li>
+            <li>Εισιτήριο εισόδου στο Εθνικό Πάρκο & Κρατήρα του Βεζούβιου</li>
+            <li>Ακτοπλοϊκά εισιτήρια & κρουαζιέρα στο Νησί Κάπρι</li>
+            <li>Επίσκεψη σε ποτοποιία & γευσιγνωσία αυθεντικού Limoncello</li>
+            <li>Ελληνόφωνος έμπειρος αρχηγός / συνοδός του γραφείου μας</li>
+            <li>Πλήρης ταξιδιωτική ασφάλιση αστικής ευθύνης & ιατροφαρμακευτικής περίθαλψης</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Φόροι αεροδρομίων (~145€)</li>
+            <li>Δημοτικοί φόροι διαμονής (πληρωτέοι απευθείας στα ξενοδοχεία ~4€-6€/νύχτα)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~20€)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
+            <li>Είσοδοι σε μουσεία & προαιρετικές δραστηριότητες (π.χ. Γαλάζια Σπηλιά)</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
+              <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
+              890€
+            </div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 5 Νύχτες / 6 Ημέρες)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Photo Album Grid Collage -->
+    <section class="photo-album-section">
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, αρχαιότητες, ηφαίστεια και τοπία από την κοσμοπολίτικη Ακτή Αμάλφι</p>
+
+      <div class="photo-album-grid">
+        <div class="photo-item photo-large">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="Positano Amalfi Coast">
+        </div>
+        
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photos/ancient-ruins-with-mount-vesuvius-in-background-Uvhre03BF3Q" alt="Ancient Pompeii Ruins & Vesuvius" onerror="this.src='https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80';">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Amalfi Town Coast">
+        </div>
+
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="Panoramic Coast View">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Capri Faraglioni Rocks">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Sorrento Cliff Town">
+        </div>
+
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photos/mount-vesuvius-overlooks-ancient-pompeii-ruins-and-a-green-vineyard-U325HG7igLk" alt="Mount Vesuvius Volcano Crater" onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80';">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?auto=format&fit=crop&w=800&q=80" alt="Ravello Gardens View">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Italian Pizza & Limoncello">
+        </div>
+
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Naples Coastline & Vesuvius">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80" alt="Amalfi Coast Lemons">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για την Ακτή Αμάλφι</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 6ήμερο ταξίδι στην Ιταλία.</p>
+      
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Νίκος Παπαδόπουλος">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="nikos@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <div class="form-group">
+          <label for="departure">Αεροδρόμιο Αναχώρησης</label>
+          <select id="departure" name="departure" required style="width: 100%; padding: 12px; border: 1px solid var(--border, #e2dfd7); border-radius: 4px; font-size: 0.95rem; background: #fff; color: #2d3748;">
+            <option value="" disabled selected>Επιλέξτε αεροδρόμιο αναχώρησης...</option>
+            <option value="SKG">SKG - Θεσσαλονίκη (Αεροδρόμιο "Μακεδονία")</option>
+            <option value="ATH">ATH - Αθήνα (Αεροδρόμιο "Ελευθέριος Βενιζέλος")</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
