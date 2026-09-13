@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ακτή Αμάλφι & Τοσκάνη | Vanguard Travel Design</title>
   
-  <!-- Path to root CSS -->
+  <!-- Relative path back to root styles -->
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,86 +29,296 @@
     </div>
   </nav>
 
-  <!-- Trip Hero Banner -->
-  <header class="hero" style="background: linear-gradient(rgba(27, 42, 74, 0.45), rgba(27, 42, 74, 0.55)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+  <!-- Hero Header -->
+  <header class="hero" style="background: linear-gradient(rgba(27, 42, 74, 0.5), rgba(27, 42, 74, 0.6)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="hero-content">
       <span class="badge">Ιταλία • 10 ΗΜΕΡΕΣ</span>
       <h1 style="margin-top: 15px;">Ακτή Αμάλφι & Τοσκάνη</h1>
-      <p>15 - 25 Μαΐου 2027 • Από 2.200€ / άτομο</p>
+      <p>15 - 25 Μαΐου 2027 • Ιδιωτικές Μεταφορές, Boutique Διαμονή & Αυθεντική Γαστρονομία</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Κάντε Κράτηση / Αίτημα</a>
+        <a href="#contact" class="btn btn-primary">Ζητήστε Διαθεσιμότητα</a>
+        <a href="#itinerary" class="btn btn-secondary">Δείτε το Πρόγραμμα</a>
       </div>
     </div>
   </header>
 
-  <!-- Trip Details & Itinerary -->
-  <section class="section container">
-    <div class="section-title">
-      <h2>Επισκόπηση Ταξιδιού</h2>
-      <p>Μια αυθεντική περιήγηση στην καρδιά της Ιταλίας με ιδιωτικές μεταφορές, boutique διαμονή και γαστρονομικές εμπειρίες.</p>
-    </div>
-
-    <!-- Details Grid -->
-    <div class="grid grid-3" style="margin-bottom: 60px;">
-      <div class="card card-service">
-        <h3>🏨 Διαμονή</h3>
-        <p>Boutique ξενοδοχεία 4* & 5* με θέα στην θάλασσα και παραδοσιακά estates στην Τοσκάνη.</p>
+  <!-- Quick Info Bar -->
+  <section class="texture-bg" style="padding: 24px 0; border-bottom: 1px solid var(--border);">
+    <div class="container" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;">
+      <div>
+        <strong style="display:block; color: var(--primary);">Διάρκεια</strong>
+        <span>10 Ημέρες / 9 Νύχτες</span>
       </div>
-      <div class="card card-service">
-        <h3>🚗 Μετακινήσεις</h3>
-        <p>Ιδιωτικά οχήματα με τοπικό οδηγό για όλες τις διαδρομές και μεταφορές από/προς αεροδρόμια.</p>
+      <div>
+        <strong style="display:block; color: var(--primary);">Τιμή Πακέτου</strong>
+        <span>Από 2.200€ / άτομο</span>
       </div>
-      <div class="card card-service">
-        <h3>🍷 Εμπειρίες</h3>
-        <p>Private wine tasting στην Chianti, μαθήματα μαγειρικής και ιδιωτική σκάφος στο Positano.</p>
+      <div>
+        <strong style="display:block; color: var(--primary);">Τύπος Ταξιδιού</strong>
+        <span>Custom / Private Tour</span>
       </div>
-    </div>
-
-    <!-- Day by Day Program -->
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα</h3>
-      
-      <div class="step-card" style="margin-bottom: 20px;">
-        <div class="step-number">ΗΜΕΡΑ 1-3</div>
-        <h3>Άφιξη & Ακτή Αμάλφι</h3>
-        <p>Άφιξη στη Νάπολη και ιδιωτική μεταφορά στο Positano. Εξερεύνηση των γραφικών σοκακιών, κρουαζιέρα στο ηλιοβασίλεμα και επίσκεψη στο Ravello.</p>
-      </div>
-
-      <div class="step-card" style="margin-bottom: 20px;">
-        <div class="step-number">ΗΜΕΡΑ 4-7</div>
-        <h3>Τοσκάνη & Αμπελώνες</h3>
-        <p>Μετάβαση στην Τοσκάνη. Διαμονή σε παραδοσιακό Tuscan Estate, γευσιγνωσία κρασιών στην περιοχή Chianti και επίσκεψη στο San Gimignano.</p>
-      </div>
-
-      <div class="step-card" style="margin-bottom: 20px;">
-        <div class="step-number">ΗΜΕΡΑ 8-10</div>
-        <h3>Φλωρεντία & Επιστροφή</h3>
-        <p>Ξενάγηση στα μουσεία της Φλωρεντίας με ιδιωτικό ξεναγό, ελεύθερος χρόνος για αγορές και πτήση επιστροφής.</p>
+      <div>
+        <strong style="display:block; color: var(--primary);">Υποστήριξη</strong>
+        <span>24/7 Greek Speaking Concierge</span>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form for this specific trip -->
-  <section id="contact" class="section texture-bg">
-    <div class="container">
-      <div class="contact-box">
-        <div class="contact-info">
-          <h2>Ενδιαφέρεστε για αυτό το ταξίδι;</h2>
-          <p>Συμπληρώστε τα στοιχεία σας και θα σας στείλουμε το πλήρες αναλυτικό πρόγραμμα PDF.</p>
-        </div>
-        <form id="trip-form" class="contact-form">
-          <div class="form-group">
-            <label for="name">Ονοματεπώνυμο</label>
-            <input type="text" id="name" required placeholder="π.χ. Μαρία Παπαδοπούλου">
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required placeholder="maria@example.com">
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Ζητήστε Πληροφορίες</button>
-          <div id="form-message" class="form-message"></div>
-        </form>
+  <!-- Highlights Gallery Section -->
+  <section class="section container">
+    <div class="section-title">
+      <h2>Highlights Ταξιδιού</h2>
+      <p>Μερικές από τις μοναδικές εμπειρίες που περιλαμβάνονται στο ταξίδι σας.</p>
+    </div>
+
+    <div class="gallery-grid" style="margin-bottom: 40px;">
+      <div class="gallery-item large" style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item tall" style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80');"></div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card card-service">
+        <h3>🚤 Ιδιωτική Σκάφος στο Capri</h3>
+        <p>Ολοήμερη περιήγηση στις σπηλιές του Καπρί με ιδιωτικό σκάφος, skipper και στάσεις για κολύμπι.</p>
       </div>
+      <div class="card card-service">
+        <h3>🍷 Wine Tasting στο Chianti</h3>
+        <p>Επίσκεψη σε ιστορικά οινοποιεία της Τοσκάνης με δοκιμή παλαιωμένων ετικετών Chianti Classico.</p>
+      </div>
+      <div class="card card-service">
+        <h3>👨‍🍳 Tuscan Cooking Class</h3>
+        <p>Μάθημα παρασκευής φρέσκων ζυμαρικών και γλυκών από Ιταλό Chef σε παραδοσιακή villa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Day-by-Day Itinerary -->
+  <section id="itinerary" class="section texture-bg">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-title">
+        <h2>Αναλυτικό Ημερήσιο Πρόγραμμα</h2>
+        <p>Κάθε λεπτομέρεια είναι σχεδιασμένη ώστε να ταξιδεύετε με απόλυτη ασφάλεια, άνεση και μηδενικό άγχος.</p>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 01</div>
+        <h3>Άφιξη στη Νάπολη & Μεταφορά στο Positano</h3>
+        <p>Άφιξη στο αεροδρόμιο της Νάπολης. Ο ιδιωτικός σας ελληνόφωνος/αγγλόφωνος οδηγός θα σας περιμένει στην περιοχή παραλαβής αποσκευών κρατώντας πινακίδα με το όνομά σας. Άνετη μεταφορά με πολυτελές Mercedes Van προς το ξενοδοχείο σας στο Positano. Τακτοποίηση στο δωμάτιο, welcome drink και ελεύθερος χρόνος για μια πρώτη βόλτα στα γραφικά σοκάκια.</p>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 02</div>
+        <h3>Περιήγηση στο Αμάλφι & Ravello</h3>
+        <p>Πρωινό στο ξενοδοχείο. Παραλαβή από τον οδηγό σας για μια πανοραμική διαδρομή κατά μήκος της ακτής. Επίσκεψη στο ιστορικό κέντρο του Amalfi και στον Καθεδρικό Ναό του Αγίου Ανδρέα. Στη συνέχεια ανεβαίνετε στο ατμοσφαιρικό Ravello για να επισκεφθείτε τη Villa Cimbrone με την περίφημη «Βεράντα του Απείρου». Επιστροφή στο Positano το απόγευμα.</p>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 03</div>
+        <h3>Ιδιωτική Κρουαζιέρα στο Capri & Faraglioni</h3>
+        <p>Επιβίβαση σε ιδιωτικό σκάφος από τη μαρίνα του Positano. Ο προσωπικός σας skipper θα σας οδηγήσει γύρω από το νησί του Capri, περνώντας από τους διάσημους βράχους Faraglioni, τη Πράσινη και τη Λευκή Σπηλιά. Ελεύθερος χρόνος στο νησί για γεύμα και βόλτα στη Piazzetta. Επιστροφή το ηλιοβασίλεμα με prosecco εν πλω.</p>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 04</div>
+        <h3>Πομπηία & Μετάβαση στην Καρδιά της Τοσκάνης</h3>
+        <p>Check-out και αναχώρηση προς βορρά. Στάση στον αρχαιολογικό χώρο της Πομπηίας για 2ωρη ιδιωτική ξενάγηση με διπλωματούχο ξεναγό. Στη συνέχεια, ο οδηγός σας σάς μεταφέρει στην Τοσκάνη και στο παραδοσιακό Tuscan Estate/Chateau όπου θα διαμείνετε. Δείπνο καλωσορίσματος με τοπικές σπεσιαλιτέ.</p>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 05</div>
+        <h3>Siena, San Gimignano & Γευσιγνωσία Chianti</h3>
+        <p>Πρωινή επίσκεψη στη μεσαιωνική Siena και την ιστορική Piazza del Campo. Στη συνέχεια μεταβαίνετε στο San Gimignano, γνωστό για τους μεσαιωνικούς πύργους του. Το μεσημέρι επισκέπτεστε ένα οικογενειακό οινοποιείο στην περιοχή Chianti Classico για ξενάγηση στους αμπελώνες, τα κελάρια και πλήρες γεύμα γευσιγνωσίας 4 πιάτων.</p>
+      </div>
+
+      <!-- Day 6 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 06</div>
+        <h3>Μάθημα Μαγειρικής σε Tuscan Villa</h3>
+        <p>Μια χαλαρή μέρα αφιερωμένη στη γαστρονομία. Το πρωί συμμετέχετε σε ιδιωτικό cooking class σε μια αυθεντική φάρμα της Τοσκάνης. Θα μάθετε να φτιάχνετε χειροποίητα ζυμαρικά, σάλτσες και αυθεντικό tiramisu. Το μεσημέρι απολαμβάνετε τις δημιουργίες σας συνοδεία τοπικού κρασιού. Απογευματινός περίπατος στους γύρω λόφους.</p>
+      </div>
+
+      <!-- Day 7 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 07</div>
+        <h3>Val d’Orcia & Pienza – Τοπία της UNESCO</h3>
+        <p>Ημερήσια εκδρομή στην πανέμορφη κοιλάδα Val d’Orcia. Φωτογραφικές στάσεις στους διάσημους δρόμους με τα κυπαρίσσια, επίσκεψη στην αναγεννησιακή πόλη Pienza για δοκιμή του περίφημου τυριού Pecorino και βόλτα στο Montalcino, πατρίδα του κρασιού Brunello.</p>
+      </div>
+
+      <!-- Day 8 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 08</div>
+        <h3>Φλωρεντία – Αναγεννησιακά Μουσεία & Περίπατος</h3>
+        <p>Μετάβαση στη Φλωρεντία. 3ωρη ιδιωτική ξενάγηση με τοπικό ξεναγό στα σημαντικότερα αξιοθέατα: Duomo, Ponte Vecchio, Piazza della Signoria και είσοδος χωρίς αναμονή (skip-the-line tickets) στη Gallerie degli Uffizi. Τακτοποίηση στο boutique ξενοδοχείο στο κέντρο της πόλης.</p>
+      </div>
+
+      <!-- Day 9 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 09</div>
+        <h3>Ελεύθερη Μέρα στη Φλωρεντία & Αποχαιρετιστήριο Δείπνο</h3>
+        <p>Ελεύθερη μέρα για shopping στις κομψές μπουτίκ της Via de' Tornabuoni, βόλτα στους Κήπους Boboli ή επίσκεψη στην Galleria dell'Accademia για το άγαλμα του Δαυίδ. Το βράδυ απολαμβάνετε αποχαιρετιστήριο δείπνο Bistecca alla Fiorentina σε επιλεγμένη τρατορία.</p>
+      </div>
+
+      <!-- Day 10 -->
+      <div class="step-card" style="margin-bottom: 24px;">
+        <div class="step-number">ΗΜΕΡΑ 10</div>
+        <h3>Επιστροφή στην Αθήνα</h3>
+        <p>Πρωινό στο ξενοδοχείο. Ιδιωτική μεταφορά στο αεροδρόμιο της Φλωρεντίας ή της Ρώμης ανάλογα με την πτήση επιστροφής. Ο οδηγός σας παραδίδει στο terminal αναχωρήσεων. Πτήση επιστροφής με τις καλύτερες αναμνήσεις.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Flights & Logistics Section -->
+  <section class="section container">
+    <div class="section-title">
+      <h2>Πτήσεις & Ιδιωτικές Μεταφορές</h2>
+      <p>Όλες οι μετακινήσεις σας είναι προκρατημένες με επαγγελματίες οδηγούς.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card card-service">
+        <h3>✈️ Ενδεικτικές Πτήσεις</h3>
+        <ul style="line-height: 1.9; color: var(--text-muted); margin-top: 10px;">
+          <li>• <strong>Αναχώρηση:</strong> Αθήνα (ATH) ➔ Νάπολη (NAP) | Aegean Airlines (Direct)</li>
+          <li>• <strong>Επιστροφή:</strong> Φλωρεντία (FLR) / Ρώμη (FCO) ➔ Αθήνα (ATH)</li>
+          <li>• Περιλαμβάνονται χειραποσκευές 8kg & παραδοτέες αποσκευές 23kg ανά άτομο.</li>
+        </ul>
+      </div>
+
+      <div class="card card-service">
+        <h3>🚘 Μετακινήσεις & Ασφάλεια</h3>
+        <ul style="line-height: 1.9; color: var(--text-muted); margin-top: 10px;">
+          <li>• Ιδιωτικό Mercedes Van καθ' όλη τη διάρκεια του ταξιδιού.</li>
+          <li>• Επαγγελματίας αγγλόφωνος/ελληνόφωνος οδηγός.</li>
+          <li>• 24/7 τηλεφωνική υποστήριξη από το γραφείο μας κατά τη διάρκεια του ταξιδιού.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accommodation Options -->
+  <section class="section texture-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Επιλογές Διαμονής</h2>
+        <p>Συνεργαζόμαστε με τα κορυφαία boutique καταλύματα και ιστορικά κτήματα της Ιταλίας.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card card-service">
+          <div style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
+          <h3>Boutique 4* Collection</h3>
+          <p>Κομψά ξενοδοχεία με τοπικό χαρακτήρα, εξαιρετικό πρωινό και κεντρική τοποθεσία στο Positano και στη Φλωρεντία.</p>
+        </div>
+
+        <div class="card card-service">
+          <div style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
+          <h3>Luxury 5* & Historic Estates</h3>
+          <p>Πολυτελή resorts με πανοραμική θέα στη θάλασσα, ιδιωτικές πισίνες και διαμονή σε αυθεντικά châteaux του 18ου αιώνα στην Τοσκάνη.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Inclusions -->
+  <section class="section container">
+    <div class="section-title">
+      <h2>Τιμές & Παροχές</h2>
+      <p>Πλήρης διαφάνεια χωρίς κρυφές χρεώσεις.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card card-service" style="border-top: 4px solid #16a34a;">
+        <h3 style="color: #16a34a;">✅ Τι Περιλαμβάνεται</h3>
+        <ul style="line-height: 2; color: var(--text-dark); margin-top: 15px;">
+          <li>• Αεροπορικά εισιτήρια με φόρους αεροδρομίων & αποσκευές.</li>
+          <li>• 9 διανυκτερεύσεις σε επιλεγμένα ξενοδοχεία 4* ή 5* με πρωινό.</li>
+          <li>• Όλες οι ιδιωτικές μεταφορές με Mercedes Van & προσωπικό οδηγό.</li>
+          <li>• Ιδιωτική ημερήσια κρουαζιέρα στο Capri.</li>
+          <li>• Wine tasting & γεύμα 4 πιάτων στην Τοσκάνη.</li>
+          <li>• Ιδιωτικό Tuscan Cooking Class.</li>
+          <li>• Εισητήρια Skip-the-line για Πομπηία & Uffizi Gallery.</li>
+          <li>• 24/7 Greek Speaking Concierge Support.</li>
+        </ul>
+      </div>
+
+      <div class="card card-service" style="border-top: 4px solid #dc2626;">
+        <h3 style="color: #dc2626;">❌ Τι Δεν Περιλαμβάνεται</h3>
+        <ul style="line-height: 2; color: var(--text-muted); margin-top: 15px;">
+          <li>• Φόροι διαμονής πόλεων (city tax - πληρώνεται απευθείας στα ξενοδοχεία).</li>
+          <li>• Γεύματα και δείπνα εκτός των αναγραφόμενων.</li>
+          <li>• Προσωπικά έξοδα & φιλοδωρήματα.</li>
+          <li>• Προαιρετικές δραστηριότητες.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional Activities & Must-Haves -->
+  <section class="section texture-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Προαιρετικές Δραστηριότητες & Must-Haves</h2>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card card-service">
+          <h3>✨ Προαιρετικές Εμπειρίες (Optional)</h3>
+          <ul style="line-height: 1.9; color: var(--text-muted); margin-top: 10px;">
+            <li>• <strong>Βόλτα με Vintage Vespa:</strong> 3ωρη περιήγηση στους λόφους της Τοσκάνης (+140€/άτομο).</li>
+            <li>• <strong>Πτήση με Αερόστατο:</strong> Πρωινή πτήση πάνω από τους αμπελώνες της Chianti (+280€/άτομο).</li>
+            <li>• <strong>Sunset Helicoper Flight:</strong> Πανοραμική πτήση πάνω από την Ακτή Αμάλφι (+450€/άτομο).</li>
+          </ul>
+        </div>
+
+        <div class="card card-service">
+          <h3>🧳 Τι να Πάρετε Μαζί Σας (Must-Haves)</h3>
+          <ul style="line-height: 1.9; color: var(--text-muted); margin-top: 10px;">
+            <li>• Άνετα παπούτσια περιπάτου για τα καλντερίμια και τους αρχαιολογικούς χώρους.</li>
+            <li>• Αντηλιακό, γυαλιά ηλίου & μαγιό για την κρουαζιέρα στο Capri.</li>
+            <li>• Smart-casual ενδυμασία για τα δείπνα και τα οινοποιεία.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form for Amalfi -->
+  <section id="contact" class="section container">
+    <div class="contact-box">
+      <div class="contact-info">
+        <h2>Κάντε Αίτημα για την Ακτή Αμάλφι</h2>
+        <p>Συμπληρώστε τα στοιχεία σας και ένας Travel Designer θα επικοινωνήσει μαζί σας για να προσαρμόσει το πρόγραμμα στις δικές σας ημερομηνίες.</p>
+        <p style="margin-top:20px;">📧 hello@vanguardtravel.com</p>
+        <p>📞 +30 210 123 4567</p>
+      </div>
+      <form id="trip-form" class="contact-form">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Μαρία Παπαδοπούλου">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="maria@example.com">
+        </div>
+        <div class="form-group">
+          <label for="date">Επιθυμητή Ημερομηνία Αναχώρησης</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label for="comments">Ειδικά Αιτήματα / Σχόλια</label>
+          <textarea id="comments" rows="3" placeholder="Γράψτε μας αν επιθυμείτε συγκεκριμένο τύπο ξενοδοχείου ή επιπλέον ημέρες..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+        <div id="form-message" class="form-message"></div>
+      </form>
     </div>
   </section>
 
@@ -119,7 +329,6 @@
     </div>
   </footer>
 
-  <!-- Path to root Script -->
   <script src="../../script.js"></script>
 </body>
 </html>
