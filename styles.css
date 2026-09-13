@@ -80,6 +80,7 @@ ul { list-style: none; }
   border: none;
   transition: all 0.5s ease-in-out;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .btn-primary { background-color: var(--primary); color: var(--white); }
@@ -102,13 +103,30 @@ ul { list-style: none; }
 
 /* Navigation */
 .navbar { position: sticky; top: 0; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; }
-.brand-logo { font-family: var(--font-logo); font-weight: 700; font-size: 1.25rem; color: var(--primary); letter-spacing: 0.12em; }
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  flex-wrap: nowrap;
+}
+.brand-logo { font-family: var(--font-logo); font-weight: 700; font-size: 1.25rem; color: var(--primary); letter-spacing: 0.12em; white-space: nowrap; }
 .brand-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 28px; align-items: center; }
-.nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-dark); transition: color 0.5s ease-in-out; }
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--text-dark); transition: color 0.5s ease-in-out; white-space: nowrap; }
 .nav-links a:hover { color: var(--accent); }
-.nav-links-cta { display: none; }
+.nav-links-cta { display: none !important; }
+
+.nav-right { white-space: nowrap; }
 
 /* Hamburger button — hidden on desktop */
 .nav-toggle {
@@ -122,6 +140,7 @@ ul { list-style: none; }
   border: none;
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
 }
 .nav-toggle span {
   display: block;
@@ -238,8 +257,16 @@ input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--bo
 footer { border-top: 1px solid var(--border); padding: 36px 0; font-size: 0.9rem; color: var(--text-muted); background: var(--white); }
 .footer-content { display: flex; justify-content: space-between; align-items: center; }
 
-/* ===== Mobile ===== */
-@media (max-width: 900px) {
+/* ===== Tablet: shrink nav gap/font before it has to wrap ===== */
+@media (max-width: 1180px) and (min-width: 1025px) {
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.85rem; }
+  .nav-btn { padding: 10px 16px; font-size: 0.85rem; }
+}
+
+/* ===== Mobile / hamburger takes over here — raised from 900px to 1024px
+   so the nav never sits in a squeezed, wrapping state ===== */
+@media (max-width: 1024px) {
   .nav-toggle { display: flex; }
   .nav-right { display: none; }
 
@@ -259,8 +286,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; font-size: 0.9rem
   }
   .nav-links.open { max-height: 400px; }
   .nav-links li { border-top: 1px solid var(--border); }
-  .nav-links a { display: block; padding: 16px 24px; }
-  .nav-links-cta { display: block; padding: 16px 24px; }
+  .nav-links a { display: block; padding: 16px 24px; white-space: normal; }
+  .nav-links-cta { display: block !important; padding: 16px 24px; }
   .nav-links-cta a { display: block; text-align: center; }
 
   .section { padding: 56px 0; }
