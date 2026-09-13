@@ -289,6 +289,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; font-size: 0.9rem
   .nav-links a { display: block; padding: 16px 24px; white-space: normal; }
   .nav-links-cta { display: block !important; padding: 16px 24px; }
   .nav-links-cta a { display: block; text-align: center; }
+  .nav-links-cta a.btn-primary { color: var(--white); }
+  .nav-links-cta a.btn-primary:hover { color: var(--white); }
 
   .section { padding: 56px 0; }
   .section-title { margin-bottom: 32px; }
