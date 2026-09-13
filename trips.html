@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Όλα τα Ταξιδιωτικά Πακέτα | Vanguard Travel Design</title>
   
-  <!-- Root CSS Link -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
   <style>
-    /* Filter Bar Styling */
     .filter-container {
       display: flex;
       justify-content: space-between;
@@ -63,10 +61,18 @@
       border-color: var(--accent, #c48b5f);
     }
 
+    /* Fixed grid that prevents stretching when 1-2 items are shown */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
     .trip-card-catalog {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
     }
   </style>
 </head>
@@ -107,27 +113,60 @@
         <button class="filter-btn" onclick="filterTrips('europe', event)">Ευρώπη</button>
         <button class="filter-btn" onclick="filterTrips('middle-east', event)">Μέση Ανατολή</button>
         <button class="filter-btn" onclick="filterTrips('asia', event)">Ασία</button>
+        <button class="filter-btn" onclick="filterTrips('americas', event)">Αμερική</button>
         <button class="filter-btn" onclick="filterTrips('greece', event)">Ελλάδα</button>
       </div>
       <input type="text" id="tripSearch" class="search-input" placeholder="Αναζήτηση προορισμού..." onkeyup="searchTrips()">
     </div>
 
     <!-- Grid of Trips -->
-    <div class="grid grid-3" id="tripsGrid">
+    <div class="catalog-grid" id="tripsGrid">
       
-      <!-- Amalfi Coast -->
-      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="αμαλφι amalfi ιταλια">
+      <!-- Lapland (New) -->
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="λαπωνια lapland φινλανδια ρονβανιεμι aurora borealis husky santa">
         <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 15 - 25 ΜΑΪΟΥ 2027 • 10 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ακτή Αμάλφι & Τοσκάνη</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Positano, Amalfi, Capri & Ravello. Ιδιωτική σκάφος, γευσιγνωσία wine & limoncello και μαγευτικά τοπία.</p>
+            <span class="trip-dates">📅 10 - 16 ΔΕΚΕΜΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Λαπωνία & Βόρειο Σέλας</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Aurora Borealis, Husky Sledding, Reindeer Farm, Santa Claus Village, Ranua Zoo & Ice Floating.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.200€</span> / άτομο</div>
-          <a href="trips/amalfi/" class="btn btn-outline">Δείτε το Πακέτο</a>
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>230€</span></div>
+          <a href="trips/lapland/" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- New York (New) -->
+      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="νεα υορκη new york ηπα usa manhattan">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 18 - 25 ΝΟΕΜΒΡΙΟΥ 2026 • 8 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Νέα Υόρκη & Manhattan</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Times Square, Central Park, Statue of Liberty, Empire State Building & Broadway show.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>550€</span></div>
+          <a href="trips/newyork/" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Rio de Janeiro (New) -->
+      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="ριο ντε τζανειρο rio de janeiro βραζιλια brazil christ redeemer copacabana">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 10 - 18 ΦΕΒΡΟΥΑΡΙΟΥ 2027 • 9 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ρίο ντε Τζανέιρο & Copacabana</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Christ the Redeemer, Sugarloaf Mountain, Copacabana, Ipanema & Samba culture.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>780€</span></div>
+          <a href="trips/rio/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
@@ -144,6 +183,22 @@
         <div style="padding: 0 20px 20px;">
           <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>250€</span></div>
           <a href="trips/dubai/" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Amalfi Coast -->
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="αμαλφι amalfi ιταλια">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 15 - 25 ΜΑΪΟΥ 2027 • 10 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ακτή Αμάλφι & Τοσκάνη</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Positano, Amalfi, Capri & Ravello. Ιδιωτική σκάφος, γευσιγνωσία wine & limoncello και μαγευτικά τοπία.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.200€</span> / άτομο</div>
+          <a href="trips/amalfi/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
@@ -228,7 +283,7 @@
     <div class="contact-box">
       <div class="contact-info">
         <h2>Επικοινωνήστε Μαζί Μας</h2>
-        <p>Πείτε μας για ποιον προορισμό ενδιαφέρεστε και θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.</p>
+        <p>Πείτε μας για ποιον προορισμό ενδιαφέρεστε και θα επικοινωνήσουμε μαζί μας εντός 24 ωρών.</p>
         <p style="margin-top:20px;">📧 hello@vanguardtravel.com</p>
         <p>📞 +30 210 123 4567</p>
       </div>
@@ -243,7 +298,7 @@
         </div>
         <div class="form-group">
           <label for="destination">Προορισμός Ενδιαφέροντος</label>
-          <input type="text" id="destination" placeholder="π.χ. Ντουμπάι, Αμάλφι, Custom...">
+          <input type="text" id="destination" placeholder="π.χ. Λαπωνία, Νέα Υόρκη, Ρίο...">
         </div>
         <div class="form-group">
           <label for="comments">Λεπτομέρειες / Ημερομηνίες</label>
@@ -262,7 +317,6 @@
     </div>
   </footer>
 
-  <!-- Root JS Link -->
   <script src="script.js"></script>
   
   <!-- Filtering & Search Script -->
