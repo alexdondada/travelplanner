@@ -162,14 +162,18 @@ ul { list-style: none; }
 .trip-price span { font-size: 1.35rem; font-weight: 700; color: var(--primary); }
 
 /* Gallery Section */
+/* Gallery Container & Grid */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Enforces 4 clean columns */
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 200px;
-  grid-auto-flow: dense; /* <--- THIS FILLS THE GAPS AUTOMATICALLY */
-  gap: 0; /* No gaps between images */
+  grid-auto-flow: dense;
+  gap: 2px; /* Creates 1px spacing around every side of each image */
+  background-color: #ffffff; /* Color of the 1px grid line spacing (change to #000 or #f4f6f9 if desired) */
+  padding: 1px; /* Ensures outer edges also have 1px space */
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .gallery-item {
@@ -177,9 +181,16 @@ ul { list-style: none; }
   height: 100%;
   background-size: cover;
   background-position: center;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* Item Spans */
+.gallery-item:hover {
+  transform: scale(1.02);
+  z-index: 2;
+  filter: brightness(1.05);
+}
+
+/* Sizing Spans for Masonry Grid */
 .gallery-item.large {
   grid-column: span 2;
   grid-row: span 2;
@@ -196,14 +207,14 @@ ul { list-style: none; }
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-auto-rows: 150px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-auto-rows: 140px;
   }
   
   .gallery-item.large,
   .gallery-item.wide {
-    grid-column: span 2;
-    grid-row: span 2;
+    grid-column: span 1;
+    grid-row: span 1;
   }
 }
 
