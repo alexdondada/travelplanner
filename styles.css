@@ -30,14 +30,26 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-.section { padding: 90px 0; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.section { padding: 90px 0; position: relative; }
 
-/* Subtle Background Texture (Journeyscape Inspired) */
+/* Low Transparency Landscape Image Background */
 .texture-bg {
-  background-color: var(--bg-light);
+  position: relative;
+  background-color: #f4f2eb;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.texture-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  opacity: 0.08; /* Very subtle low transparency landscape */
+  pointer-events: none;
+  z-index: 1;
 }
 
 .grid { display: grid; gap: 28px; }
@@ -54,7 +66,7 @@ ul { list-style: none; }
 }
 .section-title p { color: var(--text-muted); font-size: 1.1rem; font-weight: 400; }
 
-/* Buttons & Transitions */
+/* Buttons & Slower Transitions (0.5s) */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -63,15 +75,15 @@ ul { list-style: none; }
   letter-spacing: 0.03em;
   cursor: pointer;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease-in-out;
   font-size: 0.95rem;
 }
 
 .btn-primary { background-color: var(--primary); color: var(--white); }
-.btn-primary:hover { background-color: var(--accent); transform: translateY(-2px); }
+.btn-primary:hover { background-color: var(--accent); transform: translateY(-3px); }
 
 .btn-secondary { background: rgba(255,255,255,0.85); color: var(--primary); border: 1px solid var(--white); }
-.btn-secondary:hover { background: var(--white); transform: translateY(-2px); }
+.btn-secondary:hover { background: var(--white); transform: translateY(-3px); }
 
 .btn-outline { 
   background: transparent; 
@@ -91,10 +103,10 @@ ul { list-style: none; }
 .brand-logo { font-family: var(--font-logo); font-weight: 700; font-size: 1.25rem; color: var(--primary); letter-spacing: 0.12em; }
 .brand-logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 28px; }
-.nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-dark); transition: color 0.25s ease; }
+.nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-dark); transition: color 0.5s ease-in-out; }
 .nav-links a:hover { color: var(--accent); }
 
-/* Hero Section with Pink Desert Mountain Background */
+/* Hero Section */
 .hero {
   position: relative;
   background: linear-gradient(rgba(27, 42, 74, 0.45), rgba(27, 42, 74, 0.55)), 
@@ -118,21 +130,19 @@ ul { list-style: none; }
 .hero p { font-size: 1.2rem; color: #f1f5f9; margin-bottom: 36px; font-weight: 300; line-height: 1.7; }
 .hero-cta { display: flex; gap: 16px; justify-content: center; }
 
-/* Cards & Trip Packages */
+/* Cards & Slower Hover Animations (0.5s) */
 .card {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.96);
   border-radius: var(--radius);
   border: 1px solid var(--border);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+.card:hover { transform: translateY(-5px); box-shadow: 0 16px 30px rgba(0,0,0,0.08); }
 .card-service { padding: 32px; }
 .card-service h3 { font-family: var(--font-heading); margin: 12px 0 8px; color: var(--primary); }
 
 .trip-card { display: flex; flex-direction: column; }
-
-/* Larger Image Heights for Packages */
 .trip-img { 
   height: 220px; 
   background-size: cover; 
@@ -158,6 +168,7 @@ ul { list-style: none; }
   background-size: cover;
   background-position: center;
   border-radius: var(--radius);
+  transition: opacity 0.5s ease-in-out;
 }
 
 .gallery-item.large { grid-column: span 2; grid-row: span 2; }
@@ -174,7 +185,7 @@ ul { list-style: none; }
 
 /* Steps & Contact Form */
 .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.step-card { background: var(--white); padding: 36px; border-radius: var(--radius); border: 1px solid var(--border); border-left: 4px solid var(--accent); }
+.step-card { background: rgba(255, 255, 255, 0.96); padding: 36px; border-radius: var(--radius); border: 1px solid var(--border); border-left: 4px solid var(--accent); }
 .step-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
 
 .contact-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); display: grid; grid-template-columns: 1fr 1.2fr; overflow: hidden; }
