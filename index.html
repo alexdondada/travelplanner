@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanguard Travel Design | Εξατομικευμένα Ταξίδια & Ταξιδιωτικές Εμπειρίες</title>
+  <title>Vanguard Travel Design | Εξατομικευμένα Ταξίδια & Αυθεντικές Εμπειρίες</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -16,23 +16,14 @@
     <div class="nav-container">
       <a href="#" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
-        <li><a href="#about" data-i18n="nav_about">Γιατί Εμάς</a></li>
-        <li><a href="#gallery" data-i18n="nav_gallery">Εμπειρίες</a></li>
-        <li><a href="#how-it-works" data-i18n="nav_how">Πώς Λειτουργεί</a></li>
-        <li><a href="#trips" data-i18n="nav_trips">Πακέτα Ταξιδιών</a></li>
+        <li><a href="#about">Γιατί Εμάς</a></li>
+        <li><a href="#trips">Πακέτα Ταξιδιών</a></li>
+        <li><a href="#gallery">Εμπειρίες</a></li>
+        <li><a href="#how-it-works">Πώς Λειτουργεί</a></li>
       </ul>
       
       <div class="nav-right">
-        <!-- Language Selector -->
-        <div class="lang-selector">
-          <span class="globe-icon">🌐</span>
-          <select id="language-switcher" onchange="changeLanguage(this.value)">
-            <option value="el" selected>EL (Ελληνικά)</option>
-            <option value="en">EN (English)</option>
-            <option value="ru">RU (Русский)</option>
-          </select>
-        </div>
-        <a href="#contact" class="btn btn-primary nav-btn" data-i18n="nav_cta">Σχεδιάστε το Ταξίδι</a>
+        <a href="#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
       </div>
     </div>
   </nav>
@@ -40,12 +31,12 @@
   <!-- Hero Section -->
   <header class="hero">
     <div class="hero-content">
-      <span class="badge" data-i18n="hero_badge">Εξατομικευμένος Σχεδιασμός Ταξιδιών</span>
-      <h1 data-i18n="hero_title">Ανεπαναληπτα Ταξιδια.<br>Χωρις Αγχος Προγραμματισμου.</h1>
-      <p data-i18n="hero_sub">Αναλαμβάνουμε τα πάντα — από ξενοδοχεία και ιδιωτικές μεταφορές μέχρι μοναδικές δραστηριότητες. Εσείς απλά ετοιμάστε τις αποσκευές σας.</p>
+      <span class="badge">Εξατομικευμένος Σχεδιασμός Ταξιδιών</span>
+      <h1>Ανεπανάληπτα Ταξίδια.<br>Χωρίς Άγχος Προγραμματισμού.</h1>
+      <p>Αναλαμβάνουμε τα πάντα — από μοναδικά καταλύματα και ιδιωτικές μεταφορές μέχρι αυθεντικές τοπικές εμπειρίες. Εσείς απλά ετοιμάστε τις αποσκευές σας.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary" data-i18n="hero_btn1">Ξεκινήστε Τώρα</a>
-        <a href="#trips" class="btn btn-secondary" data-i18n="hero_btn2">Δείτε Ταξίδια</a>
+        <a href="#contact" class="btn btn-primary">Ξεκινήστε Τώρα</a>
+        <a href="#trips" class="btn btn-secondary">Δείτε Ταξίδια</a>
       </div>
     </div>
   </header>
@@ -54,159 +45,159 @@
   <section id="about" class="section texture-bg">
     <div class="container">
       <div class="section-title">
-        <h2 data-i18n="about_title">Ταξιδέψτε Χωρίς Ταπεινώσεις & Αβεβαιότητα</h2>
-        <p data-i18n="about_sub">Γλιτώστε δεκάδες ώρες αναζήτησης. Σχεδιάζουμε το ταξίδι ακριβώς στα μέτρα και στον προϋπολογισμό σας.</p>
+        <h2>Ταξιδέψτε Με Άνεση & Ασφάλεια</h2>
+        <p>Γλιτώστε δεκάδες ώρες αναζήτησης. Σχεδιάζουμε το ταξίδι ακριβώς στα μέτρα και στον προϋπολογισμό σας.</p>
       </div>
       <div class="grid grid-3">
         <div class="card card-service">
           <div class="icon">⌛</div>
-          <h3 data-i18n="about_c1_t">Εξοικονόμηση Χρόνου</h3>
-          <p data-i18n="about_c1_d">Ξεχάστε τις ατελείωτες καρτέλες και τις αμφίβολες κριτικές. Ετοιμάζουμε το πλήρες πλάνο για εσάς.</p>
+          <h3>Εξοικονόμηση Χρόνου</h3>
+          <p>Ξεχάστε τις ατελείωτες καρτέλες και τις αμφίβολες κριτικές. Ετοιμάζουμε το πλήρες πλάνο ειδικά για εσάς.</p>
         </div>
         <div class="card card-service">
           <div class="icon">🎯</div>
-          <h3 data-i18n="about_c2_t">Προσαρμοσμένος Ρυθμός</h3>
-          <p data-i18n="about_c2_d">Από χαλαρές διακοπές για ηλικίες 50+ μέχρι οικογενειακές εξορμήσεις με παιδιά, το πρόγραμμα φτιάχνεται στα μέτρα σας.</p>
+          <h3>Προσαρμοσμένος Ρυθμός</h3>
+          <p>Από χαλαρές διακοπές μέχρι πολυήμερες περιηγήσεις, το πρόγραμμα φτιάχνεται με βάση τις δικές σας προτιμήσεις.</p>
         </div>
         <div class="card card-service">
           <div class="icon">📱</div>
-          <h3 data-i18n="about_c3_t">Όλα σε Μία Εφαρμογή</h3>
-          <p data-i18n="about_c3_d">Λάβετε το ημερήσιο πρόγραμμα, κρατήσεις, χάρτες και οδηγούς σε μία εύχρηστη εφαρμογή στο κινητό σας.</p>
+          <h3>Όλα σε Μία Εφαρμογή</h3>
+          <p>Λάβετε το ημερήσιο πρόγραμμα, κρατήσεις, χάρτες και προτάσεις σε μία εύχρηστη εφαρμογή στο κινητό σας.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Moments Captured Gallery -->
-  <section id="gallery" class="section container">
-    <div class="section-title">
-      <h2 data-i18n="gallery_title">Στιγμιότυπα Από Τους Ταξιδιώτες Μας</h2>
-      <p data-i18n="gallery_sub">Αυθεντικές στιγμές από μοναδικούς προορισμούς σε όλο τον κόσμο.</p>
-    </div>
-    
-    <div class="gallery-grid">
-      <div class="gallery-item large" style="background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item tall" style="background-image: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item wide" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section id="how-it-works" class="section texture-bg">
-    <div class="container">
-      <div class="section-title">
-        <h2 data-i18n="how_title">3 Απλά Βήματα Για Το Ταξίδι Σας</h2>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <h3 data-i18n="step1_t">Πρώτη Επικοινωνία</h3>
-          <p data-i18n="step1_d">Μας λέτε τον προορισμό, τα άτομα, το στυλ ταξιδιού και τον διαθέσιμο προϋπολογισμό σας.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <h3 data-i18n="step2_t">Σχεδιασμός Πακέτου</h3>
-          <p data-i18n="step2_d">Ετοιμάζουμε το πλήρες πακέτο (ξενοδοχεία, μεταφορές, ξεναγήσεις) σε μία τελική, διαφανή τιμή.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <h3 data-i18n="step3_t">Απολαύστε το Ταξίδι</h3>
-          <p data-i18n="step3_d">Παραλαμβάνετε το ψηφιακό σας πρόγραμμα και ταξιδεύετε με 24/7 υποστήριξη από εμάς.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sample Packages Section (6 Compact Trips + Travel Dates) -->
+  <!-- Sample Packages Section -->
   <section id="trips" class="section container">
     <div class="section-title">
-      <h2 data-i18n="trips_title">Δημοφιλή Πακέτα & Προτάσεις</h2>
-      <p data-i18n="trips_sub">Ενδεικτικές τελικές τιμές ανά άτομο με διαθέσιμες ημερομηνίες αναχώρησης.</p>
+      <h2>Δημοφιλή Πακέτα & Προτάσεις</h2>
+      <p>Ενδεικτικές τελικές τιμές ανά άτομο με διαθέσιμες ημερομηνίες αναχώρησης.</p>
     </div>
     
     <div class="grid grid-3">
       
       <!-- Trip 1 -->
       <div class="card trip-card">
-        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="trip-card-body">
-          <div class="trip-tag" data-i18n="t1_tag">Ζευγάρια / 50+</div>
           <h3>Ακτή Αμάλφι & Τοσκάνη</h3>
-          <div class="trip-dates">📅 15 - 25 Μαΐου 2027 • 10Η / 9Ν</div>
+          <div class="trip-dates">📅 15 - 25 Μαΐου 2027 • 10 ΗΜΕΡΕΣ</div>
+          <p class="trip-desc">Ανακαλύψτε τα γραφικά χωριά της Ακτής Αμάλφι και περιηγηθείτε στους ιστορικούς αμπελώνες της Τοσκάνης με ιδιωτικές ξεναγήσεις και διαμονή σε boutique ξενοδοχεία.</p>
           <div class="trip-price">Από <span>2.200€</span> / άτομο</div>
-          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+          <a href="#contact" class="btn btn-outline">Εκδήλωση Ενδιαφέροντος</a>
         </div>
       </div>
 
       <!-- Trip 2 -->
       <div class="card trip-card">
-        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="trip-card-body">
-          <div class="trip-tag" data-i18n="t2_tag">Οικογενειακό</div>
           <h3>Ελληνικά Νησιά</h3>
-          <div class="trip-dates">📅 10 - 18 Ιουλίου 2027 • 8Η / 7Ν</div>
+          <div class="trip-dates">📅 10 - 18 Ιουλίου 2027 • 8 ΗΜΕΡΕΣ</div>
+          <p class="trip-desc">Ένα ατμοσφαιρικό ταξίδι στα καταγάλανα νερά του Αιγαίου με ιδιωτικές μετακινήσεις, κρουαζιέρα στο ηλιοβασίλεμα και διαμονή σε πολυτελή καταλύματα.</p>
           <div class="trip-price">Από <span>1.850€</span> / άτομο</div>
-          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+          <a href="#contact" class="btn btn-outline">Εκδήλωση Ενδιαφέροντος</a>
         </div>
       </div>
 
       <!-- Trip 3 -->
       <div class="card trip-card">
-        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="trip-card-body">
-          <div class="trip-tag" data-i18n="t3_tag">Πολιτισμός & Φύση</div>
           <h3>Highlands Σκωτίας</h3>
-          <div class="trip-dates">📅 5 - 12 Ιουνίου 2027 • 7Η / 6Ν</div>
+          <div class="trip-dates">📅 5 - 12 Ιουνίου 2027 • 7 ΗΜΕΡΕΣ</div>
+          <div class="trip-desc">Εξερευνήστε επιβλητικά κάστρα, μυστικιστικές λίμνες και καταπράσινα τοπία των Σκωτσέζικων Highlands με εξειδικευμένο τοπικό οδηγό.</div>
           <div class="trip-price">Από <span>1.950€</span> / άτομο</div>
-          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+          <a href="#contact" class="btn btn-outline">Εκδήλωση Ενδιαφέροντος</a>
         </div>
       </div>
 
-      <!-- Trip 4 (New) -->
+      <!-- Trip 4 -->
       <div class="card trip-card">
-        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="trip-card-body">
-          <div class="trip-tag">Πολυτέλεια & Σαφάρι</div>
           <h3>Ντουμπάι & Έρημος</h3>
-          <div class="trip-dates">📅 1 - 7 Νοεμβρίου 2026 • 7Η / 6Ν</div>
+          <div class="trip-dates">📅 1 - 7 Νοεμβρίου 2026 • 7 ΗΜΕΡΕΣ</div>
+          <p class="trip-desc">Συνδυάστε την κοσμοπολίτικη πολυτέλεια του Ντουμπάι με μια αυθεντική διανυκτέρευση κάτω από τα αστέρια σε πολυτελές resort στην έρημο.</p>
           <div class="trip-price">Από <span>2.100€</span> / άτομο</div>
-          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+          <a href="#contact" class="btn btn-outline">Εκδήλωση Ενδιαφέροντος</a>
         </div>
       </div>
 
-      <!-- Trip 5 (New) -->
+      <!-- Trip 5 -->
       <div class="card trip-card">
-        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="trip-card-body">
-          <div class="trip-tag">Πολιτισμός & Γαστρονομία</div>
           <h3>Cinque Terre & Ρώμη</h3>
-          <div class="trip-dates">📅 12 - 18 Σεπτεμβρίου 2026 • 7Η / 6Ν</div>
+          <div class="trip-dates">📅 12 - 18 Σεπτεμβρίου 2026 • 7 ΗΜΕΡΕΣ</div>
+          <p class="trip-desc">Απολαύστε τη γαστρονομία της Αιώνιας Πόλης και περπατήστε στα παραθαλάσσια μονοπάτια των πολύχρωμων χωριών Cinque Terre.</p>
           <div class="trip-price">Από <span>1.750€</span> / άτομο</div>
-          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+          <a href="#contact" class="btn btn-outline">Εκδήλωση Ενδιαφέροντος</a>
         </div>
       </div>
 
-      <!-- Trip 6 (New) -->
+      <!-- Trip 6 -->
       <div class="card trip-card">
-        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="trip-card-body">
-          <div class="trip-tag">Εξωτική Περιπέτεια</div>
           <h3>Βιετνάμ & Halong Bay</h3>
-          <div class="trip-dates">📅 10 - 20 Οκτωβρίου 2026 • 11Η / 10Ν</div>
+          <div class="trip-dates">📅 10 - 20 Οκτωβρίου 2026 • 11 ΗΜΕΡΕΣ</div>
+          <p class="trip-desc">Μια μοναδική εμπειρία στην Ανατολή με διήμερη κρουαζιέρα στο Halong Bay, περιηγήσεις στο Ανόι και γνωριμία με την τοπική κουλτούρα.</p>
           <div class="trip-price">Από <span>2.450€</span> / άτομο</div>
-          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+          <a href="#contact" class="btn btn-outline">Εκδήλωση Ενδιαφέροντος</a>
         </div>
       </div>
 
     </div>
 
     <!-- More Trips Button -->
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="#contact" class="btn btn-primary" style="padding: 14px 36px; font-size: 1rem;" data-i18n="more_trips_btn">Δείτε Περισσότερα Ταξίδια</a>
+    <div style="text-align: center; margin-top: 45px;">
+      <a href="#contact" class="btn btn-primary" style="padding: 14px 40px; font-size: 1rem;">Δείτε Περισσότερα Ταξίδια</a>
+    </div>
+  </section>
+
+  <!-- Moments Captured Gallery (Moved right after Popular Packages) -->
+  <section id="gallery" class="section texture-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Στιγμιότυπα Από Τους Ταξιδιώτες Μας</h2>
+        <p>Αυθεντικές στιγμές από μοναδικούς προορισμούς σε όλο τον κόσμο.</p>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item large" style="background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-item tall" style="background-image: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-item wide" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section container">
+    <div class="section-title">
+      <h2>3 Απλά Βήματα Για Το Ταξίδι Σας</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <h3>Πρώτη Επικοινωνία</h3>
+        <p>Μας λέτε τον προορισμό, τα άτομα, το στυλ ταξιδιού και τον διαθέσιμο προϋπολογισμό σας.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <h3>Σχεδιασμός Πακέτου</h3>
+        <p>Ετοιμάζουμε το πλήρες πακέτο (ξενοδοχεία, μεταφορές, ξεναγήσεις) σε μία τελική, διαφανή τιμή.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <h3>Απολαύστε το Ταξίδι</h3>
+        <p>Παραλαμβάνετε το ψηφιακό σας πρόγραμμα και ταξιδεύετε με 24/7 υποστήριξη από εμάς.</p>
+      </div>
     </div>
   </section>
 
@@ -214,13 +205,13 @@
   <section class="section texture-bg">
     <div class="container">
       <div class="section-title">
-        <h2 data-i18n="reviews_title">Εμπειρίες Ταξιδιωτών Μας</h2>
-        <p data-i18n="reviews_sub">Δείτε πώς μετατρέπουμε τις ιδέες σας σε αξέχαστα ταξίδια.</p>
+        <h2>Εμπειρίες Ταξιδιωτών Μας</h2>
+        <p>Δείτε πώς μετατρέπουμε τις ιδέες σας σε αξέχαστα ταξίδια.</p>
       </div>
       <div class="grid grid-3">
         
         <div class="card review-card">
-          <p class="review-text" data-i18n="r1_t">"Θέλαμε ένα οικογενειακό ταξίδι χωρίς να χάσουμε μέρες ψάχνοντας ξενοδοχεία και πλοία. Η Vanguard μας παρέδωσε ένα τέλειο πρόγραμμα!"</p>
+          <p class="review-text">"Θέλαμε ένα οικογενειακό ταξίδι χωρίς να χάσουμε μέρες ψάχνοντας ξενοδοχεία και πλοία. Η Vanguard μας παρέδωσε ένα τέλειο πρόγραμμα!"</p>
           <div class="reviewer-info">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ελένη Μ." class="avatar">
             <div>
@@ -231,7 +222,7 @@
         </div>
 
         <div class="card review-card">
-          <p class="review-text" data-i18n="r2_t">"Το να ταξιδεύεις στην Ιταλία σε ηλικία 55+ μπορεί να κουράσει. Με τους ιδιωτικούς οδηγούς σε κάθε σταθμό, ήταν μια πραγματική πολυτέλεια."</p>
+          <p class="review-text">"Το να ταξιδεύεις στην Ιταλία με ιδιωτικούς οδηγούς σε κάθε σταθμό ήταν μια πραγματική πολυτέλεια. Όλα ήταν οργανωμένα στην εντέλεια."</p>
           <div class="reviewer-info">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Γιώργος Κ." class="avatar">
             <div>
@@ -242,7 +233,7 @@
         </div>
 
         <div class="card review-card">
-          <p class="review-text" data-i18n="r3_t">"Η εφαρμογή με τις καθημερινές οδηγίες ήταν απίστευτη. Δεν χρειάστηκε να ψάξουμε ούτε ένα email για κρατήσεις!"</p>
+          <p class="review-text">"Η εφαρμογή με τις καθημερινές οδηγίες ήταν απίστευτη. Δεν χρειάστηκε να ψάξουμε ούτε ένα email για κρατήσεις!"</p>
           <div class="reviewer-info">
             <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Σοφία Μ." class="avatar">
             <div>
@@ -260,32 +251,32 @@
   <section id="contact" class="section container">
     <div class="contact-box">
       <div class="contact-info">
-        <h2 data-i18n="form_title">Έτοιμοι Για Το Επόμενο Ταξίδι;</h2>
-        <p data-i18n="form_sub">Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.</p>
-        <p>📧 hello@vanguardtravel.com</p>
+        <h2>Έτοιμοι Για Το Επόμενο Ταξίδι;</h2>
+        <p>Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.</p>
+        <p style="margin-top:20px;">📧 hello@vanguardtravel.com</p>
         <p>📞 +30 210 123 4567</p>
       </div>
       <form id="trip-form" class="contact-form">
         <div class="form-group">
-          <label for="name" data-i18n="f_name">Ονοματεπώνυμο</label>
+          <label for="name">Ονοματεπώνυμο</label>
           <input type="text" id="name" required placeholder="π.χ. Μαρία Παπαδοπούλου">
         </div>
         <div class="form-group">
-          <label for="email" data-i18n="f_email">Email</label>
+          <label for="email">Email</label>
           <input type="email" id="email" required placeholder="maria@example.com">
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="travelers" data-i18n="f_type">Τύπος Ταξιδιώτη</label>
+            <label for="travelers">Τύπος Ταξιδιώτη</label>
             <select id="travelers">
-              <option value="couple" data-i18n="opt_couple">Ζευγάρι / 2 Ενήλικες</option>
-              <option value="family" data-i18n="opt_family">Οικογένεια με Παιδιά</option>
-              <option value="50plus" data-i18n="opt_50">Group 50+ / Senior</option>
-              <option value="solo" data-i18n="opt_solo">Solo Ταξιδιώτης</option>
+              <option value="couple">Ζευγάρι / 2 Ενήλικες</option>
+              <option value="family">Οικογένεια με Παιδιά</option>
+              <option value="50plus">Group 50+ / Senior</option>
+              <option value="solo">Solo Ταξιδιώτης</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="budget" data-i18n="f_budget">Προϋπολογισμός / Άτομο</label>
+            <label for="budget">Προϋπολογισμός / Άτομο</label>
             <select id="budget">
               <option value="1500">1.500€ - 2.500€</option>
               <option value="2500">2.500€ - 4.000€</option>
@@ -294,10 +285,10 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="destination" data-i18n="f_dest">Πού θέλετε να ταξιδέψετε;</label>
+          <label for="destination">Πού θέλετε να ταξιδέψετε;</label>
           <textarea id="destination" rows="3" placeholder="Γράψτε μας τους προορισμούς, τις ημερομηνίες ή το στυλ ταξιδιού που επιθυμείτε..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-block" data-i18n="f_submit">Αποστολή Αιτήματος</button>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
         <div id="form-message" class="form-message"></div>
       </form>
     </div>
