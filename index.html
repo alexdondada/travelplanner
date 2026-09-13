@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanguard Travel Design | Tailored Journeys & Custom Itineraries</title>
+  <title>Vanguard Travel Design | Εξατομικευμένα Ταξίδια & Ταξιδιωτικές Εμπειρίες</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- Google Fonts for Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -17,74 +16,114 @@
     <div class="nav-container">
       <a href="#" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
-        <li><a href="#about">Why Us</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#trips">Sample Trips</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about" data-i18n="nav_about">Γιατί Εμάς</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Εμπειρίες</a></li>
+        <li><a href="#how-it-works" data-i18n="nav_how">Πώς Λειτουργεί</a></li>
+        <li><a href="#trips" data-i18n="nav_trips">Πακέτα Ταξιδιών</a></li>
       </ul>
-      <a href="#contact" class="btn btn-primary nav-btn">Plan My Trip</a>
+      
+      <div class="nav-right">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <span class="globe-icon">🌐</span>
+          <select id="language-switcher" onchange="changeLanguage(this.value)">
+            <option value="el" selected>EL (Ελληνικά)</option>
+            <option value="en">EN (English)</option>
+            <option value="ru">RU (Русский)</option>
+          </select>
+        </div>
+        <a href="#contact" class="btn btn-primary nav-btn" data-i18n="nav_cta">Σχεδιάστε το Ταξίδι</a>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Tropical Background Overlay -->
   <header class="hero">
     <div class="hero-content">
-      <span class="badge">Personalized Travel Planning</span>
-      <h1>Unforgettable Trips.<br>Zero Planning Stress.</h1>
-      <p>Whether you're seeking a relaxed 50+ getaway or a seamless family vacation, we custom-craft every day of your itinerary so you can just pack and go.</p>
+      <span class="badge" data-i18n="hero_badge">Εξατομικευμένος Σχεδιασμός Ταξιδιών</span>
+      <h1 data-i18n="hero_title">Ανεπαναληπτα Ταξιδια.<br>Χωρις Αγχος Προγραμματισμου.</h1>
+      <p data-i18n="hero_sub">Αναλαμβάνουμε τα πάντα — από ξενοδοχεία και ιδιωτικές μεταφορές μέχρι μοναδικές δραστηριότητες. Εσείς απλά ετοιμάστε τις αποσκευές σας.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Start Planning</a>
-        <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero_btn1">Ξεκινήστε Τώρα</a>
+        <a href="#trips" class="btn btn-secondary" data-i18n="hero_btn2">Δείτε Ταξίδια</a>
       </div>
     </div>
   </header>
 
-  <!-- Value Props / Why Us -->
-  <section id="about" class="section container">
-    <div class="section-title">
-      <h2>Travel Without the Hassle</h2>
-      <p>Stop spending 30+ hours researching links, reviews, and logistics. We do the heavy lifting.</p>
+  <!-- Value Props / Why Us with Paint Brush Texture -->
+  <section id="about" class="section texture-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-i18n="about_title">Ταξιδέψτε Χωρίς Ταπεινώσεις & Αβεβαιότητα</h2>
+        <p data-i18n="about_sub">Γλιτώστε δεκάδες ώρες αναζήτησης. Σχεδιάζουμε το ταξίδι ακριβώς στα μέτρα και στον προϋπολογισμό σας.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-service">
+          <div class="icon">⌛</div>
+          <h3 data-i18n="about_c1_t">Εξοικονόμηση Χρόνου</h3>
+          <p data-i18n="about_c1_d">Ξεχάστε τις ατελείωτες καρτέλες και τις αμφίβολες κριτικές. Ετοιμάζουμε το πλήρες πλάνο για εσάς.</p>
+        </div>
+        <div class="card card-service">
+          <div class="icon">🎯</div>
+          <h3 data-i18n="about_c2_t">Προσαρμοσμένος Ρυθμός</h3>
+          <p data-i18n="about_c2_d">Από χαλαρές διακοπές για ηλικίες 50+ μέχρι οικογενειακές εξορμήσεις με παιδιά, το πρόγραμμα φτιάχνεται στα μέτρα σας.</p>
+        </div>
+        <div class="card card-service">
+          <div class="icon">📱</div>
+          <h3 data-i18n="about_c3_t">Όλα σε Μία Εφαρμογή</h3>
+          <p data-i18n="about_c3_d">Λάβετε το ημερήσιο πρόγραμμα, κρατήσεις, χάρτες και οδηγούς σε μία εύχρηστη εφαρμογή στο κινητό σας.</p>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-3">
-      <div class="card card-service">
-        <div class="icon">⌛</div>
-        <h3>Save Days of Research</h3>
-        <p>No more endless tabs or booking anxiety. We match your travel pace, budget, and exact preferences.</p>
+  </section>
+
+  <!-- Masonry Photo Gallery Section -->
+  <section id="gallery" class="section container">
+    <div class="section-title">
+      <h2 data-i18n="gallery_title">Στιγμιότυπα Από Τους Ταξιδιώτες Μας</h2>
+      <p data-i18n="gallery_sub">Από καταρράκτες και σαφάρι μέχρι το Βόρειο Σέλας — ζήστε στιγμές που μένουν ανεξίτηλες.</p>
+    </div>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item large" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80');">
+        <div class="gallery-caption">Σαφάρι στην Κένυα</div>
       </div>
-      <div class="card card-service">
-        <div class="icon">🎯</div>
-        <h3>Tailored to Your Pace</h3>
-        <p>From slow travel for seniors to kid-friendly schedules with downtime, every itinerary is 100% custom built.</p>
+      <div class="gallery-item tall" style="background-image: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80');">
+        <div class="gallery-caption">Βόρειο Σέλας, Νορβηγία</div>
       </div>
-      <div class="card card-service">
-        <div class="icon">📱</div>
-        <h3>All-in-One Digital App</h3>
-        <p>Receive your complete day-by-day itinerary, confirmation codes, maps, and drivers in one easy mobile view.</p>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80');">
+        <div class="gallery-caption">Καταρράκτες Ιγκουασού</div>
+      </div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');">
+        <div class="gallery-caption">Τροπικές Μαλδίβες</div>
+      </div>
+      <div class="gallery-item wide" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80');">
+        <div class="gallery-caption">Εξερεύνηση στο Βιετνάμ</div>
       </div>
     </div>
   </section>
 
   <!-- How It Works -->
-  <section id="how-it-works" class="section bg-light">
+  <section id="how-it-works" class="section texture-bg">
     <div class="container">
       <div class="section-title">
-        <h2>3 Simple Steps to Your Dream Trip</h2>
+        <h2 data-i18n="how_title">3 Απλά Βήματα Για Το Ταξίδι Σας</h2>
       </div>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">01</div>
-          <h3>15-Min Discovery Call</h3>
-          <p>Tell us where you want to go, who is traveling, your preferred pace, and estimated budget.</p>
+          <h3 data-i18n="step1_t">Πρώτη Επικοινωνία</h3>
+          <p data-i18n="step1_d">Μας λέτε τον προορισμό, τα άτομα, το στυλ ταξιδιού και τον διαθέσιμο προϋπολογισμό σας.</p>
         </div>
         <div class="step-card">
           <div class="step-number">02</div>
-          <h3>We Design & Refine</h3>
-          <p>We hand-select hotels, private transfers, and activities, trimming and tuning until it's perfect.</p>
+          <h3 data-i18n="step2_t">Σχεδιασμός Πακέτου</h3>
+          <p data-i18n="step2_d">Ετοιμάζουμε το πλήρες πακέτο (ξενοδοχεία, μεταφορές, ξεναγήσεις) σε μία τελική, διαφανή τιμή.</p>
         </div>
         <div class="step-card">
           <div class="step-number">03</div>
-          <h3>Travel with Confidence</h3>
-          <p>Receive your personalized trip itinerary app and live assistance while you enjoy your vacation.</p>
+          <h3 data-i18n="step3_t">Απολαύστε το Ταξίδι</h3>
+          <p data-i18n="step3_d">Παραλαμβάνετε το ψηφιακό σας πρόγραμμα και ταξιδεύετε με 24/7 υποστήριξη από εμάς.</p>
         </div>
       </div>
     </div>
@@ -93,145 +132,141 @@
   <!-- Sample Packages -->
   <section id="trips" class="section container">
     <div class="section-title">
-      <h2>Inspiration & Sample Packages</h2>
-      <p>Estimated total trip costs including custom itinerary design, boutique stays, and local transfers.</p>
+      <h2 data-i18n="trips_title">Δημοφιλή Πακέτα & Προτάσεις</h2>
+      <p data-i18n="trips_sub">Ενδεικτικές τελικές τιμές ανά άτομο (περιλαμβάνουν διαμονή, μεταφορές και εμπειρίες).</p>
     </div>
     <div class="grid grid-3">
       
       <!-- Trip 1 -->
       <div class="card trip-card">
-        <div class="trip-tag">Active Seniors & Couples</div>
-        <h3>Amalfi Coast & Tuscany Slow Travel</h3>
-        <div class="trip-meta">10 Days / 9 Nights</div>
-        <p>A relaxed pace with private transfers, wine tastings without the big tours, and accessible luxury stays.</p>
-        <div class="trip-price">From <span>€2,400</span> / person</div>
-        <a href="#contact" class="btn btn-outline">Request Similar Trip</a>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-card-body">
+          <div class="trip-tag" data-i18n="t1_tag">Χαλαρός Ρυθμός & Ζευγάρια</div>
+          <h3>Ακτή Αμάλφι & Τοσκάνη</h3>
+          <div class="trip-meta">10 Ημέρες / 9 Νύχτες</div>
+          <p data-i18n="t1_desc">Ιδιωτικές μεταφορές, γευσιγνωσία κρασιών και διαμονή σε boutique ξενοδοχεία.</p>
+          <div class="trip-price">Από <span>2.200€</span> / άτομο</div>
+          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+        </div>
       </div>
 
       <!-- Trip 2 -->
       <div class="card trip-card">
-        <div class="trip-tag">Family Vacation</div>
-        <h3>Stress-Free Greek Island Hopping</h3>
-        <div class="trip-meta">8 Days / 7 Nights</div>
-        <p>Family-friendly resorts with kid activities, pre-booked ferry tickets, and private airport pickups.</p>
-        <div class="trip-price">From <span>€1,950</span> / person</div>
-        <a href="#contact" class="btn btn-outline">Request Similar Trip</a>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-card-body">
+          <div class="trip-tag" data-i18n="t2_tag">Οικογενειακό Ταξίδι</div>
+          <h3>Ελληνικά Νησιά Χωρίς Άγχος</h3>
+          <div class="trip-meta">8 Ημέρες / 7 Νύχτες</div>
+          <p data-i18n="t2_desc">Θέρετρα φιλικά για οικογένειες, προκρατημένα ακτοπλοϊκά εισιτήρια και ιδιωτικά van.</p>
+          <div class="trip-price">Από <span>1.850€</span> / άτομο</div>
+          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+        </div>
       </div>
 
       <!-- Trip 3 -->
       <div class="card trip-card">
-        <div class="trip-tag">Cultural Heritage</div>
-        <h3>Scottish Highlands & Castles</h3>
-        <div class="trip-meta">7 Days / 6 Nights</div>
-        <p>Scenic private train rides, cozy boutique lodges, and historic guided tours tailored to your interests.</p>
-        <div class="trip-price">From <span>€1,800</span> / person</div>
-        <a href="#contact" class="btn btn-outline">Request Similar Trip</a>
+        <div class="trip-img" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&q=80');"></div>
+        <div class="trip-card-body">
+          <div class="trip-tag" data-i18n="t3_tag">Πολιτισμός & Φύση</div>
+          <h3>Highlands Σκωτίας & Κάστρα</h3>
+          <div class="trip-meta">7 Ημέρες / 6 Νύχτες</div>
+          <p data-i18n="t3_desc">Γραφικές διαδρομές με τρένο, παραδοσιακοί ξενώνες και ιδιωτικοί ξεναγοί.</p>
+          <div class="trip-price">Από <span>1.950€</span> / άτομο</div>
+          <a href="#contact" class="btn btn-outline" data-i18n="trip_btn">Εκδήλωση Ενδιαφέροντος</a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Pricing Model Explanation -->
-  <section id="pricing" class="section bg-light">
+  <!-- Real Traveler Stories / Reviews with Avatars -->
+  <section class="section texture-bg">
     <div class="container">
       <div class="section-title">
-        <h2>Transparent Planning Fees</h2>
-        <p>No hidden markups. You get our full curation and support for a simple, upfront rate.</p>
+        <h2 data-i18n="reviews_title">Εμπειρίες Ταξιδιωτών Μας</h2>
+        <p data-i18n="reviews_sub">Δείτε πώς μετατρέπουμε τις ιδέες σας σε αξέχαστα ταξίδια.</p>
       </div>
-      <div class="grid grid-2 pricing-wrapper">
-        <div class="card pricing-card">
-          <h3>Custom Itinerary Design</h3>
-          <div class="price">€200 <span>/ trip</span></div>
-          <ul>
-            <li>✔ Full 1-on-1 Discovery Consultation</li>
-            <li>✔ Tailored Day-by-Day Itinerary</li>
-            <li>✔ Curated Hotel, Transfer & Activity Links</li>
-            <li>✔ 2 Rounds of Revisions</li>
-            <li>✔ Mobile App Itinerary Access</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary">Book Consultation</a>
+      <div class="grid grid-3">
+        
+        <div class="card review-card">
+          <p class="review-text" data-i18n="r1_t">"Θέλαμε ένα οικογενειακό ταξίδι χωρίς να χάσουμε μέρες ψάχνοντας ξενοδοχεία και πλοία. Η Vanguard μας παρέδωσε ένα τέλειο πρόγραμμα!"</p>
+          <div class="reviewer-info">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ελένη Μ." class="avatar">
+            <div>
+              <strong>Ελένη & Μάρκος Τ.</strong>
+              <span>Οικογενειακό Ταξίδι</span>
+            </div>
+          </div>
         </div>
-        <div class="card pricing-card featured">
-          <div class="popular-badge">Most Popular</div>
-          <h3>Full Concierge & Support</h3>
-          <div class="price">€350 <span>/ trip</span></div>
-          <ul>
-            <li>✔ Everything in Custom Design</li>
-            <li>✔ Direct Booking Assistance</li>
-            <li>✔ Restaurant & Special Event Reservations</li>
-            <li>✔ WhatsApp Support During Your Trip</li>
-            <li>✔ Emergency Travel Adjustment Assistance</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary">Book VIP Concierge</a>
+
+        <div class="card review-card">
+          <p class="review-text" data-i18n="r2_t">"Το να ταξιδεύεις στην Ιταλία σε ηλικία 55+ μπορεί να κουράσει. Με τους ιδιωτικούς οδηγούς σε κάθε σταθμό, ήταν μια πραγματική πολυτέλεια."</p>
+          <div class="reviewer-info">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Γιώργος Κ." class="avatar">
+            <div>
+              <strong>Γιώργος Κ.</strong>
+              <span>Ταξίδι Ζευγαριού</span>
+            </div>
+          </div>
         </div>
+
+        <div class="card review-card">
+          <p class="review-text" data-i18n="r3_t">"Η εφαρμογή με τις καθημερινές οδηγίες ήταν απίστευτη. Δεν χρειάστηκε να ψάξουμε ούτε ένα email για κρατήσεις!"</p>
+          <div class="reviewer-info">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Σοφία Μ." class="avatar">
+            <div>
+              <strong>Σοφία Μ.</strong>
+              <span>Custom Group Trip</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
-
-  <!-- Social Proof / Reviews Section -->
-<section class="section bg-light container" style="border-radius: var(--radius); margin-top: 40px;">
-  <div class="section-title">
-    <h2>Real Stories From Our Travelers</h2>
-    <p>See how we turn travel ideas into stress-free journeys.</p>
-  </div>
-  <div class="grid grid-3">
-    <div class="card">
-      <p style="font-style: italic; margin-bottom: 15px;">"We wanted a family trip to Greece without spending every night researching ferries and hotel transfers. Vanguard handled everything in 3 days."</p>
-      <strong>— Elena & Mark T. (Family Trip)</strong>
-    </div>
-    <div class="card">
-      <p style="font-style: italic; margin-bottom: 15px;">"Traveling Italy at 60+ can be daunting with baggage and train lines. Having a private driver waiting at every stop made it pure luxury."</p>
-      <strong>— George K. (Couples Getaway)</strong>
-    </div>
-    <div class="card">
-      <p style="font-style: italic; margin-bottom: 15px;">"The custom app with all our daily details was a game changer. We never had to search through emails for vouchers once!"</p>
-      <strong>— Sofia M. (Custom Group Trip)</strong>
-    </div>
-  </div>
-</section>
 
   <!-- Contact Form -->
   <section id="contact" class="section container">
     <div class="contact-box">
       <div class="contact-info">
-        <h2>Ready to Plan Your Next Journey?</h2>
-        <p>Fill out the quick form or contact us directly. We will be in touch within 24 hours to schedule a quick call.</p>
+        <h2 data-i18n="form_title">Έτοιμοι Για Το Επόμενο Ταξίδι;</h2>
+        <p data-i18n="form_sub">Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.</p>
         <p>📧 hello@vanguardtravel.com</p>
         <p>📞 +30 210 123 4567</p>
       </div>
       <form id="trip-form" class="contact-form">
         <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required placeholder="e.g. Sarah Jenkins">
+          <label for="name" data-i18n="f_name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Μαρία Παπαδοπούλου">
         </div>
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" required placeholder="sarah@example.com">
+          <label for="email" data-i18n="f_email">Email</label>
+          <input type="email" id="email" required placeholder="maria@example.com">
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="travelers">Who is Traveling?</label>
+            <label for="travelers" data-i18n="f_type">Τύπος Ταξιδιώτη</label>
             <select id="travelers">
-              <option value="couple">Couple / 2 Adults</option>
-              <option value="family">Family with Kids</option>
-              <option value="50plus">50+ / Senior Group</option>
-              <option value="solo">Solo Traveler</option>
+              <option value="couple" data-i18n="opt_couple">Ζευγάρι / 2 Ενήλικες</option>
+              <option value="family" data-i18n="opt_family">Οικογένεια με Παιδιά</option>
+              <option value="50plus" data-i18n="opt_50">Group 50+ / Senior</option>
+              <option value="solo" data-i18n="opt_solo">Solo Ταξιδιώτης</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="budget">Est. Budget per Person</label>
+            <label for="budget" data-i18n="f_budget">Προϋπολογισμός / Άτομο</label>
             <select id="budget">
-              <option value="1500">€1,500 - €2,500</option>
-              <option value="2500">€2,500 - €4,000</option>
-              <option value="4000">€4,000+</option>
+              <option value="1500">1.500€ - 2.500€</option>
+              <option value="2500">2.500€ - 4.000€</option>
+              <option value="4000">4.000€+</option>
             </select>
           </div>
         </div>
         <div class="form-group">
-          <label for="destination">Where would you like to go?</label>
-          <textarea id="destination" rows="3" placeholder="Tell us about your dream destination, preferred dates, or travel style..."></textarea>
+          <label for="destination" data-i18n="f_dest">Πού θέλετε να ταξιδέψετε;</label>
+          <textarea id="destination" rows="3" placeholder="Γράψτε μας τους προορισμούς, τις ημερομηνίες ή το στυλ ταξιδιού που επιθυμείτε..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit Travel Request</button>
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="f_submit">Αποστολή Αιτήματος</button>
         <div id="form-message" class="form-message"></div>
       </form>
     </div>
@@ -242,78 +277,12 @@
     <div class="container footer-content">
       <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="#">Πολιτική Απορρήτου</a>
+        <a href="#">Όροι Χρήσης</a>
       </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <!-- Interactive Trip Detail Modal -->
-<div id="trip-modal" class="modal-overlay">
-  <div class="modal-content">
-    <button class="close-modal" id="close-modal">&times;</button>
-    
-    <div class="modal-header" id="modal-header-bg">
-      <div class="modal-header-text">
-        <span class="badge" id="modal-badge">10 Days / 9 Nights</span>
-        <h2 id="modal-title" style="font-family: var(--font-heading); font-size: 2rem; margin-top: 5px;">Amalfi Coast & Tuscany</h2>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      <!-- Navigation Tabs -->
-      <div class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
-        <button class="tab-btn" onclick="switchTab('itinerary')">Day-by-Day</button>
-        <button class="tab-btn" onclick="switchTab('included')">What's Included</button>
-      </div>
-
-      <!-- Tab 1: Overview -->
-      <div id="tab-overview" class="tab-content active">
-        <h3>Trip Highlights</h3>
-        <p id="modal-overview-text" style="margin: 15px 0; color: var(--text-muted);">
-          Experience the ultimate slow-travel journey. Designed for travelers who want hand-picked boutique hotels, local food experiences, and seamless private transfers without group tour rushing.
-        </p>
-        <div style="background: var(--bg-light); padding: 20px; border-radius: 8px; margin-top: 20px;">
-          <strong>Starting From:</strong> <span id="modal-price" style="font-size: 1.4rem; color: var(--primary); font-weight:700;">€2,400</span> / person
-        </div>
-      </div>
-
-      <!-- Tab 2: Itinerary -->
-      <div id="tab-itinerary" class="tab-content">
-        <div class="timeline-item">
-          <h4>Day 1-3: Coastal Bliss & Private Boat Tour</h4>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Arrival in Naples, private transfer to Ravello. Enjoy sunset drinks and a full-day private boat ride down Positano.</p>
-        </div>
-        <div class="timeline-item">
-          <h4>Day 4-7: High-Speed Rail & Tuscan Estate</h4>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">First-class train to Florence. Pick up private transport to a Chianti wine estate with an exclusive cooking class.</p>
-        </div>
-        <div class="timeline-item">
-          <h4>Day 8-10: Historic Rome & VIP Access</h4>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Skip-the-line early access to the Vatican, evening Trastevere culinary tour, and private airport drop-off.</p>
-        </div>
-      </div>
-
-      <!-- Tab 3: What's Included -->
-      <div id="tab-included" class="tab-content">
-        <ul style="line-height: 2;">
-          <li>✔ 4★ & 5★ Boutique Hotel Stays with Breakfast</li>
-          <li>✔ All Private Airport & Inter-City Transfers</li>
-          <li>✔ High-Speed Executive Train Tickets</li>
-          <li>✔ Pre-arranged VIP Skip-the-Line Entry Passes</li>
-          <li>✔ Dedicated 24/7 Concierge WhatsApp Support</li>
-          <li>❌ Flights (Handled separately or advised by us)</li>
-        </ul>
-      </div>
-
-      <!-- Action Button -->
-      <div style="margin-top: 30px; text-align: center;">
-        <a href="#contact" onclick="closeTripModal()" class="btn btn-primary btn-block">Customize & Request This Itinerary</a>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 </html>
