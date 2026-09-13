@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Όλα τα Ταξιδιωτικά Πακέτα | Vanguard Travel Design</title>
   
-  <!-- Relative path back to root styles -->
-  <link rel="stylesheet" href="../styles.css" />
+  <!-- Root CSS Link -->
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -20,10 +20,10 @@
       flex-wrap: wrap;
       gap: 16px;
       margin-bottom: 32px;
-      padding: 16px;
-      background: var(--bg-card, #ffffff);
-      border-radius: 8px;
-      border: 1px solid var(--border, #e2e8f0);
+      padding: 18px 24px;
+      background: var(--white, #ffffff);
+      border-radius: var(--radius, 8px);
+      border: 1px solid var(--border, #e2dfd7);
     }
     
     .filter-buttons {
@@ -33,14 +33,15 @@
     }
     
     .filter-btn {
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 20px;
-      border: 1px solid var(--border, #cbd5e1);
+      border: 1px solid var(--border, #e2dfd7);
       background: transparent;
-      color: var(--text-dark, #1e293b);
+      color: var(--text-dark, #1c2321);
       cursor: pointer;
       font-weight: 500;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
     }
     
     .filter-btn:hover, .filter-btn.active {
@@ -52,17 +53,20 @@
     .search-input {
       padding: 8px 16px;
       border-radius: 20px;
-      border: 1px solid var(--border, #cbd5e1);
+      border: 1px solid var(--border, #e2dfd7);
       width: 250px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      outline: none;
     }
 
-    .trip-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .search-input:focus {
+      border-color: var(--accent, #c48b5f);
     }
-    
-    .trip-card:hover {
-      transform: translateY(-5px);
+
+    .trip-card-catalog {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   </style>
 </head>
@@ -71,12 +75,12 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
+      <a href="index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
-        <li><a href="../index.html#about">Γιατί Εμάς</a></li>
-        <li><a href="index.html" class="active">Όλα τα Πακέτα</a></li>
-        <li><a href="../index.html#gallery">Εμπειρίες</a></li>
-        <li><a href="../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li><a href="index.html#about">Γιατί Εμάς</a></li>
+        <li><a href="trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
+        <li><a href="index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="index.html#how-it-works">Πώς Λειτουργεί</a></li>
       </ul>
       <div class="nav-right">
         <a href="#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
@@ -85,10 +89,10 @@
   </nav>
 
   <!-- Header Banner -->
-  <header class="hero" style="min-height: 40vh; background: linear-gradient(rgba(27, 42, 74, 0.65), rgba(27, 42, 74, 0.75)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+  <header class="hero" style="padding: 100px 24px; background: linear-gradient(rgba(27, 42, 74, 0.65), rgba(27, 42, 74, 0.75)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="hero-content">
       <span class="badge">EXPLORE THE WORLD</span>
-      <h1 style="margin-top: 10px;">Όλα τα Ταξιδιωτικά Πακέτα</h1>
+      <h1 style="margin-top: 15px;">Όλα τα Ταξιδιωτικά Πακέτα</h1>
       <p>Ανακαλύψτε ειδικά σχεδιασμένες εμπειρίες, από κοσμοπολίτικες πόλεις και εξωτικούς προορισμούς μέχρι ατμοσφαιρικά οδικά ταξίδια.</p>
     </div>
   </header>
@@ -99,11 +103,11 @@
     <!-- Filter and Search Controls -->
     <div class="filter-container">
       <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterTrips('all')">Όλοι οι Προορισμοί</button>
-        <button class="filter-btn" onclick="filterTrips('europe')">Ευρώπη</button>
-        <button class="filter-btn" onclick="filterTrips('middle-east')">Μέση Ανατολή</button>
-        <button class="filter-btn" onclick="filterTrips('asia')">Ασία</button>
-        <button class="filter-btn" onclick="filterTrips('greece')">Ελλάδα</button>
+        <button class="filter-btn active" onclick="filterTrips('all', event)">Όλοι οι Προορισμοί</button>
+        <button class="filter-btn" onclick="filterTrips('europe', event)">Ευρώπη</button>
+        <button class="filter-btn" onclick="filterTrips('middle-east', event)">Μέση Ανατολή</button>
+        <button class="filter-btn" onclick="filterTrips('asia', event)">Ασία</button>
+        <button class="filter-btn" onclick="filterTrips('greece', event)">Ελλάδα</button>
       </div>
       <input type="text" id="tripSearch" class="search-input" placeholder="Αναζήτηση προορισμού..." onkeyup="searchTrips()">
     </div>
@@ -112,74 +116,98 @@
     <div class="grid grid-3" id="tripsGrid">
       
       <!-- Amalfi Coast -->
-      <div class="card trip-card" data-category="europe" data-title="αμαλφι amalfi ιταλια">
-        <div style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'); height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-        <span class="badge" style="font-size: 0.75rem;">ΙΤΑΛΙΑ • 5 ΗΜΕΡΕΣ</span>
-        <h3 style="margin: 8px 0;">Ακτή Αμάλφι & Ποζιτάνο</h3>
-        <p>Positano, Amalfi, Capri & Ravello. Ιδιωτική σκάφος, γευσιγνωσία limoncello και μαγευτικά τοπία.</p>
-        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-weight: 700; color: var(--primary);">Από 490€ / άτομο</span>
-          <a href="amalfi/" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Δείτε το Πακέτο</a>
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="αμαλφι amalfi ιταλια">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 15 - 25 ΜΑΪΟΥ 2027 • 10 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ακτή Αμάλφι & Τοσκάνη</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Positano, Amalfi, Capri & Ravello. Ιδιωτική σκάφος, γευσιγνωσία wine & limoncello και μαγευτικά τοπία.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.200€</span> / άτομο</div>
+          <a href="trips/amalfi/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- Dubai -->
-      <div class="card trip-card" data-category="middle-east" data-title="ντουμπαϊ dubai σαφαρι">
-        <div style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'); height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-        <span class="badge" style="font-size: 0.75rem;">Η.Α.Ε. • 7 ΗΜΕΡΕΣ / 6 ΝΥΧΤΕΣ</span>
-        <h3 style="margin: 8px 0;">Ντουμπάι, Έρημος & Μέλλον</h3>
-        <p>Desert Safari 4x4, Quad Bikes, Burj Khalifa, Museum of the Future & Old Dubai local tasting.</p>
-        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-weight: 700; color: var(--primary);">Πτήσεις από 250€</span>
-          <a href="dubai/" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Δείτε το Πακέτο</a>
+      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="ντουμπαϊ dubai σαφαρι">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 15 - 21 ΙΑΝΟΥΑΡΙΟΥ 2027 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ντουμπάι, Έρημος & Μέλλον</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Desert Safari 4x4, Quad Bikes, Burj Khalifa, Museum of the Future & Old Dubai local tasting.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>250€</span></div>
+          <a href="trips/dubai/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- Cinque Terre -->
-      <div class="card trip-card" data-category="europe" data-title="cinque terre τσινκουε τερε ιταλια">
-        <div style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'); height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-        <span class="badge" style="font-size: 0.75rem;">ΙΤΑΛΙΑ • 4 ΗΜΕΡΕΣ</span>
-        <h3 style="margin: 8px 0;">Cinque Terre & Τοσκάνη</h3>
-        <p>Τα 5 γραφικά χωριά της Ιταλικής Ριβιέρας, πεζοπορίες σε μονοπάτια και στάση στη Φλωρεντία.</p>
-        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-weight: 700; color: var(--primary);">Από 420€ / άτομο</span>
-          <a href="cinque-terre/" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Δείτε το Πακέτο</a>
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="cinque terre τσινκουε τερε ιταλια">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 12 - 18 ΣΕΠΤΕΜΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Cinque Terre & Ρώμη</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Τα 5 γραφικά χωριά της Ιταλικής Ριβιέρας, πεζοπορίες σε παραθαλάσσια μονοπάτια και ξενάγηση στη Ρώμη.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.750€</span> / άτομο</div>
+          <a href="trips/cinque-terre/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- Scotland -->
-      <div class="card trip-card" data-category="europe" data-title="σκοτια scotland highlands εδιμβουργο">
-        <div style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80'); height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-        <span class="badge" style="font-size: 0.75rem;">ΣΚΩΤΙΑ • 6 ΗΜΕΡΕΣ</span>
-        <h3 style="margin: 8px 0;">Highlands & Εδιμβούργο Roadtrip</h3>
-        <p>Μεσαιωνικά κάστρα, Loch Ness, Isle of Skye και γευσιγνωσία ουίσκι στα ιστορικά αποστακτήρια.</p>
-        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-weight: 700; color: var(--primary);">Από 680€ / άτομο</span>
-          <a href="scotland/" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Δείτε το Πακέτο</a>
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="σκοτια scotland highlands εδιμβουργο">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 5 - 12 ΙΟΥΝΙΟΥ 2027 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Highlands Σκωτίας</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Μεσαιωνικά κάστρα, Loch Ness, Isle of Skye και γευσιγνωσία ουίσκι στα ιστορικά αποστακτήρια.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.950€</span> / άτομο</div>
+          <a href="trips/scotland/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- Vietnam -->
-      <div class="card trip-card" data-category="asia" data-title="βιετναμ vietnam halong bay">
-        <div style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80'); height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-        <span class="badge" style="font-size: 0.75rem;">ΒΙΕΤΝΑΜ • 10 ΗΜΕΡΕΣ</span>
-        <h3 style="margin: 8px 0;">Βιετνάμ: Hanoi & Halong Bay</h3>
-        <p>Κρουαζιέρα στο Ha Long Bay, εξερεύνηση του Hanoi, παραδοσιακές αγορές και street food tours.</p>
-        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-weight: 700; color: var(--primary);">Από 1.150€ / άτομο</span>
-          <a href="vietnam/" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Δείτε το Πακέτο</a>
+      <div class="card trip-card trip-card-catalog" data-category="asia" data-title="βιετναμ vietnam halong bay">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 10 - 20 ΟΚΤΩΒΡΙΟΥ 2026 • 11 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Βιετνάμ & Halong Bay</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Διήμερη κρουαζιέρα στο Ha Long Bay, περιηγήσεις στο Ανόι, παραδοσιακές αγορές και street food tours.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.450€</span> / άτομο</div>
+          <a href="trips/vietnam/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- Greece Luxury -->
-      <div class="card trip-card" data-category="greece" data-title="ελλαδα greece σαντορινη μυκονος">
-        <div style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80'); height: 220px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-        <span class="badge" style="font-size: 0.75rem;">ΕΛΛΑΔΑ • 7 ΗΜΕΡΕΣ</span>
-        <h3 style="margin: 8px 0;">Κυκλάδες Luxury Escapes</h3>
-        <p>Σαντορίνη & Μύκονος με ιδιωτικές μεταφορές, ηλιοβασίλεμα σε καταμαράν και boutique διαμονή.</p>
-        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-weight: 700; color: var(--primary);">Από 890€ / άτομο</span>
-          <a href="greece/" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">Δείτε το Πακέτο</a>
+      <div class="card trip-card trip-card-catalog" data-category="greece" data-title="ελλαδα greece σαντορινη μυκονος">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 10 - 18 ΙΟΥΛΙΟΥ 2027 • 8 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ελληνικά Νησιά Luxury</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Σαντορίνη & Κυκλάδες με ιδιωτικές μεταφορές, ηλιοβασίλεμα σε καταμαράν και πολυτελή διαμονή.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.850€</span> / άτομο</div>
+          <a href="trips/greece/" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
@@ -188,9 +216,9 @@
 
   <!-- Tailor Made Section -->
   <section class="section texture-bg">
-    <div class="container text-center" style="max-width: 800px; text-align: center;">
-      <h2>Δεν βρήκατε τον προορισμό που ψάχνετε;</h2>
-      <p style="margin: 16px 0 24px 0;">Σχεδιάζουμε custom ταξιδιωτικές εμπειρίες προσαρμοσμένες 100% στις δικές σας προτιμήσεις, το budget και τις ημερομηνίες που επιθυμείτε.</p>
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 2rem;">Δεν βρήκατε τον προορισμό που ψάχνετε;</h2>
+      <p style="margin: 16px 0 24px 0; color: var(--text-muted);">Σχεδιάζουμε custom ταξιδιωτικές εμπειρίες προσαρμοσμένες 100% στις δικές σας προτιμήσεις, το budget και τις ημερομηνίες που επιθυμείτε.</p>
       <a href="#contact" class="btn btn-primary">Ζητήστε Custom Σχεδιασμό</a>
     </div>
   </section>
@@ -234,21 +262,20 @@
     </div>
   </footer>
 
-  <script src="../script.js"></script>
+  <!-- Root JS Link -->
+  <script src="script.js"></script>
   
-  <!-- Interactive Filtering & Search Script -->
+  <!-- Filtering & Search Script -->
   <script>
-    function filterTrips(category) {
-      // Update active button state
+    function filterTrips(category, evt) {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      if (evt) evt.target.classList.add('active');
 
-      // Filter cards
       const cards = document.querySelectorAll('.trip-card');
       cards.forEach(card => {
         if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'block';
+          card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
@@ -264,7 +291,7 @@
         const cardText = card.innerText.toLowerCase();
 
         if (titleData.includes(query) || cardText.includes(query)) {
-          card.style.display = 'block';
+          card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
