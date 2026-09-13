@@ -3,60 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ντουμπάι & Σαφάρι Ερήμου | Vanguard Travel</title>
+  <title>Ρίο ντε Τζανέιρο & Copacabana | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
-    .itinerary-list { list-style: none; padding: 0; margin: 24px 0; }
-    .itinerary-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e2dfd7; margin-bottom: 16px; }
-    .itinerary-item h4 { color: var(--primary); margin-bottom: 8px; font-family: var(--font-heading); }
+    .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
+    .trip-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+    @media (max-width: 900px) { .trip-grid { grid-template-columns: 1fr; } }
+    .itinerary-day { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .itinerary-day h3 { font-family: var(--font-heading); color: var(--primary, #1b2a4a); font-size: 1.25rem; margin-bottom: 12px; }
+    .sidebar-card { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 24px; position: sticky; top: 100px; }
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
   </style>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
-        <li><a href="../../trips.html">Όλα τα Πακέτα</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
       </ul>
-      <div class="nav-right"><a href="#contact" class="btn btn-primary nav-btn">Κράτηση</a></div>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">LUXURY & DESERT</span>
-    <h1 style="font-size:2.5rem; margin-top:10px;">Ντουμπάι, Έρημος & Μέλλον</h1>
-    <p>7 Ημέρες • Burj Khalifa, Desert Safari 4x4 & Museum of Future</p>
+    <span class="badge">SOUTH AMERICAN CARNIVAL VIBES</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ρίο ντε Τζανέιρο & Copacabana</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">9 Ημέρες • Christ Redeemer • Sugarloaf Mountain • Ipanema • Samba Culture</p>
   </header>
 
-  <section class="section container" style="max-width: 900px;">
-    <h2>Πολυτέλεια & Περιπέτεια στην Έρημο</h2>
-    <p style="margin-bottom:24px;">Ανακαλύψτε την υπερσύγχρονη μητρόπολη των ΗΑΕ. Από την κορυφή του Burj Khalifa μέχρι τους αμμόλοφους της αραβικής ερήμου.</p>
+  <main class="container section">
+    <div class="trip-grid">
+      
+      <div>
+        <span class="badge-date">📅 10 - 18 ΦΕΒΡΟΥΑΡΙΟΥ 2027</span>
+        <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
 
-    <h3>Πρόγραμμα Εκδρομής</h3>
-    <div class="itinerary-list">
-      <div class="itinerary-item">
-        <h4>Ημέρα 1-2: Downtown Dubai & Burj Khalifa</h4>
-        <p>Άφιξη, επίσκεψη στο Dubai Mall, σιντριβάνια Dubai Fountains & ανάβαση στο Burj Khalifa.</p>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Αθήνα - Ρίο ντε Τζανέιρο</h3>
+          <p>Πτήση από Αθήνα μέσω ενδιάμεσου σταθμού για τη "Cidade Maravillosa" (Θαυμάσια Πόλη). Άφιξη στο Ρίο, υποδοχή και μεταφορά στο παραθαλάσσιο ξενοδοχείο μας στην Copacabana.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Λόφος Corcovado & Άγαλμα του Χριστού Λυτρωτή</h3>
+          <p>Ανάβαση με το οδοντωτό τρενάκι Cog Railway μέσα από το τροπικό δάσος Tijuca στον λόφο Corcovado. Φτάνουμε στο παγκόσμιο σύμβολο του Ρίο, το Άγαλμα του Χριστού Λυτρωτή, απολαμβάνοντας εκπληκτική θέα σε όλη την πόλη.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Sugarloaf Mountain (Pão de Açúcar) & Ιστορικό Κέντρο</h3>
+          <p>Επίσκεψη με το γυάλινο τελεφερίκ στον βράχο Sugarloaf Mountain. Το απόγευμα ξενάγηση στο ιστορικό κέντρο: Καθεδρικός Ναός, Δημοτικό Θέατρο, Βασιλική Βιβλιοθήκη & τα περίφημα πολύχρωμα σκαλιά Selarón.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Παραλίες Copacabana & Ipanema - Ηλιοβασίλεμα στο Arpoador</h3>
+          <p>Ημέρα αφιερωμένη στην παραλιακή ζωή του Ρίο. Δοκιμάστε Caipirinha, χαλαρώστε στις παραλίες Ipanema & Copacabana και παρακολουθήστε το ηλιοβασίλεμα από τον βράχο Arpoador όπου όλοι χειροκροτούν τον ήλιο.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5: Μποέμ Γειτονιά Santa Teresa & Βραδιά Samba Show</h3>
+          <p>Περίπατος στη μποέμ συνοικία Santa Teresa με τα αποικιακά αρχοντικά και τις γκαλερί τέχνης. Το βράδυ επίσκεψη σε αυθεντική σχολή Σάμπα (Samba School) με ζωντανή μουσική και χορό.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 6-7: Ελεύθερες Ημέρες / Προαιρετική Εκδρομή στο Búzios</h3>
+          <p>Ελεύθερος χρόνος για μπάνιο ή προαιρετική ημερήσια εκδρομή στο κοσμοπολίτικο θέρετρο Búzios με ταχύπλοο σκάφος.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 8-9: Ρίο - Πτήση Επιστροφής & Άφιξη στην Αθήνα</h3>
+          <p>Τελευταίες αγορές αναμνηστικών, μεταφορά στο αεροδρόμιο Galeão και πτήση επιστροφής. Άφιξη στην Αθήνα την 9η ημέρα.</p>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 3-4: Desert Safari 4x4 & BBQs</h4>
-        <p>Σαφάρι 4x4 στους αμμόλοφους, sandboarding, βόλτα με καμήλες και παραδοσιακό δείπνο Bedouin under the stars.</p>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Διεθνείς πτήσεις Αθήνα - Ρίο ντε Τζανέιρο - Αθήνα</li>
+            <li>7 διανυκτερεύσεις σε 5* παραθαλάσσιο ξενοδοχείο στην Copacabana</li>
+            <li>Πρωινό καθημερινά (μπουφές με τροπικά φρούτα)</li>
+            <li>Μεταφορές από/προς αεροδρόμιο</li>
+            <li>Εισητήρια για Cog Railway (Corcovado) & Teleférico (Sugarloaf)</li>
+            <li>Πλήρεις ξεναγήσεις με ελληνόφωνο ή αγγλόφωνο συνοδό</li>
+            <li>Εισιτήριο για Samba Show & βραδινή έξοδο</li>
+            <li>Ταξιδιωτική ασφάλεια</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Φόροι αεροδρομίων (~320€)</li>
+            <li>Γεύματα & ποτά εκτός πρωινού</li>
+            <li>Φιλοδωρήματα & προσωπικά έξοδα</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center;">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">2.150€</div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Βάσει δίκλινου δωματίου)</span>
+          </div>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 5-7: Museum of the Future & Old Dubai</h4>
-        <p>Επίσκεψη στο Μουσείο του Μέλλοντος, βόλτα με abra στο Dubai Creek & αγορά χρυσοχοείων/μπαχαρικών.</p>
-      </div>
+
     </div>
+  </main>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="../../trips.html#contact" class="btn btn-primary">Εκδήλωση Ενδιαφέροντος</a>
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για το Ρίο</h2>
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Χρήστος Νικολάου">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="christos@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+      </form>
     </div>
   </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
