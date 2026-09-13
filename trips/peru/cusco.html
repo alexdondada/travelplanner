@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Περού, Machu Picchu & Παγετώνας Quelccaya | Vanguard Travel Design</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .trip-hero { 
+      background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
+      padding: 120px 24px; 
+      color: white; 
+      text-align: center; 
+    }
+    
+    .itinerary-header {
+      margin-top: 40px;
+      margin-bottom: 24px;
+    }
+
+    .trip-grid { 
+      display: grid; 
+      grid-template-columns: 2fr 1fr; 
+      gap: 40px; 
+      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+    }
+    
+    @media (max-width: 900px) { 
+      .trip-grid { grid-template-columns: 1fr; } 
+    }
+
+    /* Clean Itinerary Day Box */
+    .itinerary-day { 
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      margin-bottom: 24px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    }
+
+    .itinerary-day h3 { 
+      font-family: var(--font-heading); 
+      color: var(--primary, #1b2a4a); 
+      font-size: 1.3rem; 
+      margin-bottom: 12px; 
+    }
+    
+    .itinerary-day p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #2d3748;
+      margin: 0;
+    }
+
+    /* Sticky Sidebar Card top-aligned with Day 1 card */
+    .sidebar-card { 
+      background: #ffffff; 
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      position: sticky; 
+      top: 100px; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
+
+    /* Photo Album Collage Grid */
+    .photo-album-section {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border, #e2dfd7);
+    }
+    
+    .photo-album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Collage Variations */
+    .photo-large { grid-column: span 2; grid-row: span 2; }
+    .photo-wide { grid-column: span 2; }
+
+    @media (max-width: 768px) {
+      .photo-album-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 200px;
+      }
+      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
+        <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="trip-hero">
+    <span class="badge">SOUTH AMERICA EXPLORER</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Περού, Machu Picchu & Παγετώνας Quelccaya</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">7 Ημέρες • 6 Διανυκτερεύσεις • Λίμα • Ιερή Κοιλάδα • Machu Picchu • Κούσκο • Παγετώνας Quelccaya</p>
+  </header>
+
+  <main class="container section">
+
+    <!-- Title & Date Header (Outside & Above Grid) -->
+    <div class="itinerary-header">
+      <span class="badge-date">📅 12 - 18 ΜΑΪΟΥ 2027</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (7 Ημέρες / 6 Νύχτες)</h2>
+    </div>
+
+    <div class="trip-grid">
+      
+      <!-- Left Column: Sequential Non-stop Itinerary -->
+      <div>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Άφιξη στη Λίμα & Ιστορικό Κέντρο</h3>
+          <p>Άφιξη στη «Πόλη των Βασιλέων», τη Λίμα. Υποδοχή από τον τοπικό αντιπρόσωπο και μεταφορά στο ξενοδοχείο. Ξεκινάμε την περιήγησή μας στο ιστορικό κέντρο (UNESCO), την Plaza Mayor, το Κυβερνητικό Παλάτι και το μοναστήρι του Σαν Φρανσίσκο με τις κατακόμβες. Το βράδυ απολαμβάνουμε δείπνο καλωσορίσματος με αυθεντική περουβιανή κουζίνα και Pisco Sour.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Λίμα – Πτήση για Κούσκο & Κατάβαση στην Ιερή Κοιλάδα (Ollantaytambo)</h3>
+          <p>Πρωινή πτήση για το Κούσκο. Για να αποφύγουμε τα συμπτώματα του υψομέτρου και χωρίς πισωγυρίσματα, κατευθυνόμαστε αμέσως χαμηλότερα στην Ιερή Κοιλάδα των Ίνκας. Επισκεπτόμαστε τις αλυκές Maras, τους κυκλικούς αναβαθμούς Moray και το επιβλητικό φρούριο του Ollantaytambo. Διανυκτέρευση στην Ιερή Κοιλάδα.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Τρένο Vistadome – Ξενάγηση στο Machu Picchu & Aguas Calientes</h3>
+          <p>Επιβίβαση στο γραφικό τρένο Vistadome από το Ollantaytambo προς το Aguas Calientes, στους πρόποδες του Machu Picchu. Ανεβαίνουμε στην «Χαμένη Πόλη των Ίνκας» για μια ολοκληρωμένη ξενάγηση στο ιερό μνημείο (UNESCO), θαυμάζοντας τους ναούς, τις αστρονομικές παρατηρήσεις και τις αμφιθεατρικές βεράντες. Διανυκτέρευση στο Aguas Calientes.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Aguas Calientes – Επιστροφή στο Κούσκο & Μνημεία Sacsayhuamán</h3>
+          <p>Παίρνουμε το τρένο της επιστροφής και κατευθυνόμαστε προς το Κούσκο, την ιστορική πρωτεύουσα της Αυτοκρατορίας των Ίνκας. Εξερευνούμε το επιβλητικό πέτρινο φρούριο Sacsayhuamán, τον ναό Koricancha (Ναό του Ηλίου) και τη γραφική καλλιτεχνική συνοικία San Blas.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5: Πεζοπορία & Περίπατος στον Τροπικό Παγετώνα Quelccaya (Ice Walk)</h3>
+          <p>Μια μοναδική εμπειρία ζωής. Αναχωρούμε νωρίς το πρωί για την οροσειρά Vilcanota. Πλησιάζουμε τον μεγαλύτερο τροπικό παγετώνα του κόσμου, τον Quelccaya. Με εξειδικευμένο οδηγό, πραγματοποιούμε έναν ασφαλή περίπατο πάνω στον πάγο (ice walk), θαυμάζοντας τεράστιους τοίχους πάγου και παγετώδεις λίμνες. Επιστροφή στο Κούσκο το απόγευμα.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 6: Κούσκο (Ελεύθερη Ημέρα & Αγορές) – Αποχαιρετιστήριο Δείπνο</h3>
+          <p>Ελεύθερη ημέρα στο Κούσκο για χαλάρωση, αγορά τοπικών υφαντών από μαλλί αλπακά στην αγορά San Pedro, ή επίσκεψη σε τοπικά μουσεία. Το βράδυ απολαμβάνουμε ένα ειδικό αποχαιρετιστήριο δείπνο με παραδοσιακή μουσική των Άνδεων.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 7: Κούσκο – Πτήση Επιστροφής (μέσω Λίμας)</h3>
+          <p>Πρωινό στο ξενοδοχείο και ελεύθερος χρόνος για τις τελευταίες βόλτες στην Plaza de Armas. Μεταφορά στο αεροδρόμιο του Κούσκο για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη (μέσω Λίμας), γεμάτοι μοναδικές αναμνήσεις από τον πολιτισμό των Ίνκας και τους πάγους των Άνδεων.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Top-Aligned Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Λίμα με επιστροφή</li>
+            <li>Εσωτερικές πτήσεις Λίμα - Κούσκο - Λίμα</li>
+            <li>1 διανυκτέρευση σε 5* ξενοδοχείο στη Λίμα με πρωινό</li>
+            <li>1 διανυκτέρευση σε boutique resort στην Ιερή Κοιλάδα με πρωινό</li>
+            <li>1 διανυκτέρευση σε 4* ξενοδοχείο στο Aguas Calientes με πρωινό</li>
+            <li>3 διανυκτερεύσεις σε 5* ιστορικό ξενοδοχείο στο Κούσκο με πρωινό</li>
+            <li>Εισιτήρια πανοραμικού τρένου Vistadome (Ollantaytambo - Aguas Calientes)</li>
+            <li>Επίσημος οδηγός & εισιτήρια εισόδου στο Machu Picchu</li>
+            <li>Ειδική εξόρμηση & εξοπλισμός για τον Περίπατο στον Παγετώνα Quelccaya</li>
+            <li>Όλες οι μεταφορές με πολυτελή κλιματιζόμενα πούλμαν</li>
+            <li>Ελληνόφωνος αρχηγός / συνοδός καθ' όλη τη διάρκεια του ταξιδιού</li>
+            <li>Πλήρης ταξιδιωτική ασφάλιση & παροχή φιαλών οξυγόνου</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Φόροι αεροδρομίων (~320€)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~40€)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
+            <li>Προσωπικά έξοδα</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
+              <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
+              2.480€
+            </div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 6 Νύχτες / 7 Ημέρες)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Photo Album Grid Collage -->
+    <section class="photo-album-section">
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, αρχαίοι πολιτισμοί και παγετώνες από το μαγευτικό Περού</p>
+
+      <div class="photo-album-grid">
+        <div class="photo-item photo-large">
+          <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1200&q=80" alt="Machu Picchu Panorama">
+        </div>
+        
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?auto=format&fit=crop&w=800&q=80" alt="Cusco Plaza de Armas">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80" alt="Andean Glacier Ice Hike">
+        </div>
+
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1200&q=80" alt="Sacred Valley & Ollantaytambo">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&fit=crop&w=800&q=80" alt="Lima Coast & Miraflores">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=800&q=80" alt="Inca Ruins Detail">
+        </div>
+
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Andes Mountain Range">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80" alt="Llama in Peru">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=800&q=80" alt="Maras Salt Mines">
+        </div>
+
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1200&q=80" alt="Snow Peak Andes">
+        </div>
+
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Glacier Lagoon">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για το Περού</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 7ήμερο εξωτικό ταξίδι.</p>
+      
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Νίκος Παπαδόπουλος">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="nikos@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <div class="form-group">
+          <label for="departure">Αεροδρόμιο Αναχώρησης</label>
+          <select id="departure" name="departure" required style="width: 100%; padding: 12px; border: 1px solid var(--border, #e2dfd7); border-radius: 4px; font-size: 0.95rem; background: #fff; color: #2d3748;">
+            <option value="" disabled selected>Επιλέξτε αεροδρόμιο αναχώρησης...</option>
+            <option value="SKG">SKG - Θεσσαλονίκη (Αεροδρόμιο "Μακεδονία")</option>
+            <option value="ATH">ATH - Αθήνα (Αεροδρόμιο "Ελευθέριος Βενιζέλος")</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
