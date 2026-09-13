@@ -353,57 +353,61 @@
   </section>
 
   <!-- Footer -->
-  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 30px 0; font-size: 0.95rem;">
-    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
+  <footer class="site-footer">
+    <div class="container footer-grid">
       
       <!-- Column 1: Brand Info -->
-      <div>
-        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">VANGUARD <span style="color: #c5a059;">TRAVEL</span></h3>
-        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      <div class="footer-col">
+        <h3 class="footer-brand">VANGUARD <span>TRAVEL</span></h3>
+        <p class="footer-desc">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
       </div>
 
       <!-- Column 2: Quick Links -->
-      <div>
-        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
-        <ul style="list-style: none; padding: 0; line-height: 2.2;">
-          <li><a href="#about" style="color: #a0aec0; text-decoration: none;">Γιατί Εμάς</a></li>
-          <li><a href="#trips" style="color: #a0aec0; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
-          <li><a href="#how-it-works" style="color: #a0aec0; text-decoration: none;">Πώς Λειτουργεί</a></li>
-          <li><a href="#reviews" style="color: #a0aec0; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
-          <li><a href="#contact" style="color: #a0aec0; text-decoration: none;">Επικοινωνία</a></li>
+      <div class="footer-col">
+        <h4 class="footer-heading">Γρήγορη Πλοήγηση</h4>
+        <ul class="footer-links">
+          <li><a href="#about">Γιατί Εμάς</a></li>
+          <li><a href="#trips">Πακέτα Ταξιδιών</a></li>
+          <li><a href="#how-it-works">Πώς Λειτουργεί</a></li>
+          <li><a href="#gallery">Στιγμιότυπα</a></li>
+          <li><a href="#contact">Επικοινωνία</a></li>
         </ul>
       </div>
 
-      <!-- Column 3: Legal & Support -->
-      <div>
-        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Χρήσιμα & Πολιτική</h4>
-        <ul style="list-style: none; padding: 0; line-height: 2.2;">
-          <li><a href="#" style="color: #a0aec0; text-decoration: none;">Σχετικά με Εμάς</a></li>
-          <li><a href="#" style="color: #a0aec0; text-decoration: none;">Πολιτική Απορρήτου (Privacy)</a></li>
-          <li><a href="#" style="color: #a0aec0; text-decoration: none;">Όροι Χρήσης & Κρατήσεων</a></li>
-          <li><a href="#" style="color: #a0aec0; text-decoration: none;">Πολιτική Ακυρώσεων</a></li>
-          <li><a href="#" style="color: #a0aec0; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+      <!-- Column 3: Legal & Policy Links (Small Font) -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Όροι & Πολιτικές</h4>
+        <ul class="footer-links legal-links">
+          <li><a href="privacy.html">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="terms.html">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="cancellations.html">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="cookies.html">Πολιτική Cookies</a></li>
+          <li><a href="faq.html">Συχνές Ερωτήσεις (FAQ)</a></li>
         </ul>
       </div>
 
-      <!-- Column 4: Payment Methods -->
-      <div>
-        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Ασφαλείς Πληρωμές</h4>
-        <p style="margin-bottom: 15px;">Δεχόμαστε τους παρακάτω εγκεκριμένους τρόπους πληρωμής:</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-          <span style="background: #ffffff; color: #111; padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85rem;">VISA</span>
-          <span style="background: #ffffff; color: #111; padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85rem;">Mastercard</span>
-          <span style="background: #ffffff; color: #111; padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85rem;">PayPal</span>
-          <span style="background: #ffffff; color: #111; padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85rem;">Apple Pay</span>
-          <span style="background: #ffffff; color: #111; padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85rem;">Bank Transfer</span>
+      <!-- Column 4: Approved Payment Methods -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Τρόποι Πληρωμής</h4>
+        <p class="payment-intro">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div class="payment-badges">
+          <span class="pay-badge visa"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="pay-badge mastercard"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+          <span class="pay-badge paypal"><i class="fa-brands fa-paypal"></i> PayPal</span>
+          <span class="pay-badge alpha-bank">Alpha Bank</span>
+          <span class="pay-badge alpha-ecommerce">Alpha e-Commerce</span>
+          <span class="pay-badge bank-transfer"><i class="fa-solid fa-building-columns"></i> Bank Transfer</span>
+          <span class="pay-badge btc"><i class="fa-brands fa-bitcoin"></i> BTC</span>
         </div>
       </div>
 
     </div>
 
     <!-- Copyright Divider -->
-    <div class="container" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center;">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Vanguard Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
