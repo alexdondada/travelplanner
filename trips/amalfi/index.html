@@ -3,60 +3,153 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ακτή Αμάλφι & Τοσκάνη | Vanguard Travel</title>
+  <title>Ακτή Αμάλφι & Τοσκάνη | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
-    .itinerary-list { list-style: none; padding: 0; margin: 24px 0; }
-    .itinerary-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e2dfd7; margin-bottom: 16px; }
-    .itinerary-item h4 { color: var(--primary); margin-bottom: 8px; font-family: var(--font-heading); }
+    .trip-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+    @media (max-width: 900px) { .trip-grid { grid-template-columns: 1fr; } }
+    .itinerary-day { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .itinerary-day h3 { font-family: var(--font-heading); color: var(--primary, #1b2a4a); font-size: 1.25rem; margin-bottom: 12px; }
+    .sidebar-card { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 24px; position: sticky; top: 100px; }
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
   </style>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
-        <li><a href="../../trips.html">Όλα τα Πακέτα</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
       </ul>
-      <div class="nav-right"><a href="#contact" class="btn btn-primary nav-btn">Κράτηση</a></div>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">ITALIAN ELEGANCE</span>
-    <h1 style="font-size:2.5rem; margin-top:10px;">Ακτή Αμάλφι & Τοσκάνη</h1>
-    <p>10 Ημέρες • Positano, Capri, Ravello & Wine Tasting</p>
+    <span class="badge">MEDITERRANEAN ELEGANCE</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ακτή Αμάλφι, Capri & Τοσκάνη</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">10 Ημέρες • Positano • Amalfi • Ravello • Capri Private Boat • Wine Tasting Chianti</p>
   </header>
 
-  <section class="section container" style="max-width: 900px;">
-    <h2>Η Αρχοντιά της Ιταλικής Ριβιέρας</h2>
-    <p style="margin-bottom:24px;">Απολαύστε τα δραματικά τοπία της ακτής του Αμάλφι, ιδιωτική κρουαζιέρα στο Κάπρι και γευσιγνωσία κρασιών στους αμπελώνες της Τοσκάνης.</p>
+  <main class="container section">
+    <div class="trip-grid">
+      
+      <div>
+        <span class="badge-date">📅 15 - 25 ΜΑΪΟΥ 2027</span>
+        <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
 
-    <h3>Πρόγραμμα Εκδρομής</h3>
-    <div class="itinerary-list">
-      <div class="itinerary-item">
-        <h4>Ημέρα 1-4: Positano & Amalfi Coast</h4>
-        <p>Διαμονή στο Ποζιτάνο, περιήγηση στο Ravello & γευσιγνωσία Limoncello σε τοπικούς ελαιώνες.</p>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Αθήνα - Νάπολη - Positano / Amalfi Coast</h3>
+          <p>Πτήση για Νάπολη. Άφιξη, παραλαβή από τον τοπικό μας συνοδό και μεταφορά με πολυτελές minibus στη μαγευτική Ακτή του Αμάλφι. Τακτοποίηση στο ξενοδοχείο με θέα τη θάλασσα.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Positano, Amalfi & Ravello</h3>
+          <p>Εξερεύνηση των γραφικών χωριών: περίπατος στα στενά καλντερίμια του Ποζιτάνο, επίσκεψη στον Καθεδρικό Ναό του Αμάλφι και βόλτα στις αριστοκρατικές βίλες Villa Rufolo & Villa Cimbrone στο Ravello.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Ιδιωτική Κρουαζιέρα στο Capri & Blue Grotto</h3>
+          <p>Επιβίβαση σε ιδιωτικό yacht για το κοσμοπολίτικο νησί Capri. Περίπλους των βράχων Faraglioni, επίσκεψη στη Γαλάζια Σπηλιά (Blue Grotto) και βόλτα στην Piazzetta του Κάπρι.</p>
+
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Πομπηία & Μετάβαση στην Τοσκάνη</h3>
+          <p>Επίσκεψη στον αρχαιολογικό χώρο της Πομπηίας με διπλωματούχο ξεναγό. Στη συνέχεια, γραφική διαδρομή βόρεια προς την καρδιά της Τοσκάνης.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5-7: Αμπελώνες Chianti, San Gimignano & Σιένα</h3>
+          <p>Επίσκεψη σε παραδοσιακό οινοποιείο στην περιοχή Chianti για γευσιγνωσία κρασιών & τοπικών προϊόντων. Ξενάγηση στη μεσαιωνική Σιένα (Plaza del Campo) και τους πύργους του San Gimignano.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 8-9: Φλωρεντία (Florence) & Uffizi Gallery</h3>
+          <p>Δύο μέρες στη λίκνο της Αναγέννησης, τη Φλωρεντία. Ξενάγηση στο Duomo, την Ponte Vecchio, την Piazza della Signoria και επίσκεψη στην περίφημη πινακοθήκη Uffizi.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 10: Ρώμη / Ρώμη - Αθήνα</h3>
+          <p>Μετάβαση στη Ρώμη, σύντομος περίπατος και μεταφορά στο αεροδρόμιο Fiumicino για την πτήση επιστροφής στην Αθήνα.</p>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 5-6: Ιδιωτικό Σκάφος στο Capri</h4>
-        <p>Ολοήμερη θαλάσσια εκδρομή στο νησί Κάπρι, επίσκεψη στη Γαλάζια Σπηλιά (Blue Grotto) και τους βράχους Faraglioni.</p>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Αεροπορικά εισιτήρια Αθήνα - Νάπολη / Ρώμη - Αθήνα</li>
+            <li>4 διανυκτερεύσεις στην Ακτή Αμάλφι σε 4* Boutique Hotel</li>
+            <li>5 διανυκτερεύσεις στην Τοσκάνη / Φλωρεντία σε 4* Hotel</li>
+            <li>Πρωινό καθημερινά</li>
+            <li>Ιδιωτική κρουαζιέρα με σκάφος στο Capri</li>
+            <li>Γευσιγνωσία κρασιού & γεύμα σε οινοποιείο στο Chianti</li>
+            <li>Είσοδοι σε Πομπηία & Uffizi Gallery</li>
+            <li>Πολυτελές κλιματιζόμενο λεωφορείο για όλες τις μετακινήσεις</li>
+            <li>Ελληνόφωνος αρχηγός συνοδός</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Φόροι αεροδρομίων (~160€)</li>
+            <li>Δημοτικοί φόροι πόλεων (city taxes πληρωτέοι στα ξενοδοχεία)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center;">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">2.200€</div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Premium boutique διαμονή)</span>
+          </div>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 7-10: Τοσκάνη & Φλωρεντία</h4>
-        <p>Μετάβαση στην Τοσκάνη, επίσκεψη σε ιστορικά οινοποιεία της Chianti & ξενάγηση στη Φλωρεντία.</p>
-      </div>
+
     </div>
+  </main>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="../../trips.html#contact" class="btn btn-primary">Εκδήλωση Ενδιαφέροντος</a>
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για την Ακτή Αμάλφι</h2>
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Ακατερίνα Μάρκου">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="katerina@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+      </form>
     </div>
   </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
