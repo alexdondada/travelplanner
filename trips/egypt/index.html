@@ -3,64 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Αίγυπτος: Κάιρο & Πυραμίδες | Vanguard Travel</title>
+  <title>Αίγυπτος: Κάιρο, Πυραμίδες & Κλεοπάτρα | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
-    .itinerary-list { list-style: none; padding: 0; margin: 24px 0; }
-    .itinerary-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e2dfd7; margin-bottom: 16px; }
-    .itinerary-item h4 { color: var(--primary); margin-bottom: 8px; font-family: var(--font-heading); }
+    .trip-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+    @media (max-width: 900px) { .trip-grid { grid-template-columns: 1fr; } }
+    .itinerary-day { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .itinerary-day h3 { font-family: var(--font-heading); color: var(--primary, #1b2a4a); font-size: 1.25rem; margin-bottom: 12px; }
+    .sidebar-card { background: #ffffff; border: 1px solid var(--border, #e2dfd7); border-radius: 8px; padding: 24px; margin-bottom: 24px; position: sticky; top: 100px; }
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
   </style>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
-        <li><a href="../../trips.html">Όλα τα Πακέτα</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
       </ul>
-      <div class="nav-right"><a href="#contact" class="btn btn-primary nav-btn">Κράτηση</a></div>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">ANCIENT WONDERS</span>
-    <h1 style="font-size:2.5rem; margin-top:10px;">Κάιρο, Πυραμίδες & Αίγυπτος</h1>
-    <p>7 Ημέρες • Γκίζα, Σφίγγα, GEM Museum & Νείλος</p>
+    <span class="badge">ANCIENT CIVILIZATION</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Κάιρο, Πυραμίδες Γκίζας & Αίγυπτος</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">7 Ημέρες • Πυραμίδες Γκίζας • GEM Museum • Αλεξάνδρεια & Άγαλμα Κλεοπάτρας • Νείλος</p>
   </header>
 
-  <section class="section container" style="max-width: 900px;">
-    <h2>Τα Μυστικά των Φαραώ</h2>
-    <p style="margin-bottom:24px;">Ανακαλύψτε τα θαύματα του αρχαίου κόσμου. Από τις Πυραμίδες της Γκίζας μέχρι τα σπάνια εκθέματα της Κλεοπάτρας και του Τουταγχαμών στο νέο Μεγάλο Αιγυπτιακό Μουσείο (GEM).</p>
+  <main class="container section">
+    <div class="trip-grid">
+      
+      <div>
+        <span class="badge-date">📅 22 - 28 ΟΚΤΩΒΡΙΟΥ 2026</span>
+        <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
 
-    <h3>Πρόγραμμα Εκδρομής</h3>
-    <div class="itinerary-list">
-      <div class="itinerary-item">
-        <h4>Ημέρα 1-2: Άφιξη στο Κάιρο & Αγορά Khan El Khalili</h4>
-        <p>Άφιξη, εγκατάσταση στο ξενοδοχείο και απογευματινή βόλτα στα σοκάκια της ιστορικής αγοράς Khan El Khalili.</p>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Αθήνα - Κάιρο & Αγορά Khan El Khalili</h3>
+          <p>Απευθείας πτήση από Αθήνα για το Κάιρο. Άφιξη, συνάντηση με τον ελληνόφωνο διπλωματούχο ξεναγό μας και μεταφορά στο 5* ξενοδοχείο. Το απόγευμα επίσκεψη στην ιστορική ανατολίτικη αγορά Khan El Khalili για τσάι με μέντα στο ιστορικό καφενείο El Fishawy.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Πυραμίδες της Γκίζας, Σφίγγα & Σακκάρα</h3>
+          <p>Ολοήμερη ξενάγηση στα θαύματα του αρχαίου κόσμου: Πυραμίδες Χέοπα, Χεφρήνου & Μυκερίνου. Επίσκεψη στην αινιγματική Σφίγγα και τον Ναό της Βαλσαμώσεως. Στη συνέχεια επίσκεψη στην αρχαιότερη βαθμιδωτή Πυραμίδα του Ζοζέρ στη Σακκάρα. Γεύμα σε εστιατόριο με θέα τις Πυραμίδες.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Μεγάλο Αιγυπτιακό Μουσείο (GEM) & Θησαυροί Τουταγχαμών</h3>
+          <p>Επίσκεψη στο εντυπωσιακό νέο Μεγάλο Αιγυπτιακό Μουσείο (Grand Egyptian Museum). Θαυμάζουμε ολόκληρη τη συλλογή του Τουταγχαμών, τη χρυσή μάσκα, καθώς και τα σπάνια αγάλματα της πτολεμαϊκής περιόδου και της βασίλισσας Κλεοπάτρας.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Ημερήσια Εκδρομή στην Αλεξάνδρεια (Πόλη της Κλεοπάτρας)</h3>
+          <p>Πρωινή αναχώρηση για την Αλεξάνδρεια στις ακτές της Μεσογείου. Επίσκεψη στη νέα Βιβλιοθήκη της Αλεξάνδρειας, το κάστρο Qaitbay (στη θέση του αρχαίου Φάρου), τις κατακόμβες Kom El Shoqafa και τα υποθαλάσσια ευρήματα της Κλεοπάτρας στο Μουσείο.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5: Ισλαμικό & Κοπτικό Κάιρο - Ακρόπολη Saladin</h3>
+          <p>Ξενάγηση στην Ακρόπολη του Σαλαδίν και το Τζαμί του Μωχάμετ Άλη (Αλαβαστρινό Τζαμί). Περιήγηση στο Κοπτικό Κάιρο με την Κρεμαστή Εκκλησία (Hanging Church) και την Εκκλησία του Αγίου Γεωργίου.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 6: Κρουαζιέρα με Φελούκα στον Νείλο & Δείπνο onboard</h3>
+          <p>Πρωινός ελεύθερος χρόνος. Το απόγευμα παραδοσιακή βόλτα με αιγυπτιακή φελούκα στα νερά του Νείλου κατά το ηλιοβασίλεμα. Το βράδυ πολυτελές δείπνο σε πλωτό εστιατόριο με φολκλορικό σόου και χορό της κοιλιάς.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 7: Κάιρο - Αθήνα</h3>
+          <p>Πρωινό στο ξενοδοχείο, τελευταία αγορά ενθυμίων και μεταφορά στο αεροδρόμιο του Καΐρου για την πτήση επιστροφής στην Αθήνα.</p>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 3: Πυραμίδες της Γκίζας & Σφίγγα</h4>
-        <p>Ολοήμερη ξενάγηση στις Πυραμίδες του Χέοπα, Χεφρήνου & Μυκερίνου, συνδυασμένη με βόλτα με καμήλες στην έρημο.</p>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Απευθείας πτήσεις Αθήνα - Κάιρο - Αθήνα με Egyptair / Aegean</li>
+            <li>6 διανυκτερεύσεις σε 5* Ξενοδοχείο στο Κάιρο με πρωινό</li>
+            <li>Μεταφορές με πολυτελή κλιματιζόμενα πούλμαν</li>
+            <li>Επίσημος Ελληνόφωνος Αιγυπτιολόγος / Ξεναγός καθ' όλη τη διάρκεια</li>
+            <li>Είσοδοι σε όλους τους αρχαιολογικούς χώρους & GEM Museum</li>
+            <li>Ολοήμερη εκδρομή στην Αλεξάνδρεια με γεύμα</li>
+            <li>Δείπνο-κρουαζιέρα στον Νείλο με φολκλορικό σόου</li>
+            <li>Βίζα εισόδου στην Αίγυπτο</li>
+            <li>Ταξιδιωτική ασφάλιση</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Φόροι αεροδρομίων (~180€)</li>
+            <li>Είσοδος στο εσωτερικό της Μεγάλης Πυραμίδας (προαιρετικά)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~35€)</li>
+            <li>Ποτά κατά τα γεύματα</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center;">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">890€</div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο)</span>
+          </div>
+        </div>
       </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 4: Grand Egyptian Museum & Cleopatra Relics</h4>
-        <p>Επίσκεψη στο ολοκαίνουργιο Μεγάλο Αιγυπτιακό Μουσείο (GEM) με τα χρυσά ευρήματα του Τουταγχαμών και τα αγάλματα της εποχής της Κλεοπάτρας.</p>
-      </div>
-      <div class="itinerary-item">
-        <h4>Ημέρα 5-7: Αλεξάνδρεια & Κρουαζιέρα στον Νείλο</h4>
-        <p>Ημερήσια εκδρομή στην παραθαλάσσια Αλεξάνδρεια (Βιβλιοθήκη & Κάστρο Qaitbay), ηλιοβασίλεμα σε παραδοσιακή φελούκα στον Νείλο & επιστροφή.</p>
-      </div>
+
     </div>
+  </main>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="../../trips.html#contact" class="btn btn-primary">Εκδήλωση Ενδιαφέροντος</a>
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για την Αίγυπτο</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο ταξίδι.</p>
+      
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Μαρία Δημητρίου">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="maria@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+      </form>
     </div>
   </section>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
