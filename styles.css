@@ -164,6 +164,7 @@ ul { list-style: none; }
 .trip-price span { font-size: 1.35rem; font-weight: 700; color: var(--primary); }
 
 /* Gallery Section */
+/* Gallery Section */
 .gallery-grid {
   display: flex;
   flex-direction: column;
