@@ -3,316 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ντουμπάι & Έρημος | Vanguard Travel Design</title>
-  
-  <!-- Relative path back to root styles -->
+  <title>Ντουμπάι & Σαφάρι Ερήμου | Vanguard Travel</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .trip-hero { background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; padding: 120px 24px; color: white; text-align: center; }
+    .itinerary-list { list-style: none; padding: 0; margin: 24px 0; }
+    .itinerary-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e2dfd7; margin-bottom: 16px; }
+    .itinerary-item h4 { color: var(--primary); margin-bottom: 8px; font-family: var(--font-heading); }
+  </style>
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
       <ul class="nav-links">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
-        <li><a href="../../index.html#trips">Πακέτα Ταξιδιών</a></li>
+        <li><a href="../../trips.html">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
-        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
       </ul>
-      <div class="nav-right">
-        <a href="#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
-      </div>
+      <div class="nav-right"><a href="#contact" class="btn btn-primary nav-btn">Κράτηση</a></div>
     </div>
   </nav>
 
-  <!-- Hero Header -->
-  <header class="hero" style="background: linear-gradient(rgba(27, 42, 74, 0.5), rgba(27, 42, 74, 0.6)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
-    <div class="hero-content">
-      <span class="badge">Ηνωμένα Αραβικά Εμιράτα • 7 ΗΜΕΡΕΣ / 6 ΝΥΧΤΕΣ</span>
-      <h1 style="margin-top: 15px;">Ντουμπάι, Έρημος & Μέλλον</h1>
-      <p>Ενδεικτικές Ημερομηνίες: 15 - 21 Ιανουαρίου 2027 • Κοσμοπολίτικη Πολυτέλεια & Αυθεντική Σαφάρι Εμπειρία</p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Ζητήστε Διαθεσιμότητα</a>
-        <a href="#itinerary" class="btn btn-secondary">Δείτε το Πρόγραμμα</a>
-      </div>
-    </div>
+  <header class="trip-hero">
+    <span class="badge">LUXURY & DESERT</span>
+    <h1 style="font-size:2.5rem; margin-top:10px;">Ντουμπάι, Έρημος & Μέλλον</h1>
+    <p>7 Ημέρες • Burj Khalifa, Desert Safari 4x4 & Museum of Future</p>
   </header>
 
-  <!-- Quick Info Bar -->
-  <section class="texture-bg" style="padding: 24px 0; border-bottom: 1px solid var(--border);">
-    <div class="container" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;">
-      <div>
-        <strong style="display:block; color: var(--primary);">Διάρκεια</strong>
-        <span>7 Ημέρες / 6 Νύχτες</span>
+  <section class="section container" style="max-width: 900px;">
+    <h2>Πολυτέλεια & Περιπέτεια στην Έρημο</h2>
+    <p style="margin-bottom:24px;">Ανακαλύψτε την υπερσύγχρονη μητρόπολη των ΗΑΕ. Από την κορυφή του Burj Khalifa μέχρι τους αμμόλοφους της αραβικής ερήμου.</p>
+
+    <h3>Πρόγραμμα Εκδρομής</h3>
+    <div class="itinerary-list">
+      <div class="itinerary-item">
+        <h4>Ημέρα 1-2: Downtown Dubai & Burj Khalifa</h4>
+        <p>Άφιξη, επίσκεψη στο Dubai Mall, σιντριβάνια Dubai Fountains & ανάβαση στο Burj Khalifa.</p>
       </div>
-      <div>
-        <strong style="display:block; color: var(--primary);">Πτήσεις Αθήνα (ATH)</strong>
-        <span>Από 250€ / άτομο</span>
+      <div class="itinerary-item">
+        <h4>Ημέρα 3-4: Desert Safari 4x4 & BBQs</h4>
+        <p>Σαφάρι 4x4 στους αμμόλοφους, sandboarding, βόλτα με καμήλες και παραδοσιακό δείπνο Bedouin under the stars.</p>
       </div>
-      <div>
-        <strong style="display:block; color: var(--primary);">Πτήσεις Θεσσαλονίκη (SKG)</strong>
-        <span>Από 280€ / άτομο</span>
+      <div class="itinerary-item">
+        <h4>Ημέρα 5-7: Museum of the Future & Old Dubai</h4>
+        <p>Επίσκεψη στο Μουσείο του Μέλλοντος, βόλτα με abra στο Dubai Creek & αγορά χρυσοχοείων/μπαχαρικών.</p>
       </div>
-      <div>
-        <strong style="display:block; color: var(--primary);">Υποστήριξη</strong>
-        <span>24/7 Greek Speaking Concierge</span>
-      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="../../trips.html#contact" class="btn btn-primary">Εκδήλωση Ενδιαφέροντος</a>
     </div>
   </section>
-
-  <!-- Highlights Gallery Section -->
-  <section class="section container">
-    <div class="section-title">
-      <h2>Highlights Ταξιδιού</h2>
-      <p>Εικόνες και εμπειρίες που θα ζήσετε στο φουτουριστικό και ατμοσφαιρικό Ντουμπάι.</p>
-    </div>
-
-    <div class="gallery-grid" style="margin-bottom: 40px;">
-      <div class="gallery-item large" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item tall" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=800&q=80');"></div>
-    </div>
-
-    <div class="grid grid-3">
-      <div class="card card-service">
-        <h3>🏎️ Desert Safari & Quad Bikes</h3>
-        <p>4x4 Dune Bashing στους αμμόλοφους, οδήγηση Quad Bikes, βόλτα με καμήλες και παραδοσιακό BBQ κάτω από τα αστέρια.</p>
-      </div>
-      <div class="card card-service">
-        <h3>🏙️ Burj Khalifa & Dubai Mall</h3>
-        <p>Ανάβαση στον 124ο/125ο όροφο του ψηλότερου κτιρίου στον κόσμο και παρακολούθηση του σόου των σιντριβανιών.</p>
-      </div>
-      <div class="card card-service">
-        <h3>🚀 Museum of the Future</h3>
-        <p>Επίσκεψη στο πιο εντυπωσιακό αρχιτεκτονικό και τεχνολογικό μουσείο του κόσμου με προκρατημένα εισιτήρια.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Detailed Day-by-Day Itinerary -->
-  <section id="itinerary" class="section texture-bg">
-    <div class="container" style="max-width: 900px;">
-      <div class="section-title">
-        <h2>Αναλυτικό Ημερήσιο Πρόγραμμα (6 Νύχτες)</h2>
-        <p>Ένα ισορροπημένο πρόγραμμα που συνδυάζει την περιπέτεια στην έρημο, την ιστορία του Old Dubai και τις υπερσύγχρονες εμπειρίες.</p>
-      </div>
-
-      <!-- Day 1 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 01</div>
-        <h3>Άφιξη στο Ντουμπάι & Τακτοποίηση</h3>
-        <p>Πτήση από Αθήνα ή Θεσσαλονίκη και άφιξη στο Διεθνές Αεροδρόμιο του Ντουμπάι (DXB). Ο ιδιωτικός σας οδηγός σάς περιμένει στην αίθουσα αφίξεων για την άνετη μεταφορά στο ξενοδοχείο σας. Check-in, ξεκούραση και πρώτη βραδινή βόλτα στη φωταγωγημένη Dubai Marina.</p>
-      </div>
-
-      <!-- Day 2 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 02</div>
-        <h3>Old Dubai, Παραδοσιακές Αγορές & Τοπική Γαστρονομία</h3>
-        <p>Πρωινή ξενάγηση στην ιστορική συνοικία Al Fahidi. Διασχίζετε το κανάλι Dubai Creek με παραδοσιακή ξύλινη βάρκα (Abra) και επισκέπτεστε τις διάσημες αγορές χρυσοχοΐας (Gold Souk) και μπαχαρικών (Spice Souk). Το μεσημέρι απολαμβάνετε αυθεντικό εμιρατινό γεύμα (Local Food Tasting) με παραδοσιακές γεύσεις όπως machboos και luqaimat.</p>
-      </div>
-
-      <!-- Day 3 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 03</div>
-        <h3>Burj Khalifa, Dubai Mall & Dubai Fountains</h3>
-        <p>Επίσκεψη στο επιβλητικό Dubai Mall και είσοδος στο Burj Khalifa (At The Top - 124/125 όροφος) για πανοραμική θέα 360 μοιρών σε όλη την πόλη και την ακτογραμμή. Το απόγευμα παρακολουθείτε το εντυπωσιακό σόου νερού και μουσικής των Dubai Fountains με ελεύθερο χρόνο για shopping.</p>
-      </div>
-
-      <!-- Day 4 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 04</div>
-        <h3>Museum of the Future & Frame Dubai</h3>
-        <p>Πρωινή επίσκεψη στο εντυπωσιακό Museum of the Future με skip-the-line εισιτήρια. Στη συνέχεια μεταβαίνετε στο Dubai Frame, τη μεγαλύτερη «κορνίζα» στον κόσμο, που χωρίζει το παλιό από το νέο Ντουμπάι. Απόγευμα ελεύθερο για χαλάρωση στις παραλίες Jumeirah Beach.</p>
-      </div>
-
-      <!-- Day 5 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 05</div>
-        <h3>Desert Safari 4x4, Quad Bikes & Βεδουίνικο Camp</h3>
-        <p>Το μεσημέρι, ειδικό τζιπ 4x4 σας παραλαμβάνει από το ξενοδοχείο. Ξεκινάει η περιπέτεια στους αμμόλοφους (Dune Bashing), ακολουθούμενη από 30λεπτη εμπειρία οδήγησης Quad Bikes (γουρούνες). Το ηλιοβασίλεμα μεταφέρεστε σε αυθεντικό βεδουίνικο camp για βόλτα με καμήλες, show με χορό Tanoura, belly dancing και πλούσιο δείπνο BBQ.</p>
-      </div>
-
-      <!-- Day 6 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 06</div>
-        <h3>Palm Jumeirah, Atlantis & Madinat Jumeirah</h3>
-        <p>Περιήγηση στο τεχνητό νησί Palm Jumeirah. Επίσκεψη στο The View at The Palm για θέα στο εμβληματικό Atlantis The Palm. Το απόγευμα βόλτα στο ατμοσφαιρικό Souk Madinat Jumeirah, γνωστό και ως «Βενετία της Ανατολής», με θέα στο Burj Al Arab. Αποχαιρετιστήριο δείπνο.</p>
-      </div>
-
-      <!-- Day 7 -->
-      <div class="step-card" style="margin-bottom: 24px;">
-        <div class="step-number">ΗΜΕΡΑ 07</div>
-        <h3>Check-out & Πτήση Επιστροφής</h3>
-        <p>Πρωινό στο ξενοδοχείο. Ελεύθερος χρόνος για τελευταία αγορές. Ιδιωτική μεταφορά στο αεροδρόμιο του Ντουμπάι για την πτήση επιστροφής προς Αθήνα ή Θεσσαλονίκη.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Flights & Departure Options -->
-  <section class="section container">
-    <div class="section-title">
-      <h2>Επιλογές Πτήσεων & Αναχωρήσεων (Ιανουάριος 2027)</h2>
-      <p>Ενδεικτικές τιμές πτήσεων με επιστροφή για τις ημερομηνίες 15 - 21 Ιανουαρίου 2027.</p>
-    </div>
-
-    <div class="grid grid-2">
-      <div class="card card-service">
-        <h3>✈️ Αναχώρηση από Αθήνα (ATH)</h3>
-        <p style="font-size: 1.3rem; font-weight: 700; color: var(--accent); margin: 8px 0;">Από 250€ / άτομο (μετ' επιστροφής)</p>
-        <ul style="line-height: 1.9; color: var(--text-muted);">
-          <li>• <strong>Εταιρείες:</strong> Wizz Air / Aegean / Emirates</li>
-          <li>• Direct ή με σύντομη στάση</li>
-          <li>• Περιλαμβάνει χειραποσκευή & προσωπικό αντικείμενο</li>
-        </ul>
-      </div>
-
-      <div class="card card-service">
-        <h3>✈️ Αναχώρηση από Θεσσαλονίκη (SKG)</h3>
-        <p style="font-size: 1.3rem; font-weight: 700; color: var(--accent); margin: 8px 0;">Από 280€ / άτομο (μετ' επιστροφής)</p>
-        <ul style="line-height: 1.9; color: var(--text-muted);">
-          <li>• <strong>Εταιρείες:</strong> Aegean / FlyDubai / Wizz Air</li>
-          <li>• Άνετες ανταποκρίσεις ή απευθείας ναυλωμένες πτήσεις</li>
-          <li>• Περιλαμβάνει χειραποσκευή & προσωπικό αντικείμενο</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Accommodation Options -->
-  <section class="section texture-bg">
-    <div class="container">
-      <div class="section-title">
-        <h2>Επιλογές Διαμονής (6 Νύχτες)</h2>
-        <p>Επιλεγμένα ξενοδοχεία σε στρατηγικά σημεία της πόλης για εύκολη πρόσβαση.</p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card card-service">
-          <div style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-          <h3>Modern City Hotels 4* (Downtown / Marina)</h3>
-          <p>Σύγχρονα ξενοδοχεία με πισίνα, εξαιρετικό πρωινό και άμεση πρόσβαση στο Μετρό και στα εμπορικά κέντρα.</p>
-        </div>
-
-        <div class="card card-service">
-          <div style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 16px;"></div>
-          <h3>Luxury Beach Resorts 5* (The Palm / Jumeirah)</h3>
-          <p>Πολυτελή θέρετρα με ιδιωτική παραλία, ιδιωτικά spa και gourmet εστιατόρια για μια απόλυτα premium διαμονή.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing & Inclusions -->
-  <section class="section container">
-    <div class="section-title">
-      <h2>Τι Περιλαμβάνεται & Τι Όχι</h2>
-      <p>Ξεκάθαρη τιμολόγηση χωρίς απρόοπτα.</p>
-    </div>
-
-    <div class="grid grid-2">
-      <div class="card card-service" style="border-top: 4px solid #16a34a;">
-        <h3 style="color: #16a34a;">✅ Τι Περιλαμβάνεται</h3>
-        <ul style="line-height: 2; color: var(--text-dark); margin-top: 15px;">
-          <li>• 6 διανυκτερεύσεις σε επιλεγμένο ξενοδοχείο 4* ή 5* με πρωινό.</li>
-          <li>• Ιδιωτικές μεταφορές αεροδρομίου (από/προς DXB).</li>
-          <li>• 4x4 Desert Safari με BBQ Δείπνο & Shows.</li>
-          <li>• 30 λεπτά οδήγηση Quad Bikes στην έρημο.</li>
-          <li>• Εισητήρια εισόδου στο Burj Khalifa (124/125 όροφος).</li>
-          <li>• Εισητήρια skip-the-line στο Museum of the Future.</li>
-          <li>• Ξενάγηση στο Old Dubai, βόλτα με Abra & Local Food Tasting.</li>
-          <li>• 24/7 Greek Speaking Concierge Support.</li>
-        </ul>
-      </div>
-
-      <div class="card card-service" style="border-top: 4px solid #dc2626;">
-        <h3 style="color: #dc2626;">❌ Τι Δεν Περιλαμβάνεται</h3>
-        <ul style="line-height: 2; color: var(--text-muted); margin-top: 15px;">
-          <li>• Αεροπορικά εισιτήρια (από 250€ ATH / 280€ SKG - προστίθενται κατ' επιλογή).</li>
-          <li>• Φόρος διαμονής Ντουμπάι (Tourism Dirham - approx. 4€-6€/δωμάτιο/νύχτα).</li>
-          <li>• Γεύματα & δείπνα εκτός του Desert Safari & Food Tasting.</li>
-          <li>• Προσωπικά έξοδα & φιλοδωρήματα.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Must-Haves & Tips -->
-  <section class="section texture-bg">
-    <div class="container">
-      <div class="section-title">
-        <h2>Χρήσιμες Συμβουλές & Must-Haves</h2>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card card-service">
-          <h3>🧳 Τι να Πάρετε Μαζί Σας (Must-Haves)</h3>
-          <ul style="line-height: 1.9; color: var(--text-muted); margin-top: 10px;">
-            <li>• Ελαφριά καλοκαιρινά ρούχα για την ημέρα & ζακέτα/τζάκετ για το βράδυ στην έρημο (ο Ιανουάριος έχει 22°-26°C την ημέρα και δροσιά το βράδυ).</li>
-            <li>• Γυαλιά ηλίου, αντηλιακό και μαντήλι/καπέλο για το σαφάρι.</li>
-            <li>• Άνετα παπούτσια για τις ξεναγήσεις και τα malls.</li>
-          </ul>
-        </div>
-
-        <div class="card card-service">
-          <h3>💡 Extra Tips για το Ντουμπάι</h3>
-          <ul style="line-height: 1.9; color: var(--text-muted); margin-top: 10px;">
-            <li>• <strong>Βίζα:</strong> Οι κάτοχοι ελληνικού διαβατηρίου ΔΕΝ χρειάζονται βίζα (σφραγίδα κατά την άφιξη).</li>
-            <li>• <strong>Διαβατήριο:</strong> Πρέπει να έχει ισχύ τουλάχιστον 6 μήνες από την ημερομηνία εισόδου.</li>
-            <li>• <strong>Ένδυση:</strong> Σεβασμός στους τοπικούς κανόνες στους θρησκευτικούς/παραδοσιακούς χώρους.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form for Dubai -->
-  <section id="contact" class="section container">
-    <div class="contact-box">
-      <div class="contact-info">
-        <h2>Κάντε Αίτημα για το Ντουμπάι</h2>
-        <p>Συμπληρώστε τη φόρμα για να λάβετε την προσφορά για τις ημερομηνίες και την πόλη αναχώρησης που επιθυμείτε.</p>
-        <p style="margin-top:20px;">📧 hello@vanguardtravel.com</p>
-        <p>📞 +30 210 123 4567</p>
-      </div>
-      <form id="trip-form" class="contact-form">
-        <div class="form-group">
-          <label for="name">Ονοματεπώνυμο</label>
-          <input type="text" id="name" required placeholder="π.χ. Γιώργος Παπαδόπουλος">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" required placeholder="giorgos@example.com">
-        </div>
-        <div class="form-group">
-          <label for="departure">Πόλη Αναχώρησης</label>
-          <select id="departure">
-            <option value="ATH">Αθήνα (ATH) - Από 250€</option>
-            <option value="SKG">Θεσσαλονίκη (SKG) - Από 280€</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="comments">Ειδικά Αιτήματα / Ημερομηνίες</label>
-          <textarea id="comments" rows="3" placeholder="π.χ. Επιθυμώ αναχώρηση 15 Ιανουαρίου για 2 άτομα με ξενοδοχείο 4*..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
-        <div id="form-message" class="form-message"></div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="../../script.js"></script>
 </body>
 </html>
