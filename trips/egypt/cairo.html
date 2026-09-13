@@ -16,19 +16,23 @@
       text-align: center; 
     }
     
+    .itinerary-header {
+      margin-top: 40px;
+      margin-bottom: 24px;
+    }
+
     .trip-grid { 
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      margin-top: 40px; 
-      align-items: start; /* Aligns sidebar flush with the top of Day 1 */
+      align-items: start; /* Perfectly aligns the sidebar with Day 1 card */
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box without background images */
+    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -52,7 +56,7 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card starting top-aligned with Day 1 */
+    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -153,13 +157,17 @@
   </header>
 
   <main class="container section">
+
+    <!-- Title and Date placed ABOVE grid so grid top aligns Day 1 with Sidebar -->
+    <div class="itinerary-header">
+      <span class="badge-date">📅 22 - 27 ΟΚΤΩΒΡΙΟΥ 2026</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
+    </div>
+
     <div class="trip-grid">
       
       <!-- Left Column: Itinerary Days -->
       <div>
-        <span class="badge-date">📅 22 - 27 ΟΚΤΩΒΡΙΟΥ 2026</span>
-        <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 24px;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
-
         <div class="itinerary-day">
           <h3>Ημέρα 1: Άφιξη στο Κάιρο & Αγορά Khan El Khalili</h3>
           <p>Συνάντηση στο αεροδρόμιο αναχώρησης και πτήση για το Κάιρο. Άφιξη στη μητρόπολη του Νείλου, θερμή υποδοχή από τον ελληνόφωνο διπλωματούχο ξεναγό μας και ιδιωτική μεταφορά στο 5* ξενοδοχείο μας. Το απόγευμα επισκεπτόμαστε την ιστορική ανατολίτικη αγορά Khan El Khalili για έναν ατμοσφαιρικό περίπατο στα σοκάκια με τα μπαχαρικά και παραδοσιακό τσάι με μέντα στο ιστορικό καφενείο El Fishawy.</p>
@@ -219,7 +227,10 @@
 
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
-            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">790€</div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
+              <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
+              790€
+            </div>
             <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 5 Νύχτες)</span>
           </div>
         </div>
@@ -230,32 +241,43 @@
     <!-- Photo Album Grid Collage Below Itinerary -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα και τοπία από τα σπουδαιότερα μνημεία της Αιγύπτου</p>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, ταξιδιώτες και τοπία από τα σπουδαιότερα μνημεία της Αιγύπτου</p>
 
       <div class="photo-album-grid">
+        <!-- Pyramids of Giza with Travelers -->
         <div class="photo-item photo-large">
-          <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80" alt="Giza Pyramids Sunset">
-          <div class="caption">Οροπέδιο της Γκίζας & Πυραμίδες</div>
+          <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1200&q=80" alt="Travelers at Pyramids of Giza">
+          <div class="caption">Πυραμίδες της Γκίζας & Ταξιδιώτες</div>
         </div>
+        
+        <!-- Great Sphinx -->
         <div class="photo-item photo-tall">
           <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80" alt="Great Sphinx of Giza">
-          <div class="caption">Η Μεγάλη Σφίγγα</div>
+          <div class="caption">Η Μεγάλη Σφίγγα της Γκίζας</div>
         </div>
+
+        <!-- Nile Felucca Sunset -->
         <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1544885935-98dd03b09034?auto=format&fit=crop&w=800&q=80" alt="Nile Sunset Felucca">
+          <img src="https://images.unsplash.com/photo-1544885935-98dd03b09034?auto=format&fit=crop&w=800&q=80" alt="Sunset Felucca on the Nile">
           <div class="caption">Βόλτα με Φελούκα στον Νείλο</div>
         </div>
+
+        <!-- Alexandria Citadel & Mediterranean Sea -->
         <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1553913861-c0fddf2619ee?auto=format&fit=crop&w=800&q=80" alt="Khan El Khalili Market">
-          <div class="caption">Αγορά Khan El Khalili</div>
-        </div>
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1572252821143-02f064821f00?auto=format&fit=crop&w=1200&q=80" alt="Mosque of Muhammad Ali Cairo">
-          <div class="caption">Ακρόπολη Σαλαδίν & Αλαβαστρινό Τζαμί</div>
-        </div>
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Alexandria Citadel Qaitbay">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Alexandria Seafront Citadel">
           <div class="caption">Αλεξάνδρεια & Κάστρο Qaitbay</div>
+        </div>
+
+        <!-- Cleopatra & Ptolemaic Ancient Artifacts -->
+        <div class="photo-item photo-wide">
+          <img src="https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=1200&q=80" alt="Cleopatra Era Egyptian Artifacts">
+          <div class="caption">Εκθέματα Εποχής Κλεοπάτρας & GEM Museum</div>
+        </div>
+
+        <!-- Cairo Khan El Khalili Streets with People -->
+        <div class="photo-item">
+          <img src="https://images.unsplash.com/photo-1553913861-c0fddf2619ee?auto=format&fit=crop&w=800&q=80" alt="People at Khan El Khalili Cairo">
+          <div class="caption">Περίπατος στην Αγορά Khan El Khalili</div>
         </div>
       </div>
     </section>
