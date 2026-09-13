@@ -61,7 +61,7 @@
       border-color: var(--accent, #c48b5f);
     }
 
-    /* Fixed grid that prevents stretching when 1-2 items are shown */
+    /* Keep layout structure fixed regardless of item count */
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -106,12 +106,12 @@
   <!-- Trips Catalog Section -->
   <section class="section container">
     
-    <!-- Filter and Search Controls -->
+    <!-- Filter Controls -->
     <div class="filter-container">
       <div class="filter-buttons">
         <button class="filter-btn active" onclick="filterTrips('all', event)">Όλοι οι Προορισμοί</button>
         <button class="filter-btn" onclick="filterTrips('europe', event)">Ευρώπη</button>
-        <button class="filter-btn" onclick="filterTrips('middle-east', event)">Μέση Ανατολή</button>
+        <button class="filter-btn" onclick="filterTrips('middle-east', event)">Μέση Ανατολή & Αφρική</button>
         <button class="filter-btn" onclick="filterTrips('asia', event)">Ασία</button>
         <button class="filter-btn" onclick="filterTrips('americas', event)">Αμερική</button>
         <button class="filter-btn" onclick="filterTrips('greece', event)">Ελλάδα</button>
@@ -122,7 +122,55 @@
     <!-- Grid of Trips -->
     <div class="catalog-grid" id="tripsGrid">
       
-      <!-- Lapland (New) -->
+      <!-- Thailand (New) -->
+      <div class="card trip-card trip-card-catalog" data-category="asia" data-title="ταιλανδη thailand phuket phi phi island james bond island phang nga bay bangkok">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 10 - 20 ΝΟΕΜΒΡΙΟΥ 2026 • 11 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ταϊλάνδη & Τροπικά Νησιά</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πουκέτ, Phi Phi Islands, James Bond Island, Phang Nga Bay & ξενάγηση στη Bangkok.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>620€</span></div>
+          <a href="trips/thailand/" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Peru & Ausangate Glacier (New) -->
+      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="περου peru macchu picchu ausangate glacier παγετωνας cusco lima ινκας">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 02 - 14 ΜΑΪΟΥ 2027 • 13 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Περού: Machu Picchu & Ausangate Glacier</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Machu Picchu, Sacred Valley, Cusco & σπάνια πεζοπορία στον παγετώνα Ausangate (Walk on Ice).</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>850€</span></div>
+          <a href="trips/peru/" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Egypt Cairo & Pyramids (New) -->
+      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="αιγυπτος egypt καϊρο cairo πυραμιδες pyramids γκιζα giza cleopatra statue κλεοπατρα νειλος">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 22 - 28 ΟΚΤΩΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Κάιρο, Πυραμίδες & Αίγυπτος</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πυραμίδες της Γκίζας, Σφίγγα, Αρχαιολογικό Μουσείο Καΐρου (Αγάλματα Κλεοπάτρας & Τουταγχαμών) & Νείλος.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Πτήσεις από <span>280€</span></div>
+          <a href="trips/egypt/" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Lapland -->
       <div class="card trip-card trip-card-catalog" data-category="europe" data-title="λαπωνια lapland φινλανδια ρονβανιεμι aurora borealis husky santa">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
@@ -138,7 +186,7 @@
         </div>
       </div>
 
-      <!-- New York (New) -->
+      <!-- New York -->
       <div class="card trip-card trip-card-catalog" data-category="americas" data-title="νεα υορκη new york ηπα usa manhattan">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
@@ -154,7 +202,7 @@
         </div>
       </div>
 
-      <!-- Rio de Janeiro (New) -->
+      <!-- Rio de Janeiro -->
       <div class="card trip-card trip-card-catalog" data-category="americas" data-title="ριο ντε τζανειρο rio de janeiro βραζιλια brazil christ redeemer copacabana">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
@@ -193,7 +241,7 @@
           <div style="padding: 20px;">
             <span class="trip-dates">📅 15 - 25 ΜΑΪΟΥ 2027 • 10 ΗΜΕΡΕΣ</span>
             <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ακτή Αμάλφι & Τοσκάνη</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Positano, Amalfi, Capri & Ravello. Ιδιωτική σκάφος, γευσιγνωσία wine & limoncello και μαγευτικά τοπία.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Positano, Amalfi, Capri & Ravello. Ιδιωτική σκάφος, γευσιγνωσία wine & limoncello.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
@@ -298,7 +346,7 @@
         </div>
         <div class="form-group">
           <label for="destination">Προορισμός Ενδιαφέροντος</label>
-          <input type="text" id="destination" placeholder="π.χ. Λαπωνία, Νέα Υόρκη, Ρίο...">
+          <input type="text" id="destination" placeholder="π.χ. Ταϊλάνδη, Περού, Κάιρο...">
         </div>
         <div class="form-group">
           <label for="comments">Λεπτομέρειες / Ημερομηνίες</label>
