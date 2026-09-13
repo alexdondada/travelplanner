@@ -211,3 +211,118 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; font-size: 0.9rem
   .form-row { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2.2rem; }
 }
+
+/* Footer Base Styles */
+.site-footer {
+  background-color: #0f182b;
+  color: #a0aec0;
+  padding: 60px 0 0 0;
+  font-size: 0.95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-brand {
+  color: #ffffff;
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.footer-brand span {
+  color: #c5a059;
+}
+
+.footer-desc {
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.footer-heading {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2.1;
+}
+
+.footer-links a {
+  color: #a0aec0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #c5a059;
+}
+
+/* Small Font Specific for Legal Links */
+.legal-links {
+  font-size: 0.82rem;
+  line-height: 2;
+}
+
+.legal-links a {
+  color: #8898aa;
+}
+
+.legal-links a:hover {
+  color: #ffffff;
+}
+
+/* Payment Section */
+.payment-intro {
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  color: #8898aa;
+}
+
+.payment-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.pay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #1a263e;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+/* Specific Badge Accent Highlights */
+.pay-badge.visa { border-color: #1a1f71; }
+.pay-badge.mastercard { border-color: #eb001b; }
+.pay-badge.paypal { border-color: #003087; color: #3b7bbf; }
+.pay-badge.alpha-bank, 
+.pay-badge.alpha-ecommerce { border-color: #005691; color: #6db3f2; }
+.pay-badge.btc { border-color: #f2a900; color: #f2a900; }
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #718096;
+}
