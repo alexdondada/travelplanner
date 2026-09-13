@@ -227,5 +227,71 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Interactive Trip Detail Modal -->
+<div id="trip-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-modal" id="close-modal">&times;</button>
+    
+    <div class="modal-header" id="modal-header-bg">
+      <div class="modal-header-text">
+        <span class="badge" id="modal-badge">10 Days / 9 Nights</span>
+        <h2 id="modal-title" style="font-family: var(--font-heading); font-size: 2rem; margin-top: 5px;">Amalfi Coast & Tuscany</h2>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <!-- Navigation Tabs -->
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+        <button class="tab-btn" onclick="switchTab('itinerary')">Day-by-Day</button>
+        <button class="tab-btn" onclick="switchTab('included')">What's Included</button>
+      </div>
+
+      <!-- Tab 1: Overview -->
+      <div id="tab-overview" class="tab-content active">
+        <h3>Trip Highlights</h3>
+        <p id="modal-overview-text" style="margin: 15px 0; color: var(--text-muted);">
+          Experience the ultimate slow-travel journey. Designed for travelers who want hand-picked boutique hotels, local food experiences, and seamless private transfers without group tour rushing.
+        </p>
+        <div style="background: var(--bg-light); padding: 20px; border-radius: 8px; margin-top: 20px;">
+          <strong>Starting From:</strong> <span id="modal-price" style="font-size: 1.4rem; color: var(--primary); font-weight:700;">€2,400</span> / person
+        </div>
+      </div>
+
+      <!-- Tab 2: Itinerary -->
+      <div id="tab-itinerary" class="tab-content">
+        <div class="timeline-item">
+          <h4>Day 1-3: Coastal Bliss & Private Boat Tour</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Arrival in Naples, private transfer to Ravello. Enjoy sunset drinks and a full-day private boat ride down Positano.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Day 4-7: High-Speed Rail & Tuscan Estate</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">First-class train to Florence. Pick up private transport to a Chianti wine estate with an exclusive cooking class.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Day 8-10: Historic Rome & VIP Access</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Skip-the-line early access to the Vatican, evening Trastevere culinary tour, and private airport drop-off.</p>
+        </div>
+      </div>
+
+      <!-- Tab 3: What's Included -->
+      <div id="tab-included" class="tab-content">
+        <ul style="line-height: 2;">
+          <li>✔ 4★ & 5★ Boutique Hotel Stays with Breakfast</li>
+          <li>✔ All Private Airport & Inter-City Transfers</li>
+          <li>✔ High-Speed Executive Train Tickets</li>
+          <li>✔ Pre-arranged VIP Skip-the-Line Entry Passes</li>
+          <li>✔ Dedicated 24/7 Concierge WhatsApp Support</li>
+          <li>❌ Flights (Handled separately or advised by us)</li>
+        </ul>
+      </div>
+
+      <!-- Action Button -->
+      <div style="margin-top: 30px; text-align: center;">
+        <a href="#contact" onclick="closeTripModal()" class="btn btn-primary btn-block">Customize & Request This Itinerary</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
