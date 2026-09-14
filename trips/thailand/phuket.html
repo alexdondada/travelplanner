@@ -4,13 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ταϊλάνδη, Phi Phi & James Bond Island | Vanguard Travel Design</title>
+  <meta name="description" content="Οργανωμένο 8ήμερο ταξίδι στην Ταϊλάνδη: Μπανγκόκ, Πουκέτ, Phi Phi Islands & James Bond Island. Πτήσεις, 5* διαμονή, εκδρομές και Ελληνόφωνος συνοδός σε ένα πλήρες πακέτο." />
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .trip-hero { 
-      background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
+      background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1755564662325-a84a76c742ba?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
       padding: 120px 24px; 
       color: white; 
       text-align: center; 
@@ -25,14 +27,13 @@
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+      align-items: start;
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -56,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -74,7 +74,6 @@
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
-    /* Photo Album Collage Grid */
     .photo-album-section {
       margin-top: 60px;
       padding-top: 40px;
@@ -82,11 +81,17 @@
     }
     
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -107,16 +112,20 @@
       transform: scale(1.05);
     }
 
-    /* Collage Variations */
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -125,14 +134,20 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
       </ul>
       <div class="nav-right">
         <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -144,7 +159,6 @@
 
   <main class="container section">
 
-    <!-- Title & Date Header (Outside & Above Grid) -->
     <div class="itinerary-header">
       <span class="badge-date">📅 10 - 17 ΝΟΕΜΒΡΙΟΥ 2026</span>
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (8 Ημέρες / 7 Νύχτες)</h2>
@@ -152,7 +166,6 @@
 
     <div class="trip-grid">
       
-      <!-- Left Column: Sequential Non-stop Itinerary -->
       <div>
         <div class="itinerary-day">
           <h3>Ημέρα 1: Άφιξη στη Μπανγκόκ & Νυχτερινή Κρουαζιέρα στον Chao Phraya</h3>
@@ -195,7 +208,6 @@
         </div>
       </div>
 
-      <!-- Right Column: Top-Aligned Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
@@ -236,63 +248,68 @@
 
     </div>
 
-    <!-- Photo Album Grid Collage -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
       <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, τοπία και εμπειρίες από την εξωτική Ταϊλάνδη</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://ak-d.tripcdn.com/images/1mi0u424x98npykve840B_W_640_0_R5_Q80.jpg?proc=source/trip" alt="Thailand Photo 1">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://www.travelwithpau.com/wp-content/uploads/2018/08/PhiPhi-1-4-768x1024.jpg" alt="Thailand Photo 2">
+
+        <!-- Block 1: large hero shot (Maya Bay) + tall boat portrait -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1534008897995-27a23e859048?auto=format&fit=crop&w=1000&q=80" alt="Βάρκες στα τιρκουάζ νερά του Maya Bay, Ταϊλάνδη">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1519915247718-1703f9c6bb15?auto=format&fit=crop&w=800&q=80" alt="Παραδοσιακή βάρκα στην ακτή, Ταϊλάνδη">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://www.indochinavoyages.com/wp-content/uploads/2019/08/phi_phi_island_tour_4.jpg" alt="Thailand Photo 3">
+        <!-- Block 2: three tall aerial island shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80" alt="Αεροφωτογραφία νησιών Phi Phi">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?auto=format&fit=crop&w=800&q=80" alt="Βάρκες σε όρμο του Phi Phi Island">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1577702066866-6c8897d06443?auto=format&fit=crop&w=800&q=80" alt="Αεροφωτογραφία καταπράσινου νησιού, Ταϊλάνδη">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://www.indochinavoyages.com/wp-content/uploads/2019/08/phi_phi_island_tour_1-1.jpg" alt="Thailand Photo 4">
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1560018997-467e37a57122?auto=format&fit=crop&w=800&q=80" alt="Παραδοσιακή ξύλινη βάρκα, Ταϊλάνδη">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1673627114937-ca220aad736d?auto=format&fit=crop&w=800&q=80" alt="Βάρκες σε αμμώδη παραλία, Ταϊλάνδη">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1521109464564-2fa2faa95858?auto=format&fit=crop&w=800&q=80" alt="Λευκές βάρκες στη θάλασσα, Ταϊλάνδη">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://i0.wp.com/tripiwi.com/wp-content/uploads/2024/03/trail-to-long-beach-phi-phi.jpg?strip=info&w=600&ssl=1" alt="Thailand Photo 5">
+        <!-- Block 4: full-width panoramic banner -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1586302836983-d1efb5eee221?auto=format&fit=crop&w=1600&q=80" alt="Πανοραμική θέα νησιού από ψηλά, Ταϊλάνδη">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://i0.wp.com/tripiwi.com/wp-content/uploads/2024/03/Sunset-at-nui-bay.jpg?w=1200&ssl=1" alt="Thailand Photo 6">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?auto=format&fit=crop&w=1000&q=80" alt="Ξύλινες βάρκες σε γαλαζοπράσινη θάλασσα">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1565641576261-a0d19db34b9d?auto=format&fit=crop&w=800&q=80" alt="Νησί στην Ταϊλάνδη, επιλεκτική εστίαση">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1575515602219-a177b8cc5e99?auto=format&fit=crop&w=1000&q=80" alt="Καθαρά νερά κοντά στα νησιά Phi Phi">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://i0.wp.com/tripiwi.com/wp-content/uploads/2024/03/swimming-at-pileh-lagoon-phi-phi-islands.jpg?w=1200&ssl=1" alt="Thailand Photo 7">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://i0.wp.com/tripiwi.com/wp-content/uploads/2024/03/Maya-Bay.jpg?w=600&ssl=1" alt="Thailand Photo 8">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://i0.wp.com/tripiwi.com/wp-content/uploads/2024/03/maya-bay-koh-phi-phi-leh.jpg?w=1200&ssl=1" alt="Thailand Photo 9">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://i0.wp.com/tripiwi.com/wp-content/uploads/2024/03/Koh-Phi-Phi-Kayaking.jpg?w=1200&ssl=1" alt="Thailand Photo 10">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.ferryhopper.com/images/articles/2025/best-time-go-thailand/buddha-temple-bangkok.jpg" alt="Thailand Photo 11">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.ferryhopper.com/images/articles/2025/best-time-go-thailand/lao-lading-beach-krabi.jpg" alt="Thailand Photo 12">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://images.ferryhopper.com/images/articles/2025/best-time-go-thailand/phang-nga-bay-hong-island.jpg" alt="Thailand Photo 13">
-        </div>
       </div>
     </section>
   </main>
@@ -328,11 +345,63 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">VANGUARD <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Vanguard Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script src="../../script.js"></script>
 
 </body>
 </html>
