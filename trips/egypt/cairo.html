@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Αίγυπτος: Κάιρο, Πυραμίδες & Κλεοπάτρα | Vanguard Travel Design</title>
+  <meta name="description" content="Οργανωμένο 7ήμερο ταξίδι στο Κάιρο: Πυραμίδες της Γκίζας, Σφίγγα, Μεγάλο Αιγυπτιακό Μουσείο, Σακκάρα, Παλιό Κάιρο, Khan el-Khalili και πλεύση με felucca στον Νείλο." />
+  <title>Κάιρο: Πυραμίδες, Σακκάρα & Νείλος | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .trip-hero { 
       background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
@@ -25,14 +27,13 @@
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      align-items: start; /* Perfectly aligns the sidebar with Day 1 card */
+      align-items: start;
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -56,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -74,19 +74,24 @@
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
-    /* Photo Album Collage Grid Below Itinerary */
     .photo-album-section {
       margin-top: 60px;
       padding-top: 40px;
       border-top: 1px solid var(--border, #e2dfd7);
     }
-    
+
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -107,16 +112,20 @@
       transform: scale(1.05);
     }
 
-    /* Collage Variations */
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -125,79 +134,88 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
       </ul>
       <div class="nav-right">
         <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">ANCIENT CIVILIZATION</span>
-    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Κάιρο, Πυραμίδες Γκίζας & Αίγυπτος</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Πυραμίδες Γκίζας • GEM Museum • Αλεξάνδρεια & Κλεοπάτρα • Νείλος</p>
+    <span class="badge">ANCIENT WONDERS OF EGYPT</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Κάιρο: Πυραμίδες, Σακκάρα & Νείλος</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">7 Ημέρες • 6 Διανυκτερεύσεις • Γκίζα • Σφίγγα • Σακκάρα • Παλιό Κάιρο • Νείλος</p>
   </header>
 
   <main class="container section">
 
-    <!-- Title and Date placed ABOVE grid so grid top aligns Day 1 with Sidebar -->
     <div class="itinerary-header">
-      <span class="badge-date">📅 22 - 27 ΟΚΤΩΒΡΙΟΥ 2026</span>
-      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
+      <span class="badge-date">📅 22 - 28 ΟΚΤΩΒΡΙΟΥ 2026</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (7 Ημέρες / 6 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
-      <!-- Left Column: Itinerary Days -->
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στο Κάιρο & Αγορά Khan El Khalili</h3>
-          <p>Συνάντηση στο αεροδρόμιο αναχώρησης και πτήση για το Κάιρο. Άφιξη στη μητρόπολη του Νείλου, θερμή υποδοχή από τον ελληνόφωνο διπλωματούχο ξεναγό μας και ιδιωτική μεταφορά στο 5* ξενοδοχείο μας. Το απόγευμα επισκεπτόμαστε την ιστορική ανατολίτικη αγορά Khan El Khalili για έναν ατμοσφαιρικό περίπατο στα σοκάκια με τα μπαχαρικά και παραδοσιακό τσάι με μέντα στο ιστορικό καφενείο El Fishawy.</p>
+          <h3>Ημέρα 1: Άφιξη στο Κάιρο – Ξεκούραση & Καλωσόρισμα</h3>
+          <p>Πτήση προς το Κάιρο. Η χρονική διαφορά με την Ελλάδα είναι μηδενική έως μία ώρα, οπότε δεν υπάρχει ουσιαστικό jet lag — ωστόσο η πρώτη ημέρα κρατιέται ήσυχη λόγω της διάρκειας του ταξιδιού: θερμή υποδοχή από τον τοπικό αντιπρόσωπο, μεταφορά στο ξενοδοχείο μας κοντά στη Γκίζα και ένα χαλαρό δείπνο καλωσορίσματος με πρώτη γεύση αιγυπτιακής κουζίνας.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Οροπέδιο Γκίζας (Πυραμίδες & Σφίγγα) & Σακκάρα</h3>
-          <p>Αφιερώνουμε την ημέρα στα σπουδαιότερα μνημεία της αρχαίας Αιγύπτου στη δυτική όχθη. Επισκεπτόμαστε το οροπέδιο της Γκίζας με τις τρεις επιβλητικές Πυραμίδες του Χέοπα, του Χεφρήνου και του Μυκερίνου, καθώς και την αινιγματική Μεγάλη Σφίγγα. Στη συνέχεια κατευθυνόμαστε νότια στη Σακκάρα για να θαυμάσουμε τη βαθμιδωτή Πυραμίδα του Ζοζέρ, το αρχαιότερο λίθινο οικοδόμημα στον κόσμο, απολαμβάνοντας γεύμα με θέα το φαραωνικό τοπίο.</p>
+          <h3>Ημέρα 2: Πλατό της Γκίζας – Πυραμίδες, Σφίγγα & Μεγάλο Αιγυπτιακό Μουσείο</h3>
+          <p>Αφιερώνουμε την ημέρα εξ ολοκλήρου στην περιοχή της Γκίζας, χωρίς καμία άσκοπη μετακίνηση. Το πρωί θαυμάζουμε από κοντά τις τρεις μεγάλες Πυραμίδες (Χέοπα, Χεφρήνου, Μυκερίνου) και τη Μεγάλη Σφίγγα, με προαιρετική βόλτα με καμήλα στην έρημο. Συνεχίζουμε στο ολοκαίνουργιο Μεγάλο Αιγυπτιακό Μουσείο (GEM), που βρίσκεται ακριβώς δίπλα στο πλατό, όπου θαυμάζουμε τους θησαυρούς του Τουταγχαμών και χιλιάδες αρχαιολογικά ευρήματα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Μεγάλο Αιγυπτιακό Μουσείο (GEM) & Δείπνο - Κρουαζιέρα στον Νείλο</h3>
-          <p>Πρωινή επίσκεψη στο υπερσύγχρονο Μεγάλο Αιγυπτιακό Μουσείο (Grand Egyptian Museum). Εξερευνούμε την ολοκληρωμένη συλλογή του Τουταγχαμών με τη χρυσή μάσκα, καθώς και τα σπάνια πτολεμαϊκά αγάλματα της βασίλισσας Κλεοπάτρας. Το απόγευμα επιβιβαζόμαστε σε παραδοσιακή αιγυπιακή φελούκα για μια ειδυλλιακή βόλτα στα νερά του Νείλου κατά το ηλιοβασίλεμα, η οποία ολοκληρώνεται με πλούσιο δείπνο onboard και φολκλορικό σόου.</p>
+          <h3>Ημέρα 3: Σακκάρα & Μέμφιδα – Η Κλιμακωτή Πυραμίδα & η Αρχαία Πρωτεύουσα</h3>
+          <p>Συνεχίζουμε νότια, στην ίδια γενική κατεύθυνση με χθες, προς τη Σακκάρα, όπου δεσπόζει η Κλιμακωτή Πυραμίδα του Djoser, η αρχαιότερη μεγάλη πέτρινη κατασκευή στον κόσμο. Στη συνέχεια επισκεπτόμαστε τη Μέμφιδα, την πρώτη πρωτεύουσα της αρχαίας Αιγύπτου, με το υπαίθριο μουσείο της και το εντυπωσιακό κείμενο άγαλμα του Ραμσή Β'.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Ολοήμερη Εκδρομή στην Αλεξάνδρεια (Η Πόλη της Κλεοπάτρας)</h3>
-          <p>Πρωινή αναχώρηση για την παραθαλάσσια Αλεξάνδρεια στις ακτές της Μεσογείου. Επισκεπτόμαστε τη σύγχρονη Νέα Βιβλιοθήκη της Αλεξάνδρειας, το επιβλητικό Κάστρο Qaitbay (χτισμένο στη θέση του αρχαίου Φάρου), τις Ρωμαϊκές Κατακόμβες Kom El Shoqafa και τα υποθαλάσσια ευρήματα του παλατιού της Κλεοπάτρας. Γεύμα σε παραθαλάσσιο εστιατόριο με φρέσκα θαλασσινά και επιστροφή το βράδυ στο Κάιρο.</p>
+          <h3>Ημέρα 4: Παλιό Κάιρο – Ακρόπολη του Σαλαντίν, Τζαμί Mohamed Ali & Bazaar Khan el-Khalili</h3>
+          <p>Μια ημέρα αφιερωμένη στο ιστορικό κέντρο της πόλης. Επισκεπτόμαστε την επιβλητική Ακρόπολη (Citadel) του Σαλαντίν και το εντυπωσιακό Τζαμί του Mohamed Ali (Αλαβάστρινο Τζαμί), με πανοραμική θέα σε όλο το Κάιρο. Συνεχίζουμε στο ιστορικό παζάρι Khan el-Khalili, όπου χανόμαστε στα στενά σοκάκια με τα μπαχαρικά, τα χειροτεχνήματα και τα παραδοσιακά καφενεία.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Ισλαμικό & Κοπτικό Κάιρο - Ακρόπολη Saladin</h3>
-          <p>Εξερευνούμε την ιστορική καρδιά της πόλης: ανεβαίνουμε στην Ακρόπολη του Σαλαδίν για να θαυμάσουμε το εντυπωσιακό Αλαβαστρινό Τζαμί του Μωχάμετ Άλη με την πανοραμική θέα σε όλο το Κάιρο. Στη συνέχεια περιηγούμαστε στο ατμοσφαιρικό Κοπτικό Κάιρο, επισκεπτόμενοι την περίφημη Κρεμαστή Εκκλησία (Hanging Church) και τον Άγιο Γεώργιο. Το βράδυ απολαμβάνουμε αποχαιρετιστήριο δείπνο σε παραδοσιακό εστιατόριο.</p>
+          <h3>Ημέρα 5: Πλεύση με Felucca στον Νείλο & Δείπνο-Κρουαζιέρα με Παράσταση Tanoura</h3>
+          <p>Μια χαλαρωτική ημέρα στον ιερό ποταμό. Το απόγευμα πλέουμε με παραδοσιακή felucca (ξύλινο ιστιοφόρο) στα ήρεμα νερά του Νείλου, απολαμβάνοντας το ηλιοβασίλεμα. Το βράδυ επιβιβαζόμαστε σε δείπνο-κρουαζιέρα με ζωντανή παραδοσιακή μουσική και εντυπωσιακή παράσταση Tanoura (περιστρεφόμενοι χορευτές).</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: Κάιρο - Πτήση Επιστροφής</h3>
-          <p>Πρωινό στο ξενοδοχείο και ελεύθερος χρόνος για τις τελευταίες αναμνηστικές αγορές ή μια σύντομη βόλτα στην πόλη. Στη συνέχεια, ιδιωτική μεταφορά στο διεθνές αεροδρόμιο του Καΐρου για την πτήση της επιστροφής, γεμάτοι από τις ανεξίτηλες εικόνες των Πυραμίδων, του Νείλου και της πολιτιστικής κληρονομιάς της Αιγύπτου.</p>
+          <h3>Ημέρα 6: Ελεύθερη Ημέρα (Προαιρετική Εκδρομή στην Αλεξάνδρεια)</h3>
+          <p>Ελεύθερη ημέρα στο Κάιρο για χαλάρωση, αγορές ή επιπλέον εξερεύνηση με δικά σας μέσα. Προαιρετικά, όσοι επιθυμούν μπορούν να συμμετάσχουν σε ολοήμερη εκδρομή στην ιστορική παραθαλάσσια Αλεξάνδρεια (Βιβλιοθήκη της Αλεξάνδρειας, Κατακόμβες Kom El Shoqafa, το φρούριο Qaitbay), με επιπλέον κόστος.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 7: Ελεύθερος Χρόνος – Πτήση Επιστροφής</h3>
+          <p>Ελεύθερος πρωινός χρόνος για τελευταίες βόλτες ή αγορές. Μεταφορά στο διεθνές αεροδρόμιο του Καΐρου για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τους αρχαίους θησαυρούς της Αιγύπτου.</p>
         </div>
       </div>
 
-      <!-- Right Column: Top-aligned Sticky Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
           <ul class="inc-exc-list inc-list">
-            <li>Απευθείας πτήσεις Αθήνα / Θεσσαλονίκη - Κάιρο - Αθήνα / Θεσσαλονίκη</li>
-            <li>5 διανυκτερεύσεις σε 5* Ξενοδοχείο στο Κάιρο με πρωινό</li>
-            <li>Μεταφορές με πολυτελή κλιματιζόμενα πούλμαν</li>
-            <li>Επίσημος Ελληνόφωνος Αιγυπτιολόγος / Ξεναγός καθ' όλη τη διάρκεια</li>
-            <li>Είσοδοι σε όλους τους αρχαιολογικούς χώρους & GEM Museum</li>
-            <li>Ολοήμερη εκδρομή στην Αλεξάνδρεια με γεύμα</li>
-            <li>Βόλτα με Φελούκα & Δείπνο-κρουαζιέρα στον Νείλο με σόου</li>
-            <li>Βίζα εισόδου στην Αίγυπτο</li>
+            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Κάιρο με επιστροφή</li>
+            <li>6 διανυκτερεύσεις σε 5* ξενοδοχείο κοντά στη Γκίζα με πρωινό</li>
+            <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
+            <li>Εισιτήρια εισόδου στο πλατό της Γκίζας (Πυραμίδες & Σφίγγα)</li>
+            <li>Εισιτήρια στο Μεγάλο Αιγυπτιακό Μουσείο (GEM)</li>
+            <li>Ξενάγηση στη Σακκάρα & στο υπαίθριο μουσείο της Μέμφιδας</li>
+            <li>Ξενάγηση στην Ακρόπολη του Σαλαντίν & στο Τζαμί Mohamed Ali</li>
+            <li>Πλεύση με felucca στον Νείλο & δείπνο-κρουαζιέρα με παράσταση Tanoura</li>
+            <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός καθ' όλη τη διάρκεια</li>
             <li>Ταξιδιωτική ασφάλιση</li>
           </ul>
 
@@ -205,75 +223,106 @@
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
-            <li>Φόροι αεροδρομίων (~180€)</li>
-            <li>Είσοδος στο εσωτερικό της Μεγάλης Πυραμίδας (προαιρετικά)</li>
-            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~30€)</li>
-            <li>Ποτά κατά τα γεύματα</li>
+            <li>Φόροι αεροδρομίων (~220€)</li>
+            <li>Βίζα εισόδου Αιγύπτου, εάν απαιτείται (~25€, πληρωτέα κατά την άφιξη)</li>
+            <li>Προαιρετική εκδρομή στην Αλεξάνδρεια (με επιπλέον κόστος)</li>
+            <li>Βόλτα με καμήλα στη Γκίζα (προαιρετική, πληρωτέα τοπικά)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς (~20€)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
           </ul>
 
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              790€
+              1.000€
             </div>
-            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 5 Νύχτες)</span>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 6 Νύχτες / 7 Ημέρες)</span>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Photo Album Grid Collage Below Itinerary -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, ταξιδιώτες και τοπία από τα σπουδαιότερα μνημεία της Αιγύπτου</p>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα από τους αρχαίους θησαυρούς και τη ζωντανή καθημερινότητα του Καΐρου</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://www.worldtouradvice.com/files/large/cf135d8f4a589d31594d02956e036146.jpg" alt="Cairo Trip Photo 1">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9sgzuRDLWBZeSbI4t-DAE6We0bsoSyrTXOo1Ru5ndfcGcJwlvusuOF6I&s=10" alt="Cairo Trip Photo 2">
+
+        <!-- Block 1: Giza pyramid hero + camel portrait -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80" alt="Πυραμίδα του Χεφρήνου, Γκίζα">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1559738933-d69ac3ff674b?auto=format&fit=crop&w=800&q=80" alt="Καμήλα κοντά στις Πυραμίδες, Αίγυπτος">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-WYJySUfp2ocqHx8XG6MTkyyCb9x1zyi_pXobmY9CfYSZSIOJ_ENfG3k&s=10" alt="Cairo Trip Photo 3">
+        <!-- Block 2: three tall shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=800&q=80" alt="Η Μεγάλη Σφίγγα με την Πυραμίδα στο βάθος, Γκίζα">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?auto=format&fit=crop&w=800&q=80" alt="Τζαμί Sultan Hassan & Al-Rifai, Κάιρο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1719659018185-8a239c35fb4a?auto=format&fit=crop&w=800&q=80" alt="Felucca στον Νείλο με φόντο τον Πύργο του Καΐρου">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaLvxuuC3d4zlSyzqzfEAnjiELZwVKmK1JEbVmJyjlxw&s=10" alt="Cairo Trip Photo 4">
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1710211288826-b7df3ab71588?auto=format&fit=crop&w=800&q=80" alt="Στενό σοκάκι παζαριού, Khan el-Khalili">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1595979904086-471704dc0e81?auto=format&fit=crop&w=800&q=80" alt="Λευκός τρούλος τζαμιού, Κάιρο">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1630201187972-dc4136076c6c?auto=format&fit=crop&w=800&q=80" alt="Αεροφωτογραφία του Καΐρου">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQpencq372U7eWH0RVPJ4IrnoutgmltXFP1xMvGQEdTKSFgBo7DdHfxPM&s=10" alt="Cairo Trip Photo 5">
+        <!-- Block 4: full-width panoramic banner -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1643667996984-fcc69743449d?auto=format&fit=crop&w=1600&q=80" alt="Οι Πυραμίδες της Γκίζας στην έρημο">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp2AWa8n2vV3_KoCLsokJi2pBUYIIvCF2jjI_G5fhe1rB2qR_3u393mTA&s=10" alt="Cairo Trip Photo 6">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1705628080778-f86b2f90a114?auto=format&fit=crop&w=1000&q=80" alt="Ομάδα με καμήλες μπροστά από τις Πυραμίδες">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1680319287237-6a36b44ceba3?auto=format&fit=crop&w=800&q=80" alt="Τζαμί με δύο μιναρέδες, Κάιρο">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1561778498-2d8ef2ade19e?auto=format&fit=crop&w=1000&q=80" alt="Πλωτά σκάφη στις όχθες του Νείλου, Κάιρο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsC8EKF0uNgOLWdCHAUsUkrG4fVJ1LCPIh7F1qCkY2VA&s=10" alt="Cairo Trip Photo 7">
-        </div>
       </div>
     </section>
   </main>
 
   <section id="booking" class="section texture-bg">
     <div class="container" style="max-width:700px;">
-      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για την Αίγυπτο</h2>
-      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 6ήμερο ταξίδι.</p>
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για το Κάιρο</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 7ήμερο ταξίδι.</p>
       
       <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
         <div class="form-group">
           <label for="name">Ονοματεπώνυμο</label>
-          <input type="text" id="name" required placeholder="π.χ. Μαρία Δημητρίου">
+          <input type="text" id="name" required placeholder="π.χ. Νίκος Παπαδόπουλος">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" required placeholder="maria@example.com">
+          <input type="email" id="email" required placeholder="nikos@example.com">
         </div>
         <div class="form-group">
           <label for="phone">Τηλέφωνο Επικοινωνίας</label>
@@ -292,11 +341,63 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">VANGUARD <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Vanguard Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script src="../../script.js"></script>
 
 </body>
 </html>
