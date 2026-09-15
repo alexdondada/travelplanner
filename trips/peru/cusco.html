@@ -80,11 +80,17 @@
     }
     
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -105,15 +111,20 @@
       transform: scale(1.05);
     }
 
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -237,49 +248,63 @@
       <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, αρχαίοι πολιτισμοί και παγετώνες από το μαγευτικό Περού</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1200&q=80" alt="Machu Picchu Panorama">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?auto=format&fit=crop&w=800&q=80" alt="Cusco Plaza de Armas">
+
+        <!-- Block 1: Machu Picchu hero + llama portrait -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1200&q=80" alt="Πανόραμα Machu Picchu">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1578362646678-a1b282e43ff8?auto=format&fit=crop&w=800&q=80" alt="Λάμα στους λόφους του Περού">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80" alt="Andean Glacier Ice Hike">
+        <!-- Block 2: three tall Cusco city shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1557767153-2bdfeccd5224?auto=format&fit=crop&w=800&q=80" alt="Καθεδρικός & Plaza de Armas, Κούσκο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1526697675318-89790adec369?auto=format&fit=crop&w=800&q=80" alt="Παραδοσιακές κεραμοσκεπές στο Κούσκο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1593494441374-bad54249d0e8?auto=format&fit=crop&w=800&q=80" alt="Στενά της παλιάς πόλης του Κούσκο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1200&q=80" alt="Sacred Valley & Ollantaytambo">
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1625180637029-8cedfc473f29?auto=format&fit=crop&w=800&q=80" alt="Άγαλμα Cristo Blanco, Κούσκο">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1567597243073-2d274aabecec?auto=format&fit=crop&w=800&q=80" alt="Ερείπια Machu Picchu μέσα από πέτρινο παράθυρο">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?auto=format&fit=crop&w=800&q=80" alt="Plaza de Armas, Κούσκο">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&fit=crop&w=800&q=80" alt="Lima Coast & Miraflores">
+        <!-- Block 4: full-width Andes panorama -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1473455811944-fdd1b0f282f3?auto=format&fit=crop&w=1600&q=80" alt="Πανοραμική θέα των Άνδεων">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=800&q=80" alt="Inca Ruins Detail">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1589260133321-6d4cc4a4799e?auto=format&fit=crop&w=1000&q=80" alt="Αεροφωτογραφία του Κούσκο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&fit=crop&w=800&q=80" alt="Ακτή Miraflores, Λίμα">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1533856797653-6f6dbf370efc?auto=format&fit=crop&w=1000&q=80" alt="Καταπράσινο βουνό στις Άνδεις">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Andes Mountain Range">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80" alt="Llama in Peru">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=800&q=80" alt="Maras Salt Mines">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1200&q=80" alt="Snow Peak Andes">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Glacier Lagoon">
-        </div>
       </div>
     </section>
   </main>
@@ -329,11 +354,11 @@
       <div>
         <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
         <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
-          <li><a href="../../index.html#about" style="color: #a0aec0; text-decoration: none;">Γιατί Εμάς</a></li>
-          <li><a href="../../index.html#trips" style="color: #a0aec0; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
-          <li><a href="../../index.html#how-it-works" style="color: #a0aec0; text-decoration: none;">Πώς Λειτουργεί</a></li>
-          <li><a href="../../index.html#reviews" style="color: #a0aec0; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
-          <li><a href="#booking" style="color: #a0aec0; text-decoration: none;">Κράτηση</a></li>
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
         </ul>
       </div>
 
