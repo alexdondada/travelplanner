@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ρίο ντε Τζανέιρο, Βραζιλία | Vanguard Travel Design</title>
+  <meta name="description" content="Οργανωμένο 8ήμερο ταξίδι στο Ρίο ντε Τζανέιρο: Christ the Redeemer, Sugarloaf, Copacabana, Maracanã, καπογέιρα & τζιου-τζίτσου, τοπικός αγώνας ποδοσφαίρου και favela tour." />
+  <title>Ρίο ντε Τζανέιρο: Ποδόσφαιρο, Πολεμικές Τέχνες & Copacabana | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .trip-hero { 
       background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
@@ -25,14 +27,13 @@
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+      align-items: start;
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -56,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -74,19 +74,24 @@
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
-    /* Photo Album Collage Grid */
     .photo-album-section {
       margin-top: 60px;
       padding-top: 40px;
       border-top: 1px solid var(--border, #e2dfd7);
     }
-    
+
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -107,16 +112,20 @@
       transform: scale(1.05);
     }
 
-    /* Collage Variations */
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -125,108 +134,115 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
       </ul>
       <div class="nav-right">
         <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">SOUTH AMERICA CARNIVAL & CULTURE</span>
-    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ρίο ντε Τζανέιρο, Βραζιλία</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">8 Ημέρες • 7 Διανυκτερεύσεις • Copacabana • Χριστός Λυτρωτής • Martial Arts • Maracanã • Favela Tour</p>
+    <span class="badge">RIO SPORT & CULTURE EXPERIENCE</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ρίο ντε Τζανέιρο: Ποδόσφαιρο, Πολεμικές Τέχνες & Copacabana</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">8 Ημέρες • 7 Διανυκτερεύσεις • Christ the Redeemer • Maracanã • Capoeira & Jiu-Jitsu • Copacabana</p>
   </header>
 
   <main class="container section">
 
-    <!-- Title & Date Header (Outside & Above Grid) -->
     <div class="itinerary-header">
-      <span class="badge-date">📅 15 - 22 ΝΟΕΜΒΡΙΟΥ 2026</span>
+      <span class="badge-date">📅 10 - 17 ΦΕΒΡΟΥΑΡΙΟΥ 2027</span>
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (8 Ημέρες / 7 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
-      <!-- Left Column: Sequential Non-stop Itinerary -->
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στο Ρίο ντε Τζανέιρο & Copacabana Welcome Walk</h3>
-          <p>Άφιξη στο διεθνές αεροδρόμιο Galeão του Ρίο ντε Τζανέιρο. Θερμή υποδοχή από τον τοπικό εκπρόσωπο και μεταφορά στο παραθαλάσσιο ξενοδοχείο μας στην Copacabana. Το απόγευμα κάνουμε μια πρώτη βόλτα στο διάσημο πλακόστρωτο πεζοδρόμιο της Copacabana, απολαμβάνοντας την πρώτη μας αυθεντική Caipirinha στα παραλιακά κιόσκια (quiostes) υπό τους ήχους της samba.</p>
+          <h3>Ημέρα 1: Άφιξη στο Ρίο ντε Τζανέιρο – Ξεκούραση & Προσαρμογή</h3>
+          <p>Πτήση προς το Ρίο ντε Τζανέιρο (με ενδιάμεση στάση). Λόγω της χρονικής διαφοράς (περίπου 5 ώρες πίσω από την Ελλάδα) και της μεγάλης διάρκειας του ταξιδιού, η πρώτη ημέρα δεν περιλαμβάνει προγραμματισμένες δραστηριότητες: υποδοχή από τον τοπικό αντιπρόσωπο, μεταφορά στο ξενοδοχείο μας στην Copacabana/Ipanema και ένα χαλαρό δείπνο καλωσορίσματος με πρώτη γεύση βραζιλιάνικης κουζίνας, ώστε να ξεκουραστείτε πλήρως πριν ξεκινήσει το πρόγραμμα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Χριστός Λυτρωτής (Corcovado), Sugarloaf Mountain & Παραδοσιακή Churrascaria</h3>
-          <p>Ανεβαίνουμε με το οδοντωτό τρένο μέσα από το τροπικό δάσος Tijuca στην κορυφή Corcovado για να θαυμάσουμε από κοντά το θαύμα του κόσμου, τον Χριστό Λυτρωτή (Christ the Redeemer). Στη συνέχεια παίρνουμε το τελεφερίκ για το Sugarloaf Mountain (Pão de Açúcar) με πανοραμική θέα σε όλο τον κόλπο Guanabara. Το βράδυ απολαμβάνουμε ένα πλούσιο δείπνο σε αυθεντική βραζιλιανή Churrascaria (Rodízιο κρεάτων).</p>
+          <h3>Ημέρα 2: Χριστός Λυτρωτής (Corcovado) & Ιστορική Σάντα Τερέζα</h3>
+          <p>Μετά από μια πλήρη νύχτα ξεκούρασης, ανεβαίνουμε νωρίς το πρωί με το γραφικό οδοντωτό τρένο στον λόφο Corcovado, για να θαυμάσουμε από κοντά το εμβληματικό άγαλμα του Χριστού Λυτρωτή και την πανοραμική θέα όλης της πόλης. Το απόγευμα περιηγούμαστε στην καλλιτεχνική συνοικία Santa Teresa, με τα παλιά αποικιακά αρχοντικά, τα ατελιέ καλλιτεχνών και μια βόλτα με το ιστορικό τραμ (bondinho) — και οι δύο προορισμοί βρίσκονται στην ίδια πλευρά της πόλης, χωρίς άσκοπες μετακινήσεις.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Ιστορικό Κέντρο, Escadaria Selarón & Santa Teresa Gastronomy</h3>
-          <p>Περιήγηση στο ιστορικό κέντρο του Ρίο, την πλατεία Cinelândia, τον καθεδρικό ναό Candelária και το ιστορικό Confeitaria Colombo για καφέ και γλυκό. Επισκεπτόμαστε τα περίφημα πολύχρωμα σκαλιά Escadaria Selarón στο Lapa και ανηφορίζουμε στη μποέμ συνοικία Santa Teresa. Δοκιμάζουμε την παραδοσιακή Feijoada (πλούσιο πιάτο με μαύρα φασόλια και χοιρινό) σε τοπικό boteco.</p>
+          <h3>Ημέρα 3: Pão de Açúcar (Sugarloaf) & Γειτονιές Urca / Botafogo</h3>
+          <p>Επιβιβαζόμαστε στο διάσημο τελεφερίκ σε δύο στάδια που μας οδηγεί στην κορυφή του βράχου Pão de Açúcar, με θέα στον κόλπο Guanabara — ιδανικά προς το ηλιοβασίλεμα. Πριν την ανάβαση, περπατάμε στην παραθαλάσσια πλευρά της γειτονιάς Urca και στο γειτονικό Botafogo, μια ήσυχη και αυθεντική γωνιά του Ρίο, στην ίδια πλευρά της πόλης με τη χθεσινή μας διαδρομή.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Επίσκεψη σε Ακαδημία Βραζιλιανού Τζίου-Τζίτσου (BJJ) & Capoeira Show</h3>
-          <p>Η Βραζιλία είναι η πατρίδα των μαχητικών τεχνών! Το πρωί επισκεπτόμαστε μία από τις πιο ιστορικές ακαδημίες Brazilian Jiu-Jitsu (BJJ) στο Ρίο για να παρακολουθήσουμε προπόνηση και να μάθουμε την ιστορία της οικογένειας Gracie. Το απόγευμα παρακολουθούμε επίδειξη Capoeira στην παραλία Ipanema και δοκιμάζουμε φρέσκο Acai bowl και νερό καρύδας (Água de Coco).</p>
+          <h3>Ημέρα 4: Copacabana & Ipanema – Παραλίες, Beach Football & Foot-Volley</h3>
+          <p>Μια ολόκληρη ημέρα αφιερωμένη στην κουλτούρα της παραλίας του Ρίο. Περπατάμε στο εμβληματικό μωσαϊκό πεζοδρόμιο της Copacabana, συνεχίζουμε στην κοσμοπολίτικη Ipanema και παρακολουθούμε (ή δοκιμάζουμε) beach football και foot-volley με τους ντόπιους, ένα από τα πιο χαρακτηριστικά κομμάτια της καθημερινής ζωής στο Ρίο. Η ημέρα κλείνει με ηλιοβασίλεμα στο βραχώδες ακρωτήρι Arpoador.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Επίσκεψη στο Maracanã Stadium & Ακαδημίες Ποδοσφαίρου (Flamengo / Fluminense)</h3>
-          <p>Αφιερωμένη στο εθνικό άθλημα της Βραζιλίας. Ξεναγούμαστε στο θρυλικό στάδιο Maracanã, περπατώντας στα αποδυτήρια και τις εξέδρες όπου γράφτηκε η ποδοσφαιρική ιστορία. Στη συνέχεια επισκεπτόμαστε τις αθλητικές εγκαταστάσεις και τα προπονητικά κέντρα ιστορικών συλλόγων όπως η Flamengo ή η Fluminense, γνωρίζοντας την κουλτούρα του ποδοσφαίρου από κοντά.</p>
+          <h3>Ημέρα 5: Πολεμικές Τέχνες της Βραζιλίας – Καπογέιρα & Τζιου-Τζίτσου</h3>
+          <p>Μια ημέρα αφιερωμένη στις πολεμικές τέχνες που γεννήθηκαν ή έφτασαν στο απόγειό τους στη Βραζιλία. Το πρωί παρακολουθούμε και δοκιμάζουμε τα πρώτα βήματα της καπογέιρα (Capoeira) σε παραδοσιακή "roda", με ζωντανό μπερίμπάου και εξήγηση της αφρο-βραζιλιάνικης ιστορίας της. Το απόγευμα επισκεπτόμαστε παραδοσιακή ακαδημία Βραζιλιάνικου Τζιου-Τζίτσου (το Ρίο θεωρείται η γενέτειρα του αθλήματος), με demo μαθήματος και γνωριμία με αθλητές της ακαδημίας.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: Πολιτιστική Επίσκεψη στη Favela Vidigal (Προαιρετικά) & Sunset at Arpoador</h3>
-          <p>Το πρωί προσφέρεται η επιλογή για μια ασφαλή, κοινωνικά υπεύθυνη περιήγηση στη Favela Vidigal ή Rocinha με τοπικό κοινοτικό οδηγό, για να κατανοήσουμε την καθημερινή ζωή, τις τέχνες δρόμου και τα τοπικά κοινωνικά έργα. Το απόγευμα συγκεντρωνόμαστε στο βράχο του Arpoador για να χειροκροτήσουμε το ηλιοβασίλεμα πάνω από την Ipanema, μια αγαπημένη παράδοση των ντόπιων.</p>
+          <h3>Ημέρα 6: Ακαδημία Ποδοσφαίρου, Ξενάγηση στο Maracanã & Αγώνας το Βράδυ</h3>
+          <p>Το πρωί επισκεπτόμαστε μια ακαδημία ποδοσφαίρου (CT) μεγάλου συλλόγου του Ρίο, γνωρίζοντας τη δομή ανάπτυξης νέων ταλέντων (ανάλογα με τη διαθεσιμότητα του συλλόγου). Το μεσημέρι πραγματοποιούμε ξενάγηση στο θρυλικό στάδιο Maracanã και στο Μουσείο Ποδοσφαίρου, περπατώντας στο τούνελ των παικτών και στα αποδυτήρια. Το βράδυ παρακολουθούμε ζωντανά έναν τοπικό αγώνα ποδοσφαίρου στο ίδιο στάδιο (ανάλογα με το πρόγραμμα της διοργάνωσης εκείνη την περίοδο), βιώνοντας από κοντά το πάθος των Καριόκα φιλάθλων και τη γαστρονομία των εξέδρων.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 7: Ελεύθερη Ημέρα στην Ipanema, Samba Night & Αποχαιρετιστήριο Party</h3>
-          <p>Ελεύθερος χρόνος για να χαρείτε τον ήλιο και τη θάλασσα στις παραλίες Ipanema και Leblon, ή να κάνετε αγορές τοπικών προϊόντων και Havaianas. Το βράδυ η πόλη ζωντανεύει! Πηγαίνουμε στη γειτονιά Lapa για μια αξέχαστη νύχτα Samba σε ζωντανό club (Samba de Gafieira), γιορτάζοντας το αποχαιρετιστήριο πάρτι μας.</p>
+          <h3>Ημέρα 7: Favela (Προαιρετικά), Τοπική Γαστρονομία & Λάπα</h3>
+          <p>Προαιρετική πρωινή επίσκεψη σε favela (π.χ. Rocinha ή Santa Marta) με τοπικό, εγκεκριμένο ξεναγό από την ίδια την κοινότητα, για μια αυθεντική και σεβαστική γνωριμία με την καθημερινότητα και την κουλτούρα της. Το μεσημέρι δοκιμάζουμε τα πιο αντιπροσωπευτικά πιάτα και ποτά της Βραζιλίας (feijoada, pastel, açaí, caipirinha) στην ιστορική συνοικία Λάπα. Το βράδυ ολοκληρώνουμε με βόλτα στα εμβληματικά Arcos da Lapa και ζωντανή μουσική samba/choro σε παραδοσιακό μπαρ της περιοχής.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 8: Ρίο ντε Τζανέιρο – Πτήση Επιστροφής</h3>
-          <p>Πρωινό στο ξενοδοχείο και ελεύθερος χρόνος για τις τελευταίες αγορές ή μια τελευταία βουτιά στον Ατλαντικό. Μεταφορά στο αεροδρόμιο Galeão για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι ρυθμό, ενέργεια και μοναδικές εικόνες από τη Cidade Maravilhosa.</p>
+          <h3>Ημέρα 8: Ελεύθερος Χρόνος – Πτήση Επιστροφής</h3>
+          <p>Ελεύθερος πρωινός χρόνος για τελευταίες βόλτες ή αγορές στην Ipanema (ή στην Feira Hippie, αν η αναχώρηση συμπίπτει με Κυριακή). Μεταφορά στο διεθνές αεροδρόμιο Galeão για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τον πολιτισμό, το ποδόσφαιρο και τις παραλίες του Ρίο.</p>
         </div>
       </div>
 
-      <!-- Right Column: Top-Aligned Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
           <ul class="inc-exc-list inc-list">
-            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ρίο ντε Τζανέιρο με επιστροφή</li>
-            <li>7 διανυκτερεύσεις σε 4* / 5* παραθαλάσσιο ξενοδοχείο στην Copacabana με πρωινό</li>
-            <li>Μεταφορές από/προς αεροδρόμιο και όλες τις δραστηριότητες με πολυτελές πούλμαν</li>
-            <li>Εισιτήρια οδοντωτού Corcovado (Χριστός Λυτρωτής) & τελεφερίκ Sugarloaf Mountain</li>
-            <li>Ξενάγηση στο ιστορικό κέντρο & Escadaria Selarón</li>
-            <li>Παραδοσιακό δείπνο σε αυθεντική βραζιλιανή Churrascaria</li>
-            <li>Επίσκεψη σε ακαδημία Brazilian Jiu-Jitsu (BJJ) & επίδειξη Capoeira</li>
-            <li>Εισιτήρια & ξενάγηση στο θρυλικό στάδιο Maracanã</li>
-            <li>Ελληνόφωνος αρχηγός / συνοδός καθ' όλη τη διάρκεια του ταξιδιού</li>
-            <li>Πλήρης ταξιδιωτική ασφάλιση</li>
+            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ρίο ντε Τζανέιρο με επιστροφή (με ενδιάμεση στάση)</li>
+            <li>7 διανυκτερεύσεις σε 4*/5* ξενοδοχείο στην Copacabana/Ipanema με πρωινό</li>
+            <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
+            <li>Εισιτήρια & ανάβαση με οδοντωτό τρένο στον Corcovado (Χριστός Λυτρωτής)</li>
+            <li>Εισιτήρια τελεφερίκ Pão de Açúcar (Sugarloaf)</li>
+            <li>Εισαγωγική συνεδρία καπογέιρα (Capoeira) με τοπικό mestre</li>
+            <li>Επίσκεψη & demo μαθήματος σε ακαδημία Βραζιλιάνικου Τζιου-Τζίτσου</li>
+            <li>Επίσκεψη σε ακαδημία ποδοσφαίρου (ανάλογα με τη διαθεσιμότητα του συλλόγου)</li>
+            <li>Ξενάγηση στο στάδιο Maracanã & στο Μουσείο Ποδοσφαίρου</li>
+            <li>Εισιτήριο για τοπικό αγώνα ποδοσφαίρου στο Maracanã (ανάλογα με το πρόγραμμα διοργάνωσης)</li>
+            <li>Γευσιγνωσία τοπικής κουζίνας στη Λάπα (feijoada, pastel, açaí, caipirinha)</li>
+            <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός καθ' όλη τη διάρκεια</li>
+            <li>Ταξιδιωτική ασφάλιση</li>
           </ul>
 
           <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
-            <li>Φόροι αεροδρομίων (~310€)</li>
-            <li>Προαιρετική εκδρομή με τοπικό οδηγό στη Favela Vidigal (~30€)</li>
-            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~35€)</li>
+            <li>Φόροι αεροδρομίων (~290€)</li>
+            <li>Προαιρετική ξενάγηση σε favela (κατόπιν αιτήματος, με επιπλέον κόστος)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~30€)</li>
             <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
+            <li>Προσωπικά έξοδα</li>
           </ul>
 
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              1.890€
+              2.150€
             </div>
             <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 7 Νύχτες / 8 Ημέρες)</span>
           </div>
@@ -235,55 +251,68 @@
 
     </div>
 
-    <!-- Photo Album Grid Collage -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, παραλίες, κουλτούρα και ρυθμός από το Ρίο ντε Τζανέιρο</p>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα από το ζωντανό Ρίο ντε Τζανέιρο — παραλίες, πολιτισμό και πάθος για το ποδόσφαιρο</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80" alt="Christ the Redeemer Rio">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=800&q=80" alt="Copacabana Beach">
+
+        <!-- Block 1: Christ the Redeemer hero + Sugarloaf cable car -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=1200&q=80" alt="Χριστός Λυτρωτής, Ρίο ντε Τζανέιρο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=800&q=80" alt="Τελεφερίκ προς το Pão de Açúcar">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?auto=format&fit=crop&w=800&q=80" alt="Sugarloaf Mountain Cable Car">
+        <!-- Block 2: three tall Copacabana/beach shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1643400813604-b3877e0c4db9?auto=format&fit=crop&w=800&q=80" alt="Μωσαϊκό πεζοδρόμιο Copacabana">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1668194645738-ef8dbb426086?auto=format&fit=crop&w=800&q=80" alt="Beach football στην παραλία Ipanema">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1507125524815-d9d6dccda1dc?auto=format&fit=crop&w=800&q=80" alt="Ξεκούραση στην παραλία, Ρίο ντε Τζανέιρο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?auto=format&fit=crop&w=1200&q=80" alt="Escadaria Selarón Steps">
+        <!-- Block 3: three square Maracanã / football shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1705240401408-784ff1a471ab?auto=format&fit=crop&w=800&q=80" alt="Αεροφωτογραφία του σταδίου Maracanã">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1635637015046-5a7aef2d591e?auto=format&fit=crop&w=800&q=80" alt="Σημαία φιλάθλων στο στάδιο">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1566068992000-fb5cad15aaf6?auto=format&fit=crop&w=800&q=80" alt="Γήπεδο ποδοσφαίρου">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=800&q=80" alt="Brazilian Caipirinha & Food">
+        <!-- Block 4: full-width capoeira roda -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1759352856072-985a4ddab82d?auto=format&fit=crop&w=1600&q=80" alt="Παράσταση καπογέιρα σε κύκλο (roda), Βραζιλία">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80" alt="Maracana Stadium">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1641688587256-7b6549157cef?auto=format&fit=crop&w=1000&q=80" alt="Καπογέιρα, ακροβατική κίνηση">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1626568941852-70bc179e493e?auto=format&fit=crop&w=800&q=80" alt="Χρωματιστός τοίχος με street art, Ρίο ντε Τζανέιρο">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1544991337-95176b5233c4?auto=format&fit=crop&w=1000&q=80" alt="Αεροφωτογραφία βουνών και θάλασσας, Ρίο ντε Τζανέιρο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1583200424570-529241517f54?auto=format&fit=crop&w=1200&q=80" alt="Ipanema Sunset Arpoador">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1564659907532-6b44a3070440?auto=format&fit=crop&w=800&q=80" alt="Favela Vidigal View">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Brazilian Martial Arts & Capoeira">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80" alt="Samba Night Lapa">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=800&q=80" alt="Rio Coast Aerial">
-        </div>
       </div>
     </section>
   </main>
@@ -291,7 +320,7 @@
   <section id="booking" class="section texture-bg">
     <div class="container" style="max-width:700px;">
       <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για το Ρίο ντε Τζανέιρο</h2>
-      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 8ήμερο εξωτικό ταξίδι.</p>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 8ήμερο ταξίδι.</p>
       
       <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
         <div class="form-group">
@@ -319,11 +348,63 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">VANGUARD <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Vanguard Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script src="../../script.js"></script>
 
 </body>
 </html>
