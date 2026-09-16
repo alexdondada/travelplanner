@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ντουμπάι, Burj Khalifa & Palm Jumeirah | Vanguard Travel Design</title>
+  <meta name="description" content="Οργανωμένο 6ήμερο ταξίδι στο Ντουμπάι: Burj Khalifa, Museum of the Future, Desert Safari 4x4, Παλιό Ντουμπάι, Palm Jumeirah & Dubai Marina σε ένα πλήρες πακέτο." />
+  <title>Ντουμπάι: Burj Khalifa, Έρημος & Palm Jumeirah | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .trip-hero { 
       background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
@@ -25,14 +27,13 @@
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+      align-items: start;
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -56,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -74,19 +74,24 @@
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
-    /* Photo Album Collage Grid */
     .photo-album-section {
       margin-top: 60px;
       padding-top: 40px;
       border-top: 1px solid var(--border, #e2dfd7);
     }
-    
+
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -107,16 +112,20 @@
       transform: scale(1.05);
     }
 
-    /* Collage Variations */
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -125,90 +134,94 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
       </ul>
       <div class="nav-right">
         <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">MIDDLE EAST LUXURY ESCAPE</span>
-    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ντουμπάι, Burj Khalifa & Palm Jumeirah</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Παλιό Ντουμπάι • Burj Khalifa Top Floor • Palm Jumeirah • Dubai Marina</p>
+    <span class="badge">FUTURE MEETS DESERT</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Ντουμπάι: Burj Khalifa, Έρημος & Palm Jumeirah</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Downtown Dubai • Desert Safari • Παλιό Ντουμπάι • Dubai Marina</p>
   </header>
 
   <main class="container section">
 
-    <!-- Title & Date Header (Outside & Above Grid) -->
     <div class="itinerary-header">
-      <span class="badge-date">📅 15 - 20 ΝΟΕΜΒΡΙΟΥ 2026</span>
+      <span class="badge-date">📅 15 - 20 ΙΑΝΟΥΑΡΙΟΥ 2027</span>
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
-      <!-- Left Column: Sequential Non-stop Itinerary -->
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στο Ντουμπάι & Υποδοχή</h3>
-          <p>Συνάντηση στο αεροδρόμιο αναχώρησης, απευθείας πτήση και άφιξη στο κοσμοπολίτικο Ντουμπάι. Θερμή υποδοχή από τον τοπικό εκπρόσωπο και μεταφορά στο πολυτελές 5* ξενοδοχείο μας. Ελεύθερος χρόνος για ξεκούραση ή μια πρώτη χαλαρή βόλτα στα πέριξ του ξενοδοχείου.</p>
+          <h3>Ημέρα 1: Άφιξη στο Ντουμπάι – Ξεκούραση & Καλωσόρισμα</h3>
+          <p>Πτήση προς το Ντουμπάι. Η χρονική διαφορά με την Ελλάδα είναι μόλις 1-2 ώρες, οπότε δεν υπάρχει ουσιαστικό jet lag — ωστόσο η πρώτη ημέρα κρατιέται ήσυχη λόγω της διάρκειας της πτήσης: θερμή υποδοχή από τον τοπικό αντιπρόσωπο, μεταφορά στο ξενοδοχείο μας και ένα χαλαρό δείπνο καλωσορίσματος.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Αυθεντικό Παλιό Ντουμπάι, Abra Boat & Παραδοσιακά Σουκ</h3>
-          <p>Ξεκινάμε την ημέρα μας εξερευνώντας την ιστορική συνοικία Al Fahidi (Bastakiya). Επιβιβαζόμαστε στο παραδοσιακό ξύλινο σκάφος Abra για να διασχίσουμε το Dubai Creek, φτάνοντας στις φημισμένες αγορές χρυσαφικών (Gold Souk) και μπαχαρικών (Spice Souk). Το απόγευμα επισκεπτόμαστε το επιβλητικό Dubai Frame για μια πανοραμική αντίθεση μεταξύ της παλιάς και της σύγχρονης πόλης.</p>
+          <h3>Ημέρα 2: Downtown Dubai – Burj Khalifa, Dubai Mall & Museum of the Future</h3>
+          <p>Αφιερώνουμε την ημέρα στην καρδιά της σύγχρονης πόλης, χωρίς καμία άσκοπη μετακίνηση. Ανεβαίνουμε στο «At the Top» του Burj Khalifa, του ψηλότερου κτιρίου στον κόσμο, για πανοραμική θέα. Συνεχίζουμε στο Dubai Mall και στο εντυπωσιακό Museum of the Future, που βρίσκεται στην ίδια περιοχή. Το βράδυ παρακολουθούμε το θέαμα του Dubai Fountain στα πόδια του πύργου.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Downtown Dubai & Ανάβαση στους Κορυφαίους Ορόφους του Burj Khalifa</h3>
-          <p>Περιήγηση στην καρδιά της πόλης, το Downtown Dubai. Επισκεπτόμαστε το εντυπωσιακό Dubai Mall και το Museum of the Future. Στη συνέχεια, ανεβαίνουμε με τον ταχύτερο ανελκυστήρα στον κόσμο στην κορυφή του Burj Khalifa (At The Top SKY) απολαμβάνοντας μοναδική θέα από το ψηλότερο κτίριο του πλανήτη. Το βράδυ παρακολουθούμε το φαντασμαγορικό σόου των σιντριβανιών Dubai Fountain.</p>
+          <h3>Ημέρα 3: Παλιό Ντουμπάι – Al Fahidi, Abra στο Dubai Creek & Souks</h3>
+          <p>Μια ημέρα αφιερωμένη στην αυθεντική, ιστορική πλευρά της πόλης. Περπατάμε στην παραδοσιακή συνοικία Al Fahidi με την αρχιτεκτονική wind-tower, διασχίζουμε το Dubai Creek με παραδοσιακή βάρκα abra, και χανόμαστε στα στενά του Χρυσού και του Μπαχαρικού Παζαριού (Gold & Spice Souk) με παραδοσιακό γεύμα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Palm Jumeirah, The View, Atlantis & Desert Safari 4x4</h3>
-          <p>Μεταφορά στο τεχνητό νησί-φοίνικα Palm Jumeirah. Ανεβαίνουμε στο παρατηρητήριο "The View at The Palm" για απίστευτη θέα 360 μοιρών και θαυμάζουμε το εμβληματικό ξενοδοχείο Atlantis. Το απόγευμα αναχωρούμε με τζιπ 4x4 για ένα συναρπαστικό Desert Safari στους αμμόλοφους, που περιλαμβάνει sandboarding, βόλτα με καμήλες και παραδοσιακό δείπνο BBQ υπό τους ήχους αραβικής μουσικής σε αριστοκρατικό βεδουίνικο camp.</p>
+          <h3>Ημέρα 4: Desert Safari 4x4 – Dune Bashing, Quad Bikes & Δείπνο υπό τα Άστρα</h3>
+          <p>Αναχωρούμε το απόγευμα με 4x4 οχήματα για μια ολοήμερη περιπέτεια στην έρημο: συναρπαστικό dune bashing στους αμμόλοφους, βόλτα με quad bike, ευκαιρία για sandboarding και φωτογραφία με καμήλες. Η ημέρα κλείνει με παραδοσιακό δείπνο BBQ κάτω από τα αστέρια, με παράσταση tanoura και belly dance σε κατασκήνωση στην έρημο.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Dubai Marina, JBR Walk & Πολυτελής Νυχτερινή Κρουαζιέρα με Δείπνο</h3>
-          <p>Πρωινή βόλτα στην υπερσύγχρονη Dubai Marina και τον παραλιακό πεζόδρομο JBR Walk. Ελεύθερος χρόνος για μπάνιο στην παραλία ή αγορές στο Marina Mall. Το βράδυ επιβιβαζόμαστε σε πολυτελές γιοτ (dhow cruise) για μια ρομαντική νυχτερινή κρουαζιέρα με δείπνο, πλέοντας ανάμεσα στους φωτισμένους ουρανοξύστες της μαρίνας.</p>
+          <h3>Ημέρα 5: Palm Jumeirah & Dubai Marina</h3>
+          <p>Επισκεπτόμαστε το εμβληματικό τεχνητό νησί Palm Jumeirah, με θέα στο θρυλικό ξενοδοχείο Atlantis. Συνεχίζουμε στη γειτονική Dubai Marina για μια βόλτα δίπλα στα ουρανοξύστα και τα σκάφη, και κλείνουμε την ημέρα στην παραλία JBR με θέα στο Ain Dubai, τον μεγαλύτερο τροχό παρατήρησης στον κόσμο.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: Ντουμπάι - Πτήση Επιστροφής</h3>
-          <p>Πρωινό στο ξενοδοχείο και ελεύθερος χρόνος για τις τελευταίες αγορές στα πολυκαταστήματα της πόλης. Στη συνέχεια, μεταφορά στο διεθνές αεροδρόμιο του Ντουμπάι για την πτήση της επιστροφής, γεμάτοι εικόνες χλιδής, παράδοσης και αναμνήσεις από την πρωτεύουσα του μέλλοντος.</p>
+          <h3>Ημέρα 6: Ελεύθερος Χρόνος – Πτήση Επιστροφής</h3>
+          <p>Ελεύθερος πρωινός χρόνος για τελευταίες αγορές ή χαλάρωση στην παραλία. Μεταφορά στο διεθνές αεροδρόμιο του Ντουμπάι για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τη σύγχρονη πόλη του μέλλοντος.</p>
         </div>
       </div>
 
-      <!-- Right Column: Top-Aligned Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
           <ul class="inc-exc-list inc-list">
             <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ντουμπάι με επιστροφή</li>
-            <li>5 διανυκτερεύσεις σε πολυτελές 5* ξενοδοχείο στο Ντουμπάι με πρωινό</li>
-            <li>Μεταφορές από/προς αεροδρόμιο και όλες τις περιηγήσεις με κλιματιζόμενα πούλμαν</li>
-            <li>Εισιτήριο ταχείας πρόσβασης για την κορυφή του Burj Khalifa (At The Top SKY)</li>
-            <li>Ξενάγηση στο Παλιό Ντουμπάι & βόλτα με παραδοσιακό Abra boat</li>
-            <li>Εισιτήριο εισόδου στο παρατηρητήριο The View at The Palm</li>
-            <li>Σαφάρι 4x4 στην έρημο με δείπνο BBQ & shows</li>
-            <li>Νυχτερινή κρουαζιέρα στη Dubai Marina με δείπνο</li>
-            <li>Επίσημος Ελληνόφωνος αρχηγός / συνοδός ταξιδιού</li>
-            <li>Πλήρης ταξιδιωτική ασφάλιση</li>
+            <li>5 διανυκτερεύσεις σε 4*/5* ξενοδοχείο στο Ντουμπάι με πρωινό</li>
+            <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
+            <li>Εισιτήρια "At the Top" στο Burj Khalifa</li>
+            <li>Εισιτήρια στο Museum of the Future</li>
+            <li>Βόλτα με abra στο Dubai Creek & ξενάγηση στο Παλιό Ντουμπάι</li>
+            <li>Desert Safari 4x4 με quad bike, δείπνο BBQ & παράσταση tanoura</li>
+            <li>Ξενάγηση στο Palm Jumeirah & στη Dubai Marina</li>
+            <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός καθ' όλη τη διάρκεια</li>
+            <li>Ταξιδιωτική ασφάλιση</li>
           </ul>
 
           <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
-            <li>Φόροι αεροδρομίων (~220€)</li>
-            <li>Δημοτικός φόρος ξενοδοχείου (Tourism Dirham ~5€ ανά δωμάτιο/διανυκτέρευση)</li>
-            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~25€)</li>
+            <li>Φόροι αεροδρομίων (~210€)</li>
+            <li>Sandboarding στην έρημο (προαιρετικό, πληρωτέο τοπικά)</li>
+            <li>Είσοδος στο Atlantis Aquaventure Waterpark (προαιρετική, με επιπλέον κόστος)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς (~20€)</li>
             <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
           </ul>
 
@@ -216,7 +229,7 @@
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              1.150€
+              990€
             </div>
             <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 5 Νύχτες / 6 Ημέρες)</span>
           </div>
@@ -225,55 +238,68 @@
 
     </div>
 
-    <!-- Photo Album Grid Collage -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, αρχιτεκτονικά θαύματα και εμπειρίες από το κοσμοπολίτικο Ντουμπάι</p>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα από τη σύγχρονη πόλη του μέλλοντος και την ατελείωτη έρημο</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80" alt="Burj Khalifa Skyline">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=800&q=80" alt="Palm Jumeirah Aerial View">
+
+        <!-- Block 1: Burj Khalifa hero + Museum of the Future -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80" alt="Burj Khalifa πάνω από αυτοκινητόδρομο, Ντουμπάι">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1705294109492-fc85433938b1?auto=format&fit=crop&w=800&q=80" alt="Πρόσοψη του Museum of the Future με αραβική καλλιγραφία">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=800&q=80" alt="Dubai Desert Safari Dunes">
+        <!-- Block 2: three tall shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?auto=format&fit=crop&w=800&q=80" alt="Burj Khalifa φωτισμένο τη νύχτα, Ντουμπάι">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1588310558566-b983c7d257e4?auto=format&fit=crop&w=800&q=80" alt="4x4 όχημα σε αμμόλοφο της ερήμου, Ντουμπάι">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1611577810610-642f8ac05c32?auto=format&fit=crop&w=800&q=80" alt="Ουρανοξύστες δίπλα στη θάλασσα, Dubai Marina">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=80" alt="Dubai Marina Skyline Night">
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1489493585363-d69421e0edd3?auto=format&fit=crop&w=800&q=80" alt="Καμήλες στην έρημο, Ντουμπάι">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1695878868496-fcbd6ef47f57?auto=format&fit=crop&w=800&q=80" alt="Buggies στην έρημο του Ντουμπάι">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1682410601760-6372fd33ad2b?auto=format&fit=crop&w=800&q=80" alt="Αεροφωτογραφία του Palm Jumeirah">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?auto=format&fit=crop&w=800&q=80" alt="Old Dubai Souk & Creek">
+        <!-- Block 4: full-width panoramic banner -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=80" alt="Burj Al Arab, Ντουμπάι">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1582672017507-6d5439075798?auto=format&fit=crop&w=800&q=80" alt="Museum of the Future">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1722502831583-b4e93ecc6027?auto=format&fit=crop&w=1000&q=80" alt="Μαρίνα με σκάφη, Dubai Marina">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1582120042072-d01e2fc8f3ea?auto=format&fit=crop&w=800&q=80" alt="Σκάφος στη θάλασσα κοντά σε ουρανοξύστες, Ντουμπάι">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1494674557684-c26be0f88950?auto=format&fit=crop&w=1000&q=80" alt="Βόλτα με quad bike στην έρημο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=1200&q=80" alt="Dubai Fountain Show Downtown">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=800&q=80" alt="Atlantis The Palm Dubai">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80" alt="Dubai Desert Camel Trek">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="Burj Al Arab Beach View">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="Dubai Skyline Sunset">
-        </div>
       </div>
     </section>
   </main>
@@ -281,7 +307,7 @@
   <section id="booking" class="section texture-bg">
     <div class="container" style="max-width:700px;">
       <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για το Ντουμπάι</h2>
-      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 6ήμερο πολυτελές ταξίδι.</p>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 6ήμερο ταξίδι.</p>
       
       <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
         <div class="form-group">
@@ -309,11 +335,63 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">VANGUARD <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Vanguard Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script src="../../script.js"></script>
 
 </body>
 </html>
