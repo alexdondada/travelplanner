@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Φινλανδία: Κυνηγώντας το Βόρειο Σέλας | Panorama Travel Design</title>
+  <meta name="description" content="Οργανωμένο 6ήμερο ταξίδι στη Λαπωνία: Χωριό του Αϊ-Βασίλη, έλκηθρο με huskies, φάρμα ταράνδων, Ranua Wildlife Park, κυνήγι Βόρειου Σέλαος, εθνικό πάρκο και σκι στο Ρόβανιεμι." />
+  <title>Λαπωνία: Ρόβανιεμι & Βόρειο Σέλας | Vanguard Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .trip-hero { 
       background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
@@ -25,14 +27,13 @@
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+      align-items: start;
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -56,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -74,19 +74,24 @@
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
-    /* Photo Album Collage Grid */
     .photo-album-section {
       margin-top: 60px;
       padding-top: 40px;
       border-top: 1px solid var(--border, #e2dfd7);
     }
-    
+
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -107,16 +112,20 @@
       transform: scale(1.05);
     }
 
-    /* Collage Variations */
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -124,102 +133,104 @@
 
   <nav class="navbar">
     <div class="nav-container">
-      <a href="../../index.html" class="brand-logo">PANORAMA <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
       </ul>
       <div class="nav-right">
         <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <header class="trip-hero">
     <span class="badge">ARCTIC WINTER WONDERLAND</span>
-    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Φινλανδία: Κυνηγώντας το Βόρειο Σέλας</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Ροβανιέμι • Χωριό Άη-Βασίλη • έλκυθρο με ταράνδους</p>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Λαπωνία: Ρόβανιεμι & Βόρειο Σέλας</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Χωριό Αϊ-Βασίλη • Huskies & Τάρανδοι • Ranua • Εθνικό Πάρκο • Σκι</p>
   </header>
 
   <main class="container section">
 
-    <!-- Title & Date Header (Outside & Above Grid) -->
     <div class="itinerary-header">
-      <span class="badge-date">📅 18 - 23 ΙΑΝΟΥΑΡΙΟΥ 2027</span>
-      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
+      <span class="badge-date">📅 10 - 15 ΙΑΝΟΥΑΡΙΟΥ 2027</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
-      <!-- Left Column: Sequential Non-stop Itinerary -->
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στο Ροβανιέμι – Καλωσόρισμα στον Αρκτικό Κύκλο</h3>
-          <p>Συνάντηση στο αεροδρόμιο αναχώρησης και πτήση για την πρωτεύουσα της Λαπωνίας, το Ροβανιέμι. Άφιξη στον χιονισμένο Αρκτικό Κύκλο, παραλαβή του ειδικού ισοθερμικού εξοπλισμού (στολές, μπότες, γάντια) και μεταφορά στο ξενοδοχείο μας. Το βράδυ απολαμβάνουμε ένα ζεστό φινλανδικό δείπνο καλωσορίσματος.</p>
+          <h3>Ημέρα 1: Άφιξη στο Ρόβανιεμι – Ξεκούραση & Τακτοποίηση</h3>
+          <p>Πτήση προς το Ρόβανιεμι, την πρωτεύουσα της Λαπωνίας. Τον Ιανουάριο η Φινλανδία βρίσκεται στην ίδια ζώνη ώρας με την Ελλάδα, οπότε δεν υπάρχει jet lag — ωστόσο η πρώτη ημέρα κρατιέται ήσυχη λόγω της διάρκειας του ταξιδιού: υποδοχή από τον τοπικό αντιπρόσωπο, τακτοποίηση στο ξενοδοχείο μας και ένα χαλαρό δείπνο καλωσορίσματος, ώστε να είστε ξεκούραστοι για το πλούσιο πρόγραμμα που ακολουθεί.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Χωριό Santa Claus, Ταχυδρομείο του Άη Βασίλη & Arctic Circle Crossing</h3>
-          <p>Επίσκεψη στο διάσημο Santa Claus Village. Διασχίζουμε το γεωγραφικό παράλληλο του Αρκτικού Κύκλου (αποκτώντας αναμνηστικό πιστοποιητικό), επισκεπτόμαστε το Επίσημο Ταχυδρομείο του Άη Βασίλη και συναντάμε τον ίδιο στο γραφείο του. Ελεύθερος χρόνος για αγορές αναμνηστικών και φωτογραφίες στα χριστουγεννιάτικα μαγαζιά του χωριού.</p>
+          <h3>Ημέρα 2: Χωριό του Αϊ-Βασίλη, Έλκηθρο με Huskies & Επίσκεψη σε Φάρμα Ταράνδων</h3>
+          <p>Μια ημέρα αφιερωμένη στην κλασική μαγεία της Λαπωνίας, με όλες τις δραστηριότητες συγκεντρωμένες στην ίδια περιοχή γύρω από τον Αρκτικό Κύκλο, χωρίς άσκοπες μετακινήσεις. Επισκεπτόμαστε το διάσημο Χωριό του Αϊ-Βασίλη, περνάμε τη γραμμή του Αρκτικού Κύκλου και συναντάμε τον ίδιο τον Άγιο Βασίλη. Συνεχίζουμε με μια συναρπαστική βόλτα με έλκηθρο huskies μέσα στο χιονισμένο δάσος, και ολοκληρώνουμε με επίσκεψη σε φάρμα ταράνδων, όπου μαθαίνουμε για την παράδοση των Σάμι και ταΐζουμε τα ζώα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Φάρμα Ελάφων (Reindeer Farm), Βόλτα με Έλκηθρο & Husky Safari</h3>
-          <p>Σήμερα επισκεπτόμαστε μια παραδοσιακή φάρμα ταράνδων των Σάμι, μαθαίνουμε για την εκτροφή τους και απολαμβάνουμε μια βόλτα με έλκηθρο ταράνδων στο χιονισμένο δάσος. Στη συνέχεια, μεταφερόμαστε στη φάρμα των πανέμορφων Huskies, όπου μας περιμένει ένα εντυπωσιακό Husky Safari 5km, οδηγώντας οι ίδιοι τα έλκηθρα μέσα στο παρθένο αρκτικό τοπίο.</p>
+          <h3>Ημέρα 3: Ranua Wildlife Park & Βραδινό Κυνήγι Βόρειου Σέλαος</h3>
+          <p>Ημερήσια εκδρομή στο Ranua Wildlife Park, το βορειότερο ζωολογικό πάρκο του κόσμου, όπου ζουν ελεύθερα αρκτικά ζώα όπως πολικές αρκούδες, λύγκες και αρκτικές αλεπούδες στο φυσικό τους περιβάλλον. Επιστρέφουμε το απόγευμα στο Ρόβανιεμι, και το βράδυ αναχωρούμε με έμπειρο οδηγό για ένα κυνήγι του Βόρειου Σέλαος μακριά από τα φώτα της πόλης, με ζεστά ροφήματα κάτω από τον έναστρο αρκτικό ουρανό.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Snowmobile Safari (Προαιρετικό) & Βραδινή Κυνηγετική Εξόρμηση Βόρειου Σέλαος (Aurora Hunt)</h3>
-          <p>Το πρωί υπάρχει η δυνατότητα προαιρετικής συμμετοχής σε συναρπαστικό Snowmobile Safari στα παγωμένα δάση και τις λίμνες της Λαπωνίας. Το βράδυ επιβιβαζόμαστε σε ειδικά πούλμαν με έμπειρους αστροφυσικούς/οδηγούς, απομακρυνόμαστε από τα φώτα της πόλης και κάνουμε την επίσημη εξόρμηση για το «κυνηγι» του Βόρειου Σέλαος (Aurora Borealis), απολαμβάνοντας ζεστά ροφήματα γύρω από τη φωτιά.</p>
+          <h3>Ημέρα 4: Εθνικό Πάρκο – Πεζοπορία με Παγοπέδιλα στην Άγρια Φύση της Λαπωνίας</h3>
+          <p>Ημερήσια εκδρομή σε εθνικό πάρκο κοντά στο Ρόβανιεμι, για μια αυθεντική επαφή με την αρκτική ερημιά. Με χιονοπέδιλα (snowshoes) περπατάμε ανάμεσα σε χιονισμένα έλατα και παγωμένες λίμνες, με πιθανότητα να συναντήσουμε ίχνη άγριας ζωής. Στάση για ζεστό γεύμα σε παραδοσιακή λαυβού (κάμπια σκηνή) δίπλα σε φωτιά, πριν την επιστροφή στο Ρόβανιεμι το απόγευμα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Floating σε Παγωμένα Νερά (Προαιρετικό) & Μουσείο Arktikum</h3>
-          <p>Το πρωί, για τους λάτρεις της περιπέτειας, υπάρχει η προαιρετική εμπειρία Arctic Ice Floating: φορώντας ειδικές στεγανές ισοθερμικές στολές high-tech, επιπλέουμε με ασφάλεια στα παγωμένα νερά αρκτικής λίμνης! Το απόγευμα επισκεπτόμαστε το περίφημο Μουσείο Arktikum για να γνωρίσουμε την ιστορία των Σάμι και τη φύση της Αρκτικής.</p>
+          <h3>Ημέρα 5: Ημέρα στο Χιονοδρομικό Κέντρο του Ρόβανιεμι</h3>
+          <p>Τελευταία πλήρης ημέρα στο κοντινό χιονοδρομικό κέντρο του Ρόβανιεμι (Ounasvaara), μόλις λίγα λεπτά από το κέντρο της πόλης — καμία μεγάλη μετακίνηση απαιτείται. Δοκιμάζουμε σκι ή snowboard σε πίστες κατάλληλες για όλα τα επίπεδα, ή απολαμβάνουμε την πανοραμική θέα στο Ρόβανιεμι με τα πόδια. Το βράδυ, αποχαιρετιστήριο δείπνο με φινλανδικές γεύσεις.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: Ροβανιέμι – Πτήση Επιστροφής</h3>
-          <p>Πρωινό στο ξενοδοχείο και τελευταία βόλτα στην χιονισμένη αγορά του Ροβανιέμι για αγορά τοπικών προϊόντων. Παράδοση του ισοθερμικού εξοπλισμού, μεταφορά στο αεροδρόμιο και πτήση επιστροφής, γεμάτοι παραμυθένιες αναμνήσεις από τον Αρκτικό Κύκλο.</p>
+          <h3>Ημέρα 6: Ρόβανιεμι – Πτήση Επιστροφής</h3>
+          <p>Ελεύθερος πρωινός χρόνος για τελευταίες αγορές χειροτεχνημάτων Σάμι ή φωτογραφίες στο κέντρο της πόλης. Μεταφορά στο αεροδρόμιο του Ρόβανιεμι για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τον μαγευτικό αρκτικό χειμώνα.</p>
         </div>
       </div>
 
-      <!-- Right Column: Top-Aligned Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
           <ul class="inc-exc-list inc-list">
-            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ροβανιέμι με επιστροφή</li>
-            <li>5 διανυκτερεύσεις σε 4* / 5* κεντρικό ξενοδοχείο με πρωινό</li>
-            <li>Πλήρης ειδικός ισοθερμικός εξοπλισμός (στολή, μπότες, γάντια) για όλο το ταξίδι</li>
-            <li>Επίσκεψη στο Santa Claus Village & συνάντηση με τον Άη Βασίλη</li>
-            <li>Επίσκεψη σε Φάρμα Ταράνδων & βόλτα με έλκηθρο</li>
-            <li>Husky Safari 5km με οδήγηση ελκήθρου & ζεστά ροφήματα</li>
-            <li>Οργανωμένο βραδινό Aurora Borealis Hunt με πούλμαν & οδηγό</li>
-            <li>Επίσκεψη στο επιστημονικό μουσείο Arktikum (περιλαμβάνεται εισιτήριο)</li>
-            <li>Πιστοποιητικό διέλευσης του Αρκτικού Κύκλου</li>
-            <li>Όλες οι μεταφορές με πολυτελή θερμαινόμενα πούλμαν</li>
-            <li>Ελληνόφωνος αρχηγός / συνοδός καθ' όλη τη διάρκεια</li>
+            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ρόβανιεμι με επιστροφή</li>
+            <li>5 διανυκτερεύσεις σε ξενοδοχείο στο Ρόβανιεμι με πρωινό</li>
+            <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
+            <li>Είσοδος στο Χωριό του Αϊ-Βασίλη & συνάντηση με τον Άγιο Βασίλη</li>
+            <li>Βόλτα με έλκηθρο huskies</li>
+            <li>Επίσκεψη σε φάρμα ταράνδων με τάισμα ζώων</li>
+            <li>Εισιτήριο στο Ranua Wildlife Park</li>
+            <li>Βραδινή εξόρμηση κυνηγιού Βόρειου Σέλαος με οδηγό</li>
+            <li>Πεζοπορία με χιονοπέδιλα σε εθνικό πάρκο</li>
+            <li>Πλήρης θερμικός εξοπλισμός (φόρμα, μπότες, γάντια) για όλες τις υπαίθριες δραστηριότητες</li>
+            <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός καθ' όλη τη διάρκεια</li>
             <li>Ταξιδιωτική ασφάλιση</li>
           </ul>
 
           <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
 
-          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται / Προαιρετικά</h3>
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
-            <li>Φόροι αεροδρομίων (~240€)</li>
-            <li>Προαιρετικό Snowmobile Safari (2 ώρες) (~110€ κατ' άτομο)</li>
-            <li>Προαιρετικό Arctic Ice Floating σε παγωμένη λίμνη (~95€ κατ' άτομο)</li>
-            <li>Φιλοδωρήματα για τοπικούς οδηγούς (~30€)</li>
-            <li>Γεύματα & ποτά εκτός των αναφερόμενων</li>
+            <li>Φόροι αεροδρομίων (~160€)</li>
+            <li>Ενοικίαση εξοπλισμού σκι/snowboard στο Ounasvaara (πληρωτέα τοπικά)</li>
+            <li>Φιλοδωρήματα για τοπικούς οδηγούς (~20€)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
           </ul>
 
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              1.690€
+              1.620€
             </div>
             <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 5 Νύχτες / 6 Ημέρες)</span>
           </div>
@@ -228,55 +239,68 @@
 
     </div>
 
-    <!-- Photo Album Grid Collage -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, τοπία και αρκτικές εμπειρίες από τη μαγευτική Λαπωνία</p>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα από τον μαγευτικό αρκτικό χειμώνα της Λαπωνίας</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=1200&q=80" alt="Northern Lights Aurora Borealis Lapland">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1543599538-a6c4f6cc5c05?auto=format&fit=crop&w=800&q=80" alt="Santa Claus Village Rovaniemi">
+
+        <!-- Block 1: Lapland forest hero + husky sled portrait -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=1200&q=80" alt="Χιονισμένο δάσος στη Λαπωνία, Φινλανδία">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1647591413270-469a0393da0c?auto=format&fit=crop&w=800&q=80" alt="Έλκηθρο με huskies στο χιόνι">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=800&q=80" alt="Husky Sledding Lapland">
+        <!-- Block 2: three tall shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1514773896690-40d0fd46f143?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος σέρνει έλκηθρο στο χιόνι, Λαπωνία">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1647591413051-3662ec03bfe8?auto=format&fit=crop&w=800&q=80" alt="Husky σέρνει έλκηθρο μέσα στο δάσος">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1719247552735-f4832c547da2?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος με χάμουρα δίπλα σε δέντρο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80" alt="Snowy Forest Winter Wonderland">
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?auto=format&fit=crop&w=800&q=80" alt="Βόρειο Σέλας πάνω από χιονισμένο τοπίο">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1586001015642-c2cf2967a566?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος στο χιόνι, Λαπωνία">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1594279761639-cb1787798b52?auto=format&fit=crop&w=800&q=80" alt="Σκυλιά husky στο χιονισμένο έδαφος">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1579130781921-76e18892b57b?auto=format&fit=crop&w=800&q=80" alt="Reindeer Sled in Snow">
+        <!-- Block 4: full-width panoramic banner -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1613821045509-84905f437d47?auto=format&fit=crop&w=1600&q=80" alt="Βόλτα με έλκηθρο στο χιονισμένο δάσος της Λαπωνίας">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=800&q=80" alt="Snowmobile Safari Trail">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1647374916354-d956fc7fd995?auto=format&fit=crop&w=1000&q=80" alt="Ζευγάρι huskies σέρνουν έλκηθρο σε χιονισμένο πεδίο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος με μεγάλα κέρατα στο χιόνι">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1630997304867-729e29ff7bf4?auto=format&fit=crop&w=1000&q=80" alt="Βόλτα με έλκηθρο στο χιόνι, Λαπωνία">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80" alt="Arctic Circle Snowy Cabins">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80" alt="Aurora Borealis Sky Night">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Ice Floating Survival Suit">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&w=1200&q=80" alt="Winter Sunset Landscape Lapland">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80" alt="Arctic Wilderness Snow">
-        </div>
       </div>
     </section>
   </main>
@@ -284,7 +308,7 @@
   <section id="booking" class="section texture-bg">
     <div class="container" style="max-width:700px;">
       <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για τη Λαπωνία</h2>
-      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 6ήμερο αρκτικό ταξίδι.</p>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 6ήμερο ταξίδι.</p>
       
       <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
         <div class="form-group">
@@ -312,11 +336,63 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Panorama Travel Design. All rights reserved.</p>
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">VANGUARD <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Vanguard Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script src="../../script.js"></script>
 
 </body>
 </html>
