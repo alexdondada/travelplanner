@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Οργανωμένο 7ήμερο ταξίδι στη Σαντορίνη & τη Μήλο: Οία, κρουαζιέρα στην καλντέρα, Sarakiniko, Kleftiko, Πλάκα και το γραφικό Κλήμα, 3 διανυκτερεύσεις σε κάθε νησί." />
+  <title>Σαντορίνη & Μήλος: Καλντέρα & Sarakiniko | Offset Travel Design</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .trip-hero { 
+      background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
+      padding: 120px 24px; 
+      color: white; 
+      text-align: center; 
+    }
+    
+    .itinerary-header {
+      margin-top: 40px;
+      margin-bottom: 24px;
+    }
+
+    .trip-grid { 
+      display: grid; 
+      grid-template-columns: 2fr 1fr; 
+      gap: 40px; 
+      align-items: start;
+    }
+    
+    @media (max-width: 900px) { 
+      .trip-grid { grid-template-columns: 1fr; } 
+    }
+
+    .itinerary-day { 
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      margin-bottom: 24px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    }
+
+    .itinerary-day h3 { 
+      font-family: var(--font-heading); 
+      color: var(--primary, #1b2a4a); 
+      font-size: 1.3rem; 
+      margin-bottom: 12px; 
+    }
+    
+    .itinerary-day p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #2d3748;
+      margin: 0;
+    }
+
+    .sidebar-card { 
+      background: #ffffff; 
+      border: 1px solid var(--border, #e2dfd7); 
+      border-radius: 8px; 
+      padding: 28px; 
+      position: sticky; 
+      top: 100px; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+
+    .inc-exc-list { list-style: none; padding: 0; margin: 0; }
+    .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
+    .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+    .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
+
+    .photo-album-section {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border, #e2dfd7);
+    }
+
+    .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      gap: 16px;
+    }
+
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
+
+    @media (max-width: 768px) {
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../../index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
+        <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
+        <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="trip-hero">
+    <span class="badge">CYCLADIC ISLAND ESCAPE</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Σαντορίνη & Μήλος: Καλντέρα & Sarakiniko</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">7 Ημέρες • 6 Διανυκτερεύσεις (3+3) • Οία • Καλντέρα • Sarakiniko • Kleftiko • Πλάκα</p>
+  </header>
+
+  <main class="container section">
+
+    <div class="itinerary-header">
+      <span class="badge-date">📅 10 - 16 ΙΟΥΛΙΟΥ 2027</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (7 Ημέρες • 3 Νύχτες Σαντορίνη + 3 Νύχτες Μήλος)</h2>
+    </div>
+
+    <div class="trip-grid">
+      
+      <div>
+        <div class="itinerary-day">
+          <h3>Ημέρα 1: Άφιξη στη Σαντορίνη – Τακτοποίηση & Βόλτα στη Φηρά</h3>
+          <p>Πτήση προς τη Σαντορίνη. Χωρίς χρονική διαφορά και με σύντομη πτήση, η πρώτη ημέρα είναι κυρίως αφιερωμένη στην τακτοποίηση: μεταφορά στο ξενοδοχείο μας με θέα στην καλντέρα, και το απόγευμα μια πρώτη βόλτα στα γραφικά σοκάκια της Φηράς, με προαιρετικό ελεύθερο δείπνο με θέα στο ηφαίστειο.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 2: Οία – Το Πιο Φωτογραφημένο Ηλιοβασίλεμα & Κόκκινη Παραλία</h3>
+          <p>Μια ημέρα αφιερωμένη στην Οία, χωρίς άσκοπες μετακινήσεις. Περπατάμε στα λευκά σοκάκια με τους γαλάζιους τρούλους, θαυμάζουμε το θρυλικό ηλιοβασίλεμα από το Κάστρο της Οίας, και νωρίτερα επισκεπτόμαστε την Κόκκινη Παραλία (Red Beach) με τους εντυπωσιακούς κόκκινους βράχους. Στάση για γευσιγνωσία τοπικών κρασιών σε οινοποιείο με θέα στην καλντέρα.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 3: Κρουαζιέρα στην Καλντέρα – Νέα Καμένη, Θερμές Πηγές & Θηρασία</h3>
+          <p>Ολοήμερη κρουαζιέρα στην καλντέρα με καΐκι. Αποβιβαζόμαστε στο ηφαιστειακό νησάκι της Νέας Καμένης για μια σύντομη πεζοπορία στον κρατήρα, κολυμπάμε στις φυσικές θερμές πηγές, και επισκεπτόμαστε το γραφικό νησί της Θηρασίας. Η ημέρα κλείνει με sunset στο σκάφος, μία από τις πιο μαγευτικές εμπειρίες του ταξιδιού.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 4: Μεταφορά με Ferry στη Μήλο & Χαλαρό Απόγευμα στον Αδάμαντα</h3>
+          <p>Το πρωί αναχωρούμε με ταχύπλοο ferry για το νησί της Μήλου (περίπου 2,5-3 ώρες). Άφιξη το μεσημέρι και τακτοποίηση στο ξενοδοχείο μας στον Αδάμαντα, το κύριο λιμάνι του νησιού. Ελεύθερο απόγευμα για μια πρώτη βόλτα στην παραλιακή πλατεία και δείπνο σε παραδοσιακή ταβέρνα με φρέσκο ψάρι.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 5: Ημερήσια Εκδρομή με Σκάφος – Sarakiniko, Kleftiko & Τσιγκράδο</h3>
+          <p>Οι πιο εντυπωσιακές παραλίες της Μήλου είναι προσβάσιμες κυρίως από θάλασσα, γι' αυτό αφιερώνουμε μια ολόκληρη ημέρα σε κρουαζιέρα με σκάφος. Θαυμάζουμε το σεληνιακό τοπίο του Sarakiniko με τους λευκούς βράχους, κολυμπάμε στις θαλασσινές σπηλιές του Kleftiko, και κάνουμε στάση στις παραλίες Τσιγκράδο και Φυριπλάκα για κολύμπι σε κρυστάλλινα νερά.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 6: Πλάκα & Κλήμα – Η Πρωτεύουσα του Νησιού & το Γραφικό Ψαροχώρι</h3>
+          <p>Επισκεπτόμαστε την Πλάκα, την πρωτεύουσα της Μήλου, με τα ερείπια του ενετικού κάστρου και το Αρχαιολογικό Μουσείο, όπου φιλοξενείται πιστό αντίγραφο της Αφροδίτης της Μήλου (το πρωτότυπο βρίσκεται στο Λούβρο). Συνεχίζουμε στις Κατακόμβες της Μήλου, ένα από τα σημαντικότερα παλαιοχριστιανικά μνημεία της Ελλάδας, και κλείνουμε στο γραφικό ψαροχώρι του Κλήματος, με τα πολύχρωμα "συρμάτα" (παραδοσιακά ψαράδικα σπίτια) δίπλα στη θάλασσα.</p>
+        </div>
+
+        <div class="itinerary-day">
+          <h3>Ημέρα 7: Μήλος – Πτήση Επιστροφής</h3>
+          <p>Ελεύθερος πρωινός χρόνος για τελευταίες βόλτες ή αγορές τοπικών προϊόντων. Μεταφορά στο αεροδρόμιο της Μήλου για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από δύο από τα πιο μοναδικά νησιά του Αιγαίου.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="sidebar-card">
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list inc-list">
+            <li>Αεροπορικά εισιτήρια Αθήνα/Θεσσαλονίκη - Σαντορίνη & Μήλος - Αθήνα/Θεσσαλονίκη</li>
+            <li>Ταχύπλοο ferry Σαντορίνη - Μήλος</li>
+            <li>3 διανυκτερεύσεις σε ξενοδοχείο στη Σαντορίνη με θέα καλντέρα, με πρωινό</li>
+            <li>3 διανυκτερεύσεις σε ξενοδοχείο στη Μήλο με πρωινό</li>
+            <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
+            <li>Ξενάγηση στην Οία & γευσιγνωσία κρασιού</li>
+            <li>Ολοήμερη κρουαζιέρα στην καλντέρα (Νέα Καμένη, θερμές πηγές, Θηρασία)</li>
+            <li>Ολοήμερη εκδρομή με σκάφος στις παραλίες της Μήλου (Sarakiniko, Kleftiko, Τσιγκράδο)</li>
+            <li>Ξενάγηση στην Πλάκα, στις Κατακόμβες & στο Κλήμα</li>
+            <li>Επίσημος Ελληνόφωνος συνοδός σε όλες τις οργανωμένες εκδρομές</li>
+            <li>Ταξιδιωτική ασφάλιση</li>
+          </ul>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+
+          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
+          <ul class="inc-exc-list exc-list">
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
+            <li>Φιλοδωρήματα (προαιρετικά)</li>
+            <li>Προσωπικά έξοδα & αγορές</li>
+          </ul>
+
+          <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
+              <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
+              1.590€
+            </div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 6 Νύχτες / 7 Ημέρες)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="photo-album-section">
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα από την κλασική ομορφιά της Σαντορίνης και το άγριο, μοναδικό τοπίο της Μήλου</p>
+
+      <div class="photo-album-grid">
+
+        <!-- Block 1: Oia hero + Klima boathouses -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1678266561093-324802646fb2?auto=format&fit=crop&w=1200&q=80" alt="Γαλάζιος τρούλος στην άκρη του γκρεμού, Οία, Σαντορίνη">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1600178848364-da3927d398c8?auto=format&fit=crop&w=800&q=80" alt="Πολύχρωμα ψαράδικα σπίτια (συρμάτα), Κλήμα, Μήλος">
+          </div>
+        </div>
+
+        <!-- Block 2: three tall shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1580502304784-8985b7eb7260?auto=format&fit=crop&w=800&q=80" alt="Λευκά κτίρια στην Οία τη βραδινή ώρα, Σαντορίνη">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80" alt="Σαντορίνη, Ελλάδα">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1695072348608-730ebc94e34c?auto=format&fit=crop&w=800&q=80" alt="Βράχια στο Sarakiniko, Μήλος">
+          </div>
+        </div>
+
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1596933144889-c15043a9ddde?auto=format&fit=crop&w=800&q=80" alt="Γαλάζιος τρούλος κοντά στη θάλασσα, Σαντορίνη">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1533441865127-f4806aaa12cc?auto=format&fit=crop&w=800&q=80" alt="Εκκλησάκι με τρούλο, Σαντορίνη">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1721408975124-3d1ce63bbb5a?auto=format&fit=crop&w=800&q=80" alt="Βραχώδης σχηματισμός στη θάλασσα, Sarakiniko, Μήλος">
+          </div>
+        </div>
+
+        <!-- Block 4: full-width panoramic banner -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1666197113236-f60c8185835d?auto=format&fit=crop&w=1600&q=80" alt="Λευκοί βράχοι στο Sarakiniko, Μήλος">
+          </div>
+        </div>
+
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1594048069339-42ae0e89376a?auto=format&fit=crop&w=1000&q=80" alt="Λευκό/γαλάζιο κτίριο δίπλα σε πράσινο βουνό, Σαντορίνη">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1691698967396-f1ec4f2f11e8?auto=format&fit=crop&w=800&q=80" alt="Θάλασσα δίπλα σε μεγάλο βραχώδη σχηματισμό, Μήλος">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1721408975480-8603762cff7a?auto=format&fit=crop&w=1000&q=80" alt="Θέα στη θάλασσα από βραχώδη ακτή, Μήλος">
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <section id="booking" class="section texture-bg">
+    <div class="container" style="max-width:700px;">
+      <h2 style="text-align:center; font-family: var(--font-heading); color: var(--primary);">Κάντε Κράτηση για Σαντορίνη & Μήλο</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 30px;">Συμπληρώστε τη φόρμα για να εξασφαλίσετε τη θέση σας στο 7ήμερο ταξίδι.</p>
+      
+      <form class="contact-form" style="background:#fff; padding:30px; border-radius:8px; border:1px solid var(--border);">
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <input type="text" id="name" required placeholder="π.χ. Νίκος Παπαδόπουλος">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="nikos@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο Επικοινωνίας</label>
+          <input type="tel" id="phone" required placeholder="+30 6912345678">
+        </div>
+        <div class="form-group">
+          <label for="departure">Αεροδρόμιο Αναχώρησης</label>
+          <select id="departure" name="departure" required style="width: 100%; padding: 12px; border: 1px solid var(--border, #e2dfd7); border-radius: 4px; font-size: 0.95rem; background: #fff; color: #2d3748;">
+            <option value="" disabled selected>Επιλέξτε αεροδρόμιο αναχώρησης...</option>
+            <option value="SKG">SKG - Θεσσαλονίκη (Αεροδρόμιο "Μακεδονία")</option>
+            <option value="ATH">ATH - Αθήνα (Αεροδρόμιο "Ελευθέριος Βενιζέλος")</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">Offset <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Offset Travel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+
+</body>
+</html>
