@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Νέα Υόρκη - Η Πόλη που δεν Κοιμάται Ποτέ | Vanguard Travel Design</title>
+  <meta name="description" content="Οργανωμένο 6ήμερο ταξίδι στη Νέα Υόρκη: Times Square, Statue of Liberty, Empire State Building, Central Park, Brooklyn Bridge, SUMMIT One Vanderbilt και παράσταση Broadway." />
+  <title>Νέα Υόρκη: Η Μαγεία του Μανχάτταν | Offset Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .trip-hero { 
       background: linear-gradient(rgba(27,42,74,0.65), rgba(27,42,74,0.8)), url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; 
@@ -25,14 +27,13 @@
       display: grid; 
       grid-template-columns: 2fr 1fr; 
       gap: 40px; 
-      align-items: start; /* Aligns sidebar card flush with top border of Day 1 */
+      align-items: start;
     }
     
     @media (max-width: 900px) { 
       .trip-grid { grid-template-columns: 1fr; } 
     }
 
-    /* Clean Itinerary Day Box */
     .itinerary-day { 
       background: #ffffff;
       border: 1px solid var(--border, #e2dfd7); 
@@ -56,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sticky Sidebar Card top-aligned with Day 1 card */
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -74,19 +74,24 @@
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
-    /* Photo Album Collage Grid */
     .photo-album-section {
       margin-top: 60px;
       padding-top: 40px;
       border-top: 1px solid var(--border, #e2dfd7);
     }
-    
+
     .photo-album-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .photo-block {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 240px;
       gap: 16px;
-      margin-top: 24px;
     }
 
     .photo-item {
@@ -107,16 +112,20 @@
       transform: scale(1.05);
     }
 
-    /* Collage Variations */
-    .photo-large { grid-column: span 2; grid-row: span 2; }
-    .photo-wide { grid-column: span 2; }
+    .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
+    .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
+    .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
 
     @media (max-width: 768px) {
-      .photo-album-grid {
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 200px;
+      .photo-block {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
       }
-      .photo-large, .photo-wide { grid-column: span 1; grid-row: span 1; }
+      .photo-block .photo-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+      }
     }
   </style>
 </head>
@@ -124,99 +133,102 @@
 
   <nav class="navbar">
     <div class="nav-container">
-      <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
-      <ul class="nav-links">
+      <a href="../../index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="../../index.html#reviews">Κριτικές</a></li>
+        <li><a href="../../index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="btn btn-primary">Κράτηση / Ενδιαφέρον</a></li>
       </ul>
       <div class="nav-right">
         <a href="#booking" class="btn btn-primary nav-btn">Κράτηση / Ενδιαφέρον</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <header class="trip-hero">
-    <span class="badge">NORTH AMERICA ESCAPE</span>
-    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Νέα Υόρκη: Manhattan Magic & Iconic Landmarks</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Μανχάταν • Άγαλμα της Ελευθερίας • Central Park • Μουσεία & Broadway</p>
+    <span class="badge">MANHATTAN CITY ESCAPE</span>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Νέα Υόρκη: Η Μαγεία του Μανχάτταν</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Times Square • Statue of Liberty • Empire State Building • Central Park • Brooklyn</p>
   </header>
 
   <main class="container section">
 
-    <!-- Title & Date Header (Outside & Above Grid) -->
     <div class="itinerary-header">
-      <span class="badge-date">📅 15 - 20 ΟΚΤΩΒΡΙΟΥ 2026</span>
+      <span class="badge-date">📅 18 - 23 ΝΟΕΜΒΡΙΟΥ 2026</span>
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
-      <!-- Left Column: Sequential Non-stop Itinerary -->
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στη Νέα Υόρκη (JFK/EWR) & Πρώτη Βόλτα στην Times Square (Νύχτα 1)</h3>
-          <p>Συνάντηση στο αεροδρόμιο, υπερατλαντική πτήση (~11 ώρες) και άφιξη στη Νέα Υόρκη την ίδια ημέρα λόγω διαφοράς ώρας (-7 ώρες). Μεταφορά και τακτοποίηση στο κεντρικό μας 4* ξενοδοχείο στο Midtown Manhattan. Για την πρώτη ήπια προσαρμογή στο jet lag, πραγματοποιούμε μια χαλαρή βραδινή βόλτα στη λαμπερή Times Square και τη Broadway, πριν από τον πρώτο ξεκούραστο ύπνο.</p>
+          <h3>Ημέρα 1: Άφιξη στη Νέα Υόρκη – Πρώτη Επαφή με το Μανχάτταν & Times Square</h3>
+          <p>Πτήση προς τη Νέα Υόρκη. Λόγω της σημαντικής χρονικής διαφοράς (7 ώρες πίσω από την Ελλάδα), κρατάμε το πρόγραμμα ελαφρύ αυτή την ημέρα: μεταφορά στο ξενοδοχείο μας και τακτοποίηση. Το βράδυ κάνουμε μια πρώτη, χαλαρή βόλτα ως την πλατεία Times Square, για να νιώσετε από την πρώτη στιγμή τους φωτισμένους ουρανοξύστες και τον παλμό του Μανχάτταν.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Lower Manhattan, Κρουαζιέρα στο Άγαλμα της Ελευθερίας, Ellis Island & Financial District (Νύχτα 2)</h3>
-          <p>Ξεκινάμε από το Battery Park και επιβιβαζόμαστε στο πλοιάριο για το Liberty Island, όπου θα θαυμάσουμε από κοντά το Άγαλμα της Ελευθερίας, καθώς και το ιστορικό Ellis Island. Στη συνέχεια εξερευνούμε το Financial District, τη Wall Street, τον ταύρο Charging Bull, το One World Trade Center και το συγκινητικό Μνημείο 9/11. Το απόγευμα διασχίζουμε με τα πόδια την εμβληματική Brooklyn Bridge.</p>
+          <h3>Ημέρα 2: Downtown Manhattan – 9/11 Memorial, Wall Street & Statue of Liberty</h3>
+          <p>Ξεκινάμε στη νότια άκρη του Μανχάτταν με το συγκινητικό 9/11 Memorial & Museum, συνεχίζουμε στη Wall Street για φωτογραφία με τον Charging Bull, και επιβιβαζόμαστε σε πλοιάριο για την ολοκληρωμένη επίσκεψη στο Άγαλμα της Ελευθερίας και το νησί Ellis Island, όπου εκατομμύρια μετανάστες πάτησαν πρώτη φορά στην αμερικανική γη.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Central Park, Metropolitan Museum of Art (Met) & Fifth Avenue (Νύχτα 3)</h3>
-          <p>Πρωινή ξενάγηση στον «πράσινο πνεύμονα» του Μανχάταν, το Central Park (Strawberry Fields, Bethesda Terrace, Bow Bridge). Στη συνέχεια επισκεπτόμαστε ένα από τα σπουδαιότερα μουσεία του κόσμου, το Metropolitan Museum of Art (Met). Το απόγευμα περπατάμε στην αριστοκρατική 5th Avenue, κάνοντας στάσεις στον Καθεδρικό Ναό του Αγίου Πατρικίου και το Rockefeller Center.</p>
+          <h3>Ημέρα 3: Midtown – Empire State Building, SUMMIT One Vanderbilt & Rockefeller Center</h3>
+          <p>Μια πλήρης ημέρα στην καρδιά του Midtown, χωρίς άσκοπες μετακινήσεις. Ανεβαίνουμε στην κορυφή του θρυλικού Empire State Building για πανοραμική θέα, συνεχίζουμε στο SUMMIT One Vanderbilt για μια βυθιστική εμπειρία με καθρέφτες και εγκαταστάσεις τέχνης, και κλείνουμε την ημέρα στο Rockefeller Center και στην Πέμπτη Λεωφόρο για βόλτα και βιτρίνες.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Midtown Manhattan, Grand Central, High Line Park & Chelsea Market (Νύχτα 4)</h3>
-          <p>Επισκεπτόμαστε τον ιστορικό σταθμό Grand Central Terminal και τη Δημόσια Βιβλιοθήκη της Νέας Υόρκης. Συνεχίζουμε στη δυτική πλευρά, περπατώντας στο εντυπωσιακό υπερυψωμένο πάρκο High Line που δημιουργήθηκε πάνω σε παλιές ράγες τρένου. Καταλήγουμε στη στεγασμένη αγορά Chelsea Market για γευσιγνωσία και στο σύγχρονο αρχιτεκτονικό σύμπλεγμα Hudson Yards με το Vessel.</p>
+          <h3>Ημέρα 4: Central Park, Μουσείο Met & Upper Manhattan</h3>
+          <p>Περνάμε την ημέρα στο πράσινο "πνεύμονα" της πόλης: βόλτα ή ποδήλατο στο Central Park, επίσκεψη στο εμβληματικό Metropolitan Museum of Art (Met), και μια βόλτα στις κομψές γειτονιές του Upper East & Upper West Side με τα ιστορικά brownstone κτίρια.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Soho, Greenwich Village, Παρατηρητήριο Summit One Vanderbilt & Παράσταση Broadway (Νύχτα 5)</h3>
-          <p>Πρωινή βόλτα στις μποέμ και καλλιτεχνικές γειτονιές Soho, Greenwich Village και Little Italy. Το απόγευμα ανεβαίνουμε στο φουτουριστικό παρατηρητήριο Summit One Vanderbilt για μια συγκλονιστική πανοραμική θέα 360 μοιρών σε ολόκληρο το Μανχάταν. Το βράδυ ολοκληρώνουμε την διαμονή μας παρακολουθώντας προαιρετικά μια διάσημη θεατρική παράσταση στο Broadway.</p>
+          <h3>Ημέρα 5: Μπρούκλιν – Brooklyn Bridge, DUMBO & Βραδινή Παράσταση Broadway</h3>
+          <p>Διασχίζουμε με τα πόδια το εμβληματικό Brooklyn Bridge, με τη μοναδική θέα στον ορίζοντα του Μανχάτταν, και συνεχίζουμε στη γραφική συνοικία DUMBO για φωτογραφίες με φόντο τη Manhattan Bridge. Το βράδυ επιστρέφουμε στο Midtown για μια αξέχαστη παράσταση Broadway στην Theater District.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: MoMA (Museum of Modern Art) – Τελευταίες Αγορές & Πτήση Επιστροφής</h3>
-          <p>Πρωινή επίσκεψη στο MoMA για να θαυμάσουμε αριστουργήματα των Van Gogh, Picasso και Warhol. Ελεύθερος χρόνος για τις τελευταίες αγορές και αναμνηστικά. Το απόγευμα μεταφερόμαστε στο αεροδρόμιο για την υπερατλαντική πτήση επιστροφής, γεμάτοι αξέχαστες εικόνες από τη μητρόπολη του κόσμου.</p>
+          <h3>Ημέρα 6: High Line & Chelsea Market – Πτήση Επιστροφής</h3>
+          <p>Τελευταία μέρα με ελαφρύ πρωινό πρόγραμμα: βόλτα στο High Line, το αναπαλαιωμένο εναέριο πάρκο πάνω σε παλιές σιδηροδρομικές γραμμές, και στάση στο Chelsea Market για street food και τελευταίες αγορές. Μεταφορά στο αεροδρόμιο για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τη Μεγάλη Μηλιά.</p>
         </div>
       </div>
 
-      <!-- Right Column: Top-Aligned Sidebar -->
       <div>
         <div class="sidebar-card">
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
           <ul class="inc-exc-list inc-list">
-            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Νέα Υόρκη (JFK/EWR) με επιστροφή</li>
-            <li>5 διανυκτερεύσεις σε κεντρικό 4* ξενοδοχείο στο Midtown Manhattan</li>
-            <li>Όλες οι μεταφορές από και προς τα αεροδρόμια της Νέας Υόρκης</li>
-            <li>Εισιτήριο κρουαζιέρας για το Άγαλμα της Ελευθερίας & Ellis Island</li>
-            <li>Εισιτήριο εισόδου στο Μουσείο Metropolitan (Met) & MoMA</li>
-            <li>Εισιτήριο εισόδου στο Παρατηρητήριο Summit One Vanderbilt</li>
-            <li>Περιηγήσεις & ξεναγήσεις με έμπειρο ελληνόφωνο αρχηγό/συνοδό</li>
-            <li>Ειδικό πάσο μετακινήσεων (MetroCard) για το μετρό της Νέας Υόρκης</li>
-            <li>Πλήρης ταξιδιωτική ασφάλιση</li>
+            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Νέα Υόρκη με επιστροφή</li>
+            <li>5 διανυκτερεύσεις σε 4* ξενοδοχείο στο Midtown Manhattan με πρωινό</li>
+            <li>Όλες οι μεταφορές & εισιτήρια μετρό</li>
+            <li>Εισιτήριο πλοιαρίου για Statue of Liberty & Ellis Island</li>
+            <li>Εισιτήρια "Top of the Building" στο Empire State Building</li>
+            <li>Εισιτήρια στο SUMMIT One Vanderbilt</li>
+            <li>Εισιτήριο εισόδου στο Metropolitan Museum of Art</li>
+            <li>Εισιτήριο για παράσταση Broadway (κατηγορία θέσεων ανάλογα με διαθεσιμότητα)</li>
+            <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός στις οργανωμένες εκδρομές</li>
+            <li>Ταξιδιωτική ασφάλιση</li>
           </ul>
 
           <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
-            <li>Φόροι αεροδρομίων (~380€)</li>
-            <li>Έγκριση είσοδος στις ΗΠΑ (ESTA ~$21)</li>
-            <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~35$)</li>
-            <li>Γεύματα & ποτά (πέραν των αναφερόμενων)</li>
-            <li>Εισιτήριο για παράσταση στο Broadway (προαιρετικό)</li>
+            <li>Φόροι αεροδρομίων & ηλεκτρονική άδεια εισόδου ESTA (~230€ + 21$ ΗΠΑ)</li>
+            <li>Φιλοδωρήματα (συνηθισμένα στις ΗΠΑ, ~15-20% σε εστιατόρια)</li>
+            <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
+            <li>Προσωπικά έξοδα & αγορές</li>
           </ul>
 
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              1.690€
+              1.980€
             </div>
             <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 5 Νύχτες / 6 Ημέρες)</span>
           </div>
@@ -225,55 +237,68 @@
 
     </div>
 
-    <!-- Photo Album Grid Collage -->
     <section class="photo-album-section">
       <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 8px;">Φωτογραφικό Άλμπουμ Ταξιδιού</h2>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα, ουρανοξύστες, πάρκα και εμβληματικά τοπόσημα της Νέας Υόρκης</p>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Στιγμιότυπα από τους πιο εμβληματικούς ορόσημα της Νέας Υόρκης</p>
 
       <div class="photo-album-grid">
-        <div class="photo-item photo-large">
-          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80" alt="New York City Skyline">
-        </div>
-        
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1602940659805-770d1b3b9712?auto=format&fit=crop&w=800&q=80" alt="Statue of Liberty">
+
+        <!-- Block 1: Statue of Liberty + skyline hero + Brooklyn Bridge -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x2">
+            <img src="https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?auto=format&fit=crop&w=1200&q=80" alt="Άγαλμα της Ελευθερίας μπροστά από τον ορίζοντα του Μανχάτταν">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1452796651103-7c07fca7a2c1?auto=format&fit=crop&w=800&q=80" alt="Brooklyn Bridge τη μέρα, Νέα Υόρκη">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" alt="Central Park NYC">
+        <!-- Block 2: three tall shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1543716091-a840c05249ec?auto=format&fit=crop&w=800&q=80" alt="Empire State Building τη μέρα, Νέα Υόρκη">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1554334836-2547fa719431?auto=format&fit=crop&w=800&q=80" alt="Άγαλμα της Ελευθερίας, κοντινό πλάνο">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1492666673288-3c4b4576ad9a?auto=format&fit=crop&w=800&q=80" alt="Manhattan Bridge από το DUMBO, Μπρούκλιν">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1200&q=80" alt="Brooklyn Bridge">
+        <!-- Block 3: three square shots -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1492217072584-7ff26c10eb75?auto=format&fit=crop&w=800&q=80" alt="Άγαλμα της Ελευθερίας">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1528291151377-165f5107c82a?auto=format&fit=crop&w=800&q=80" alt="Empire State Building">
+          </div>
+          <div class="photo-item photo-span-1x1">
+            <img src="https://images.unsplash.com/photo-1522083043120-6f9d458f6cbd?auto=format&fit=crop&w=800&q=80" alt="Brooklyn Bridge από ψηλά">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=800&q=80" alt="Times Square Lights">
+        <!-- Block 4: full-width panoramic banner -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1600&q=80" alt="Times Square τη νύχτα, Νέα Υόρκη">
+          </div>
         </div>
 
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=800&q=80" alt="Metropolitan Museum of Art Met">
+        <!-- Block 5: wide + tall + wide -->
+        <div class="photo-block">
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1524099163253-32b7f0256868?auto=format&fit=crop&w=1000&q=80" alt="Άγαλμα της Ελευθερίας, Νέα Υόρκη">
+          </div>
+          <div class="photo-item photo-span-1x2">
+            <img src="https://images.unsplash.com/photo-1477882244523-716124bf91a1?auto=format&fit=crop&w=800&q=80" alt="Brooklyn Bridge φωτισμένη τη νύχτα">
+          </div>
+          <div class="photo-item photo-span-2x1">
+            <img src="https://images.unsplash.com/photo-1533348239637-984bae0f8a5b?auto=format&fit=crop&w=1000&q=80" alt="Empire State Building, ασπρόμαυρο">
+          </div>
         </div>
 
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&w=1200&q=80" alt="High Line Park NYC">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=800&q=80" alt="Grand Central Terminal">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=800&q=80" alt="Empire State Building View">
-        </div>
-
-        <div class="photo-item photo-wide">
-          <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Wall Street Financial District">
-        </div>
-
-        <div class="photo-item">
-          <img src="https://images.unsplash.com/photo-1576085898323-218337e3e43c?auto=format&fit=crop&w=800&q=80" alt="Soho Streets NYC">
-        </div>
       </div>
     </section>
   </main>
@@ -309,11 +334,63 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Vanguard Travel Design. All rights reserved.</p>
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+        <h3 style="color: #ffffff; font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px;">Offset <span style="color: #c5a059;">TRAVEL</span></h3>
+        <p style="line-height: 1.6; margin-bottom: 15px;">Εξειδικευμένα πακέτα ταξιδιών με πλήρη οργάνωση, διαφάνεια στις τιμές και εγγυημένες εμπειρίες σε όλο τον κόσμο.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="../../index.html#trips" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="../../index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="../../index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#booking" style="color: #8898aa; text-decoration: none;">Κράτηση</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="../../privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="../../terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="../../cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="../../faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+          <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+          <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+          <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Offset Travel. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <script src="../../script.js"></script>
 
 </body>
 </html>
