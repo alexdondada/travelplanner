@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Πολιτική Απορρήτου της Offset Travel — ποια προσωπικά δεδομένα συλλέγουμε, γιατί, με ποιον τα μοιραζόμαστε και ποια είναι τα δικαιώματά σας σύμφωνα με τον GDPR." />
+  <title>Πολιτική Απορρήτου | Offset Travel Design</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .legal-hero {
+      background: linear-gradient(rgba(27,42,74,0.75), rgba(27,42,74,0.85)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      padding: 100px 24px;
+      color: white;
+      text-align: center;
+    }
+
+    .legal-updated {
+      font-size: 0.85rem;
+      color: var(--text-muted, #5a6578);
+      margin-bottom: 40px;
+    }
+
+    .legal-section {
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .legal-section h2 {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .legal-section h3 {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      font-size: 1.1rem;
+      margin: 20px 0 10px;
+    }
+
+    .legal-section p,
+    .legal-section li {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #2d3748;
+    }
+
+    .legal-section ul, .legal-section ol {
+      padding-left: 22px;
+      margin: 10px 0;
+    }
+
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+
+    .legal-section a {
+      color: var(--accent, #c48b5f);
+      text-decoration: underline;
+    }
+
+    .legal-note {
+      background: #f8f6f0;
+      border: 1px solid var(--border, #e2dfd7);
+      border-left: 4px solid var(--accent, #c48b5f);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-top: 16px;
+      font-size: 0.92rem;
+      color: var(--text-muted, #5a6578);
+    }
+
+    .legal-toc {
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+
+    .legal-toc h2 {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+
+    .legal-toc ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .legal-toc li {
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      break-inside: avoid;
+    }
+
+    .legal-toc a {
+      color: var(--text-dark, #1c2321);
+      text-decoration: none;
+    }
+
+    .legal-toc a:hover {
+      color: var(--accent, #c48b5f);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.92rem;
+    }
+
+    .data-table th, .data-table td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border, #e2dfd7);
+      vertical-align: top;
+    }
+
+    .data-table th {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      background: #f8f6f0;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .legal-toc ol { columns: 1; }
+      .data-table { font-size: 0.82rem; }
+      .data-table th, .data-table td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">Γιατί Εμάς</a></li>
+        <li><a href="index.html#trips">Πακέτα Ταξιδιών</a></li>
+        <li><a href="index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="index.html#reviews">Κριτικές</a></li>
+        <li><a href="index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="index.html#contact" class="btn btn-primary">Σχεδιάστε το Ταξίδι</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="legal-hero">
+    <span class="badge">ΝΟΜΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span>
+    <h1 style="font-family: var(--font-heading); font-size: 2.4rem; margin: 15px 0 10px;">Πολιτική Απορρήτου</h1>
+    <p style="font-size: 1.05rem; opacity: 0.9;">Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα προσωπικά σας δεδομένα</p>
+  </header>
+
+  <main class="container section" style="max-width: 880px;">
+
+    <p class="legal-updated">Τελευταία ενημέρωση: 20 Σεπτεμβρίου 2026</p>
+
+    <div class="legal-toc">
+      <h2>Περιεχόμενα</h2>
+      <ol>
+        <li><a href="#eisagogi">Εισαγωγή</a></li>
+        <li><a href="#ypeuthynos">Υπεύθυνος Επεξεργασίας</a></li>
+        <li><a href="#dedomena">Ποια Δεδομένα Συλλέγουμε</a></li>
+        <li><a href="#skopos">Σκοπός & Νομική Βάση Επεξεργασίας</a></li>
+        <li><a href="#koinopoiisi">Κοινοποίηση σε Τρίτους</a></li>
+        <li><a href="#diatirisi">Χρόνος Διατήρησης Δεδομένων</a></li>
+        <li><a href="#cookies">Cookies & Analytics</a></li>
+        <li><a href="#asfaleia">Ασφάλεια Δεδομένων</a></li>
+        <li><a href="#dikaiomata">Τα Δικαιώματά σας</a></li>
+        <li><a href="#anilikoi">Δεδομένα Ανηλίκων</a></li>
+        <li><a href="#diethneis">Διεθνείς Μεταφορές Δεδομένων</a></li>
+        <li><a href="#tropopoiisi">Τροποποιήσεις της Πολιτικής</a></li>
+        <li><a href="#epikoinonia">Επικοινωνία</a></li>
+      </ol>
+    </div>
+
+    <div class="legal-section" id="eisagogi">
+      <h2>1. Εισαγωγή</h2>
+      <p>Η Offset Travel σέβεται την ιδιωτικότητά σας και δεσμεύεται για την προστασία των προσωπικών σας δεδομένων. Η παρούσα Πολιτική Απορρήτου εξηγεί ποια δεδομένα συλλέγουμε όταν επισκέπτεστε την ιστοσελίδα μας ή πραγματοποιείτε κράτηση, για ποιο σκοπό τα επεξεργαζόμαστε, με ποιον τα μοιραζόμαστε και ποια δικαιώματα έχετε επ' αυτών.</p>
+      <p>Η επεξεργασία διέπεται από τον Γενικό Κανονισμό Προστασίας Δεδομένων (ΕΕ) 2016/679 ("GDPR") και την ελληνική νομοθεσία εφαρμογής του (Ν. 4624/2019).</p>
+    </div>
+
+    <div class="legal-section" id="ypeuthynos">
+      <h2>2. Υπεύθυνος Επεξεργασίας</h2>
+      <p>Υπεύθυνος επεξεργασίας των δεδομένων σας είναι η:</p>
+      <ul>
+        <li>Offset Travel, Θεσσαλονίκη, Ελλάδα</li>
+        <li>Email: hello@offsettravel.com</li>
+        <li>Τηλέφωνο: +30 210 123 4567</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="dedomena">
+      <h2>3. Ποια Δεδομένα Συλλέγουμε</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Κατηγορία</th><th>Παραδείγματα</th><th>Πότε τα συλλέγουμε</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Στοιχεία επικοινωνίας</td><td>Ονοματεπώνυμο, email, τηλέφωνο</td><td>Φόρμα επικοινωνίας, κράτηση</td></tr>
+          <tr><td>Στοιχεία κράτησης</td><td>Επιλεγμένο πακέτο, ημερομηνίες, αριθμός ταξιδιωτών, προϋπολογισμός</td><td>Κατά τη διαδικασία κράτησης</td></tr>
+          <tr><td>Ταξιδιωτικά έγγραφα</td><td>Στοιχεία διαβατηρίου, όνομα όπως αναγράφεται σε επίσημο έγγραφο</td><td>Μόνο όπου απαιτείται από αερομεταφορέα/πάροχο (π.χ. εσωτερικές πτήσεις, εισιτήρια με ονομαστική κράτηση)</td></tr>
+          <tr><td>Δεδομένα πληρωμής</td><td>Στοιχεία κάρτας (επεξεργάζονται από τον πάροχο πληρωμών, όχι από εμάς απευθείας)</td><td>Κατά την εξόφληση κράτησης</td></tr>
+          <tr><td>Τεχνικά δεδομένα</td><td>Διεύθυνση IP, τύπος συσκευής/browser, σελίδες που επισκεφθήκατε</td><td>Αυτόματα, κατά την περιήγηση στην ιστοσελίδα</td></tr>
+        </tbody>
+      </table>
+      <p>Δεν συλλέγουμε ειδικές κατηγορίες δεδομένων (π.χ. δεδομένα υγείας) παρά μόνο εάν εσείς οι ίδιοι μας τα γνωστοποιήσετε οικειοθελώς, για παράδειγμα για τη διευκόλυνση ειδικών αναγκών κατά το ταξίδι, και μόνο στον βαθμό που είναι απαραίτητο για την εξυπηρέτησή σας.</p>
+    </div>
+
+    <div class="legal-section" id="skopos">
+      <h2>4. Σκοπός & Νομική Βάση Επεξεργασίας</h2>
+      <ul>
+        <li><strong>Εκτέλεση σύμβασης:</strong> Οργάνωση και εκτέλεση του ταξιδιού σας, επικοινωνία σχετικά με την κράτησή σας.</li>
+        <li><strong>Έννομη υποχρέωση:</strong> Τήρηση φορολογικών/λογιστικών αρχείων και υποχρεώσεων τουριστικής νομοθεσίας.</li>
+        <li><strong>Έννομο συμφέρον:</strong> Βελτίωση της ιστοσελίδας και των υπηρεσιών μας, πρόληψη απάτης.</li>
+        <li><strong>Συγκατάθεση:</strong> Αποστολή ενημερωτικού υλικού (newsletter) ή προσφορών, μόνο εφόσον έχετε συναινέσει ρητά — μπορείτε να ανακαλέσετε τη συγκατάθεσή σας ανά πάσα στιγμή.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="koinopoiisi">
+      <h2>5. Κοινοποίηση σε Τρίτους</h2>
+      <p>Τα δεδομένα σας κοινοποιούνται μόνο στον βαθμό που είναι απαραίτητο για την εκτέλεση του ταξιδιού σας, ενδεικτικά σε:</p>
+      <ul>
+        <li>Αεροπορικές εταιρείες, ξενοδοχεία, τοπικούς συνεργάτες και ξεναγούς στον προορισμό</li>
+        <li>Παρόχους υπηρεσιών πληρωμών (π.χ. τραπεζικό ίδρυμα, πάροχος κάρτας)</li>
+        <li>Παρόχους ασφάλισης ταξιδιού, όπου έχετε επιλέξει σχετική κάλυψη</li>
+        <li>Δημόσιες αρχές, όπου αυτό επιβάλλεται από τον νόμο</li>
+      </ul>
+      <p>Δεν πωλούμε ούτε ενοικιάζουμε τα προσωπικά σας δεδομένα σε τρίτους για διαφημιστικούς σκοπούς.</p>
+    </div>
+
+    <div class="legal-section" id="diatirisi">
+      <h2>6. Χρόνος Διατήρησης Δεδομένων</h2>
+      <p>Διατηρούμε τα δεδομένα κράτησης για όσο διάστημα απαιτείται για την εκτέλεση του ταξιδιού και, στη συνέχεια, για την περίοδο που επιβάλλει η φορολογική νομοθεσία (συνήθως 5 έτη από το τέλος της οικονομικής χρήσης). Δεδομένα επικοινωνίας από τη φόρμα ενδιαφέροντος που δεν οδήγησαν σε κράτηση διαγράφονται εντός 24 μηνών, εκτός εάν έχετε συναινέσει σε λήψη ενημερωτικού υλικού.</p>
+    </div>
+
+    <div class="legal-section" id="cookies">
+      <h2>7. Cookies & Analytics</h2>
+      <p>Η ιστοσελίδα μας χρησιμοποιεί cookies για τη σωστή λειτουργία της (απαραίτητα cookies) και, όπου έχετε συναινέσει, για στατιστική ανάλυση επισκεψιμότητας (analytics cookies), ώστε να κατανοούμε πώς χρησιμοποιείτε την ιστοσελίδα και να τη βελτιώνουμε.</p>
+      <p>Μπορείτε να διαχειριστείτε ή να απενεργοποιήσετε τα cookies μέσω των ρυθμίσεων του browser σας. Η απενεργοποίηση ορισμένων cookies ενδέχεται να επηρεάσει τη λειτουργικότητα της ιστοσελίδας.</p>
+    </div>
+
+    <div class="legal-section" id="asfaleia">
+      <h2>8. Ασφάλεια Δεδομένων</h2>
+      <p>Λαμβάνουμε εύλογα τεχνικά και οργανωτικά μέτρα (κρυπτογράφηση μετάδοσης δεδομένων, περιορισμένη πρόσβαση προσωπικού) για την προστασία των δεδομένων σας από μη εξουσιοδοτημένη πρόσβαση, απώλεια ή κακή χρήση. Τα στοιχεία πληρωμής δεν αποθηκεύονται στους δικούς μας διακομιστές — η επεξεργασία γίνεται απευθείας από τον πιστοποιημένο πάροχο πληρωμών.</p>
+    </div>
+
+    <div class="legal-section" id="dikaiomata">
+      <h2>9. Τα Δικαιώματά σας</h2>
+      <p>Σύμφωνα με τον GDPR, έχετε δικαίωμα:</p>
+      <ul>
+        <li><strong>Πρόσβασης</strong> στα δεδομένα που τηρούμε για εσάς</li>
+        <li><strong>Διόρθωσης</strong> ανακριβών ή ελλιπών δεδομένων</li>
+        <li><strong>Διαγραφής</strong> ("δικαίωμα στη λήθη"), όπου δεν υπάρχει νόμιμος λόγος περαιτέρω τήρησης</li>
+        <li><strong>Περιορισμού</strong> της επεξεργασίας υπό προϋποθέσεις</li>
+        <li><strong>Φορητότητας</strong> των δεδομένων σε δομημένο, κοινώς χρησιμοποιούμενο μορφότυπο</li>
+        <li><strong>Εναντίωσης</strong> στην επεξεργασία για σκοπούς άμεσου μάρκετινγκ, ανά πάσα στιγμή</li>
+        <li><strong>Υποβολής καταγγελίας</strong> στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (<a href="https://www.dpa.gr" target="_blank" rel="noopener">www.dpa.gr</a>), εάν θεωρείτε ότι η επεξεργασία παραβιάζει τον GDPR</li>
+      </ul>
+      <p>Για την άσκηση οποιουδήποτε από τα παραπάνω δικαιώματα, επικοινωνήστε μαζί μας στο hello@offsettravel.com. Απαντάμε εντός 30 ημερών.</p>
+    </div>
+
+    <div class="legal-section" id="anilikoi">
+      <h2>10. Δεδομένα Ανηλίκων</h2>
+      <p>Δεδομένα ανηλίκων που ταξιδεύουν ως μέλη οικογενειακής κράτησης συλλέγονται μόνο μέσω και με τη συγκατάθεση του γονέα/κηδεμόνα που πραγματοποιεί την κράτηση, και χρησιμοποιούνται αποκλειστικά για την οργάνωση του ταξιδιού.</p>
+    </div>
+
+    <div class="legal-section" id="diethneis">
+      <h2>11. Διεθνείς Μεταφορές Δεδομένων</h2>
+      <p>Ορισμένοι πάροχοι υπηρεσιών που χρησιμοποιούμε (π.χ. συστήματα κρατήσεων αερογραμμών, πάροχοι πληρωμών) ενδέχεται να επεξεργάζονται δεδομένα εκτός Ευρωπαϊκού Οικονομικού Χώρου. Σε τέτοιες περιπτώσεις διασφαλίζουμε ότι υφίσταται κατάλληλο επίπεδο προστασίας, μέσω Τυποποιημένων Συμβατικών Ρητρών (SCCs) ή απόφασης επάρκειας της Ευρωπαϊκής Επιτροπής.</p>
+    </div>
+
+    <div class="legal-section" id="tropopoiisi">
+      <h2>12. Τροποποιήσεις της Πολιτικής</h2>
+      <p>Η παρούσα Πολιτική Απορρήτου ενδέχεται να επικαιροποιείται περιοδικά. Η ημερομηνία τελευταίας ενημέρωσης αναγράφεται στην κορυφή της σελίδας. Ουσιώδεις αλλαγές θα σας γνωστοποιούνται μέσω email ή ειδοποίησης στην ιστοσελίδα, όπου αυτό απαιτείται.</p>
+    </div>
+
+    <div class="legal-section" id="epikoinonia">
+      <h2>13. Επικοινωνία</h2>
+      <p>Για οποιοδήποτε ερώτημα σχετικά με την επεξεργασία των προσωπικών σας δεδομένων:</p>
+      <ul>
+        <li>Email: hello@offsettravel.com</li>
+        <li>Τηλέφωνο: +30 210 123 4567</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+      <img 
+  src="https://i.imgur.com/hhFOZCy.png?auto=format&fit=crop&w=800&q=80" 
+  alt="OFFSET TRAVEL"
+  width="800"
+  style="max-width: 100%; height: auto;" 
+/>
+        </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="index.html#about" style="color: #a0aec0; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="index.html#trips" style="color: #a0aec0; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="index.html#how-it-works" style="color: #a0aec0; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="index.html#reviews" style="color: #a0aec0; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="index.html#contact" style="color: #a0aec0; text-decoration: none;">Επικοινωνία</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods (All 7 now visible as bold CSS badges) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+  <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+  <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+  <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+  <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+  <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+</div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Offset Travel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
