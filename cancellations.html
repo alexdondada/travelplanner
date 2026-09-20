@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Πολιτική Ακυρώσεων & Επιστροφών της Offset Travel — κλίμακα χρεώσεων ακύρωσης, διαδικασία, τροποποιήσεις κράτησης και τρόπος επιστροφής χρημάτων." />
+  <title>Πολιτική Ακυρώσεων & Επιστροφών | Offset Travel Design</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .legal-hero {
+      background: linear-gradient(rgba(27,42,74,0.75), rgba(27,42,74,0.85)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      padding: 100px 24px;
+      color: white;
+      text-align: center;
+    }
+
+    .legal-updated {
+      font-size: 0.85rem;
+      color: var(--text-muted, #5a6578);
+      margin-bottom: 40px;
+    }
+
+    .legal-section {
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .legal-section h2 {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .legal-section h3 {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      font-size: 1.1rem;
+      margin: 20px 0 10px;
+    }
+
+    .legal-section p,
+    .legal-section li {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #2d3748;
+    }
+
+    .legal-section ul, .legal-section ol {
+      padding-left: 22px;
+      margin: 10px 0;
+    }
+
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+
+    .legal-section a {
+      color: var(--accent, #c48b5f);
+      text-decoration: underline;
+    }
+
+    .legal-note {
+      background: #f8f6f0;
+      border: 1px solid var(--border, #e2dfd7);
+      border-left: 4px solid var(--accent, #c48b5f);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-top: 16px;
+      font-size: 0.92rem;
+      color: var(--text-muted, #5a6578);
+    }
+
+    .legal-toc {
+      background: #ffffff;
+      border: 1px solid var(--border, #e2dfd7);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+
+    .legal-toc h2 {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+
+    .legal-toc ol {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .legal-toc li {
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      break-inside: avoid;
+    }
+
+    .legal-toc a {
+      color: var(--text-dark, #1c2321);
+      text-decoration: none;
+    }
+
+    .legal-toc a:hover {
+      color: var(--accent, #c48b5f);
+    }
+
+    /* Cancellation fee scale table */
+    .fee-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+
+    .fee-table th, .fee-table td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border, #e2dfd7);
+    }
+
+    .fee-table th {
+      font-family: var(--font-heading);
+      color: var(--primary, #1b2a4a);
+      background: #f8f6f0;
+      font-weight: 600;
+    }
+
+    .fee-table td.fee-pct {
+      font-weight: 700;
+      color: var(--primary, #1b2a4a);
+    }
+
+    @media (max-width: 600px) {
+      .legal-toc ol { columns: 1; }
+      .fee-table { font-size: 0.85rem; }
+      .fee-table th, .fee-table td { padding: 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">Γιατί Εμάς</a></li>
+        <li><a href="index.html#trips">Πακέτα Ταξιδιών</a></li>
+        <li><a href="index.html#gallery">Εμπειρίες</a></li>
+        <li><a href="index.html#reviews">Κριτικές</a></li>
+        <li><a href="index.html#how-it-works">Πώς Λειτουργεί</a></li>
+        <li class="nav-links-cta"><a href="index.html#contact" class="btn btn-primary">Σχεδιάστε το Ταξίδι</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html#contact" class="btn btn-primary nav-btn">Σχεδιάστε το Ταξίδι</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Άνοιγμα μενού" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="legal-hero">
+    <span class="badge">ΝΟΜΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</span>
+    <h1 style="font-family: var(--font-heading); font-size: 2.4rem; margin: 15px 0 10px;">Πολιτική Ακυρώσεων & Επιστροφών</h1>
+    <p style="font-size: 1.05rem; opacity: 0.9;">Πότε και πόσο επιστρέφεται σε περίπτωση ακύρωσης ή τροποποίησης της κράτησής σας</p>
+  </header>
+
+  <main class="container section" style="max-width: 880px;">
+
+    <p class="legal-updated">Τελευταία ενημέρωση: 20 Σεπτεμβρίου 2026</p>
+
+    <div class="legal-toc">
+      <h2>Περιεχόμενα</h2>
+      <ol>
+        <li><a href="#genika">Γενικά</a></li>
+        <li><a href="#diadikasia">Διαδικασία Ακύρωσης</a></li>
+        <li><a href="#klimaka">Κλίμακα Χρεώσεων Ακύρωσης</a></li>
+        <li><a href="#eidikes">Ειδικές Περιπτώσεις & Μη Επιστρεπτέα Ποσά</a></li>
+        <li><a href="#anoteri-via">Ακύρωση Λόγω Ασθένειας ή Ανωτέρας Βίας</a></li>
+        <li><a href="#tropopoiiseis">Τροποποιήσεις Κράτησης</a></li>
+        <li><a href="#diorganotis">Ακύρωση από τον Διοργανωτή</a></li>
+        <li><a href="#epistrofi">Τρόπος & Χρόνος Επιστροφής Χρημάτων</a></li>
+        <li><a href="#epikoinonia">Επικοινωνία</a></li>
+      </ol>
+    </div>
+
+    <div class="legal-section" id="genika">
+      <h2>1. Γενικά</h2>
+      <p>Η παρούσα Πολιτική Ακυρώσεων & Επιστροφών εξειδικεύει τους όρους ακύρωσης και τροποποίησης που αναφέρονται συνοπτικά στους <a href="terms.html">Όρους Χρήσης & Κρατήσεων</a> της Offset Travel και αποτελεί αναπόσπαστο μέρος της σύμβασης οργανωμένου ταξιδιού που συνάπτετε μαζί μας.</p>
+      <p>Οι χρεώσεις ακύρωσης που περιγράφονται παρακάτω αντικατοπτρίζουν πραγματικά έξοδα και δεσμεύσεις που έχει ήδη αναλάβει η Offset Travel προς τρίτους παρόχους (αεροπορικές εταιρείες, ξενοδοχεία, τοπικούς συνεργάτες) εκ μέρους σας, και ισχύουν ανεξαρτήτως του λόγου ακύρωσης, εκτός εάν καλύπτεστε από ταξιδιωτική ασφάλιση ακύρωσης.</p>
+    </div>
+
+    <div class="legal-section" id="diadikasia">
+      <h2>2. Διαδικασία Ακύρωσης</h2>
+      <p>Κάθε αίτημα ακύρωσης ή τροποποίησης πρέπει να υποβάλλεται γραπτώς στο <a href="mailto:hello@offsettravel.com">hello@offsettravel.com</a>, από τον ίδιο τον ταξιδιώτη ή τον επικεφαλής της κράτησης. Τηλεφωνικά αιτήματα δεν θεωρούνται έγκυρα χωρίς γραπτή επιβεβαίωση.</p>
+      <p>Ως ημερομηνία ακύρωσης λογίζεται η ημερομηνία παραλαβής του γραπτού αιτήματος από την Offset Travel κατά τις εργάσιμες ώρες (Δευτέρα–Παρασκευή, 09:00–18:00). Αιτήματα εκτός ωραρίου καταχωρούνται την επόμενη εργάσιμη ημέρα.</p>
+    </div>
+
+    <div class="legal-section" id="klimaka">
+      <h2>3. Κλίμακα Χρεώσεων Ακύρωσης</h2>
+      <p>Οι παρακάτω χρεώσεις υπολογίζονται επί της συνολικής αξίας του πακέτου ανά άτομο, ανάλογα με τις ημέρες που μεσολαβούν μεταξύ της ημερομηνίας ακύρωσης και της ημερομηνίας αναχώρησης:</p>
+      <table class="fee-table">
+        <thead>
+          <tr>
+            <th>Χρόνος Ακύρωσης πριν την Αναχώρηση</th>
+            <th>Χρέωση επί της Συνολικής Αξίας</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>45+ ημέρες</td><td class="fee-pct">Κράτηση της προκαταβολής (30%)</td></tr>
+          <tr><td>44 – 30 ημέρες</td><td class="fee-pct">30%</td></tr>
+          <tr><td>29 – 15 ημέρες</td><td class="fee-pct">50%</td></tr>
+          <tr><td>14 – 7 ημέρες</td><td class="fee-pct">75%</td></tr>
+          <tr><td>Λιγότερο από 7 ημέρες / μη εμφάνιση (no-show)</td><td class="fee-pct">100%</td></tr>
+        </tbody>
+      </table>
+      <div class="legal-note">Η κλίμακα αυτή είναι ενδεικτική. Ταξίδια με μη επιστρεπτέα αεροπορικά εισιτήρια, προπληρωμένα ξενοδοχεία ή περιορισμένη διαθεσιμότητα (π.χ. εισιτήρια Machu Picchu, θέσεις σε αγώνα ποδοσφαίρου) ενδέχεται να έχουν αυστηρότερους ή διαφορετικούς όρους, οι οποίοι αναγράφονται ρητά στη σελίδα του συγκεκριμένου πακέτου πριν την κράτηση.</div>
+    </div>
+
+    <div class="legal-section" id="eidikes">
+      <h2>4. Ειδικές Περιπτώσεις & Μη Επιστρεπτέα Ποσά</h2>
+      <p>Ανεξαρτήτως της χρονικής στιγμής ακύρωσης, τα ακόλουθα δεν επιστρέφονται σε καμία περίπτωση, καθώς αφορούν δεσμεύσεις τρίτων παρόχων που δεν αναστρέφονται:</p>
+      <ul>
+        <li>Εισιτήρια πτήσεων ή σιδηροδρόμου χαμηλού κόστους ή μη επιστρεπτέας κατηγορίας</li>
+        <li>Προπληρωμένα εισιτήρια εισόδου με περιορισμένη διαθεσιμότητα (π.χ. Machu Picchu, μουσεία με ημερήσιο όριο επισκεπτών)</li>
+        <li>Εισιτήρια για αγώνες, παραστάσεις ή εκδηλώσεις συγκεκριμένης ημερομηνίας (π.χ. Broadway, ποδοσφαιρικός αγώνας)</li>
+        <li>Έξοδα έκδοσης βίζας ή ηλεκτρονικής άδειας εισόδου που έχουν ήδη πραγματοποιηθεί</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="anoteri-via">
+      <h2>5. Ακύρωση Λόγω Ασθένειας ή Ανωτέρας Βίας</h2>
+      <p>Σε περίπτωση ακύρωσης λόγω ασθένειας, ατυχήματος ή άλλου απρόβλεπτου προσωπικού λόγου, η κλίμακα χρεώσεων της ενότητας 3 εξακολουθεί να ισχύει, εκτός εάν διαθέτετε ταξιδιωτική ασφάλεια που καλύπτει ακύρωση ταξιδιού — για τον λόγο αυτό συνιστούμε ανεπιφύλακτα την προαιρετική ασφάλιση ακύρωσης κατά την κράτηση.</p>
+      <p>Σε περίπτωση γεγονότων ανωτέρας βίας που επηρεάζουν τον ίδιο τον προορισμό (π.χ. φυσική καταστροφή, κρατική οδηγία μη μετάβασης), εφαρμόζεται η ενότητα «Ακύρωση από τον Διοργανωτή» των <a href="terms.html">Όρων Χρήσης & Κρατήσεων</a>, και όχι η παρούσα κλίμακα.</p>
+    </div>
+
+    <div class="legal-section" id="tropopoiiseis">
+      <h2>6. Τροποποιήσεις Κράτησης</h2>
+      <p>Αίτημα αλλαγής ονόματος ταξιδιώτη, ημερομηνιών αναχώρησης ή τύπου δωματίου εξετάζεται κατά περίπτωση, ανάλογα με τη διαθεσιμότητα των παρόχων. Ενδέχεται να ισχύουν πρόσθετες χρεώσεις από αεροπορικές εταιρείες, ξενοδοχεία ή άλλους παρόχους, οι οποίες μετακυλίονται στον ταξιδιώτη, πέραν τυχόν διοικητικού κόστους 25€ ανά τροποποίηση από την Offset Travel.</p>
+      <p>Αλλαγή ημερομηνιών εντός 30 ημερών πριν την αναχώρηση αντιμετωπίζεται ως ακύρωση της αρχικής κράτησης και νέα κράτηση, με εφαρμογή της κλίμακας χρεώσεων της ενότητας 3.</p>
+    </div>
+
+    <div class="legal-section" id="diorganotis">
+      <h2>7. Ακύρωση από τον Διοργανωτή</h2>
+      <p>Εάν η Offset Travel ακυρώσει το ταξίδι για λόγους που δεν οφείλονται σε υπαιτιότητα του ταξιδιώτη (π.χ. ανεπαρκής συμμετοχή, ανωτέρα βία), δικαιούστε πλήρη επιστροφή όλων των καταβληθέντων ποσών εντός 14 ημερών, ή εναλλακτικό ταξίδι αντίστοιχης αξίας εφόσον το επιθυμείτε. Δεν επιβάλλεται καμία χρέωση ακύρωσης στην περίπτωση αυτή.</p>
+    </div>
+
+    <div class="legal-section" id="epistrofi">
+      <h2>8. Τρόπος & Χρόνος Επιστροφής Χρημάτων</h2>
+      <p>Οι επιστροφές πραγματοποιούνται με τον ίδιο τρόπο πληρωμής που χρησιμοποιήθηκε κατά την κράτηση (χρεωστική/πιστωτική κάρτα, τραπεζική μεταφορά), εντός 14 εργάσιμων ημερών από την έγγραφη επιβεβαίωση του ποσού επιστροφής.</p>
+      <p>Σε περίπτωση πληρωμής με τραπεζική μεταφορά, παρακαλούμε όπως μας αποστείλετε τα στοιχεία του τραπεζικού λογαριασμού (IBAN) στον οποίο επιθυμείτε να γίνει η επιστροφή.</p>
+    </div>
+
+    <div class="legal-section" id="epikoinonia">
+      <h2>9. Επικοινωνία</h2>
+      <p>Για ερωτήματα σχετικά με ακύρωση ή τροποποίηση κράτησης, επικοινωνήστε μαζί μας:</p>
+      <ul>
+        <li>Email: hello@offsettravel.com</li>
+        <li>Τηλέφωνο: +30 210 123 4567</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer (With compact quick links and stylized HTML badges for all payments) -->
+  <footer style="background-color: #0f182b; color: #a0aec0; padding: 60px 0 0 0; font-size: 0.95rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px;">
+      
+      <!-- Column 1: Brand Info -->
+      <div>
+      <img 
+  src="https://i.imgur.com/hhFOZCy.png?auto=format&fit=crop&w=800&q=80" 
+  alt="OFFSET TRAVEL"
+  width="800"
+  style="max-width: 100%; height: auto;" 
+/>
+        </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="index.html#about" style="color: #a0aec0; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="index.html#trips" style="color: #a0aec0; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="index.html#how-it-works" style="color: #a0aec0; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="index.html#reviews" style="color: #a0aec0; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="index.html#contact" style="color: #a0aec0; text-decoration: none;">Επικοινωνία</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support (Small Font) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Όροι & Πολιτικές</h4>
+        <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
+          <li><a href="privacy.html" style="color: #8898aa; text-decoration: none;">Πολιτική Απορρήτου (Privacy Policy)</a></li>
+          <li><a href="terms.html" style="color: #8898aa; text-decoration: none;">Όροι Χρήσης & Κρατήσεων (ToS)</a></li>
+          <li><a href="cancellations.html" style="color: #8898aa; text-decoration: none;">Πολιτική Ακυρώσεων & Επιστροφών</a></li>
+          <li><a href="faq.html" style="color: #8898aa; text-decoration: none;">Συχνές Ερωτήσεις (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Approved Payment Methods (All 7 now visible as bold CSS badges) -->
+      <div>
+        <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Τρόποι Πληρωμής</h4>
+        <p style="margin-bottom: 15px; font-size: 0.85rem; color: #8898aa;">Ασφαλείς συναλλαγές μέσω εγκεκριμένων παρόχων:</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 2rem;">
+  <i class="fa-brands fa-cc-visa" style="color: #ffffff;" title="Visa"></i>
+  <i class="fa-brands fa-cc-mastercard" style="color: #ffffff;" title="Mastercard"></i>
+  <i class="fa-brands fa-cc-paypal" style="color: #ffffff;" title="PayPal"></i>
+  <i class="fa-solid fa-building-columns" style="color: #ffffff;" title="Τραπεζική Μεταφορά"></i>
+  <i class="fa-brands fa-bitcoin" style="color: #ffffff;" title="Bitcoin"></i>
+</div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
+      <div class="container">
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Offset Travel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
