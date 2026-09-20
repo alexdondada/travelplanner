@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BALNC. | Personal Protocol</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #1a1a1a;
+            --text: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #ffffff;
+            --error: #ef4444;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--surface);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        @media (min-width: 481px) {
+            #app {
+                min-height: 800px;
+                border-radius: 24px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+                overflow: hidden;
+            }
+        }
+
+        header {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo { font-size: 20px; font-weight: 800; letter-spacing: 2px; }
+        .step-indicator { font-size: 14px; color: var(--text-muted); }
+
+        .view {
+            padding: 32px 24px;
+            display: none;
+            flex-grow: 1;
+            flex-direction: column;
+        }
+        .view.active { display: flex; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+        p.subtitle { color: var(--text-muted); margin-bottom: 32px; }
+
+        /* Form Elements */
+        .options-grid { display: grid; gap: 12px; margin-bottom: 24px; }
+        
+        .option-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option-btn:hover { background: rgba(255,255,255,0.08); }
+        .option-btn.selected {
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 600;
+        }
+
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+        .input-group input {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 24px;
+        }
+
+        .btn {
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            flex: 1;
+            transition: 0.2s;
+        }
+
+        .btn-primary { background: var(--accent); color: var(--bg); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: var(--text); }
+
+        /* Loader */
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 24px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* Dashboard */
+        .metric-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .metric-card h2 { font-size: 48px; margin: 8px 0; }
+        
+        .macro-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .macro-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .macro-box span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+        .macro-box strong { font-size: 20px; }
+
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <header>
+        <div class="logo">BALNC.</div>
+        <div class="step-indicator" id="stepIndicator"></div>
+    </header>
+
+    <!-- View 1: Plan Type -->
+    <div class="view active" id="view-1">
+        <h1>Select your protocol</h1>
+        <p class="subtitle">What are we optimizing today?</p>
+        
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('planType', 'full')">Full Transformation (Diet & Workout)</button>
+            <button class="option-btn" onclick="selectOption('planType', 'diet')">Nutrition Only</button>
+            <button class="option-btn" onclick="selectOption('planType', 'workout')">Training Only</button>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="btn btn-primary" id="btn-next-1" disabled onclick="nextStep()">Continue</button>
+        </div>
+    </div>
+
+    <!-- View 2: Demographics -->
+    <div class="view" id="view-2">
+        <h1>Your metrics</h1>
+        <p class="subtitle">Required for baseline calculations.</p>
+        
+        <div class="options-grid" style="grid-template-columns: 1fr 1fr;">
+            <button class="option-btn" id="gender-male" onclick="selectOption('gender', 'male')">Male</button>
+            <button class="option-btn" id="gender-female" onclick="selectOption('gender', 'female')">Female</button>
+        </div>
+
+        <div class="input-group">
+            <label>Age (years)</label>
+            <input type="number" id="age" placeholder="e.g. 28" oninput="validateMetrics()">
+        </div>
+        <div class="input-group">
+            <label>Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g. 75" oninput="validateMetrics()">
+        </div>
+        <div class="input-group">
+            <label>Height (cm)</label>
+            <input type="number" id="height" placeholder="e.g. 180" oninput="validateMetrics()">
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+            <button class="btn btn-primary" id="btn-next-2" disabled onclick="nextStep()">Continue</button>
+        </div>
+    </div>
+
+    <!-- View 3: Goal -->
+    <div class="view" id="view-3">
+        <h1>Primary Objective</h1>
+        <p class="subtitle">Where are we heading?</p>
+        
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('goal', 'cut')">Fat Loss (Deficit)</button>
+            <button class="option-btn" onclick="selectOption('goal', 'maintain')">Maintenance (Recomp)</button>
+            <button class="option-btn" onclick="selectOption('goal', 'bulk')">Muscle Gain (Surplus)</button>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+            <button class="btn btn-primary" id="btn-next-3" disabled onclick="processEngine()">Generate Protocol</button>
+        </div>
+    </div>
+
+    <!-- View 4: Loading -->
+    <div class="view" id="view-4">
+        <div class="loader-container">
+            <div class="spinner"></div>
+            <h2 id="loading-text">Analyzing biometrics...</h2>
+            <p class="subtitle" style="margin-top:12px;">This will only take a moment.</p>
+        </div>
+    </div>
+
+    <!-- View 5: Dashboard -->
+    <div class="view" id="view-5">
+        <h1>Protocol Active.</h1>
+        <p class="subtitle">Here are your calibrated targets.</p>
+        
+        <div class="metric-card">
+            <span style="color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Daily Target</span>
+            <h2 id="out-cals">0</h2>
+            <span style="color: var(--text-muted);">kcal / day</span>
+        </div>
+
+        <div class="macro-grid">
+            <div class="macro-box">
+                <span>PROTEIN</span>
+                <strong id="out-pro">0g</strong>
+            </div>
+            <div class="macro-box">
+                <span>CARBS</span>
+                <strong id="out-carbs">0g</strong>
+            </div>
+            <div class="macro-box">
+                <span>FATS</span>
+                <strong id="out-fats">0g</strong>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn btn-secondary" onclick="location.reload()">Recalibrate</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Centralized State
+    const state = {
+        currentStep: 1,
+        planType: null,
+        gender: null,
+        age: null,
+        weight: null,
+        height: null,
+        goal: null,
+        results: { tdee: 0, target: 0, macros: { p:0, c:0, f:0 } }
+    };
+
+    // UI Navigation Logic
+    function updateView() {
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.getElementById(`view-${state.currentStep}`).classList.add('active');
+        
+        const indicator = document.getElementById('stepIndicator');
+        if (state.currentStep <= 3) {
+            indicator.innerText = `Step ${state.currentStep} of 3`;
+        } else {
+            indicator.innerText = "";
+        }
+    }
+
+    function nextStep() {
+        if (state.currentStep < 5) {
+            state.currentStep++;
+            updateView();
+        }
+    }
+
+    function prevStep() {
+        if (state.currentStep > 1) {
+            state.currentStep--;
+            updateView();
+        }
+    }
+
+    // Input Handling
+    function selectOption(key, value) {
+        state[key] = value;
+        
+        // UI Selection Highlighting
+        const currentView = document.getElementById(`view-${state.currentStep}`);
+        const buttons = currentView.querySelectorAll('.option-btn');
+        
+        if (key !== 'gender') {
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+        } else {
+            document.getElementById('gender-male').classList.remove('selected');
+            document.getElementById('gender-female').classList.remove('selected');
+            document.getElementById(`gender-${value}`).classList.add('selected');
+            validateMetrics();
+        }
+
+        // Enable Next button
+        if (state.currentStep === 1 || state.currentStep === 3) {
+            document.getElementById(`btn-next-${state.currentStep}`).disabled = false;
+        }
+    }
+
+    function validateMetrics() {
+        state.age = document.getElementById('age').value;
+        state.weight = document.getElementById('weight').value;
+        state.height = document.getElementById('height').value;
+
+        const isValid = state.gender && state.age > 0 && state.weight > 0 && state.height > 0;
+        document.getElementById('btn-next-2').disabled = !isValid;
+    }
+
+    // Calculation Engine
+    function calculateEngine() {
+        const { weight, height, age, gender, goal } = state;
+        
+        // Mifflin-St Jeor Equation for BMR
+        let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+        bmr = gender === 'male' ? bmr + 5 : bmr - 161;
+
+        // TDEE (assuming moderate activity multiplier 1.55)
+        let tdee = bmr * 1.55;
+        state.results.tdee = Math.round(tdee);
+
+        // Adjust for Goals
+        let target = tdee;
+        if (goal === 'cut') target -= 500;
+        if (goal === 'bulk') target += 500;
+        state.results.target = Math.round(target);
+
+        // Macros Calculation
+        const protein = weight * 2.2; // 2.2g per kg
+        const fats = weight * 0.9;    // 0.9g per kg
+        
+        const proteinCals = protein * 4;
+        const fatCals = fats * 9;
+        const remainingCals = target - (proteinCals + fatCals);
+        const carbs = remainingCals > 0 ? remainingCals / 4 : 0;
+
+        state.results.macros = {
+            p: Math.round(protein),
+            f: Math.round(fats),
+            c: Math.round(carbs)
+        };
+    }
+
+    // Contextual Loading & Transition
+    function processEngine() {
+        nextStep(); // Go to loader
+        calculateEngine();
+
+        const loadingText = document.getElementById('loading-text');
+        const loaderMessages = [
+            "Calculating BMR and TDEE...",
+            "Balancing macronutrients...",
+            "Finalizing your protocol..."
+        ];
+
+        let msgIndex = 0;
+        const interval = setInterval(() => {
+            msgIndex++;
+            if (msgIndex < loaderMessages.length) {
+                loadingText.innerText = loaderMessages[msgIndex];
+            } else {
+                clearInterval(interval);
+                renderDashboard();
+                nextStep(); // Go to dashboard
+            }
+        }, 1200);
+    }
+
+    function renderDashboard() {
+        document.getElementById('out-cals').innerText = state.results.target.toLocaleString();
+        document.getElementById('out-pro').innerText = state.results.macros.p + "g";
+        document.getElementById('out-fats').innerText = state.results.macros.f + "g";
+        document.getElementById('out-carbs').innerText = state.results.macros.c + "g";
+    }
+
+    // Init
+    updateView();
+</script>
+</body>
+</html>
