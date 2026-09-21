@@ -1,17 +1,19 @@
-<!DOCTYPE1 html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FitPulse AI - Personalized Fitness & Nutrition Plan</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            --accent-green: #22c55e;
-            --accent-green-glow: rgba(34, 197, 94, 0.35);
+            /* Update 1: Darker, less vibrant green shade */
+            --accent-green: #16a34a; 
+            --accent-green-glow: rgba(22, 163, 74, 0.35);
             --accent-green-dark: #15803d;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -111,12 +113,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
         /* WIZARD & ONBOARDING */
         .wizard-step {
             display: none;
@@ -132,10 +128,21 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Update 4: Step Counter & Progress Bar Header */
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
         .step-progress {
-            height: 4px;
+            height: 6px;
             background: var(--card-border);
-            border-radius: 2px;
+            border-radius: 3px;
             margin-bottom: 24px;
             overflow: hidden;
         }
@@ -149,21 +156,15 @@
         .wizard-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 20px;
             line-height: 1.2;
-        }
-
-        .wizard-subtitle {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 24px;
         }
 
         .option-card {
             background: var(--card-bg);
             border: 2px solid var(--card-border);
             border-radius: 16px;
-            padding: 16px;
+            padding: 18px 16px;
             margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -174,7 +175,7 @@
 
         .option-card:hover, .option-card.selected {
             border-color: var(--accent-green);
-            background: rgba(34, 197, 94, 0.05);
+            background: rgba(22, 163, 74, 0.08);
         }
 
         .option-card.selected {
@@ -183,12 +184,6 @@
 
         .option-card-content h4 {
             font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .option-card-content p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
         }
 
         .btn {
@@ -197,7 +192,7 @@
             border-radius: 14px;
             border: none;
             background: var(--accent-green);
-            color: #000;
+            color: #ffffff;
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
@@ -215,7 +210,7 @@
         }
 
         .btn:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
         }
@@ -249,6 +244,7 @@
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s ease;
+            text-align: center;
         }
 
         .input-control:focus {
@@ -281,7 +277,38 @@
             color: var(--accent-green);
         }
 
-        /* CIRCULAR / SEMI-CIRCULAR PROGRESS STYLES */
+        /* Update 7: Stepper Controls (+ / - Buttons) */
+        .stepper-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-stepper {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 700;
+            user-select: none;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .btn-stepper:active {
+            background: var(--accent-green);
+            color: #fff;
+            transform: scale(0.95);
+        }
+
+        /* CIRCULAR PROGRESS STYLES */
         .gauge-container {
             position: relative;
             width: 110px;
@@ -338,7 +365,7 @@
             margin-top: 2px;
         }
 
-        /* DASHBOARD TOP ROW (SPLIT CARDS) */
+        /* DASHBOARD TOP ROW */
         .dashboard-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -389,7 +416,7 @@
         }
 
         .date-card.active span {
-            color: #000 !important;
+            color: #fff !important;
         }
 
         .date-card .day-name {
@@ -413,7 +440,7 @@
             text-transform: uppercase;
         }
 
-        /* INTERACTIVE EXERCISE BOXES (GLOW EFFECT) */
+        /* EXERCISE BOXES */
         .exercise-box {
             background: var(--card-bg);
             border: 2px solid var(--card-border);
@@ -421,14 +448,14 @@
             padding: 16px;
             margin-bottom: 12px;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s ease;
             position: relative;
             user-select: none;
         }
 
         .exercise-box.completed {
             border-color: var(--accent-green);
-            background: rgba(34, 197, 94, 0.08);
+            background: rgba(22, 163, 74, 0.08);
             box-shadow: 0 0 18px var(--accent-green-glow);
         }
 
@@ -469,7 +496,7 @@
         .completed-badge {
             display: none;
             background: var(--accent-green);
-            color: #000;
+            color: #fff;
             padding: 2px 8px;
             border-radius: 20px;
             font-size: 0.65rem;
@@ -530,7 +557,7 @@
         }
 
         .hydration-icon {
-            background: rgba(34, 197, 94, 0.15);
+            background: rgba(22, 163, 74, 0.15);
             color: var(--accent-green);
             padding: 12px;
             border-radius: 12px;
@@ -539,7 +566,7 @@
             justify-content: center;
         }
 
-        /* NAVBAR */
+        /* NAVBAR - Update 12: Fixed Icon Visibility */
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -576,12 +603,13 @@
             color: var(--accent-green);
         }
 
-        .nav-item i {
-            width: 20px;
-            height: 20px;
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2px;
         }
 
-        /* FULL CALENDAR MODAL */
+        /* CALENDAR MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -649,7 +677,7 @@
         }
 
         .calendar-cell.has-workout {
-            background: rgba(34, 197, 94, 0.2);
+            background: rgba(22, 163, 74, 0.2);
         }
 
         /* STATS PILLS */
@@ -674,6 +702,45 @@
             font-weight: 700;
             color: var(--accent-green);
         }
+
+        /* Update 11: Loading Overlay Screen */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 3000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--card-border);
+            border-top: 4px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 24px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-status-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            min-height: 28px;
+        }
     </style>
 </head>
 <body>
@@ -696,182 +763,143 @@
             
             <!-- ONBOARDING WIZARD CONTAINER -->
             <div id="wizard-container">
-                <div class="step-progress">
-                    <div class="step-progress-bar" id="wizard-progress-bar" style="width: 12.5%;"></div>
+
+                <!-- Update 2: WELCOME SCREEN (STEP 0) -->
+                <div class="wizard-step active" id="step-0" style="text-align: center; padding-top: 40px;">
+                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(22, 163, 74, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
+                        <i data-lucide="activity" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">FitPulse AI</h1>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 40px; padding: 0 10px;">
+                        Your personalized AI fitness and custom nutrition engine built for real physical transformations.
+                    </p>
+                    <button class="btn" onclick="nextStep(1)">Build My Plan <i data-lucide="arrow-right"></i></button>
+                </div>
+
+                <!-- WIZARD STEP HEADER (STEPS 1 - 7) -->
+                <div id="wizard-step-header" style="display: none;">
+                    <div class="step-header">
+                        <span>FITNESS PROFILE</span>
+                        <!-- Update 4: Step Counter -->
+                        <span id="step-counter-text">Step 1 / 7</span>
+                    </div>
+                    <div class="step-progress">
+                        <div class="step-progress-bar" id="wizard-progress-bar" style="width: 14.28%;"></div>
+                    </div>
                 </div>
 
                 <!-- STEP 1: GENDER -->
-                <div class="wizard-step active" id="step-1">
+                <div class="wizard-step" id="step-1">
                     <h2 class="wizard-title">Select Gender</h2>
-                    <p class="wizard-subtitle">Help us tailor metabolic calculations precisely for you.</p>
                     
                     <div class="option-card" onclick="selectGender('male', this)">
                         <div class="option-card-content">
                             <h4>Male</h4>
-                            <p>Calculations optimized for male physiology</p>
                         </div>
-                        <i data-lucide="user" style="color: var(--accent-green);"></i>
+                        <i data-lucide="user"></i>
                     </div>
                     <div class="option-card" onclick="selectGender('female', this)">
                         <div class="option-card-content">
                             <h4>Female</h4>
-                            <p>Calculations optimized for female physiology</p>
                         </div>
-                        <i data-lucide="user" style="color: var(--accent-green);"></i>
+                        <i data-lucide="user"></i>
                     </div>
-                    <button class="btn" onclick="nextStep(2)">Continue <i data-lucide="arrow-right"></i></button>
+                    <!-- Update 6: Button disabled until option selected -->
+                    <button class="btn" id="btn-next-1" disabled onclick="nextStep(2)">Continue <i data-lucide="arrow-right"></i></button>
                 </div>
 
-                <!-- STEP 2: FITNESS GOAL -->
+                <!-- STEP 2: PRIMARY GOAL (Update 5: Muscle Mass First) -->
                 <div class="wizard-step" id="step-2">
                     <h2 class="wizard-title">What is your primary goal?</h2>
-                    <p class="wizard-subtitle">We will customize your daily target calories and workouts.</p>
                     
+                    <div class="option-card" onclick="selectGoal('gain', this)">
+                        <div class="option-card-content">
+                            <h4>Muscle Mass & Weight Gain</h4>
+                        </div>
+                    </div>
                     <div class="option-card" onclick="selectGoal('lose', this)">
                         <div class="option-card-content">
                             <h4>Weight Loss & Fat Reduction</h4>
-                            <p>Caloric deficit with lean muscle retention</p>
                         </div>
                     </div>
                     <div class="option-card" onclick="selectGoal('maintain', this)">
                         <div class="option-card-content">
                             <h4>Maintenance & Recomposition</h4>
-                            <p>Maintain weight while tone & build muscle</p>
                         </div>
                     </div>
-                    <div class="option-card" onclick="selectGoal('gain', this)">
-                        <div class="option-card-content">
-                            <h4>Muscle Mass & Weight Gain</h4>
-                            <p>Caloric surplus optimized for hypertrophy</p>
-                        </div>
-                    </div>
-                    <button class="btn" onclick="nextStep(3)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn" id="btn-next-2" disabled onclick="nextStep(3)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(1)">Back</button>
                 </div>
 
                 <!-- STEP 3: WORKOUT LOCATION -->
                 <div class="wizard-step" id="step-3">
                     <h2 class="wizard-title">Where do you exercise?</h2>
-                    <p class="wizard-subtitle">We will filter exercises according to available gear.</p>
                     
                     <div class="option-card" onclick="selectLocation('home', this)">
                         <div class="option-card-content">
                             <h4>At Home</h4>
-                            <p>Bodyweight, resistance bands & dumbbells</p>
                         </div>
                         <i data-lucide="home"></i>
                     </div>
                     <div class="option-card" onclick="selectLocation('gym', this)">
                         <div class="option-card-content">
                             <h4>At the Gym</h4>
-                            <p>Full access to barbells, machines & cables</p>
                         </div>
                         <i data-lucide="dumbbell"></i>
                     </div>
-                    <button class="btn" onclick="nextStep(4)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn" id="btn-next-3" disabled onclick="nextStep(4)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(2)">Back</button>
                 </div>
 
-                <!-- STEP 4: PLAN TYPE (UPDATE 8) -->
+                <!-- STEP 4: PLAN TYPE -->
                 <div class="wizard-step" id="step-4">
                     <h2 class="wizard-title">Select Plan Structure</h2>
-                    <p class="wizard-subtitle">Choose how you want to structure your transformation.</p>
                     
-                    <div class="option-card selected" onclick="selectPlanType('workout_diet', this)">
+                    <div class="option-card" onclick="selectPlanType('workout_diet', this)">
                         <div class="option-card-content">
                             <h4>Workout & Diet Plan (Recommended)</h4>
-                            <p>Complete combined approach for maximum speed & results</p>
                         </div>
-                        <i data-lucide="check-circle" style="color: var(--accent-green);"></i>
                     </div>
                     <div class="option-card" onclick="selectPlanType('workout_only', this)">
                         <div class="option-card-content">
                             <h4>Workout Only</h4>
-                            <p>Focus purely on strength and exercise routines</p>
                         </div>
                     </div>
                     <div class="option-card" onclick="selectPlanType('diet_only', this)">
                         <div class="option-card-content">
                             <h4>Diet Plan Only</h4>
-                            <p>Focus purely on structured custom nutrition</p>
                         </div>
                     </div>
-                    <button class="btn" onclick="nextStep(5)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn" id="btn-next-4" disabled onclick="nextStep(5)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(3)">Back</button>
                 </div>
 
-                <!-- STEP 5: FITNESS LEVEL -->
+                <!-- STEP 5: CURRENT PHYSIQUE (Update 9: Body Physique instead of Fitness Level) -->
                 <div class="wizard-step" id="step-5">
-                    <h2 class="wizard-title">Your Current Fitness Level</h2>
-                    <p class="wizard-subtitle">Used to calibrate session intensity and volume.</p>
+                    <h2 class="wizard-title">Current Body Physique</h2>
                     
-                    <div class="option-card" onclick="selectLevel('beginner', this)">
+                    <div class="option-card" onclick="selectPhysique('slim', this)">
                         <div class="option-card-content">
-                            <h4>Beginner</h4>
-                            <p>New to training or returning after a long pause</p>
+                            <h4>Slim / Lean</h4>
                         </div>
                     </div>
-                    <div class="option-card" onclick="selectLevel('intermediate', this)">
+                    <div class="option-card" onclick="selectPhysique('average', this)">
                         <div class="option-card-content">
-                            <h4>Intermediate</h4>
-                            <p>Consistently training 1-3 years</p>
+                            <h4>Average / Athletic</h4>
                         </div>
                     </div>
-                    <div class="option-card" onclick="selectLevel('advanced', this)">
+                    <div class="option-card" onclick="selectPhysique('more_fat', this)">
                         <div class="option-card-content">
-                            <h4>Advanced</h4>
-                            <p>Consistent intense physical training for 3+ years</p>
+                            <h4>More Body Fat / Heavy</h4>
                         </div>
                     </div>
-                    <button class="btn" onclick="nextStep(6)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn" id="btn-next-5" disabled onclick="nextStep(6)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(4)">Back</button>
                 </div>
 
-                <!-- STEP 6: TARGET MUSCLE AREAS (MAX 3 - UPDATE 9) -->
+                <!-- STEP 6: PROGRAM DURATION & DAYS/WEEK -->
                 <div class="wizard-step" id="step-6">
-                    <h2 class="wizard-title">Target Muscle Areas</h2>
-                    <p class="wizard-subtitle">Select up to 3 priority focus areas (or Full Body).</p>
-                    
-                    <div class="option-card" onclick="toggleMuscleArea('full_body', this)">
-                        <div class="option-card-content">
-                            <h4>Full Body Focus</h4>
-                            <p>Balanced development across all major muscle groups</p>
-                        </div>
-                    </div>
-                    <div class="option-card muscle-option" onclick="toggleMuscleArea('chest', this)">
-                        <div class="option-card-content">
-                            <h4>Chest & Pectorat Group</h4>
-                        </div>
-                    </div>
-                    <div class="option-card muscle-option" onclick="toggleMuscleArea('back', this)">
-                        <div class="option-card-content">
-                            <h4>Back & Lats</h4>
-                        </div>
-                    </div>
-                    <div class="option-card muscle-option" onclick="toggleMuscleArea('legs', this)">
-                        <div class="option-card-content">
-                            <h4>Legs & Quads/Hamstrings</h4>
-                        </div>
-                    </div>
-                    <div class="option-card muscle-option" onclick="toggleMuscleArea('arms', this)">
-                        <div class="option-card-content">
-                            <h4>Arms & Shoulders</h4>
-                        </div>
-                    </div>
-                    <div class="option-card muscle-option" onclick="toggleMuscleArea('core', this)">
-                        <div class="option-card-content">
-                            <h4>Abs & Core Stability</h4>
-                        </div>
-                    </div>
-
-                    <button class="btn" onclick="nextStep(7)">Continue <i data-lucide="arrow-right"></i></button>
-                    <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
-                </div>
-
-                <!-- STEP 7: PROGRAM DURATION & DAYS/WEEK -->
-                <div class="wizard-step" id="step-7">
                     <h2 class="wizard-title">Program Setup</h2>
-                    <p class="wizard-subtitle">Choose program length and weekly commitment.</p>
                     
                     <div class="input-group">
                         <label>Program Duration</label>
@@ -892,54 +920,74 @@
                         </select>
                     </div>
 
-                    <button class="btn" onclick="nextStep(8)">Continue <i data-lucide="arrow-right"></i></button>
-                    <button class="btn btn-secondary" onclick="prevStep(6)">Back</button>
+                    <button class="btn" onclick="nextStep(7)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
                 </div>
 
-                <!-- STEP 8: BIOMETRIC DETAILS (CM / FT - UPDATE 10) -->
-                <div class="wizard-step" id="step-8">
+                <!-- STEP 7: BIOMETRICS (Update 8: Age Groups & Update 7: Stepper Arrows) -->
+                <div class="wizard-step" id="step-7">
                     <h2 class="wizard-title">Biometric Measurements</h2>
-                    <p class="wizard-subtitle">Needed for accurate metabolic output & TDEE calculation.</p>
                     
+                    <!-- Update 8: Age Group Selection -->
                     <div class="input-group">
-                        <label>Age</label>
-                        <input type="number" id="user-age" class="input-control" placeholder="e.g. 28" value="28">
+                        <label>Age Group</label>
+                        <select class="input-control" id="user-age-group">
+                            <option value="18-25">18 - 25</option>
+                            <option value="25-30" selected>25 - 30</option>
+                            <option value="30-35">30 - 35</option>
+                            <option value="35+">35+</option>
+                        </select>
                     </div>
 
+                    <!-- Update 7: Weight with Steppers -->
                     <div class="input-group">
                         <label>Weight</label>
                         <div class="unit-toggle">
                             <button class="unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">KG</button>
                             <button class="unit-btn" id="btn-lbs" onclick="setWeightUnit('lbs')">LBS</button>
                         </div>
-                        <input type="number" id="user-weight" class="input-control" placeholder="e.g. 75" value="75">
+                        <div class="stepper-container">
+                            <div class="btn-stepper" onclick="adjustValue('user-weight', -1)">-</div>
+                            <input type="number" id="user-weight" class="input-control" value="75">
+                            <div class="btn-stepper" onclick="adjustValue('user-weight', 1)">+</div>
+                        </div>
                     </div>
 
+                    <!-- Update 7: Height with Steppers -->
                     <div class="input-group">
                         <label>Height</label>
                         <div class="unit-toggle">
                             <button class="unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
                             <button class="unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">FT</button>
                         </div>
+                        
                         <div id="height-cm-container">
-                            <input type="number" id="user-height-cm" class="input-control" placeholder="e.g. 180" value="180">
+                            <div class="stepper-container">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-cm', -1)">-</div>
+                                <input type="number" id="user-height-cm" class="input-control" value="180">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-cm', 1)">+</div>
+                            </div>
                         </div>
+
                         <div id="height-ft-container" style="display: none;">
-                            <input type="number" step="0.1" id="user-height-ft" class="input-control" placeholder="e.g. 5.11 (5 feet 11 inches)" value="5.11">
+                            <div class="stepper-container">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-ft', -0.1)">-</div>
+                                <input type="number" step="0.1" id="user-height-ft" class="input-control" value="5.11">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-ft', 0.1)">+</div>
+                            </div>
                         </div>
                     </div>
 
-                    <button class="btn" onclick="completeOnboarding()">Generate My Plan <i data-lucide="sparkles"></i></button>
-                    <button class="btn btn-secondary" onclick="prevStep(7)">Back</button>
+                    <button class="btn" onclick="triggerPlanGeneration()">Generate My Plan <i data-lucide="sparkles"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(6)">Back</button>
                 </div>
             </div>
 
-            <!-- DASHBOARD HOME VIEW (UPDATES 1, 2, 13) -->
+            <!-- DASHBOARD HOME VIEW -->
             <div id="dashboard-home" style="display: none;">
                 
-                <!-- TOP SPLIT: DAILY TARGET & TOTAL PROGRESS CIRCLE (UPDATE 2) -->
                 <div class="dashboard-split">
-                    <!-- HALF 1: DAILY CALORIE TARGET -->
+                    <!-- DAILY CALORIE TARGET -->
                     <div class="card">
                         <div class="gauge-container">
                             <svg class="gauge-svg" viewBox="0 0 100 100">
@@ -954,7 +1002,7 @@
                         <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Calorie Target</div>
                     </div>
 
-                    <!-- HALF 2: TOTAL PROGRESS CIRCLE (UPDATE 2) -->
+                    <!-- TOTAL PROGRESS CIRCLE -->
                     <div class="card">
                         <div class="gauge-container">
                             <svg class="gauge-svg" viewBox="0 0 100 100">
@@ -970,10 +1018,10 @@
                     </div>
                 </div>
 
-                <!-- CONSISTENCY STREAK CARD (UPDATE 1) -->
+                <!-- CONSISTENCY STREAK CARD -->
                 <div class="card" style="display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green); padding: 12px; border-radius: 14px;">
+                        <div style="background: rgba(22, 163, 74, 0.15); color: var(--accent-green); padding: 12px; border-radius: 14px;">
                             <i data-lucide="flame" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div>
@@ -984,7 +1032,7 @@
                     <i data-lucide="award" style="color: var(--accent-green);"></i>
                 </div>
 
-                <!-- HYDRATION NOTE BOX (UPDATE 13) -->
+                <!-- HYDRATION NOTE BOX -->
                 <div class="hydration-note-box">
                     <div class="hydration-icon">
                         <i data-lucide="droplet" style="width: 24px; height: 24px;"></i>
@@ -1017,9 +1065,8 @@
                 </div>
             </div>
 
-            <!-- WORKOUT VIEW (UPDATES 3, 4, 5, 11) -->
+            <!-- WORKOUT VIEW -->
             <div id="workout-tab" style="display: none;">
-                <!-- 3-LINE DATE SELECTOR (UPDATE 3 & 4) -->
                 <div class="date-selector-container" id="workout-date-bar"></div>
 
                 <div class="card" style="margin-bottom: 16px;">
@@ -1035,13 +1082,11 @@
                     </div>
                 </div>
 
-                <!-- EXERCISE LIST WITH GLOW BOX SELECTION (UPDATE 5 & 11) -->
                 <div id="workout-exercise-list"></div>
             </div>
 
-            <!-- MEALS VIEW (UPDATE 12) -->
+            <!-- MEALS VIEW -->
             <div id="meals-tab" style="display: none;">
-                <!-- DATES BAR SAME AS WORKOUT TAB (UPDATE 12) -->
                 <div class="date-selector-container" id="meals-date-bar"></div>
 
                 <div class="card" style="margin-bottom: 16px;">
@@ -1049,14 +1094,13 @@
                     <p style="font-size: 0.8rem; color: var(--text-muted);" id="meals-day-subtitle">Custom structured menu for optimal metabolic response.</p>
                 </div>
 
-                <!-- 6 STRUCTURED DAILY MEALS (UPDATE 12) -->
                 <div id="meals-list-container"></div>
             </div>
 
             <!-- PROFILE / SETTINGS VIEW -->
             <div id="profile-tab" style="display: none;">
                 <div class="card" style="text-align: center; padding: 28px 20px;">
-                    <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--accent-green); color: #000; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--accent-green); color: #fff; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
                         FP
                     </div>
                     <h2 style="font-size: 1.2rem; font-weight: 800;" id="profile-user-name">FitPulse Athlete</h2>
@@ -1066,7 +1110,7 @@
                 <div class="card">
                     <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px;">Plan Configuration</h3>
                     <div class="stat-pill"><span class="label">Location</span><span class="val" id="prof-loc">Gym</span></div>
-                    <div class="stat-pill"><span class="label">Level</span><span class="val" id="prof-level">Intermediate</span></div>
+                    <div class="stat-pill"><span class="label">Physique</span><span class="val" id="prof-physique">Average</span></div>
                     <div class="stat-pill"><span class="label">Program Length</span><span class="val" id="prof-duration">90 Days</span></div>
                     <div class="stat-pill"><span class="label">Frequency</span><span class="val" id="prof-freq">4 Days/Wk</span></div>
                 </div>
@@ -1076,7 +1120,7 @@
 
         </main>
 
-        <!-- BOTTOM NAVBAR WITH WORKOUT ICON (UPDATE 6) -->
+        <!-- Update 12: BOTTOM NAVBAR WITH WORKING LUCIDE ICONS -->
         <nav class="nav-bar" id="app-nav-bar" style="display: none;">
             <button class="nav-item active" onclick="switchTab('home', this)">
                 <i data-lucide="home"></i>
@@ -1097,7 +1141,7 @@
         </nav>
     </div>
 
-    <!-- CALENDAR MODAL (UPDATE 7) -->
+    <!-- CALENDAR MODAL -->
     <div class="modal" id="calendar-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1119,18 +1163,23 @@
         </div>
     </div>
 
+    <!-- Update 11: REALISTIC LOADING OVERLAY -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-status-text" id="loading-status-msg">Calculating Basal Metabolic Rate...</div>
+    </div>
+
     <script>
         // GLOBAL STATE
         let userData = {
-            gender: 'male',
-            goal: 'lose',
-            location: 'gym',
-            planType: 'workout_diet',
-            level: 'intermediate',
-            muscleAreas: ['full_body'],
+            gender: null,
+            goal: null,
+            location: null,
+            planType: null,
+            physique: null,
             duration: 90,
             workoutDays: 4,
-            age: 28,
+            ageGroup: '25-30',
             weight: 75,
             weightUnit: 'kg',
             heightCm: 180,
@@ -1149,7 +1198,6 @@
             recommendedWaterLiters: "2.8 - 3.5"
         };
 
-        // TRACK COMPLETED EXERCISES PER DATE INDEX
         let completedExercisesMap = {};
 
         // INITIALIZATION
@@ -1162,10 +1210,17 @@
         function nextStep(stepNumber) {
             document.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
             document.getElementById(`step-${stepNumber}`).classList.add('active');
-            
-            // Update Progress bar
-            const progress = (stepNumber / 8) * 100;
-            document.getElementById('wizard-progress-bar').style.width = `${progress}%`;
+
+            const header = document.getElementById('wizard-step-header');
+            if (stepNumber > 0) {
+                header.style.display = 'block';
+                // Update Step Counter & Progress Bar (7 Total Steps)
+                document.getElementById('step-counter-text').innerText = `Step ${stepNumber} / 7`;
+                const progress = (stepNumber / 7) * 100;
+                document.getElementById('wizard-progress-bar').style.width = `${progress}%`;
+            } else {
+                header.style.display = 'none';
+            }
         }
 
         function prevStep(stepNumber) {
@@ -1176,57 +1231,31 @@
         function selectGender(gender, element) {
             userData.gender = gender;
             highlightSingleOption(element);
+            document.getElementById('btn-next-1').disabled = false;
         }
 
         function selectGoal(goal, element) {
             userData.goal = goal;
             highlightSingleOption(element);
+            document.getElementById('btn-next-2').disabled = false;
         }
 
         function selectLocation(loc, element) {
             userData.location = loc;
             highlightSingleOption(element);
+            document.getElementById('btn-next-3').disabled = false;
         }
 
         function selectPlanType(plan, element) {
             userData.planType = plan;
             highlightSingleOption(element);
+            document.getElementById('btn-next-4').disabled = false;
         }
 
-        function selectLevel(lvl, element) {
-            userData.level = lvl;
+        function selectPhysique(physique, element) {
+            userData.physique = physique;
             highlightSingleOption(element);
-        }
-
-        // UPDATE 9: TARGET MUSCLE AREAS (MAX 3)
-        function toggleMuscleArea(area, element) {
-            if (area === 'full_body') {
-                userData.muscleAreas = ['full_body'];
-                document.querySelectorAll('.wizard-step#step-6 .option-card').forEach(el => el.classList.remove('selected'));
-                element.classList.add('selected');
-                return;
-            }
-
-            // Deselect full_body if active
-            userData.muscleAreas = userData.muscleAreas.filter(a => a !== 'full_body');
-            document.querySelectorAll('.wizard-step#step-6 .option-card')[0].classList.remove('selected');
-
-            if (userData.muscleAreas.includes(area)) {
-                userData.muscleAreas = userData.muscleAreas.filter(a => a !== area);
-                element.classList.remove('selected');
-            } else {
-                if (userData.muscleAreas.length < 3) {
-                    userData.muscleAreas.push(area);
-                    element.classList.add('selected');
-                } else {
-                    alert('You can select a maximum of 3 focus muscle areas (or choose Full Body).');
-                }
-            }
-
-            if (userData.muscleAreas.length === 0) {
-                userData.muscleAreas = ['full_body'];
-                document.querySelectorAll('.wizard-step#step-6 .option-card')[0].classList.add('selected');
-            }
+            document.getElementById('btn-next-5').disabled = false;
         }
 
         function highlightSingleOption(element) {
@@ -1235,7 +1264,14 @@
             element.classList.add('selected');
         }
 
-        // UPDATE 10: UNITS TOGGLE FOR WEIGHT & HEIGHT (CM / FT ONLY)
+        // Update 7: Stepper Buttons
+        function adjustValue(inputId, delta) {
+            const input = document.getElementById(inputId);
+            let val = parseFloat(input.value) || 0;
+            val = Math.max(1, val + delta);
+            input.value = Number.isInteger(delta) ? val : val.toFixed(1);
+        }
+
         function setWeightUnit(unit) {
             userData.weightUnit = unit;
             document.getElementById('btn-kg').classList.toggle('active', unit === 'kg');
@@ -1256,9 +1292,9 @@
             }
         }
 
-        // CALCULATE PLAN & COMPLETE ONBOARDING
-        function completeOnboarding() {
-            userData.age = parseInt(document.getElementById('user-age').value) || 28;
+        // Update 11: Realistic Loading Steps
+        function triggerPlanGeneration() {
+            userData.ageGroup = document.getElementById('user-age-group').value;
             userData.duration = parseInt(document.getElementById('program-duration-select').value) || 90;
             userData.workoutDays = parseInt(document.getElementById('workout-days-select').value) || 4;
 
@@ -1272,20 +1308,49 @@
                 userData.heightCm = parseFloat(document.getElementById('user-height-cm').value) || 180;
             } else {
                 const ftVal = parseFloat(document.getElementById('user-height-ft').value) || 5.11;
-                // Convert Feet.Inches to cm
                 const feet = Math.floor(ftVal);
-                const inches = (ftVal - feet) * 100;
+                const inches = (ftVal - feet) * 10;
                 userData.heightCm = Math.round((feet * 30.48) + (inches * 2.54));
             }
 
+            const overlay = document.getElementById('loading-overlay');
+            const msg = document.getElementById('loading-status-msg');
+            overlay.style.display = 'flex';
+
+            const loadingMessages = [
+                "Calculating Basal Metabolic Rate...",
+                "Optimizing daily caloric & macro targets...",
+                "Establishing full-body exercise progressions...",
+                "Structuring custom 6-meal daily nutrition...",
+                "Finalizing personalized transformation plan..."
+            ];
+
+            let msgIndex = 0;
+            const interval = setInterval(() => {
+                msgIndex++;
+                if (msgIndex < loadingMessages.length) {
+                    msg.innerText = loadingMessages[msgIndex];
+                } else {
+                    clearInterval(interval);
+                    completeOnboarding();
+                    overlay.style.display = 'none';
+                }
+            }, 750);
+        }
+
+        function completeOnboarding() {
             generateCalculatedPlan();
             saveUserData();
             showMainApp();
         }
 
         function generateCalculatedPlan() {
-            // Basal Metabolic Rate (Mifflin-St Jeor Formula)
-            let bmr = (10 * userData.weight) + (6.25 * userData.heightCm) - (5 * userData.age);
+            let ageNum = 26;
+            if (userData.ageGroup === '18-25') ageNum = 22;
+            else if (userData.ageGroup === '30-35') ageNum = 32;
+            else if (userData.ageGroup === '35+') ageNum = 40;
+
+            let bmr = (10 * userData.weight) + (6.25 * userData.heightCm) - (5 * ageNum);
             bmr += (userData.gender === 'male') ? 5 : -161;
 
             let activityMultiplier = 1.375;
@@ -1301,12 +1366,10 @@
                 calculatedPlan.targetCalories = Math.round(tdee);
             }
 
-            // Macros
             calculatedPlan.protein = Math.round(userData.weight * 2.1);
             calculatedPlan.fats = Math.round((calculatedPlan.targetCalories * 0.25) / 9);
             calculatedPlan.carbs = Math.round((calculatedPlan.targetCalories - (calculatedPlan.protein * 4) - (calculatedPlan.fats * 9)) / 4);
 
-            // Hydration (Liters) UPDATE 13
             const minWater = (userData.weight * 0.038).toFixed(1);
             const maxWater = (userData.weight * 0.045).toFixed(1);
             calculatedPlan.recommendedWaterLiters = `${minWater} - ${maxWater}`;
@@ -1319,42 +1382,35 @@
             
             updateDashboardUI();
             switchTab('home', document.querySelectorAll('.nav-item')[0]);
+            lucide.createIcons();
         }
 
         function updateDashboardUI() {
-            // Dashboard Calorie gauge
             document.getElementById('dashboard-target-calories').innerText = calculatedPlan.targetCalories.toLocaleString();
             
-            // Calorie gauge arc fill
             const calGauge = document.getElementById('cal-gauge-fill');
-            calGauge.style.strokeDashoffset = 283 - (283 * 0.75); // 75% filled visual target gauge
+            calGauge.style.strokeDashoffset = 283 - (283 * 0.75);
 
-            // UPDATE 2: TOTAL PROGRESS CIRCLE
             updateTotalProgressUI();
 
-            // UPDATE 1: CONSISTENCY STREAK
             document.getElementById('streak-counter-val').innerText = `${userData.streak} Days Active`;
 
-            // UPDATE 13: HYDRATION NOTE
             document.getElementById('hydration-recommendation-text').innerText = 
                 `Recommended intake: ${calculatedPlan.recommendedWaterLiters} Liters of water daily for optimum recovery.`;
 
-            // MACROS
             document.getElementById('dash-protein-val').innerText = `${calculatedPlan.protein}g`;
             document.getElementById('dash-carbs-val').innerText = `${calculatedPlan.carbs}g`;
             document.getElementById('dash-fats-val').innerText = `${calculatedPlan.fats}g`;
 
-            // PROFILE
-            document.getElementById('profile-user-goal').innerText = `Goal: ${userData.goal.toUpperCase()}`;
+            document.getElementById('profile-user-goal').innerText = `Goal: ${(userData.goal || 'General').toUpperCase()}`;
             document.getElementById('prof-loc').innerText = userData.location === 'gym' ? 'At the Gym' : 'At Home';
-            document.getElementById('prof-level').innerText = userData.level.toUpperCase();
+            document.getElementById('prof-physique').innerText = (userData.physique || 'Average').toUpperCase();
             document.getElementById('prof-duration').innerText = `${userData.duration} Days`;
             document.getElementById('prof-freq').innerText = `${userData.workoutDays} Days / Wk`;
 
             renderDateBars();
         }
 
-        // UPDATE 2: TOTAL PROGRESS CIRCLE
         function updateTotalProgressUI() {
             document.getElementById('dash-progress-days').innerText = `Day ${userData.currentProgramDay}`;
             document.getElementById('dash-total-days').innerText = `/ ${userData.duration}`;
@@ -1365,7 +1421,6 @@
             totalProgressGauge.style.strokeDashoffset = offset;
         }
 
-        // TAB SWITCHING
         function switchTab(tabName, element) {
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             if (element) element.classList.add('active');
@@ -1386,9 +1441,10 @@
             } else if (tabName === 'profile') {
                 document.getElementById('profile-tab').style.display = 'block';
             }
+
+            lucide.createIcons();
         }
 
-        // UPDATE 3 & 4: 3-LINE DATE BAR (DAY, NUM, MONTH)
         function renderDateBars() {
             const workoutBar = document.getElementById('workout-date-bar');
             const mealsBar = document.getElementById('meals-date-bar');
@@ -1431,20 +1487,17 @@
             renderMealsList();
         }
 
-        // UPDATE 11 & 5: FULL WORKOUT SESSIONS (45-75 MINS) & INTERACTIVE GLOW BOXES
         function renderWorkoutSession() {
             const container = document.getElementById('workout-exercise-list');
             container.innerHTML = '';
 
             const dayIdx = userData.selectedDateIndex;
-            const focusAreas = userData.muscleAreas;
             const isGym = userData.location === 'gym';
 
-            // Generate full workout routines based on location & user preferences
-            const workoutPlan = getDailyWorkoutPlan(dayIdx, focusAreas, isGym);
+            const workoutPlan = getDailyWorkoutPlan(dayIdx, isGym);
 
             document.getElementById('workout-session-title').innerText = workoutPlan.title;
-            document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • ${workoutPlan.focus}`;
+            document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • FULL BODY`;
             document.getElementById('workout-est-time').innerText = `${workoutPlan.estTime} Min`;
 
             workoutPlan.exercises.forEach((ex, index) => {
@@ -1474,7 +1527,6 @@
             lucide.createIcons();
         }
 
-        // TOGGLE EXERCISE GLOW BOX (UPDATE 5)
         function toggleExerciseBox(dayIdx, exIdx, element) {
             if (!completedExercisesMap[dayIdx]) {
                 completedExercisesMap[dayIdx] = {};
@@ -1490,81 +1542,41 @@
             }
         }
 
-        // GENERATE COMPREHENSIVE 45-75 MIN WORKOUT ROUTINE (UPDATE 11)
-        function getDailyWorkoutPlan(dayIdx, focusAreas, isGym) {
+        // FULL BODY WORKOUT ROUTINES (Update 10: Automatic Full Body Focus)
+        function getDailyWorkoutPlan(dayIdx, isGym) {
             const routines = [
                 {
-                    title: "Chest & Triceps Hypertrophy",
-                    focus: "CHEST / TRICEPS",
+                    title: "Full Body A: Power & Compound Focus",
                     estTime: "60",
                     exercises: isGym ? [
-                        { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Primary compound press focusing on chest activation." },
-                        { name: "Incline Dumbbell Press", sets: 4, reps: "10-12", rest: 75, desc: "Upper chest focus with controlled eccentric." },
-                        { name: "Cable Chest Flyes", sets: 3, reps: "12-15", rest: 60, desc: "Constant tension on inner pectoral fibers." },
-                        { name: "Triceps Rope Pushdowns", sets: 4, reps: "12", rest: 60, desc: "Isolate triceps lateral and medial heads." },
-                        { name: "Skull Crushers (EZ Bar)", sets: 3, reps: "10-12", rest: 60, desc: "Target long head of triceps." },
-                        { name: "Push-ups (Finisher)", sets: 3, reps: "To Failure", rest: 45, desc: "Bodyweight burn out set." }
+                        { name: "Barbell Squats", sets: 4, reps: "8-10", rest: 90, desc: "Primary quad & lower body developer." },
+                        { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Compound upper body chest activation." },
+                        { name: "Bent-Over Rows", sets: 4, reps: "10", rest: 75, desc: "Build back density and posture." },
+                        { name: "Overhead Dumbbell Press", sets: 3, reps: "10-12", rest: 60, desc: "Shoulder strength and core stability." },
+                        { name: "Tricep Rope Pushdowns", sets: 3, reps: "12", rest: 60, desc: "Target triceps lateral head." },
+                        { name: "Hanging Leg Raises", sets: 3, reps: "15", rest: 45, desc: "Lower core stabilization." }
                     ] : [
-                        { name: "Standard Push-ups", sets: 4, reps: "15-20", rest: 60, desc: "Main chest activator with core tightness." },
-                        { name: "Incline Push-ups (Feet Elevated)", sets: 4, reps: "12-15", rest: 60, desc: "Targets upper chest fibers." },
-                        { name: "Dumbbell Floor Press", sets: 4, reps: "10-12", rest: 75, desc: "Heavy pressing for chest and triceps." },
-                        { name: "Overhead Dumbbell Triceps Extension", sets: 4, reps: "12", rest: 60, desc: "Deep stretch on triceps long head." },
-                        { name: "Diamond Push-ups", sets: 3, reps: "10-12", rest: 60, desc: "Close grip chest and tricep focus." }
+                        { name: "Goblet Squats", sets: 4, reps: "12-15", rest: 75, desc: "Quad loading with dumbbell." },
+                        { name: "Standard Push-ups", sets: 4, reps: "15-20", rest: 60, desc: "Chest, front delt, and triceps activator." },
+                        { name: "Single-Arm Dumbbell Row", sets: 4, reps: "12", rest: 60, desc: "Unilateral upper back pull." },
+                        { name: "Dumbbell Shoulder Press", sets: 3, reps: "12", rest: 60, desc: "Vertical shoulder pressing." },
+                        { name: "Plank Hold", sets: 3, reps: "45 Sec", rest: 45, desc: "Core stability hold." }
                     ]
                 },
                 {
-                    title: "Back & Biceps Power",
-                    focus: "BACK / BICEPS",
+                    title: "Full Body B: Functional Strength",
                     estTime: "65",
                     exercises: isGym ? [
-                        { name: "Lat Pulldown (Wide Grip)", sets: 4, reps: "10-12", rest: 75, desc: "Build lats width and upper back density." },
-                        { name: "Barbell Bent-Over Row", sets: 4, reps: "8-10", rest: 90, desc: "Heavy compound row for back thickness." },
-                        { name: "Seated Cable Row", sets: 3, reps: "12", rest: 60, desc: "Squeeze shoulder blades together at end." },
-                        { name: "Barbell Bicep Curls", sets: 4, reps: "10-12", rest: 60, desc: "Strict form arm builder." },
-                        { name: "Hammer Curls", sets: 3, reps: "12-15", rest: 60, desc: "Target brachialis and forearm thickness." },
-                        { name: "Face Pulls", sets: 4, reps: "15", rest: 45, desc: "Rear delts and rotator cuff health." }
+                        { name: "Romanian Deadlifts", sets: 4, reps: "10", rest: 90, desc: "Hamstrings and posterior chain focus." },
+                        { name: "Incline Dumbbell Press", sets: 4, reps: "10-12", rest: 75, desc: "Upper chest fibers." },
+                        { name: "Lat Pulldowns", sets: 4, reps: "12", rest: 60, desc: "Lat width and upper back density." },
+                        { name: "Dumbbell Lateral Raises", sets: 4, reps: "15", rest: 45, desc: "Side deltoid isolation." },
+                        { name: "Barbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Strict arm curl progression." }
                     ] : [
-                        { name: "Dumbbell Bent-Over Rows", sets: 4, reps: "12", rest: 60, desc: "Focus on pulling with elbows." },
-                        { name: "Single-Arm Dumbbell Row", sets: 4, reps: "10-12", rest: 60, desc: "Unilateral back strength." },
-                        { name: "Resistance Band Pulldowns", sets: 4, reps: "15", rest: 45, desc: "Squeeze lats at bottom position." },
-                        { name: "Dumbbell Standing Bicep Curls", sets: 4, reps: "12", rest: 60, desc: "Full range of motion curls." },
-                        { name: "Concentration Curls", sets: 3, reps: "12", rest: 45, desc: "Isolated bicep peak builder." }
-                    ]
-                },
-                {
-                    title: "Legs & Lower Body Builder",
-                    focus: "LEGS / GLUTES",
-                    estTime: "70",
-                    exercises: isGym ? [
-                        { name: "Barbell Back Squat", sets: 4, reps: "8-10", rest: 90, desc: "Premier quad and lower body developer." },
-                        { name: "Romanian Deadlift", sets: 4, reps: "10", rest: 90, desc: "Hamstrings and glute hinge pattern." },
-                        { name: "Leg Press Machine", sets: 3, reps: "12-15", rest: 75, desc: "Quad loading with low lower-back strain." },
-                        { name: "Leg Curls", sets: 4, reps: "12", rest: 60, desc: "Isolated hamstring hypertrophy." },
-                        { name: "Standing Calf Raises", sets: 5, reps: "15-20", rest: 45, desc: "Full contraction at top." }
-                    ] : [
-                        { name: "Goblet Squats (Dumbbell)", sets: 4, reps: "12-15", rest: 75, desc: "Upright squat posture for quads." },
-                        { name: "Dumbbell Romanian Deadlifts", sets: 4, reps: "12", rest: 75, desc: "Controlled stretch on hamstrings." },
-                        { name: "Walking Lunges", sets: 3, reps: "20 Total", rest: 60, desc: "Unilateral leg stability." },
-                        { name: "Single-Leg Glute Bridges", sets: 3, reps: "15/side", rest: 45, desc: "Glute isolation and core alignment." },
-                        { name: "Single-Leg Calf Raises", sets: 4, reps: "15", rest: 45, desc: "Bodyweight calf developer." }
-                    ]
-                },
-                {
-                    title: "Shoulders & Core Conditioning",
-                    focus: "SHOULDERS / ABS",
-                    estTime: "50",
-                    exercises: isGym ? [
-                        { name: "Overhead Barbell Press", sets: 4, reps: "8-10", rest: 90, desc: "Deltoid power press." },
-                        { name: "Dumbbell Lateral Raises", sets: 4, reps: "12-15", rest: 60, desc: "Side delt isolation for width." },
-                        { name: "Front Dumbbell Raises", sets: 3, reps: "12", rest: 60, desc: "Anterior delt focus." },
-                        { name: "Hanging Leg Raises", sets: 4, reps: "12-15", rest: 45, desc: "Lower abdominal strengthening." },
-                        { name: "Cable Abdominal Crunches", sets: 4, reps: "15", rest: 45, desc: "Weighted core training." }
-                    ] : [
-                        { name: "Dumbbell Shoulder Press", sets: 4, reps: "10-12", rest: 75, desc: "Vertical pressing strength." },
-                        { name: "Dumbbell Lateral Raises", sets: 4, reps: "15", rest: 60, desc: "Strict lateral delta isolation." },
-                        { name: "Pike Push-ups", sets: 3, reps: "10-12", rest: 60, desc: "Bodyweight shoulder builder." },
-                        { name: "Plank Hold", sets: 4, reps: "45 Sec", rest: 45, desc: "Isometric core stability." },
-                        { name: "Bicycle Crunches", sets: 3, reps: "20 Total", rest: 45, desc: "Oblique and abdominal engagement." }
+                        { name: "Dumbbell Romanian Deadlifts", sets: 4, reps: "12", rest: 75, desc: "Hamstring and glute hinge." },
+                        { name: "Incline Push-ups (Feet Elevated)", sets: 4, reps: "12-15", rest: 60, desc: "Upper chest emphasis." },
+                        { name: "Resistance Band Pulldowns", sets: 4, reps: "15", rest: 45, desc: "Squeeze lats at bottom." },
+                        { name: "Dumbbell Standing Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Full range bicep curl." }
                     ]
                 }
             ];
@@ -1572,7 +1584,6 @@
             return routines[dayIdx % routines.length];
         }
 
-        // UPDATE 12: MEALS TAB - 6 STRUCTURED DAILY MEALS WITHOUT PLUS SYMBOL
         function renderMealsList() {
             const container = document.getElementById('meals-list-container');
             container.innerHTML = '';
@@ -1597,7 +1608,6 @@
             });
         }
 
-        // 6 DAILY MEALS generator (UPDATE 12)
         function getDailyMealPlan(dayIdx) {
             const mealPlans = [
                 [
@@ -1615,29 +1625,18 @@
                     { type: "4. Post-Workout Snack", title: "Protein Smoothie with Banana", calories: "260", details: "1 scoop protein powder, 1 medium banana, 200ml almond milk." },
                     { type: "5. Dinner", title: "Sirloin Steak & Roasted Potatoes", calories: "600", details: "170g lean sirloin steak, 150g roasted baby potatoes, green beans." },
                     { type: "6. Before-Bed Snack", title: "Greek Yogurt with Peanut Butter", calories: "190", details: "150g Greek yogurt, 10g natural peanut butter." }
-                ],
-                [
-                    { type: "1. Breakfast", title: "Protein Pancakes", calories: "440", details: "Oat flour, egg whites, 1 scoop protein powder, sugar-free syrup." },
-                    { type: "2. Morning Snack", title: "Handful of Mixed Nuts & Orange", calories: "230", details: "25g raw walnuts/almonds, 1 fresh orange." },
-                    { type: "3. Lunch", title: "Tuna & Avocado Wrap", calories: "520", details: "1 can tuna in water, 1 whole wheat tortilla wrap, 1/2 avocado, spinach." },
-                    { type: "4. Post-Workout Snack", title: "Protein Bar / Shake", calories: "210", details: "High protein bar or 1 scoop whey protein in water." },
-                    { type: "5. Dinner", title: "Grilled Cod & Brown Rice", calories: "510", details: "200g white cod fillet, 150g brown rice, sautéed zucchini." },
-                    { type: "6. Before-Bed Snack", title: "Protein Pudding", calories: "170", details: "1 scoop casein protein mixed into a pudding consistency with cold water." }
                 ]
             ];
 
             return mealPlans[dayIdx % mealPlans.length];
         }
 
-        // CALENDAR MODAL LOGIC (UPDATE 7)
         function openCalendarModal() {
             const modal = document.getElementById('calendar-modal');
             const grid = document.getElementById('full-calendar-days');
             grid.innerHTML = '';
 
-            const today = new Date();
             const daysInMonth = 30;
-
             for (let d = 1; d <= daysInMonth; d++) {
                 const isCurrent = (d === userData.currentProgramDay);
                 const cellHtml = `
@@ -1655,7 +1654,6 @@
             document.getElementById('calendar-modal').style.display = 'none';
         }
 
-        // LOCAL STORAGE HELPERS
         function saveUserData() {
             localStorage.setItem('fitpulse_user_data', JSON.stringify(userData));
             localStorage.setItem('fitpulse_plan_data', JSON.stringify(calculatedPlan));
