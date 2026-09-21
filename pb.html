@@ -11,7 +11,6 @@
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            /* Update 1: Darker, less vibrant green shade */
             --accent-green: #16a34a; 
             --accent-green-glow: rgba(22, 163, 74, 0.35);
             --accent-green-dark: #15803d;
@@ -128,7 +127,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Update 4: Step Counter & Progress Bar Header */
         .step-header {
             display: flex;
             justify-content: space-between;
@@ -277,7 +275,6 @@
             color: var(--accent-green);
         }
 
-        /* Update 7: Stepper Controls (+ / - Buttons) */
         .stepper-container {
             display: flex;
             align-items: center;
@@ -440,7 +437,7 @@
             text-transform: uppercase;
         }
 
-        /* EXERCISE BOXES */
+        /* EXERCISE BOXES & UPDATE 1: STRIKETHROUGH AND ROUND CHECK */
         .exercise-box {
             background: var(--card-bg);
             border: 2px solid var(--card-border);
@@ -473,10 +470,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.2s ease;
         }
 
-        .exercise-box.completed .exercise-title {
-            color: var(--accent-green);
+        /* Update 1: Strikethrough effect on title when completed */
+        .exercise-box.completed .exercise-title span {
+            text-decoration: line-through;
+            color: var(--text-muted);
         }
 
         .exercise-meta {
@@ -493,19 +493,30 @@
             line-height: 1.3;
         }
 
-        .completed-badge {
-            display: none;
-            background: var(--accent-green);
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
+        /* Update 1: Checkbox Round Circle Icon */
+        .check-circle-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            color: transparent;
+            flex-shrink: 0;
         }
 
-        .exercise-box.completed .completed-badge {
-            display: inline-block;
+        .exercise-box.completed .check-circle-icon {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: #ffffff;
+        }
+
+        .check-circle-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke-width: 3px;
         }
 
         /* MEALS ITEM LIST */
@@ -566,7 +577,7 @@
             justify-content: center;
         }
 
-        /* NAVBAR - Update 12: Fixed Icon Visibility */
+        /* NAVBAR */
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -703,7 +714,7 @@
             color: var(--accent-green);
         }
 
-        /* Update 11: Loading Overlay Screen */
+        /* LOADING OVERLAY SCREEN */
         #loading-overlay {
             display: none;
             position: fixed;
@@ -764,7 +775,7 @@
             <!-- ONBOARDING WIZARD CONTAINER -->
             <div id="wizard-container">
 
-                <!-- Update 2: WELCOME SCREEN (STEP 0) -->
+                <!-- WELCOME SCREEN (STEP 0) -->
                 <div class="wizard-step active" id="step-0" style="text-align: center; padding-top: 40px;">
                     <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(22, 163, 74, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
                         <i data-lucide="activity" style="width: 48px; height: 48px;"></i>
@@ -776,11 +787,10 @@
                     <button class="btn" onclick="nextStep(1)">Build My Plan <i data-lucide="arrow-right"></i></button>
                 </div>
 
-                <!-- WIZARD STEP HEADER (STEPS 1 - 7) -->
+                <!-- WIZARD STEP HEADER -->
                 <div id="wizard-step-header" style="display: none;">
                     <div class="step-header">
                         <span>FITNESS PROFILE</span>
-                        <!-- Update 4: Step Counter -->
                         <span id="step-counter-text">Step 1 / 7</span>
                     </div>
                     <div class="step-progress">
@@ -804,11 +814,10 @@
                         </div>
                         <i data-lucide="user"></i>
                     </div>
-                    <!-- Update 6: Button disabled until option selected -->
                     <button class="btn" id="btn-next-1" disabled onclick="nextStep(2)">Continue <i data-lucide="arrow-right"></i></button>
                 </div>
 
-                <!-- STEP 2: PRIMARY GOAL (Update 5: Muscle Mass First) -->
+                <!-- STEP 2: PRIMARY GOAL -->
                 <div class="wizard-step" id="step-2">
                     <h2 class="wizard-title">What is your primary goal?</h2>
                     
@@ -874,7 +883,7 @@
                     <button class="btn btn-secondary" onclick="prevStep(3)">Back</button>
                 </div>
 
-                <!-- STEP 5: CURRENT PHYSIQUE (Update 9: Body Physique instead of Fitness Level) -->
+                <!-- STEP 5: CURRENT PHYSIQUE -->
                 <div class="wizard-step" id="step-5">
                     <h2 class="wizard-title">Current Body Physique</h2>
                     
@@ -924,11 +933,10 @@
                     <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
                 </div>
 
-                <!-- STEP 7: BIOMETRICS (Update 8: Age Groups & Update 7: Stepper Arrows) -->
+                <!-- STEP 7: BIOMETRICS -->
                 <div class="wizard-step" id="step-7">
                     <h2 class="wizard-title">Biometric Measurements</h2>
                     
-                    <!-- Update 8: Age Group Selection -->
                     <div class="input-group">
                         <label>Age Group</label>
                         <select class="input-control" id="user-age-group">
@@ -939,7 +947,6 @@
                         </select>
                     </div>
 
-                    <!-- Update 7: Weight with Steppers -->
                     <div class="input-group">
                         <label>Weight</label>
                         <div class="unit-toggle">
@@ -953,7 +960,6 @@
                         </div>
                     </div>
 
-                    <!-- Update 7: Height with Steppers -->
                     <div class="input-group">
                         <label>Height</label>
                         <div class="unit-toggle">
@@ -1072,8 +1078,9 @@
                 <div class="card" style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
+                            <!-- Update 2: Simplified subtitle without "Full Body A/B" labels -->
                             <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">DAY 1 ROUTINE</span>
-                            <h2 style="font-size: 1.25rem; font-weight: 800;" id="workout-session-title">Upper Body Hypertrophy</h2>
+                            <h2 style="font-size: 1.2rem; font-weight: 800; margin-top: 2px;" id="workout-session-title">Full Body Training</h2>
                         </div>
                         <div style="text-align: right;">
                             <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Est. Duration</span>
@@ -1120,7 +1127,7 @@
 
         </main>
 
-        <!-- Update 12: BOTTOM NAVBAR WITH WORKING LUCIDE ICONS -->
+        <!-- BOTTOM NAVBAR -->
         <nav class="nav-bar" id="app-nav-bar" style="display: none;">
             <button class="nav-item active" onclick="switchTab('home', this)">
                 <i data-lucide="home"></i>
@@ -1163,7 +1170,7 @@
         </div>
     </div>
 
-    <!-- Update 11: REALISTIC LOADING OVERLAY -->
+    <!-- LOADING OVERLAY SCREEN -->
     <div id="loading-overlay">
         <div class="spinner"></div>
         <div class="loading-status-text" id="loading-status-msg">Calculating Basal Metabolic Rate...</div>
@@ -1214,7 +1221,6 @@
             const header = document.getElementById('wizard-step-header');
             if (stepNumber > 0) {
                 header.style.display = 'block';
-                // Update Step Counter & Progress Bar (7 Total Steps)
                 document.getElementById('step-counter-text').innerText = `Step ${stepNumber} / 7`;
                 const progress = (stepNumber / 7) * 100;
                 document.getElementById('wizard-progress-bar').style.width = `${progress}%`;
@@ -1227,7 +1233,6 @@
             nextStep(stepNumber);
         }
 
-        // STEP SELECTION HANDLERS
         function selectGender(gender, element) {
             userData.gender = gender;
             highlightSingleOption(element);
@@ -1264,7 +1269,6 @@
             element.classList.add('selected');
         }
 
-        // Update 7: Stepper Buttons
         function adjustValue(inputId, delta) {
             const input = document.getElementById(inputId);
             let val = parseFloat(input.value) || 0;
@@ -1292,7 +1296,6 @@
             }
         }
 
-        // Update 11: Realistic Loading Steps
         function triggerPlanGeneration() {
             userData.ageGroup = document.getElementById('user-age-group').value;
             userData.duration = parseInt(document.getElementById('program-duration-select').value) || 90;
@@ -1321,7 +1324,7 @@
                 "Calculating Basal Metabolic Rate...",
                 "Optimizing daily caloric & macro targets...",
                 "Establishing full-body exercise progressions...",
-                "Structuring custom 6-meal daily nutrition...",
+                "Structuring custom unique daily meal plans...",
                 "Finalizing personalized transformation plan..."
             ];
 
@@ -1487,6 +1490,7 @@
             renderMealsList();
         }
 
+        // WORKOUT SESSION RENDER (Update 1: Strikethrough + Round Check Icon & Update 2: Simplified Title)
         function renderWorkoutSession() {
             const container = document.getElementById('workout-exercise-list');
             container.innerHTML = '';
@@ -1496,22 +1500,26 @@
 
             const workoutPlan = getDailyWorkoutPlan(dayIdx, isGym);
 
-            document.getElementById('workout-session-title').innerText = workoutPlan.title;
-            document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • FULL BODY`;
+            // Update 2: Removed "Full Body A/B" naming
+            document.getElementById('workout-session-title').innerText = "Full Body Training";
+            document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • ROUTINE`;
             document.getElementById('workout-est-time').innerText = `${workoutPlan.estTime} Min`;
 
             workoutPlan.exercises.forEach((ex, index) => {
                 const isCompleted = (completedExercisesMap[dayIdx] && completedExercisesMap[dayIdx][index]);
                 const completedClass = isCompleted ? 'completed' : '';
 
+                // Update 1: Added Strikethrough & Round Check Circle
                 const exHtml = `
                     <div class="exercise-box ${completedClass}" onclick="toggleExerciseBox(${dayIdx}, ${index}, this)">
                         <div class="exercise-header">
                             <div class="exercise-title">
                                 <i data-lucide="dumbbell" style="width: 18px; height: 18px;"></i>
-                                ${ex.name}
+                                <span>${ex.name}</span>
                             </div>
-                            <span class="completed-badge">COMPLETED</span>
+                            <div class="check-circle-icon">
+                                <i data-lucide="check"></i>
+                            </div>
                         </div>
                         <div class="exercise-meta">
                             <span><strong>Sets:</strong> ${ex.sets}</span>
@@ -1542,11 +1550,9 @@
             }
         }
 
-        // FULL BODY WORKOUT ROUTINES (Update 10: Automatic Full Body Focus)
         function getDailyWorkoutPlan(dayIdx, isGym) {
             const routines = [
                 {
-                    title: "Full Body A: Power & Compound Focus",
                     estTime: "60",
                     exercises: isGym ? [
                         { name: "Barbell Squats", sets: 4, reps: "8-10", rest: 90, desc: "Primary quad & lower body developer." },
@@ -1564,7 +1570,6 @@
                     ]
                 },
                 {
-                    title: "Full Body B: Functional Strength",
                     estTime: "65",
                     exercises: isGym ? [
                         { name: "Romanian Deadlifts", sets: 4, reps: "10", rest: 90, desc: "Hamstrings and posterior chain focus." },
@@ -1608,23 +1613,71 @@
             });
         }
 
+        // Update 3: 7 UNIQUE DAILY MEAL PLANS (Rotating Unique Menus Per Day)
         function getDailyMealPlan(dayIdx) {
             const mealPlans = [
+                // DAY 1 MENU
                 [
                     { type: "1. Breakfast", title: "Oatmeal with Whey & Berries", calories: "420", details: "60g oats, 1 scoop whey protein, 50g blueberries, 10g almonds." },
                     { type: "2. Morning Snack", title: "Greek Yogurt & Honey", calories: "210", details: "170g non-fat Greek yogurt, 15g honey, chia seeds." },
-                    { type: "3. Lunch", title: "Grilled Chicken Breast & Rice", calories: "550", details: "180g chicken breast, 150g cooked jasmine rice, steamed broccoli." },
+                    { type: "3. Lunch", title: "Grilled Chicken Breast & Jasmine Rice", calories: "550", details: "180g chicken breast, 150g cooked jasmine rice, steamed broccoli." },
                     { type: "4. Post-Workout Snack", title: "Rice Cakes & Whey Shake", calories: "230", details: "2 rice cakes, 1 scoop whey protein isolate mixed with water." },
                     { type: "5. Dinner", title: "Baked Salmon & Sweet Potato", calories: "580", details: "160g Atlantic salmon, 180g baked sweet potato, roasted asparagus." },
-                    { type: "6. Before-Bed Snack", title: "Casein Protein / Cottage Cheese", calories: "180", details: "150g low-fat cottage cheese or micellar casein shake." }
+                    { type: "6. Before-Bed Snack", title: "Cottage Cheese & Walnuts", calories: "180", details: "150g low-fat cottage cheese with 10g crushed walnuts." }
                 ],
+                // DAY 2 MENU
                 [
                     { type: "1. Breakfast", title: "Scrambled Eggs & Whole Wheat Toast", calories: "450", details: "3 whole eggs, 2 slices whole grain toast, 1/2 avocado." },
                     { type: "2. Morning Snack", title: "Apple & Almond Butter", calories: "220", details: "1 medium apple, 15g natural almond butter." },
                     { type: "3. Lunch", title: "Lean Ground Turkey Bowl", calories: "540", details: "180g 93% lean ground turkey, 150g cooked quinoa, mixed vegetables." },
                     { type: "4. Post-Workout Snack", title: "Protein Smoothie with Banana", calories: "260", details: "1 scoop protein powder, 1 medium banana, 200ml almond milk." },
-                    { type: "5. Dinner", title: "Sirloin Steak & Roasted Potatoes", calories: "600", details: "170g lean sirloin steak, 150g roasted baby potatoes, green beans." },
+                    { type: "5. Dinner", title: "Sirloin Steak & Roasted Baby Potatoes", calories: "600", details: "170g lean sirloin steak, 150g roasted baby potatoes, green beans." },
                     { type: "6. Before-Bed Snack", title: "Greek Yogurt with Peanut Butter", calories: "190", details: "150g Greek yogurt, 10g natural peanut butter." }
+                ],
+                // DAY 3 MENU
+                [
+                    { type: "1. Breakfast", title: "Protein Pancakes with Maple Syrup", calories: "440", details: "3 oat-based protein pancakes, 15ml pure maple syrup, strawberries." },
+                    { type: "2. Morning Snack", title: "Handful of Mixed Nuts & Dried Cranberries", calories: "210", details: "25g raw almonds, cashew nuts, and dried cranberries." },
+                    { type: "3. Lunch", title: "Tuna & Avocado Wrap", calories: "520", details: "140g canned tuna in water, 1 whole wheat tortilla, avocado, spinach." },
+                    { type: "4. Post-Workout Snack", title: "Whey Protein & Rice Crackers", calories: "220", details: "1 scoop whey protein, 3 crunchy sea salt rice crackers." },
+                    { type: "5. Dinner", title: "Grilled Cod & Brown Rice", calories: "560", details: "190g fresh cod fillet, 140g brown rice, sautéed zucchini." },
+                    { type: "6. Before-Bed Snack", title: "Casein Protein Shake", calories: "160", details: "1 scoop slow-digesting micellar casein protein with water." }
+                ],
+                // DAY 4 MENU
+                [
+                    { type: "1. Breakfast", title: "Egg White Omelet with Spinach & Feta", calories: "410", details: "4 egg whites, 1 whole egg, 30g feta cheese, fresh spinach." },
+                    { type: "2. Morning Snack", title: "Berry Smoothie Bowl", calories: "230", details: "150g blended frozen mixed berries, chia seeds, coconut flakes." },
+                    { type: "3. Lunch", title: "Beef Steak Fajita Bowl", calories: "570", details: "170g grilled flank steak strips, bell peppers, onions, black beans." },
+                    { type: "4. Post-Workout Snack", title: "Hard Boiled Eggs & Whole Fruit", calories: "240", details: "2 large hard-boiled eggs, 1 fresh orange." },
+                    { type: "5. Dinner", title: "Herb Roasted Chicken Thighs", calories: "590", details: "180g skinless chicken thigh, 160g roasted sweet potato wedges." },
+                    { type: "6. Before-Bed Snack", title: "High-Protein Pudding", calories: "170", details: "150g chocolate high-protein pudding or Greek yogurt dessert." }
+                ],
+                // DAY 5 MENU
+                [
+                    { type: "1. Breakfast", title: "Avocado Toast & Poached Eggs", calories: "460", details: "2 poached eggs, 1 slice sourdough toast, smashed avocado, hemp seeds." },
+                    { type: "2. Morning Snack", title: "Protein Bar & Green Tea", calories: "220", details: "1 low-sugar protein bar (20g protein) with unsweetened green tea." },
+                    { type: "3. Lunch", title: "Lemon Herb Grilled Chicken Rice Bowl", calories: "530", details: "180g lemon marinated chicken breast, basmati rice, cucumber salad." },
+                    { type: "4. Post-Workout Snack", title: "Protein Shake & Rice Cake Spread", calories: "250", details: "1 scoop protein, 2 rice cakes topped with sugar-free jam." },
+                    { type: "5. Dinner", title: "Grilled Shrimp & Quinoa Salad", calories: "550", details: "200g jumbo shrimp, 140g cooked quinoa, cherry tomatoes, olive oil." },
+                    { type: "6. Before-Bed Snack", title: "Cottage Cheese & Blueberries", calories: "170", details: "150g low-fat cottage cheese with fresh blueberries." }
+                ],
+                // DAY 6 MENU
+                [
+                    { type: "1. Breakfast", title: "Chai Spice Protein Oatmeal", calories: "430", details: "60g oats, 1 scoop vanilla protein, cinnamon, nutmeg, flaxseeds." },
+                    { type: "2. Morning Snack", title: "Edamame Beans & Sea Salt", calories: "190", details: "150g steamed edamame pods sprinkled with coarse sea salt." },
+                    { type: "3. Lunch", title: "Baked Lean Turkey Meatballs", calories: "560", details: "180g turkey meatballs, whole wheat pasta, tomato marinara sauce." },
+                    { type: "4. Post-Workout Snack", title: "Greek Yogurt Berry Parfait", calories: "240", details: "150g Greek yogurt layered with raspberries and sliced almonds." },
+                    { type: "5. Dinner", title: "Pan-Seared White Fish & Couscous", calories: "570", details: "180g sea bass or tilapia, 130g whole wheat couscous, roasted broccoli." },
+                    { type: "6. Before-Bed Snack", title: "Almond Milk Casein Shake", calories: "160", details: "1 scoop casein protein mixed with unsweetened almond milk." }
+                ],
+                // DAY 7 MENU
+                [
+                    { type: "1. Breakfast", title: "Smoked Salmon & Scrambled Eggs", calories: "470", details: "3 scrambled eggs, 50g smoked salmon, whole grain toast, dill." },
+                    { type: "2. Morning Snack", title: "Sliced Pear & Walnut Kernels", calories: "210", details: "1 ripe pear, 15g raw walnut halves." },
+                    { type: "3. Lunch", title: "Grilled Chicken Caesar Salad Wrap", calories: "540", details: "180g chicken, romaine lettuce, light Caesar dressing, whole wheat wrap." },
+                    { type: "4. Post-Workout Snack", title: "Clear Whey Protein & Rice Crisp", calories: "210", details: "1 scoop clear whey isolate drink, 1 low-calorie rice bar." },
+                    { type: "5. Dinner", title: "Lean Pork Tenderloin & Mash", calories: "580", details: "170g pork tenderloin, 150g mashed potatoes, garlic green beans." },
+                    { type: "6. Before-Bed Snack", title: "Protein Mug Cake / Yogurt Dip", calories: "180", details: "Warm protein mug cake or 150g Greek yogurt with cocoa powder." }
                 ]
             ];
 
