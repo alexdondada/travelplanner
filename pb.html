@@ -2,26 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitPulse AI - Personal Fitness & Nutrition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FitPulse AI - Personalized Fitness & Nutrition Plan</title>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg-color: #0d0f12;
-            --card-bg: #16191e;
-            --card-border: #232730;
-            --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.25);
-            --accent: #10b981;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --text-dim: #6b7280;
-            --danger: #ef4444;
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent-green: #16a34a; 
+            --accent-green-glow: rgba(22, 163, 74, 0.35);
+            --accent-green-dark: #15803d;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --input-bg: #0f172a;
         }
 
         * {
@@ -33,1279 +28,1705 @@
         }
 
         body {
-            background-color: #050608;
+            background-color: var(--bg-dark);
             color: var(--text-main);
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            padding: 0;
-            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 75%);
         }
 
-        .app-wrapper {
+        #app-container {
             width: 100%;
-            max-width: 440px;
-            height: 100vh;
-            max-height: 920px;
-            background-color: var(--bg-color);
+            max-width: 480px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            padding-bottom: 80px; /* Space for navbar */
+            background-color: var(--bg-dark);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
 
-        @media (min-height: 920px) and (min-width: 450px) {
-            .app-wrapper {
-                height: 90vh;
-                border-radius: 28px;
-                border: 1px solid var(--card-border);
-            }
-        }
-
-        /* Screen Management */
-        .screen {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding-bottom: 80px;
-        }
-
-        .screen.active {
-            display: flex;
-            opacity: 1;
-            z-index: 10;
-        }
-
-        /* Header Components */
-        .app-header {
-            padding: 20px 24px 12px 24px;
+        .header {
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(13, 15, 18, 0.85);
-            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
-            z-index: 20;
+            z-index: 100;
         }
 
-        .brand-title {
+        .logo {
             font-size: 1.25rem;
             font-weight: 800;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-icon-top {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 12px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        /* Form Controls & Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 20px;
-            border-radius: var(--radius-md);
+            font-size: 0.8rem;
             font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            gap: 8px;
-            width: 100%;
+            transition: all 0.2s ease;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            box-shadow: 0 4px 14px var(--primary-glow);
+        .btn-icon-top:active {
+            transform: scale(0.95);
+            background: var(--card-border);
         }
 
-        .btn-primary:active {
-            transform: scale(0.98);
+        .content-area {
+            padding: 20px;
+            flex: 1;
         }
 
-        .btn-outline {
-            background: transparent;
+        /* CARD STYLES */
+        .card {
+            background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            color: var(--text-main);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-outline:active {
-            background: rgba(255, 255, 255, 0.05);
+        /* WIZARD & ONBOARDING */
+        .wizard-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+        .wizard-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .step-progress {
+            height: 6px;
+            background: var(--card-border);
+            border-radius: 3px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .step-progress-bar {
+            height: 100%;
+            background: var(--accent-green);
+            transition: width 0.3s ease;
+        }
+
+        .wizard-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .option-card {
             background: var(--card-bg);
-            border: 1.5px solid var(--card-border);
-            border-radius: var(--radius-md);
-            padding: 16px;
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            padding: 18px 16px;
+            margin-bottom: 12px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.2s ease;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            gap: 8px;
-            user-select: none;
+            justify-content: space-between;
+        }
+
+        .option-card:hover, .option-card.selected {
+            border-color: var(--accent-green);
+            background: rgba(22, 163, 74, 0.08);
         }
 
         .option-card.selected {
-            border-color: var(--primary);
-            background: rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 15px var(--accent-green-glow);
         }
 
-        .option-card i {
-            color: var(--text-muted);
-            transition: var(--transition);
+        .option-card-content h4 {
+            font-size: 1rem;
         }
 
-        .option-card.selected i {
-            color: var(--primary);
-        }
-
-        /* Onboarding Screen */
-        #screen-onboarding {
-            padding: 24px;
-            padding-bottom: 24px;
-            justify-content: space-between;
-        }
-
-        .step-container {
-            display: none;
-            flex-direction: column;
-            gap: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .step-container.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .step-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 1.25;
-        }
-
-        .step-subtitle {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: -12px;
-        }
-
-        .progress-bar-container {
+        .btn {
             width: 100%;
-            height: 6px;
-            background: var(--card-border);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .stepper-control {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-md);
-            padding: 12px 20px;
-        }
-
-        .stepper-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--card-border);
-            background: var(--bg-color);
-            color: var(--text-main);
-            font-size: 1.2rem;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            background: var(--accent-green);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
+            margin-top: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            text-align: center;
+        }
+
+        .input-control:focus {
+            border-color: var(--accent-green);
         }
 
         .unit-toggle {
             display: flex;
-            background: var(--bg-color);
-            padding: 4px;
-            border-radius: var(--radius-sm);
+            background: var(--input-bg);
             border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2px;
             margin-bottom: 12px;
         }
 
-        .unit-toggle-btn {
+        .unit-btn {
             flex: 1;
-            padding: 8px;
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
+            padding: 6px;
+            border: none;
+            background: transparent;
             color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
         }
 
-        .unit-toggle-btn.active {
+        .unit-btn.active {
             background: var(--card-bg);
-            color: var(--text-main);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            color: var(--accent-green);
         }
 
-        /* Loading Screen */
-        #screen-loading {
-            padding: 32px 24px;
-            justify-content: center;
+        .stepper-container {
+            display: flex;
             align-items: center;
-            text-align: center;
-            gap: 28px;
+            gap: 10px;
         }
 
-        .spinner-container {
+        .btn-stepper {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 700;
+            user-select: none;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .btn-stepper:active {
+            background: var(--accent-green);
+            color: #fff;
+            transform: scale(0.95);
+        }
+
+        /* CIRCULAR PROGRESS STYLES */
+        .gauge-container {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 8px auto;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .spinner-svg {
-            animation: rotate 2s linear infinite;
-            width: 100px;
-            height: 100px;
+        .gauge-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
         }
 
-        .spinner-svg circle {
-            stroke: var(--primary);
-            stroke-dasharray: 283;
-            stroke-dashoffset: 75;
+        .gauge-bg {
+            fill: none;
+            stroke: var(--card-border);
+            stroke-width: 8;
+        }
+
+        .gauge-fill {
+            fill: none;
+            stroke: var(--accent-green);
+            stroke-width: 8;
             stroke-linecap: round;
-            transition: stroke-dashoffset 0.5s ease;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 0.8s ease;
         }
 
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-text-container {
-            min-height: 60px;
+        .gauge-text {
+            position: absolute;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
         }
 
-        .loading-progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--card-border);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 10px;
+        .gauge-val {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.1;
         }
 
-        .loading-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #10b981);
-            width: 0%;
-            transition: width 0.4s ease;
+        .gauge-lbl {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
 
-        /* Dashboard Screen */
-        .date-strip {
+        /* DASHBOARD TOP ROW */
+        .dashboard-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .dashboard-split .card {
+            margin-bottom: 0;
+            padding: 16px 12px;
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* DATE SELECTOR BAR */
+        .date-selector-container {
+            display: flex;
+            gap: 8px;
             overflow-x: auto;
-            padding: 12px 24px;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
             scrollbar-width: none;
         }
-
-        .date-strip::-webkit-scrollbar {
+        .date-selector-container::-webkit-scrollbar {
             display: none;
         }
 
         .date-card {
-            min-width: 58px;
-            padding: 10px 0;
+            min-width: 62px;
+            padding: 10px 6px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: var(--radius-md);
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
             cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
         }
 
         .date-card.active {
-            background: var(--primary);
-            border-color: var(--primary);
+            background: var(--accent-green);
+            border-color: var(--accent-green);
         }
 
-        .date-card .day {
-            font-size: 0.75rem;
+        .date-card.active span {
+            color: #fff !important;
+        }
+
+        .date-card .day-name {
+            font-size: 0.7rem;
+            font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
         }
 
-        .date-card.active .day, .date-card.active .num {
-            color: white;
-        }
-
-        .date-card .num {
+        .date-card .day-num {
             font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 2px 0;
+        }
+
+        .date-card .day-month {
+            font-size: 0.65rem;
             font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
         }
 
-        .dashboard-content {
-            padding: 0 24px 24px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .card {
+        /* EXERCISE BOXES & UPDATE 1: STRIKETHROUGH AND ROUND CHECK */
+        .exercise-box {
             background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-lg);
-            padding: 20px;
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            user-select: none;
         }
 
-        .card-header-title {
-            font-size: 1.1rem;
+        .exercise-box.completed {
+            border-color: var(--accent-green);
+            background: rgba(22, 163, 74, 0.08);
+            box-shadow: 0 0 18px var(--accent-green-glow);
+        }
+
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .exercise-title {
+            font-size: 1rem;
             font-weight: 700;
+            color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 8px;
-            text-transform: capitalize;
+            transition: all 0.2s ease;
         }
 
-        /* Macro Gauges */
-        .macros-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .macro-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-md);
-            padding: 12px;
-            text-align: center;
-        }
-
-        .macro-val {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-
-        .macro-lbl {
-            font-size: 0.75rem;
+        /* Update 1: Strikethrough effect on title when completed */
+        .exercise-box.completed .exercise-title span {
+            text-decoration: line-through;
             color: var(--text-muted);
         }
 
-        /* Workouts List */
-        .exercise-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .exercise-item:last-child {
-            border-bottom: none;
-        }
-
-        .exercise-info h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .exercise-info p {
+        .exercise-meta {
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-top: 2px;
+            display: flex;
+            gap: 12px;
         }
 
-        .checkbox {
-            width: 24px;
-            height: 24px;
+        .exercise-desc {
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+
+        /* Update 1: Checkbox Round Circle Icon */
+        .check-circle-icon {
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             border: 2px solid var(--card-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .checkbox.checked {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .checkbox.checked::after {
-            content: "✓";
-            color: white;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* Meal List */
-        .meal-item {
-            display: flex;
-            gap: 14px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .meal-item:last-child {
-            border-bottom: none;
-        }
-
-        .meal-time {
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-weight: 600;
-            text-transform: uppercase;
-            width: 70px;
+            transition: all 0.2s ease;
+            color: transparent;
             flex-shrink: 0;
         }
 
-        .meal-details h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
+        .exercise-box.completed .check-circle-icon {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: #ffffff;
         }
 
-        .meal-details p {
+        .check-circle-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke-width: 3px;
+        }
+
+        /* MEALS ITEM LIST */
+        .meal-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+        }
+
+        .meal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .meal-type {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meal-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .meal-details {
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
-        /* Bottom Nav */
-        .bottom-nav {
-            position: absolute;
+        /* WATER HYDRATION NOTE BOX */
+        .hydration-note-box {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px dashed var(--accent-green);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .hydration-icon {
+            background: rgba(22, 163, 74, 0.15);
+            color: var(--accent-green);
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* NAVBAR */
+        .nav-bar {
+            position: fixed;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 100%;
-            height: 65px;
-            background: rgba(22, 25, 30, 0.95);
+            max-width: 480px;
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(12px);
             border-top: 1px solid var(--card-border);
             display: flex;
             justify-content: space-around;
-            align-items: center;
-            z-index: 30;
+            padding: 10px 0 14px 0;
+            z-index: 1000;
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
-            color: var(--text-dim);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.7rem;
+            font-weight: 600;
+            gap: 4px;
             cursor: pointer;
-            transition: var(--transition);
-            width: 33.3%;
+            transition: color 0.2s ease;
+            background: none;
+            border: none;
+            width: 25%;
         }
 
         .nav-item.active {
-            color: var(--primary);
+            color: var(--accent-green);
         }
 
-        /* Profile Screen */
-        .profile-header {
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2px;
+        }
+
+        /* CALENDAR MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
             text-align: center;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--card-border);
+            margin-top: 10px;
         }
 
-        .avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6, #10b981);
+        .calendar-day-head {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: 4px 0;
+        }
+
+        .calendar-cell {
+            aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 12px auto;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            cursor: pointer;
         }
 
-        .profile-item {
+        .calendar-cell.active-day {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            font-weight: 800;
+        }
+
+        .calendar-cell.has-workout {
+            background: rgba(22, 163, 74, 0.2);
+        }
+
+        /* STATS PILLS */
+        .stat-pill {
+            background: var(--input-bg);
+            border: 1px solid var(--card-border);
+            padding: 10px 14px;
+            border-radius: 12px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--card-border);
-            font-size: 0.9rem;
+            margin-bottom: 8px;
         }
 
-        .profile-item span:first-child {
+        .stat-pill .label {
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
-        .profile-item span:last-child {
-            font-weight: 600;
-            text-transform: capitalize;
+        .stat-pill .val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        /* LOADING OVERLAY SCREEN */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 3000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--card-border);
+            border-top: 4px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 24px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-status-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            min-height: 28px;
         }
     </style>
 </head>
 <body>
 
-    <div class="app-wrapper">
-        <!-- Header -->
-        <header class="app-header">
-            <div class="brand-title">
-                <i data-lucide="zap" style="fill: #3b82f6; stroke: none;"></i> FitPulse AI
+    <div id="app-container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <i data-lucide="activity"></i> FitPulse AI
             </div>
-            <div id="user-id-badge" style="font-size: 0.75rem; color: var(--text-muted); font-family: monospace;"></div>
+            <div class="header-actions">
+                <button class="btn-icon-top" id="calendar-toggle-btn" onclick="openCalendarModal()" style="display: none;">
+                    <i data-lucide="calendar" style="width: 16px; height: 16px;"></i> Calendar
+                </button>
+            </div>
         </header>
 
-        <!-- 1. ONBOARDING SCREEN -->
-        <section id="screen-onboarding" class="screen active">
-            <div>
-                <div class="progress-bar-container">
-                    <div id="onboarding-progress" class="progress-bar-fill"></div>
-                </div>
-
-                <!-- Step 1: Gender -->
-                <div class="step-container active" data-step="1">
-                    <h2 class="step-title">Select Gender</h2>
-                    <p class="step-subtitle">To customize your caloric and physiological model.</p>
-                    <div class="grid-2" style="margin-top: 20px;">
-                        <div class="option-card" onclick="selectOption('gender', 'male', this)">
-                            <i data-lucide="user" size="32"></i>
-                            <span>Male</span>
-                        </div>
-                        <div class="option-card" onclick="selectOption('gender', 'female', this)">
-                            <i data-lucide="user-check" size="32"></i>
-                            <span>Female</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2: Primary Goal -->
-                <div class="step-container" data-step="2">
-                    <h2 class="step-title">Primary Goal</h2>
-                    <p class="step-subtitle">What is your core target for this transformation?</p>
-                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('goal', 'lose_weight', this)">
-                            <i data-lucide="trending-down"></i>
-                            <span>Weight Loss & Shredding</span>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('goal', 'build_muscle', this)">
-                            <i data-lucide="dumbbell"></i>
-                            <span>Muscle Gain & Hypertrophy</span>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('goal', 'keep_fit', this)">
-                            <i data-lucide="activity"></i>
-                            <span>Maintain & Improve Fitness</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Exercise Location -->
-                <div class="step-container" data-step="3">
-                    <h2 class="step-title">Training Location</h2>
-                    <p class="step-subtitle">Where do you intend to perform your workouts?</p>
-                    <div class="grid-2" style="margin-top: 10px;">
-                        <div class="option-card" onclick="selectOption('location', 'home', this)">
-                            <i data-lucide="home" size="28"></i>
-                            <span>Home Workout</span>
-                        </div>
-                        <div class="option-card" onclick="selectOption('location', 'gym', this)">
-                            <i data-lucide="building" size="28"></i>
-                            <span>Gym / Health Club</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 4: Plan Type -->
-                <div class="step-container" data-step="4">
-                    <h2 class="step-title">Select Plan Scope</h2>
-                    <p class="step-subtitle">Choose the focus area for your customized program.</p>
-                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('planType', 'fitness_meal', this)">
-                            <i data-lucide="layers"></i>
-                            <span>Fitness & Meal Plan Combined</span>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('planType', 'meal_only', this)">
-                            <i data-lucide="utensils"></i>
-                            <span>Meal Plan Only</span>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('planType', 'fitness_only', this)">
-                            <i data-lucide="flame"></i>
-                            <span>Fitness Plan Only</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 5: Current Body Physique -->
-                <div class="step-container" data-step="5">
-                    <h2 class="step-title">Current Physique</h2>
-                    <p class="step-subtitle">Select the option that best reflects your current body composition.</p>
-                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('physique', 'Slim', this)">
-                            <i data-lucide="user"></i>
-                            <span>Slim</span>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('physique', 'Average', this)">
-                            <i data-lucide="user-check"></i>
-                            <span>Average</span>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: flex-start;" onclick="selectOption('physique', 'More Body Fat', this)">
-                            <i data-lucide="user-plus"></i>
-                            <span>More Body Fat</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 6: Program Duration -->
-                <div class="step-container" data-step="6">
-                    <h2 class="step-title">Program Duration</h2>
-                    <p class="step-subtitle">How long do you want to commit to this regimen?</p>
-                    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
-                        <div class="option-card" style="flex-direction: row; justify-content: space-between; padding: 18px;" onclick="selectOption('duration', '30', this)">
-                            <span style="font-weight: 700;">30 Days Plan</span>
-                            <i data-lucide="calendar"></i>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: space-between; padding: 18px;" onclick="selectOption('duration', '90', this)">
-                            <span style="font-weight: 700;">90 Days Plan</span>
-                            <i data-lucide="calendar"></i>
-                        </div>
-                        <div class="option-card" style="flex-direction: row; justify-content: space-between; padding: 18px;" onclick="selectOption('duration', '180', this)">
-                            <span style="font-weight: 700;">6 Months Plan</span>
-                            <i data-lucide="calendar"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 7: Weekly Workout Frequency -->
-                <div class="step-container" data-step="7">
-                    <h2 class="step-title">Weekly Workout Frequency</h2>
-                    <p class="step-subtitle">Target training sessions per week.</p>
-                    <div class="stepper-control" style="margin-top: 20px;">
-                        <button class="stepper-btn" onclick="adjustValue('frequency', -1, 1, 7)">-</button>
-                        <span id="display-frequency" style="font-size: 1.5rem; font-weight: 700;">3 Days / Week</span>
-                        <button class="stepper-btn" onclick="adjustValue('frequency', 1, 1, 7)">+</button>
-                    </div>
-                </div>
-
-                <!-- Step 8: Biometric Measurements -->
-                <div class="step-container" data-step="8">
-                    <h2 class="step-title">Biometrics & Age</h2>
-                    <p class="step-subtitle">Used to generate precise caloric targets.</p>
-                    
-                    <label style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Select Age Range</label>
-                    <div class="grid-2" style="margin-bottom: 12px; margin-top: 4px;">
-                        <div class="option-card" style="padding: 10px;" onclick="selectOption('ageRange', '18-29', this)">18 - 29</div>
-                        <div class="option-card" style="padding: 10px;" onclick="selectOption('ageRange', '30-39', this)">30 - 39</div>
-                        <div class="option-card" style="padding: 10px;" onclick="selectOption('ageRange', '40-49', this)">40 - 49</div>
-                        <div class="option-card" style="padding: 10px;" onclick="selectOption('ageRange', '50+', this)">50+</div>
-                    </div>
-
-                    <div class="unit-toggle">
-                        <div id="unit-metric" class="unit-toggle-btn active" onclick="setUnits('metric')">Metric (kg/cm)</div>
-                        <div id="unit-imperial" class="unit-toggle-btn" onclick="setUnits('imperial')">Imperial (lbs/ft)</div>
-                    </div>
-
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <div class="stepper-control">
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">Weight</span>
-                            <div>
-                                <button class="stepper-btn" style="display:inline-flex;" onclick="adjustValue('weight', -1, 30, 200)">-</button>
-                                <span id="display-weight" style="font-size: 1.1rem; font-weight: 700; margin: 0 8px;">70 kg</span>
-                                <button class="stepper-btn" style="display:inline-flex;" onclick="adjustValue('weight', 1, 30, 200)">+</button>
-                            </div>
-                        </div>
-
-                        <div class="stepper-control">
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">Height</span>
-                            <div>
-                                <button class="stepper-btn" style="display:inline-flex;" onclick="adjustValue('height', -1, 120, 220)">-</button>
-                                <span id="display-height" style="font-size: 1.1rem; font-weight: 700; margin: 0 8px;">175 cm</span>
-                                <button class="stepper-btn" style="display:inline-flex;" onclick="adjustValue('height', 1, 120, 220)">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div style="display: flex; gap: 12px; margin-top: 20px;">
-                <button id="btn-back" class="btn btn-outline" onclick="prevStep()" style="display: none; width: 30%;">Back</button>
-                <button id="btn-next" class="btn btn-primary" onclick="nextStep()">Continue</button>
-            </div>
-        </section>
-
-        <!-- 2. LOADING / GENERATION SCREEN -->
-        <section id="screen-loading" class="screen">
-            <div class="spinner-container">
-                <svg class="spinner-svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke-width="8"></circle>
-                </svg>
-                <i data-lucide="cpu" size="32" style="position: absolute; color: var(--primary);"></i>
-            </div>
+        <!-- MAIN CONTENT VIEW -->
+        <main class="content-area" id="main-content">
             
-            <div class="loading-text-container">
-                <h3 id="loading-status-title" style="font-size: 1.2rem; font-weight: 700;">Analyzing Biometrics...</h3>
-                <p id="loading-status-desc" style="font-size: 0.85rem; color: var(--text-muted);">Calculating basal metabolic rate & energy expenditure.</p>
-                
-                <div class="loading-progress-bar">
-                    <div id="loading-progress-fill" class="loading-progress-fill"></div>
+            <!-- ONBOARDING WIZARD CONTAINER -->
+            <div id="wizard-container">
+
+                <!-- WELCOME SCREEN (STEP 0) -->
+                <div class="wizard-step active" id="step-0" style="text-align: center; padding-top: 40px;">
+                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(22, 163, 74, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
+                        <i data-lucide="activity" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">FitPulse AI</h1>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 40px; padding: 0 10px;">
+                        Your personalized AI fitness and custom nutrition engine built for real physical transformations.
+                    </p>
+                    <button class="btn" onclick="nextStep(1)">Build My Plan <i data-lucide="arrow-right"></i></button>
+                </div>
+
+                <!-- WIZARD STEP HEADER -->
+                <div id="wizard-step-header" style="display: none;">
+                    <div class="step-header">
+                        <span>FITNESS PROFILE</span>
+                        <span id="step-counter-text">Step 1 / 7</span>
+                    </div>
+                    <div class="step-progress">
+                        <div class="step-progress-bar" id="wizard-progress-bar" style="width: 14.28%;"></div>
+                    </div>
+                </div>
+
+                <!-- STEP 1: GENDER -->
+                <div class="wizard-step" id="step-1">
+                    <h2 class="wizard-title">Select Gender</h2>
+                    
+                    <div class="option-card" onclick="selectGender('male', this)">
+                        <div class="option-card-content">
+                            <h4>Male</h4>
+                        </div>
+                        <i data-lucide="user"></i>
+                    </div>
+                    <div class="option-card" onclick="selectGender('female', this)">
+                        <div class="option-card-content">
+                            <h4>Female</h4>
+                        </div>
+                        <i data-lucide="user"></i>
+                    </div>
+                    <button class="btn" id="btn-next-1" disabled onclick="nextStep(2)">Continue <i data-lucide="arrow-right"></i></button>
+                </div>
+
+                <!-- STEP 2: PRIMARY GOAL -->
+                <div class="wizard-step" id="step-2">
+                    <h2 class="wizard-title">What is your primary goal?</h2>
+                    
+                    <div class="option-card" onclick="selectGoal('gain', this)">
+                        <div class="option-card-content">
+                            <h4>Muscle Mass & Weight Gain</h4>
+                        </div>
+                    </div>
+                    <div class="option-card" onclick="selectGoal('lose', this)">
+                        <div class="option-card-content">
+                            <h4>Weight Loss & Fat Reduction</h4>
+                        </div>
+                    </div>
+                    <div class="option-card" onclick="selectGoal('maintain', this)">
+                        <div class="option-card-content">
+                            <h4>Maintenance & Recomposition</h4>
+                        </div>
+                    </div>
+                    <button class="btn" id="btn-next-2" disabled onclick="nextStep(3)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(1)">Back</button>
+                </div>
+
+                <!-- STEP 3: WORKOUT LOCATION -->
+                <div class="wizard-step" id="step-3">
+                    <h2 class="wizard-title">Where do you exercise?</h2>
+                    
+                    <div class="option-card" onclick="selectLocation('home', this)">
+                        <div class="option-card-content">
+                            <h4>At Home</h4>
+                        </div>
+                        <i data-lucide="home"></i>
+                    </div>
+                    <div class="option-card" onclick="selectLocation('gym', this)">
+                        <div class="option-card-content">
+                            <h4>At the Gym</h4>
+                        </div>
+                        <i data-lucide="dumbbell"></i>
+                    </div>
+                    <button class="btn" id="btn-next-3" disabled onclick="nextStep(4)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+                </div>
+
+                <!-- STEP 4: PLAN TYPE -->
+                <div class="wizard-step" id="step-4">
+                    <h2 class="wizard-title">Select Plan Structure</h2>
+                    
+                    <div class="option-card" onclick="selectPlanType('workout_diet', this)">
+                        <div class="option-card-content">
+                            <h4>Workout & Diet Plan (Recommended)</h4>
+                        </div>
+                    </div>
+                    <div class="option-card" onclick="selectPlanType('workout_only', this)">
+                        <div class="option-card-content">
+                            <h4>Workout Only</h4>
+                        </div>
+                    </div>
+                    <div class="option-card" onclick="selectPlanType('diet_only', this)">
+                        <div class="option-card-content">
+                            <h4>Diet Plan Only</h4>
+                        </div>
+                    </div>
+                    <button class="btn" id="btn-next-4" disabled onclick="nextStep(5)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(3)">Back</button>
+                </div>
+
+                <!-- STEP 5: CURRENT PHYSIQUE -->
+                <div class="wizard-step" id="step-5">
+                    <h2 class="wizard-title">Current Body Physique</h2>
+                    
+                    <div class="option-card" onclick="selectPhysique('slim', this)">
+                        <div class="option-card-content">
+                            <h4>Slim / Lean</h4>
+                        </div>
+                    </div>
+                    <div class="option-card" onclick="selectPhysique('average', this)">
+                        <div class="option-card-content">
+                            <h4>Average / Athletic</h4>
+                        </div>
+                    </div>
+                    <div class="option-card" onclick="selectPhysique('more_fat', this)">
+                        <div class="option-card-content">
+                            <h4>More Body Fat / Heavy</h4>
+                        </div>
+                    </div>
+                    <button class="btn" id="btn-next-5" disabled onclick="nextStep(6)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(4)">Back</button>
+                </div>
+
+                <!-- STEP 6: PROGRAM DURATION & DAYS/WEEK -->
+                <div class="wizard-step" id="step-6">
+                    <h2 class="wizard-title">Program Setup</h2>
+                    
+                    <div class="input-group">
+                        <label>Program Duration</label>
+                        <select class="input-control" id="program-duration-select">
+                            <option value="30">30 Days Transformation</option>
+                            <option value="60">60 Days Build Plan</option>
+                            <option value="90" selected>90 Days Complete Overhaul</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Workout Days Per Week</label>
+                        <select class="input-control" id="workout-days-select">
+                            <option value="3">3 Days / Week</option>
+                            <option value="4" selected>4 Days / Week</option>
+                            <option value="5">5 Days / Week</option>
+                            <option value="6">6 Days / Week</option>
+                        </select>
+                    </div>
+
+                    <button class="btn" onclick="nextStep(7)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
+                </div>
+
+                <!-- STEP 7: BIOMETRICS -->
+                <div class="wizard-step" id="step-7">
+                    <h2 class="wizard-title">Biometric Measurements</h2>
+                    
+                    <div class="input-group">
+                        <label>Age Group</label>
+                        <select class="input-control" id="user-age-group">
+                            <option value="18-25">18 - 25</option>
+                            <option value="25-30" selected>25 - 30</option>
+                            <option value="30-35">30 - 35</option>
+                            <option value="35+">35+</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Weight</label>
+                        <div class="unit-toggle">
+                            <button class="unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">KG</button>
+                            <button class="unit-btn" id="btn-lbs" onclick="setWeightUnit('lbs')">LBS</button>
+                        </div>
+                        <div class="stepper-container">
+                            <div class="btn-stepper" onclick="adjustValue('user-weight', -1)">-</div>
+                            <input type="number" id="user-weight" class="input-control" value="75">
+                            <div class="btn-stepper" onclick="adjustValue('user-weight', 1)">+</div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Height</label>
+                        <div class="unit-toggle">
+                            <button class="unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
+                            <button class="unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">FT</button>
+                        </div>
+                        
+                        <div id="height-cm-container">
+                            <div class="stepper-container">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-cm', -1)">-</div>
+                                <input type="number" id="user-height-cm" class="input-control" value="180">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-cm', 1)">+</div>
+                            </div>
+                        </div>
+
+                        <div id="height-ft-container" style="display: none;">
+                            <div class="stepper-container">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-ft', -0.1)">-</div>
+                                <input type="number" step="0.1" id="user-height-ft" class="input-control" value="5.11">
+                                <div class="btn-stepper" onclick="adjustValue('user-height-ft', 0.1)">+</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="triggerPlanGeneration()">Generate My Plan <i data-lucide="sparkles"></i></button>
+                    <button class="btn btn-secondary" onclick="prevStep(6)">Back</button>
                 </div>
             </div>
-        </section>
 
-        <!-- 3. DASHBOARD SCREEN -->
-        <section id="screen-dashboard" class="screen">
-            <!-- Dynamic Date Bar -->
-            <div class="date-strip" id="date-strip"></div>
+            <!-- DASHBOARD HOME VIEW -->
+            <div id="dashboard-home" style="display: none;">
+                
+                <div class="dashboard-split">
+                    <!-- DAILY CALORIE TARGET -->
+                    <div class="card">
+                        <div class="gauge-container">
+                            <svg class="gauge-svg" viewBox="0 0 100 100">
+                                <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="gauge-fill" id="cal-gauge-fill" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="gauge-text">
+                                <span class="gauge-val" id="dashboard-target-calories">2,450</span>
+                                <span class="gauge-lbl">kcal / day</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Calorie Target</div>
+                    </div>
 
-            <div class="dashboard-content">
-                <!-- Nutrition/Caloric Summary Card -->
-                <div class="card" id="card-nutrition">
+                    <!-- TOTAL PROGRESS CIRCLE -->
+                    <div class="card">
+                        <div class="gauge-container">
+                            <svg class="gauge-svg" viewBox="0 0 100 100">
+                                <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="gauge-fill" id="total-progress-gauge-fill" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="gauge-text">
+                                <span class="gauge-val" id="dash-progress-days">Day 1</span>
+                                <span class="gauge-lbl" id="dash-total-days">/ 90</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Total Progress</div>
+                    </div>
+                </div>
+
+                <!-- CONSISTENCY STREAK CARD -->
+                <div class="card" style="display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div style="background: rgba(22, 163, 74, 0.15); color: var(--accent-green); padding: 12px; border-radius: 14px;">
+                            <i data-lucide="flame" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Consistency Streak</div>
+                            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);" id="streak-counter-val">1 Days Active</div>
+                        </div>
+                    </div>
+                    <i data-lucide="award" style="color: var(--accent-green);"></i>
+                </div>
+
+                <!-- HYDRATION NOTE BOX -->
+                <div class="hydration-note-box">
+                    <div class="hydration-icon">
+                        <i data-lucide="droplet" style="width: 24px; height: 24px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">Daily Hydration Target</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);" id="hydration-recommendation-text">
+                            Recommended intake: 2.8 - 3.5 Liters of water daily.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUTRITION BREAKDOWN MACROS -->
+                <div class="card">
+                    <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="pie-chart" style="color: var(--accent-green); width: 18px;"></i> Daily Macro Targets
+                    </h3>
+                    <div class="stat-pill">
+                        <span class="label">Protein Target</span>
+                        <span class="val" id="dash-protein-val">160g</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="label">Carbohydrates Target</span>
+                        <span class="val" id="dash-carbs-val">240g</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="label">Healthy Fats Target</span>
+                        <span class="val" id="dash-fats-val">65g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORKOUT VIEW -->
+            <div id="workout-tab" style="display: none;">
+                <div class="date-selector-container" id="workout-date-bar"></div>
+
+                <div class="card" style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Daily Energy Target</div>
-                            <div style="font-size: 1.8rem; font-weight: 800; margin-top: 2px;" id="dash-calories">2,250 <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">kcal</span></div>
+                            <!-- Update 2: Simplified subtitle without "Full Body A/B" labels -->
+                            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">DAY 1 ROUTINE</span>
+                            <h2 style="font-size: 1.2rem; font-weight: 800; margin-top: 2px;" id="workout-session-title">Full Body Training</h2>
                         </div>
                         <div style="text-align: right;">
-                            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Hydration Goal</div>
-                            <div style="font-size: 1.1rem; font-weight: 700; color: #38bdf8; margin-top: 2px;" id="dash-water">2.8 L</div>
-                        </div>
-                    </div>
-
-                    <div class="macros-grid">
-                        <div class="macro-card">
-                            <div class="macro-lbl">Protein</div>
-                            <div class="macro-val" style="color: #60a5fa;" id="dash-protein">140g</div>
-                        </div>
-                        <div class="macro-card">
-                            <div class="macro-lbl">Carbs</div>
-                            <div class="macro-val" style="color: #f59e0b;" id="dash-carbs">220g</div>
-                        </div>
-                        <div class="macro-card">
-                            <div class="macro-lbl">Fats</div>
-                            <div class="macro-val" style="color: #10b981;" id="dash-fats">65g</div>
+                            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Est. Duration</span>
+                            <span style="font-size: 0.9rem; font-weight: 700; color: var(--accent-green);" id="workout-est-time">55 Min</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Workout Card Section -->
-                <div class="card" id="card-workout-section">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <span class="card-header-title">
-                            <i data-lucide="dumbbell" size="18" style="color: var(--primary);"></i>
-                            Program Day <span class="active-day-num">1</span> &bull; Routine
-                        </span>
-                        <span style="font-size: 0.8rem; color: var(--text-muted);" id="dash-duration-text">Est. Duration: 45 min</span>
-                    </div>
-
-                    <div id="workout-list">
-                        <!-- Dynamic Workout Routine List -->
-                    </div>
-                </div>
-
-                <!-- Meal Plan Section -->
-                <div class="card" id="card-meal-section">
-                    <div style="margin-bottom: 12px;">
-                        <span class="card-header-title">
-                            <i data-lucide="utensils" size="18" style="color: var(--accent);"></i>
-                            Day <span class="active-day-num">1</span> Nutrition Plan
-                        </span>
-                    </div>
-
-                    <div id="meal-list">
-                        <!-- Dynamic Meal List -->
-                    </div>
-                </div>
+                <div id="workout-exercise-list"></div>
             </div>
-        </section>
 
-        <!-- 4. PROFILE SCREEN -->
-        <section id="screen-profile" class="screen">
-            <div style="padding: 24px;">
-                <div class="profile-header">
-                    <div class="avatar" id="profile-avatar">U</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700;" id="profile-user-id">ID: #839201</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" id="profile-plan-summary">Custom Plan Active</p>
+            <!-- MEALS VIEW -->
+            <div id="meals-tab" style="display: none;">
+                <div class="date-selector-container" id="meals-date-bar"></div>
+
+                <div class="card" style="margin-bottom: 16px;">
+                    <h2 style="font-size: 1.1rem; font-weight: 800;" id="meals-day-title">Daily Nutrition Schedule</h2>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);" id="meals-day-subtitle">Custom structured menu for optimal metabolic response.</p>
                 </div>
 
-                <div style="margin-top: 20px;">
-                    <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; color: var(--text-muted); text-transform: uppercase;">Plan Configuration</h4>
-                    <div id="profile-config-list">
-                        <!-- Dynamic Configuration List populated JS -->
+                <div id="meals-list-container"></div>
+            </div>
+
+            <!-- PROFILE / SETTINGS VIEW -->
+            <div id="profile-tab" style="display: none;">
+                <div class="card" style="text-align: center; padding: 28px 20px;">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--accent-green); color: #fff; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
+                        FP
                     </div>
+                    <h2 style="font-size: 1.2rem; font-weight: 800;" id="profile-user-name">FitPulse Athlete</h2>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);" id="profile-user-goal">Goal: Weight Loss</p>
                 </div>
 
-                <div style="margin-top: 24px;">
-                    <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);" onclick="resetUserData()">
-                        <i data-lucide="refresh-cw" size="16"></i> Reset Program & Data
-                    </button>
+                <div class="card">
+                    <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px;">Plan Configuration</h3>
+                    <div class="stat-pill"><span class="label">Location</span><span class="val" id="prof-loc">Gym</span></div>
+                    <div class="stat-pill"><span class="label">Physique</span><span class="val" id="prof-physique">Average</span></div>
+                    <div class="stat-pill"><span class="label">Program Length</span><span class="val" id="prof-duration">90 Days</span></div>
+                    <div class="stat-pill"><span class="label">Frequency</span><span class="val" id="prof-freq">4 Days/Wk</span></div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Navigation Bar (Hidden on onboarding & loading) -->
-        <nav class="bottom-nav" id="bottom-nav" style="display: none;">
-            <div class="nav-item active" onclick="switchTab('dashboard', this)">
-                <i data-lucide="layout-dashboard"></i>
-                <span>Dashboard</span>
+                <button class="btn btn-secondary" onclick="resetOnboarding()" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">Reset & Create New Plan</button>
             </div>
-            <div class="nav-item" onclick="switchTab('profile', this)">
+
+        </main>
+
+        <!-- BOTTOM NAVBAR -->
+        <nav class="nav-bar" id="app-nav-bar" style="display: none;">
+            <button class="nav-item active" onclick="switchTab('home', this)">
+                <i data-lucide="home"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" onclick="switchTab('workout', this)">
+                <i data-lucide="dumbbell"></i>
+                <span>Workout</span>
+            </button>
+            <button class="nav-item" onclick="switchTab('meals', this)">
+                <i data-lucide="utensils"></i>
+                <span>Meals</span>
+            </button>
+            <button class="nav-item" onclick="switchTab('profile', this)">
                 <i data-lucide="user"></i>
                 <span>Profile</span>
-            </div>
+            </button>
         </nav>
     </div>
 
+    <!-- CALENDAR MODAL -->
+    <div class="modal" id="calendar-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-size: 1.1rem; font-weight: 800;" id="modal-month-title">Program Calendar</h3>
+                <button onclick="closeCalendarModal()" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="calendar-grid">
+                <div class="calendar-day-head">M</div>
+                <div class="calendar-day-head">T</div>
+                <div class="calendar-day-head">W</div>
+                <div class="calendar-day-head">T</div>
+                <div class="calendar-day-head">F</div>
+                <div class="calendar-day-head">S</div>
+                <div class="calendar-day-head">S</div>
+            </div>
+            <div class="calendar-grid" id="full-calendar-days"></div>
+        </div>
+    </div>
+
+    <!-- LOADING OVERLAY SCREEN -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-status-text" id="loading-status-msg">Calculating Basal Metabolic Rate...</div>
+    </div>
+
     <script>
-        // Data State Model
-        let state = {
-            currentStep: 1,
-            units: 'metric', // 'metric' or 'imperial'
-            data: {
-                userId: null,
-                gender: null,
-                goal: null,
-                location: null,
-                planType: null,
-                physique: null,
-                duration: '30',
-                frequency: 3,
-                ageRange: null,
-                weight: 70, // in kg
-                height: 175, // in cm
-                completedExercises: {}
-            },
-            onboardingCompleted: false
+        // GLOBAL STATE
+        let userData = {
+            gender: null,
+            goal: null,
+            location: null,
+            planType: null,
+            physique: null,
+            duration: 90,
+            workoutDays: 4,
+            ageGroup: '25-30',
+            weight: 75,
+            weightUnit: 'kg',
+            heightCm: 180,
+            heightFt: 5.11,
+            heightUnit: 'cm',
+            streak: 1,
+            currentProgramDay: 1,
+            selectedDateIndex: 0
         };
 
-        const totalSteps = 8;
-
-        // Exercise Database
-        const exercisesDB = {
-            gym: [
-                { name: 'Barbell Bench Press', sets: '4 Sets × 8-10 Reps', duration: 12 },
-                { name: 'Lat Pulldowns', sets: '4 Sets × 10-12 Reps', duration: 10 },
-                { name: 'Incline Dumbbell Press', sets: '3 Sets × 10 Reps', duration: 10 },
-                { name: 'Seated Cable Rows', sets: '3 Sets × 12 Reps', duration: 8 },
-                { name: 'Barbell Squats', sets: '4 Sets × 8 Reps', duration: 15 },
-                { name: 'Dumbbell Shoulder Press', sets: '3 Sets × 10 Reps', duration: 8 }
-            ],
-            home: [
-                { name: 'Push-Ups (Standard / Incline)', sets: '4 Sets × 12-15 Reps', duration: 8 },
-                { name: 'Bodyweight Squats', sets: '4 Sets × 20 Reps', duration: 10 },
-                { name: 'Pike Push-Ups', sets: '3 Sets × 10 Reps', duration: 8 },
-                { name: 'Walking Lunges', sets: '3 Sets × 15 Reps/leg', duration: 10 },
-                { name: 'Plank Hold', sets: '3 Sets × 45 Seconds', duration: 6 },
-                { name: 'Mountain Climbers', sets: '3 Sets × 30 Seconds', duration: 5 }
-            ]
+        let calculatedPlan = {
+            targetCalories: 2200,
+            protein: 165,
+            carbs: 220,
+            fats: 60,
+            recommendedWaterLiters: "2.8 - 3.5"
         };
 
-        // Nutrition Database (Rotates Daily)
-        const mealsDB = [
-            {
-                breakfast: 'Oatmeal with chia seeds, banana slices & almond butter',
-                lunch: 'Grilled chicken breast with quinoa and steamed broccoli',
-                snack: 'Greek yogurt with fresh blueberries and walnuts',
-                dinner: 'Baked salmon with roasted sweet potato and asparagus'
-            },
-            {
-                breakfast: 'Scrambled eggs with spinach, avocado & whole wheat toast',
-                lunch: 'Turkey and avocado wrap with mixed green salad',
-                snack: 'Protein shake with almond milk and apple slices',
-                dinner: 'Lean beef stir-fry with brown rice and mixed vegetables'
-            },
-            {
-                breakfast: 'Protein smoothie bowl topped with granola & berries',
-                lunch: 'Tuna salad with olive oil dressing over mixed greens',
-                snack: 'Cottage cheese with pineapple chunks',
-                dinner: 'Grilled tofu or chicken skewers with roasted Mediterranean veggies'
-            }
-        ];
+        let completedExercisesMap = {};
 
-        // Init App
+        // INITIALIZATION
         document.addEventListener('DOMContentLoaded', () => {
-            loadSavedState();
             lucide.createIcons();
-            
-            if (state.onboardingCompleted) {
-                showDashboard();
-            } else {
-                updateStepUI();
-            }
+            loadUserData();
         });
 
-        // Load & Save Methods
-        function loadSavedState() {
-            const saved = localStorage.getItem('fitpulse_user_state');
-            if (saved) {
-                try {
-                    state = JSON.parse(saved);
-                } catch(e) {
-                    console.error("Failed loading local state", e);
-                }
-            }
-            if (!state.data.userId) {
-                state.data.userId = 'FP-' + Math.floor(100000 + Math.random() * 900000);
-            }
-            document.getElementById('user-id-badge').innerText = state.data.userId;
-        }
+        // WIZARD NAVIGATION
+        function nextStep(stepNumber) {
+            document.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
 
-        function saveState() {
-            localStorage.setItem('fitpulse_user_state', JSON.stringify(state));
-        }
-
-        // Onboarding UI Flow Management
-        function updateStepUI() {
-            document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
-            const currentContainer = document.querySelector(`.step-container[data-step="${state.currentStep}"]`);
-            if (currentContainer) currentContainer.classList.add('active');
-
-            const fillPercent = (state.currentStep / totalSteps) * 100;
-            document.getElementById('onboarding-progress').style.width = `${fillPercent}%`;
-
-            const btnBack = document.getElementById('btn-back');
-            const btnNext = document.getElementById('btn-next');
-
-            btnBack.style.display = state.currentStep > 1 ? 'block' : 'none';
-            btnNext.innerText = state.currentStep === totalSteps ? 'Generate My Plan' : 'Continue';
-            
-            refreshSteppers();
-        }
-
-        function nextStep() {
-            if (state.currentStep < totalSteps) {
-                state.currentStep++;
-                updateStepUI();
-                saveState();
+            const header = document.getElementById('wizard-step-header');
+            if (stepNumber > 0) {
+                header.style.display = 'block';
+                document.getElementById('step-counter-text').innerText = `Step ${stepNumber} / 7`;
+                const progress = (stepNumber / 7) * 100;
+                document.getElementById('wizard-progress-bar').style.width = `${progress}%`;
             } else {
-                startPlanGeneration();
+                header.style.display = 'none';
             }
         }
 
-        function prevStep() {
-            if (state.currentStep > 1) {
-                state.currentStep--;
-                updateStepUI();
-            }
+        function prevStep(stepNumber) {
+            nextStep(stepNumber);
         }
 
-        function selectOption(key, value, element) {
-            state.data[key] = value;
+        function selectGender(gender, element) {
+            userData.gender = gender;
+            highlightSingleOption(element);
+            document.getElementById('btn-next-1').disabled = false;
+        }
+
+        function selectGoal(goal, element) {
+            userData.goal = goal;
+            highlightSingleOption(element);
+            document.getElementById('btn-next-2').disabled = false;
+        }
+
+        function selectLocation(loc, element) {
+            userData.location = loc;
+            highlightSingleOption(element);
+            document.getElementById('btn-next-3').disabled = false;
+        }
+
+        function selectPlanType(plan, element) {
+            userData.planType = plan;
+            highlightSingleOption(element);
+            document.getElementById('btn-next-4').disabled = false;
+        }
+
+        function selectPhysique(physique, element) {
+            userData.physique = physique;
+            highlightSingleOption(element);
+            document.getElementById('btn-next-5').disabled = false;
+        }
+
+        function highlightSingleOption(element) {
             const parent = element.parentElement;
-            parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            parent.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
             element.classList.add('selected');
-            saveState();
         }
 
-        function adjustValue(key, delta, min, max) {
-            let val = (state.data[key] || min) + delta;
-            if (val < min) val = min;
-            if (val > max) val = max;
-            state.data[key] = val;
-            refreshSteppers();
-            saveState();
+        function adjustValue(inputId, delta) {
+            const input = document.getElementById(inputId);
+            let val = parseFloat(input.value) || 0;
+            val = Math.max(1, val + delta);
+            input.value = Number.isInteger(delta) ? val : val.toFixed(1);
         }
 
-        function setUnits(unit) {
-            state.units = unit;
-            document.getElementById('unit-metric').classList.toggle('active', unit === 'metric');
-            document.getElementById('unit-imperial').classList.toggle('active', unit === 'imperial');
-            refreshSteppers();
+        function setWeightUnit(unit) {
+            userData.weightUnit = unit;
+            document.getElementById('btn-kg').classList.toggle('active', unit === 'kg');
+            document.getElementById('btn-lbs').classList.toggle('active', unit === 'lbs');
         }
 
-        function refreshSteppers() {
-            document.getElementById('display-frequency').innerText = `${state.data.frequency || 3} Days / Week`;
-            
-            const w = state.data.weight || 70;
-            const h = state.data.height || 175;
+        function setHeightUnit(unit) {
+            userData.heightUnit = unit;
+            document.getElementById('btn-cm').classList.toggle('active', unit === 'cm');
+            document.getElementById('btn-ft').classList.toggle('active', unit === 'ft');
 
-            if (state.units === 'imperial') {
-                const lbs = Math.round(w * 2.20462);
-                const totalInches = Math.round(h / 2.54);
-                const feet = Math.floor(totalInches / 12);
-                const inches = totalInches % 12;
-                document.getElementById('display-weight').innerText = `${lbs} lbs`;
-                document.getElementById('display-height').innerText = `${feet}' ${inches}"`;
+            if (unit === 'cm') {
+                document.getElementById('height-cm-container').style.display = 'block';
+                document.getElementById('height-ft-container').style.display = 'none';
             } else {
-                document.getElementById('display-weight').innerText = `${w} kg`;
-                document.getElementById('display-height').innerText = `${h} cm`;
+                document.getElementById('height-cm-container').style.display = 'none';
+                document.getElementById('height-ft-container').style.display = 'block';
             }
         }
 
-        // Realistic Slower Loading Simulation
-        function startPlanGeneration() {
-            showScreen('screen-loading');
-            document.getElementById('bottom-nav').style.display = 'none';
+        function triggerPlanGeneration() {
+            userData.ageGroup = document.getElementById('user-age-group').value;
+            userData.duration = parseInt(document.getElementById('program-duration-select').value) || 90;
+            userData.workoutDays = parseInt(document.getElementById('workout-days-select').value) || 4;
 
-            const loadingSteps = [
-                { title: 'Analyzing Biometrics...', desc: 'Calculating metabolic rates & energy baseline.', delay: 1800, progress: 25 },
-                { title: 'Designing Fitness Plan...', desc: 'Structuring targeted workout routines.', delay: 2400, progress: 55 },
-                { title: 'Structuring Nutrition...', desc: 'Optimizing macronutrients & meal frequency.', delay: 2000, progress: 85 },
-                { title: 'Finalizing Program...', desc: 'Syncing your personalized profile dashboard.', delay: 1500, progress: 100 }
+            if (userData.weightUnit === 'kg') {
+                userData.weight = parseFloat(document.getElementById('user-weight').value) || 75;
+            } else {
+                userData.weight = (parseFloat(document.getElementById('user-weight').value) || 165) * 0.453592;
+            }
+
+            if (userData.heightUnit === 'cm') {
+                userData.heightCm = parseFloat(document.getElementById('user-height-cm').value) || 180;
+            } else {
+                const ftVal = parseFloat(document.getElementById('user-height-ft').value) || 5.11;
+                const feet = Math.floor(ftVal);
+                const inches = (ftVal - feet) * 10;
+                userData.heightCm = Math.round((feet * 30.48) + (inches * 2.54));
+            }
+
+            const overlay = document.getElementById('loading-overlay');
+            const msg = document.getElementById('loading-status-msg');
+            overlay.style.display = 'flex';
+
+            const loadingMessages = [
+                "Calculating Basal Metabolic Rate...",
+                "Optimizing daily caloric & macro targets...",
+                "Establishing full-body exercise progressions...",
+                "Structuring custom unique daily meal plans...",
+                "Finalizing personalized transformation plan..."
             ];
 
-            let currentLoadingIdx = 0;
-
-            function processLoadingStep() {
-                if (currentLoadingIdx < loadingSteps.length) {
-                    const step = loadingSteps[currentLoadingIdx];
-                    document.getElementById('loading-status-title').innerText = step.title;
-                    document.getElementById('loading-status-desc').innerText = step.desc;
-                    document.getElementById('loading-progress-fill').style.width = `${step.progress}%`;
-
-                    currentLoadingIdx++;
-                    setTimeout(processLoadingStep, step.delay);
+            let msgIndex = 0;
+            const interval = setInterval(() => {
+                msgIndex++;
+                if (msgIndex < loadingMessages.length) {
+                    msg.innerText = loadingMessages[msgIndex];
                 } else {
-                    state.onboardingCompleted = true;
-                    saveState();
-                    showDashboard();
+                    clearInterval(interval);
+                    completeOnboarding();
+                    overlay.style.display = 'none';
                 }
+            }, 750);
+        }
+
+        function completeOnboarding() {
+            generateCalculatedPlan();
+            saveUserData();
+            showMainApp();
+        }
+
+        function generateCalculatedPlan() {
+            let ageNum = 26;
+            if (userData.ageGroup === '18-25') ageNum = 22;
+            else if (userData.ageGroup === '30-35') ageNum = 32;
+            else if (userData.ageGroup === '35+') ageNum = 40;
+
+            let bmr = (10 * userData.weight) + (6.25 * userData.heightCm) - (5 * ageNum);
+            bmr += (userData.gender === 'male') ? 5 : -161;
+
+            let activityMultiplier = 1.375;
+            if (userData.workoutDays >= 5) activityMultiplier = 1.55;
+
+            let tdee = bmr * activityMultiplier;
+
+            if (userData.goal === 'lose') {
+                calculatedPlan.targetCalories = Math.round(tdee - 450);
+            } else if (userData.goal === 'gain') {
+                calculatedPlan.targetCalories = Math.round(tdee + 350);
+            } else {
+                calculatedPlan.targetCalories = Math.round(tdee);
             }
 
-            processLoadingStep();
+            calculatedPlan.protein = Math.round(userData.weight * 2.1);
+            calculatedPlan.fats = Math.round((calculatedPlan.targetCalories * 0.25) / 9);
+            calculatedPlan.carbs = Math.round((calculatedPlan.targetCalories - (calculatedPlan.protein * 4) - (calculatedPlan.fats * 9)) / 4);
+
+            const minWater = (userData.weight * 0.038).toFixed(1);
+            const maxWater = (userData.weight * 0.045).toFixed(1);
+            calculatedPlan.recommendedWaterLiters = `${minWater} - ${maxWater}`;
         }
 
-        // Dashboard Generation & Display
-        function showDashboard() {
-            showScreen('screen-dashboard');
-            document.getElementById('bottom-nav').style.display = 'flex';
+        function showMainApp() {
+            document.getElementById('wizard-container').style.display = 'none';
+            document.getElementById('app-nav-bar').style.display = 'flex';
+            document.getElementById('calendar-toggle-btn').style.display = 'flex';
             
-            setupDateStrip();
-            calculateMetrics();
-            renderDashboardDay(1);
+            updateDashboardUI();
+            switchTab('home', document.querySelectorAll('.nav-item')[0]);
+            lucide.createIcons();
         }
 
-        function setupDateStrip() {
-            const container = document.getElementById('date-strip');
-            container.innerHTML = '';
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        function updateDashboardUI() {
+            document.getElementById('dashboard-target-calories').innerText = calculatedPlan.targetCalories.toLocaleString();
+            
+            const calGauge = document.getElementById('cal-gauge-fill');
+            calGauge.style.strokeDashoffset = 283 - (283 * 0.75);
+
+            updateTotalProgressUI();
+
+            document.getElementById('streak-counter-val').innerText = `${userData.streak} Days Active`;
+
+            document.getElementById('hydration-recommendation-text').innerText = 
+                `Recommended intake: ${calculatedPlan.recommendedWaterLiters} Liters of water daily for optimum recovery.`;
+
+            document.getElementById('dash-protein-val').innerText = `${calculatedPlan.protein}g`;
+            document.getElementById('dash-carbs-val').innerText = `${calculatedPlan.carbs}g`;
+            document.getElementById('dash-fats-val').innerText = `${calculatedPlan.fats}g`;
+
+            document.getElementById('profile-user-goal').innerText = `Goal: ${(userData.goal || 'General').toUpperCase()}`;
+            document.getElementById('prof-loc').innerText = userData.location === 'gym' ? 'At the Gym' : 'At Home';
+            document.getElementById('prof-physique').innerText = (userData.physique || 'Average').toUpperCase();
+            document.getElementById('prof-duration').innerText = `${userData.duration} Days`;
+            document.getElementById('prof-freq').innerText = `${userData.workoutDays} Days / Wk`;
+
+            renderDateBars();
+        }
+
+        function updateTotalProgressUI() {
+            document.getElementById('dash-progress-days').innerText = `Day ${userData.currentProgramDay}`;
+            document.getElementById('dash-total-days').innerText = `/ ${userData.duration}`;
+
+            const totalProgressGauge = document.getElementById('total-progress-gauge-fill');
+            const fraction = Math.min(userData.currentProgramDay / userData.duration, 1);
+            const offset = 283 - (283 * fraction);
+            totalProgressGauge.style.strokeDashoffset = offset;
+        }
+
+        function switchTab(tabName, element) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            if (element) element.classList.add('active');
+
+            document.getElementById('dashboard-home').style.display = 'none';
+            document.getElementById('workout-tab').style.display = 'none';
+            document.getElementById('meals-tab').style.display = 'none';
+            document.getElementById('profile-tab').style.display = 'none';
+
+            if (tabName === 'home') {
+                document.getElementById('dashboard-home').style.display = 'block';
+            } else if (tabName === 'workout') {
+                document.getElementById('workout-tab').style.display = 'block';
+                renderWorkoutSession();
+            } else if (tabName === 'meals') {
+                document.getElementById('meals-tab').style.display = 'block';
+                renderMealsList();
+            } else if (tabName === 'profile') {
+                document.getElementById('profile-tab').style.display = 'block';
+            }
+
+            lucide.createIcons();
+        }
+
+        function renderDateBars() {
+            const workoutBar = document.getElementById('workout-date-bar');
+            const mealsBar = document.getElementById('meals-date-bar');
+
+            workoutBar.innerHTML = '';
+            mealsBar.innerHTML = '';
+
+            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
             const today = new Date();
 
             for (let i = 0; i < 14; i++) {
-                const d = new Date();
-                d.setDate(today.getDate() + i);
+                const dateObj = new Date();
+                dateObj.setDate(today.getDate() + i);
 
-                const card = document.createElement('div');
-                card.className = `date-card ${i === 0 ? 'active' : ''}`;
-                card.onclick = () => {
-                    document.querySelectorAll('.date-card').forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                    renderDashboardDay(i + 1);
-                };
+                const dayNameStr = dayNames[dateObj.getDay()];
+                const dayNumStr = dateObj.getDate();
+                const monthStr = monthNames[dateObj.getMonth()];
 
-                card.innerHTML = `
-                    <span class="day">${days[d.getDay()]}</span>
-                    <span class="num">${d.getDate()}</span>
+                const isActive = (i === userData.selectedDateIndex) ? 'active' : '';
+
+                const dateCardHtml = `
+                    <div class="date-card ${isActive}" onclick="selectDateIndex(${i})">
+                        <span class="day-name">${dayNameStr}</span>
+                        <span class="day-num">${dayNumStr}</span>
+                        <span class="day-month">${monthStr}</span>
+                    </div>
                 `;
-                container.appendChild(card);
+
+                workoutBar.innerHTML += dateCardHtml;
+                mealsBar.innerHTML += dateCardHtml;
             }
         }
 
-        function calculateMetrics() {
-            const weight = state.data.weight || 70;
-            const height = state.data.height || 175;
-            const isMale = state.data.gender === 'male';
-
-            // Mifflin-St Jeor Formula
-            let bmr = (10 * weight) + (6.25 * height) - (5 * 28) + (isMale ? 5 : -161);
-            let tdee = bmr * 1.35;
-
-            if (state.data.goal === 'lose_weight') tdee -= 400;
-            if (state.data.goal === 'build_muscle') tdee += 350;
-
-            const targetCalories = Math.round(tdee);
-            const proteinGrams = Math.round(weight * (state.data.goal === 'build_muscle' ? 2.0 : 1.6));
-            const fatsGrams = Math.round((targetCalories * 0.25) / 9);
-            const carbsGrams = Math.round((targetCalories - (proteinGrams * 4) - (fatsGrams * 9)) / 4);
-            const waterLiters = (weight * 0.038).toFixed(1);
-
-            document.getElementById('dash-calories').innerText = targetCalories.toLocaleString();
-            document.getElementById('dash-water').innerText = `${waterLiters} L`;
-            document.getElementById('dash-protein').innerText = `${proteinGrams}g`;
-            document.getElementById('dash-carbs').innerText = `${carbsGrams}g`;
-            document.getElementById('dash-fats').innerText = `${fatsGrams}g`;
+        function selectDateIndex(idx) {
+            userData.selectedDateIndex = idx;
+            renderDateBars();
+            renderWorkoutSession();
+            renderMealsList();
         }
 
-        function renderDashboardDay(dayNumber) {
-            document.querySelectorAll('.active-day-num').forEach(el => el.innerText = dayNumber);
+        // WORKOUT SESSION RENDER (Update 1: Strikethrough + Round Check Icon & Update 2: Simplified Title)
+        function renderWorkoutSession() {
+            const container = document.getElementById('workout-exercise-list');
+            container.innerHTML = '';
 
-            const planType = state.data.planType || 'fitness_meal';
-            const workoutCard = document.getElementById('card-workout-section');
-            const mealCard = document.getElementById('card-meal-section');
+            const dayIdx = userData.selectedDateIndex;
+            const isGym = userData.location === 'gym';
 
-            // Handle Plan Type Visibility properly
-            if (planType === 'meal_only') {
-                workoutCard.style.display = 'none';
-                mealCard.style.display = 'block';
-            } else if (planType === 'fitness_only') {
-                workoutCard.style.display = 'block';
-                mealCard.style.display = 'none';
+            const workoutPlan = getDailyWorkoutPlan(dayIdx, isGym);
+
+            // Update 2: Removed "Full Body A/B" naming
+            document.getElementById('workout-session-title').innerText = "Full Body Training";
+            document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • ROUTINE`;
+            document.getElementById('workout-est-time').innerText = `${workoutPlan.estTime} Min`;
+
+            workoutPlan.exercises.forEach((ex, index) => {
+                const isCompleted = (completedExercisesMap[dayIdx] && completedExercisesMap[dayIdx][index]);
+                const completedClass = isCompleted ? 'completed' : '';
+
+                // Update 1: Added Strikethrough & Round Check Circle
+                const exHtml = `
+                    <div class="exercise-box ${completedClass}" onclick="toggleExerciseBox(${dayIdx}, ${index}, this)">
+                        <div class="exercise-header">
+                            <div class="exercise-title">
+                                <i data-lucide="dumbbell" style="width: 18px; height: 18px;"></i>
+                                <span>${ex.name}</span>
+                            </div>
+                            <div class="check-circle-icon">
+                                <i data-lucide="check"></i>
+                            </div>
+                        </div>
+                        <div class="exercise-meta">
+                            <span><strong>Sets:</strong> ${ex.sets}</span>
+                            <span><strong>Reps:</strong> ${ex.reps}</span>
+                            <span><strong>Rest:</strong> ${ex.rest}s</span>
+                        </div>
+                        <div class="exercise-desc">${ex.desc}</div>
+                    </div>
+                `;
+                container.innerHTML += exHtml;
+            });
+
+            lucide.createIcons();
+        }
+
+        function toggleExerciseBox(dayIdx, exIdx, element) {
+            if (!completedExercisesMap[dayIdx]) {
+                completedExercisesMap[dayIdx] = {};
+            }
+
+            const currentState = !!completedExercisesMap[dayIdx][exIdx];
+            completedExercisesMap[dayIdx][exIdx] = !currentState;
+
+            if (!currentState) {
+                element.classList.add('completed');
             } else {
-                workoutCard.style.display = 'block';
-                mealCard.style.display = 'block';
-            }
-
-            // Render Workouts
-            if (planType !== 'meal_only') {
-                const list = document.getElementById('workout-list');
-                list.innerHTML = '';
-                const locationKey = state.data.location === 'gym' ? 'gym' : 'home';
-                const exercises = exercisesDB[locationKey];
-
-                exercises.forEach((ex, idx) => {
-                    const exKey = `day_${dayNumber}_ex_${idx}`;
-                    const isChecked = !!state.data.completedExercises[exKey];
-
-                    const item = document.createElement('div');
-                    item.className = 'exercise-item';
-                    item.innerHTML = `
-                        <div class="exercise-info">
-                            <h4 style="${isChecked ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${ex.name}</h4>
-                            <p>${ex.sets}</p>
-                        </div>
-                        <div class="checkbox ${isChecked ? 'checked' : ''}" onclick="toggleExercise('${exKey}')"></div>
-                    `;
-                    list.appendChild(item);
-                });
-            }
-
-            // Render Nutrition Plan
-            if (planType !== 'fitness_only') {
-                const list = document.getElementById('meal-list');
-                list.innerHTML = '';
-                const mealData = mealsDB[(dayNumber - 1) % mealsDB.length];
-
-                const mealSchedule = [
-                    { time: 'Breakfast', title: mealData.breakfast, desc: 'High energy start' },
-                    { time: 'Lunch', title: mealData.lunch, desc: 'Balanced macronutrient ratio' },
-                    { time: 'Snack', title: mealData.snack, desc: 'Metabolism boost' },
-                    { time: 'Dinner', title: mealData.dinner, desc: 'Nutrient-dense recovery meal' }
-                ];
-
-                mealSchedule.forEach(m => {
-                    const item = document.createElement('div');
-                    item.className = 'meal-item';
-                    item.innerHTML = `
-                        <div class="meal-time">${m.time}</div>
-                        <div class="meal-details">
-                            <h4>${m.title}</h4>
-                            <p>${m.desc}</p>
-                        </div>
-                    `;
-                    list.appendChild(item);
-                });
+                element.classList.remove('completed');
             }
         }
 
-        function toggleExercise(key) {
-            state.data.completedExercises[key] = !state.data.completedExercises[key];
-            saveState();
-            const activeCard = document.querySelector('.date-card.active');
-            const dayNum = activeCard ? Array.from(activeCard.parentNode.children).indexOf(activeCard) + 1 : 1;
-            renderDashboardDay(dayNum);
-        }
-
-        // Screen Navigation
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        function switchTab(tab, el) {
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-            el.classList.add('active');
-
-            if (tab === 'dashboard') {
-                showDashboard();
-            } else if (tab === 'profile') {
-                renderProfile();
-                showScreen('screen-profile');
-            }
-        }
-
-        function renderProfile() {
-            document.getElementById('profile-user-id').innerText = `ID: ${state.data.userId || '#839201'}`;
-            const configList = document.getElementById('profile-config-list');
-            configList.innerHTML = '';
-
-            const formatLabel = (key, val) => {
-                if (!val) return 'Not Specified';
-                return val.toString().replace('_', ' ');
-            };
-
-            const configItems = [
-                { label: 'User Unique ID', value: state.data.userId },
-                { label: 'Gender', value: formatLabel('gender', state.data.gender) },
-                { label: 'Primary Goal', value: formatLabel('goal', state.data.goal) },
-                { label: 'Training Location', value: formatLabel('location', state.data.location) },
-                { label: 'Plan Scope', value: formatLabel('planType', state.data.planType) },
-                { label: 'Physique Baseline', value: formatLabel('physique', state.data.physique) },
-                { label: 'Program Duration', value: `${state.data.duration || 30} Days` },
-                { label: 'Weekly Frequency', value: `${state.data.frequency || 3} Days / Week` },
-                { label: 'Age Group', value: state.data.ageRange || 'Not Specified' },
-                { label: 'Current Weight', value: `${state.data.weight || 70} kg` },
-                { label: 'Current Height', value: `${state.data.height || 175} cm` }
+        function getDailyWorkoutPlan(dayIdx, isGym) {
+            const routines = [
+                {
+                    estTime: "60",
+                    exercises: isGym ? [
+                        { name: "Barbell Squats", sets: 4, reps: "8-10", rest: 90, desc: "Primary quad & lower body developer." },
+                        { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Compound upper body chest activation." },
+                        { name: "Bent-Over Rows", sets: 4, reps: "10", rest: 75, desc: "Build back density and posture." },
+                        { name: "Overhead Dumbbell Press", sets: 3, reps: "10-12", rest: 60, desc: "Shoulder strength and core stability." },
+                        { name: "Tricep Rope Pushdowns", sets: 3, reps: "12", rest: 60, desc: "Target triceps lateral head." },
+                        { name: "Hanging Leg Raises", sets: 3, reps: "15", rest: 45, desc: "Lower core stabilization." }
+                    ] : [
+                        { name: "Goblet Squats", sets: 4, reps: "12-15", rest: 75, desc: "Quad loading with dumbbell." },
+                        { name: "Standard Push-ups", sets: 4, reps: "15-20", rest: 60, desc: "Chest, front delt, and triceps activator." },
+                        { name: "Single-Arm Dumbbell Row", sets: 4, reps: "12", rest: 60, desc: "Unilateral upper back pull." },
+                        { name: "Dumbbell Shoulder Press", sets: 3, reps: "12", rest: 60, desc: "Vertical shoulder pressing." },
+                        { name: "Plank Hold", sets: 3, reps: "45 Sec", rest: 45, desc: "Core stability hold." }
+                    ]
+                },
+                {
+                    estTime: "65",
+                    exercises: isGym ? [
+                        { name: "Romanian Deadlifts", sets: 4, reps: "10", rest: 90, desc: "Hamstrings and posterior chain focus." },
+                        { name: "Incline Dumbbell Press", sets: 4, reps: "10-12", rest: 75, desc: "Upper chest fibers." },
+                        { name: "Lat Pulldowns", sets: 4, reps: "12", rest: 60, desc: "Lat width and upper back density." },
+                        { name: "Dumbbell Lateral Raises", sets: 4, reps: "15", rest: 45, desc: "Side deltoid isolation." },
+                        { name: "Barbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Strict arm curl progression." }
+                    ] : [
+                        { name: "Dumbbell Romanian Deadlifts", sets: 4, reps: "12", rest: 75, desc: "Hamstring and glute hinge." },
+                        { name: "Incline Push-ups (Feet Elevated)", sets: 4, reps: "12-15", rest: 60, desc: "Upper chest emphasis." },
+                        { name: "Resistance Band Pulldowns", sets: 4, reps: "15", rest: 45, desc: "Squeeze lats at bottom." },
+                        { name: "Dumbbell Standing Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Full range bicep curl." }
+                    ]
+                }
             ];
 
-            configItems.forEach(item => {
-                const row = document.createElement('div');
-                row.className = 'profile-item';
-                row.innerHTML = `
-                    <span>${item.label}</span>
-                    <span>${item.value}</span>
+            return routines[dayIdx % routines.length];
+        }
+
+        function renderMealsList() {
+            const container = document.getElementById('meals-list-container');
+            container.innerHTML = '';
+
+            const dayIdx = userData.selectedDateIndex;
+            const mealsData = getDailyMealPlan(dayIdx);
+
+            document.getElementById('meals-day-title').innerText = `Day ${dayIdx + 1} Custom Nutrition Plan`;
+
+            mealsData.forEach(meal => {
+                const mealHtml = `
+                    <div class="meal-box">
+                        <div class="meal-header">
+                            <span class="meal-type">${meal.type}</span>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-green);">${meal.calories} kcal</span>
+                        </div>
+                        <div class="meal-title">${meal.title}</div>
+                        <div class="meal-details">${meal.details}</div>
+                    </div>
                 `;
-                configList.appendChild(row);
+                container.innerHTML += mealHtml;
             });
         }
 
-        function resetUserData() {
-            if (confirm('Are you sure you want to reset all onboarding settings and user progress?')) {
-                localStorage.removeItem('fitpulse_user_state');
+        // Update 3: 7 UNIQUE DAILY MEAL PLANS (Rotating Unique Menus Per Day)
+        function getDailyMealPlan(dayIdx) {
+            const mealPlans = [
+                // DAY 1 MENU
+                [
+                    { type: "1. Breakfast", title: "Oatmeal with Whey & Berries", calories: "420", details: "60g oats, 1 scoop whey protein, 50g blueberries, 10g almonds." },
+                    { type: "2. Morning Snack", title: "Greek Yogurt & Honey", calories: "210", details: "170g non-fat Greek yogurt, 15g honey, chia seeds." },
+                    { type: "3. Lunch", title: "Grilled Chicken Breast & Jasmine Rice", calories: "550", details: "180g chicken breast, 150g cooked jasmine rice, steamed broccoli." },
+                    { type: "4. Post-Workout Snack", title: "Rice Cakes & Whey Shake", calories: "230", details: "2 rice cakes, 1 scoop whey protein isolate mixed with water." },
+                    { type: "5. Dinner", title: "Baked Salmon & Sweet Potato", calories: "580", details: "160g Atlantic salmon, 180g baked sweet potato, roasted asparagus." },
+                    { type: "6. Before-Bed Snack", title: "Cottage Cheese & Walnuts", calories: "180", details: "150g low-fat cottage cheese with 10g crushed walnuts." }
+                ],
+                // DAY 2 MENU
+                [
+                    { type: "1. Breakfast", title: "Scrambled Eggs & Whole Wheat Toast", calories: "450", details: "3 whole eggs, 2 slices whole grain toast, 1/2 avocado." },
+                    { type: "2. Morning Snack", title: "Apple & Almond Butter", calories: "220", details: "1 medium apple, 15g natural almond butter." },
+                    { type: "3. Lunch", title: "Lean Ground Turkey Bowl", calories: "540", details: "180g 93% lean ground turkey, 150g cooked quinoa, mixed vegetables." },
+                    { type: "4. Post-Workout Snack", title: "Protein Smoothie with Banana", calories: "260", details: "1 scoop protein powder, 1 medium banana, 200ml almond milk." },
+                    { type: "5. Dinner", title: "Sirloin Steak & Roasted Baby Potatoes", calories: "600", details: "170g lean sirloin steak, 150g roasted baby potatoes, green beans." },
+                    { type: "6. Before-Bed Snack", title: "Greek Yogurt with Peanut Butter", calories: "190", details: "150g Greek yogurt, 10g natural peanut butter." }
+                ],
+                // DAY 3 MENU
+                [
+                    { type: "1. Breakfast", title: "Protein Pancakes with Maple Syrup", calories: "440", details: "3 oat-based protein pancakes, 15ml pure maple syrup, strawberries." },
+                    { type: "2. Morning Snack", title: "Handful of Mixed Nuts & Dried Cranberries", calories: "210", details: "25g raw almonds, cashew nuts, and dried cranberries." },
+                    { type: "3. Lunch", title: "Tuna & Avocado Wrap", calories: "520", details: "140g canned tuna in water, 1 whole wheat tortilla, avocado, spinach." },
+                    { type: "4. Post-Workout Snack", title: "Whey Protein & Rice Crackers", calories: "220", details: "1 scoop whey protein, 3 crunchy sea salt rice crackers." },
+                    { type: "5. Dinner", title: "Grilled Cod & Brown Rice", calories: "560", details: "190g fresh cod fillet, 140g brown rice, sautéed zucchini." },
+                    { type: "6. Before-Bed Snack", title: "Casein Protein Shake", calories: "160", details: "1 scoop slow-digesting micellar casein protein with water." }
+                ],
+                // DAY 4 MENU
+                [
+                    { type: "1. Breakfast", title: "Egg White Omelet with Spinach & Feta", calories: "410", details: "4 egg whites, 1 whole egg, 30g feta cheese, fresh spinach." },
+                    { type: "2. Morning Snack", title: "Berry Smoothie Bowl", calories: "230", details: "150g blended frozen mixed berries, chia seeds, coconut flakes." },
+                    { type: "3. Lunch", title: "Beef Steak Fajita Bowl", calories: "570", details: "170g grilled flank steak strips, bell peppers, onions, black beans." },
+                    { type: "4. Post-Workout Snack", title: "Hard Boiled Eggs & Whole Fruit", calories: "240", details: "2 large hard-boiled eggs, 1 fresh orange." },
+                    { type: "5. Dinner", title: "Herb Roasted Chicken Thighs", calories: "590", details: "180g skinless chicken thigh, 160g roasted sweet potato wedges." },
+                    { type: "6. Before-Bed Snack", title: "High-Protein Pudding", calories: "170", details: "150g chocolate high-protein pudding or Greek yogurt dessert." }
+                ],
+                // DAY 5 MENU
+                [
+                    { type: "1. Breakfast", title: "Avocado Toast & Poached Eggs", calories: "460", details: "2 poached eggs, 1 slice sourdough toast, smashed avocado, hemp seeds." },
+                    { type: "2. Morning Snack", title: "Protein Bar & Green Tea", calories: "220", details: "1 low-sugar protein bar (20g protein) with unsweetened green tea." },
+                    { type: "3. Lunch", title: "Lemon Herb Grilled Chicken Rice Bowl", calories: "530", details: "180g lemon marinated chicken breast, basmati rice, cucumber salad." },
+                    { type: "4. Post-Workout Snack", title: "Protein Shake & Rice Cake Spread", calories: "250", details: "1 scoop protein, 2 rice cakes topped with sugar-free jam." },
+                    { type: "5. Dinner", title: "Grilled Shrimp & Quinoa Salad", calories: "550", details: "200g jumbo shrimp, 140g cooked quinoa, cherry tomatoes, olive oil." },
+                    { type: "6. Before-Bed Snack", title: "Cottage Cheese & Blueberries", calories: "170", details: "150g low-fat cottage cheese with fresh blueberries." }
+                ],
+                // DAY 6 MENU
+                [
+                    { type: "1. Breakfast", title: "Chai Spice Protein Oatmeal", calories: "430", details: "60g oats, 1 scoop vanilla protein, cinnamon, nutmeg, flaxseeds." },
+                    { type: "2. Morning Snack", title: "Edamame Beans & Sea Salt", calories: "190", details: "150g steamed edamame pods sprinkled with coarse sea salt." },
+                    { type: "3. Lunch", title: "Baked Lean Turkey Meatballs", calories: "560", details: "180g turkey meatballs, whole wheat pasta, tomato marinara sauce." },
+                    { type: "4. Post-Workout Snack", title: "Greek Yogurt Berry Parfait", calories: "240", details: "150g Greek yogurt layered with raspberries and sliced almonds." },
+                    { type: "5. Dinner", title: "Pan-Seared White Fish & Couscous", calories: "570", details: "180g sea bass or tilapia, 130g whole wheat couscous, roasted broccoli." },
+                    { type: "6. Before-Bed Snack", title: "Almond Milk Casein Shake", calories: "160", details: "1 scoop casein protein mixed with unsweetened almond milk." }
+                ],
+                // DAY 7 MENU
+                [
+                    { type: "1. Breakfast", title: "Smoked Salmon & Scrambled Eggs", calories: "470", details: "3 scrambled eggs, 50g smoked salmon, whole grain toast, dill." },
+                    { type: "2. Morning Snack", title: "Sliced Pear & Walnut Kernels", calories: "210", details: "1 ripe pear, 15g raw walnut halves." },
+                    { type: "3. Lunch", title: "Grilled Chicken Caesar Salad Wrap", calories: "540", details: "180g chicken, romaine lettuce, light Caesar dressing, whole wheat wrap." },
+                    { type: "4. Post-Workout Snack", title: "Clear Whey Protein & Rice Crisp", calories: "210", details: "1 scoop clear whey isolate drink, 1 low-calorie rice bar." },
+                    { type: "5. Dinner", title: "Lean Pork Tenderloin & Mash", calories: "580", details: "170g pork tenderloin, 150g mashed potatoes, garlic green beans." },
+                    { type: "6. Before-Bed Snack", title: "Protein Mug Cake / Yogurt Dip", calories: "180", details: "Warm protein mug cake or 150g Greek yogurt with cocoa powder." }
+                ]
+            ];
+
+            return mealPlans[dayIdx % mealPlans.length];
+        }
+
+        function openCalendarModal() {
+            const modal = document.getElementById('calendar-modal');
+            const grid = document.getElementById('full-calendar-days');
+            grid.innerHTML = '';
+
+            const daysInMonth = 30;
+            for (let d = 1; d <= daysInMonth; d++) {
+                const isCurrent = (d === userData.currentProgramDay);
+                const cellHtml = `
+                    <div class="calendar-cell ${isCurrent ? 'active-day has-workout' : ''}">
+                        ${d}
+                    </div>
+                `;
+                grid.innerHTML += cellHtml;
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeCalendarModal() {
+            document.getElementById('calendar-modal').style.display = 'none';
+        }
+
+        function saveUserData() {
+            localStorage.setItem('fitpulse_user_data', JSON.stringify(userData));
+            localStorage.setItem('fitpulse_plan_data', JSON.stringify(calculatedPlan));
+        }
+
+        function loadUserData() {
+            const savedUser = localStorage.getItem('fitpulse_user_data');
+            const savedPlan = localStorage.getItem('fitpulse_plan_data');
+
+            if (savedUser && savedPlan) {
+                userData = JSON.parse(savedUser);
+                calculatedPlan = JSON.parse(savedPlan);
+                showMainApp();
+            }
+        }
+
+        function resetOnboarding() {
+            if (confirm("Reset program and create a new personalized plan?")) {
+                localStorage.removeItem('fitpulse_user_data');
+                localStorage.removeItem('fitpulse_plan_data');
                 location.reload();
             }
         }
