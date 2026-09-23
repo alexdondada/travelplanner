@@ -11,7 +11,6 @@
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            /* Change 5: Updated green palette to #34E0A1 */
             --accent-green: #34E0A1; 
             --accent-green-glow: rgba(52, 224, 161, 0.35);
             --accent-green-dark: #20ad7b;
@@ -155,26 +154,60 @@
         .wizard-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 6px;
             line-height: 1.2;
         }
 
+        .wizard-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* OPTION CARDS WITH LEFT ICONS (IMAGE 2) */
         .option-card {
             background: var(--card-bg);
             border: 2px solid var(--card-border);
             border-radius: 16px;
-            padding: 18px 16px;
+            padding: 16px 18px;
             margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 14px;
+        }
+
+        .option-card-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .option-icon {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: color 0.2s ease;
+        }
+
+        .option-icon svg {
+            width: 22px;
+            height: 22px;
         }
 
         .option-card:hover, .option-card.selected {
             border-color: var(--accent-green);
             background: rgba(52, 224, 161, 0.08);
+        }
+
+        .option-card.selected .option-icon {
+            color: var(--accent-green);
         }
 
         .option-card.selected {
@@ -183,9 +216,43 @@
 
         .option-card-content h4 {
             font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
-        /* Change 2: 2x2 Grid Layout for Age Selection */
+        .option-card-content p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Radio Indicator on Right side */
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .option-card.selected .option-radio {
+            border-color: var(--accent-green);
+            background: var(--accent-green);
+        }
+
+        .option-card.selected .option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #0f172a;
+        }
+
+        /* 2x2 Grid Layout for Age Selection */
         .grid-2x2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -206,7 +273,7 @@
             border-radius: 14px;
             border: none;
             background: var(--accent-green);
-            color: #0f172a; /* Dark text for optimal contrast on bright #34E0A1 */
+            color: #0f172a;
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
@@ -265,81 +332,96 @@
             border-color: var(--accent-green);
         }
 
-        /* Change 3: Compact Stepper Layout with Vertical Conversion Toggle */
-        .stepper-row-compact {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stepper-container-compact {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex: 1;
-        }
-
-        .stepper-container-compact .input-control {
-            width: 70px; /* 3x smaller input box */
-            padding: 10px 4px;
-            font-size: 0.95rem;
-        }
-
-        .stepper-container-compact .btn-stepper {
-            width: 36px;
-            height: 36px;
-            font-size: 1rem;
-            border-radius: 10px;
-        }
-
-        .vertical-unit-toggle {
+        /* REDESIGNED WEIGHT & HEIGHT CARDS (IMAGE 1) */
+        .measurement-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            background: var(--input-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 2px;
+            align-items: center;
         }
 
-        .vertical-unit-toggle .unit-btn {
-            padding: 4px 8px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            border-radius: 6px;
-            cursor: pointer;
+        .measurement-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 18px;
         }
 
-        .vertical-unit-toggle .unit-btn.active {
-            background: var(--card-bg);
-            color: var(--accent-green);
-        }
-
-        .btn-stepper {
-            background: var(--card-bg);
+        .btn-circle-stepper {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #0f172a;
             border: 1px solid var(--card-border);
             color: var(--text-main);
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 700;
             user-select: none;
             transition: all 0.2s ease;
             flex-shrink: 0;
         }
 
-        .btn-stepper:active {
+        .btn-circle-stepper:active {
             background: var(--accent-green);
             color: #0f172a;
-            transform: scale(0.95);
+            border-color: var(--accent-green);
+            transform: scale(0.92);
+        }
+
+        .measurement-display {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .measurement-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .measurement-unit {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .pill-unit-toggle {
+            display: inline-flex;
+            background: #0f172a;
+            border: 1px solid var(--card-border);
+            border-radius: 25px;
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .pill-unit-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pill-unit-btn.active {
+            background: #ffffff;
+            color: #0f172a;
         }
 
         /* CIRCULAR PROGRESS STYLES */
@@ -749,7 +831,7 @@
             color: var(--accent-green);
         }
 
-        /* LOADING OVERLAY SCREEN */
+        /* LOADING OVERLAY & STEP PROCESS LIST (IMAGE 3) */
         #loading-overlay {
             display: none;
             position: fixed;
@@ -763,17 +845,16 @@
             align-items: center;
             justify-content: center;
             padding: 30px;
-            text-align: center;
         }
 
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid var(--card-border);
-            border-top: 4px solid var(--accent-green);
+        .loading-spinner-ring {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid var(--accent-green);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 24px;
+            animation: spin 0.9s linear infinite;
+            margin-bottom: 30px;
         }
 
         @keyframes spin {
@@ -781,11 +862,61 @@
             100% { transform: rotate(360deg); }
         }
 
-        .loading-status-text {
-            font-size: 1.1rem;
+        .loading-steps-list {
+            width: 100%;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .loading-step-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.92rem;
+            color: #475569; /* Muted pending state */
+            transition: all 0.3s ease;
+        }
+
+        .loading-step-item.active {
+            color: #ffffff;
             font-weight: 700;
-            color: var(--text-main);
-            min-height: 28px;
+        }
+
+        .loading-step-item.completed {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .step-check-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .loading-step-item.active .step-check-icon {
+            border-color: var(--text-main);
+            background: #ffffff;
+            color: #0f172a;
+        }
+
+        .loading-step-item.completed .step-check-icon {
+            border-color: var(--accent-green);
+            background: var(--accent-green);
+            color: #0f172a;
+        }
+
+        .step-check-icon svg {
+            width: 13px;
+            height: 13px;
+            stroke-width: 3px;
         }
     </style>
 </head>
@@ -836,40 +967,65 @@
                 <!-- STEP 1: GENDER -->
                 <div class="wizard-step" id="step-1">
                     <h2 class="wizard-title">Select Gender</h2>
+                    <p class="wizard-subtitle">We use this to establish metabolic baselines.</p>
                     
                     <div class="option-card" onclick="selectGender('male', this)">
-                        <div class="option-card-content">
-                            <h4>Male</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="user"></i></div>
+                            <div class="option-card-content">
+                                <h4>Male</h4>
+                                <p>Higher baseline testosterone & lean muscle focus</p>
+                            </div>
                         </div>
-                        <i data-lucide="user"></i>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectGender('female', this)">
-                        <div class="option-card-content">
-                            <h4>Female</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="user"></i></div>
+                            <div class="option-card-content">
+                                <h4>Female</h4>
+                                <p>Hormone-optimized metabolic & tone targets</p>
+                            </div>
                         </div>
-                        <i data-lucide="user"></i>
+                        <div class="option-radio"></div>
                     </div>
                     <button class="btn" id="btn-next-1" disabled onclick="nextStep(2)">Continue <i data-lucide="arrow-right"></i></button>
                 </div>
 
-                <!-- STEP 2: PRIMARY GOAL -->
+                <!-- STEP 2: PRIMARY GOAL (IMAGE 2 DESIGN) -->
                 <div class="wizard-step" id="step-2">
-                    <h2 class="wizard-title">What is your primary goal?</h2>
+                    <h2 class="wizard-title">What's your main goal?</h2>
+                    <p class="wizard-subtitle">Everything downstream — food and training — is built around this.</p>
                     
                     <div class="option-card" onclick="selectGoal('gain', this)">
-                        <div class="option-card-content">
-                            <h4>Muscle Mass & Weight Gain</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="trending-up"></i></div>
+                            <div class="option-card-content">
+                                <h4>Build muscle</h4>
+                                <p>Add size & strength</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectGoal('lose', this)">
-                        <div class="option-card-content">
-                            <h4>Weight Loss & Fat Reduction</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="trending-down"></i></div>
+                            <div class="option-card-content">
+                                <h4>Lose fat</h4>
+                                <p>Get leaner</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectGoal('maintain', this)">
-                        <div class="option-card-content">
-                            <h4>Maintenance & Recomposition</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="scale"></i></div>
+                            <div class="option-card-content">
+                                <h4>Maintain & tone</h4>
+                                <p>Recomposition</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <button class="btn" id="btn-next-2" disabled onclick="nextStep(3)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(1)">Back</button>
@@ -878,18 +1034,27 @@
                 <!-- STEP 3: WORKOUT LOCATION -->
                 <div class="wizard-step" id="step-3">
                     <h2 class="wizard-title">Where do you exercise?</h2>
+                    <p class="wizard-subtitle">We'll tailor equipment requirements accordingly.</p>
                     
                     <div class="option-card" onclick="selectLocation('home', this)">
-                        <div class="option-card-content">
-                            <h4>At Home</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="home"></i></div>
+                            <div class="option-card-content">
+                                <h4>At Home</h4>
+                                <p>Dumbbells, bands, and bodyweight routines</p>
+                            </div>
                         </div>
-                        <i data-lucide="home"></i>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectLocation('gym', this)">
-                        <div class="option-card-content">
-                            <h4>At the Gym</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="dumbbell"></i></div>
+                            <div class="option-card-content">
+                                <h4>At the Gym</h4>
+                                <p>Full rack, barbells, and machines setup</p>
+                            </div>
                         </div>
-                        <i data-lucide="dumbbell"></i>
+                        <div class="option-radio"></div>
                     </div>
                     <button class="btn" id="btn-next-3" disabled onclick="nextStep(4)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(2)">Back</button>
@@ -898,21 +1063,37 @@
                 <!-- STEP 4: PLAN TYPE -->
                 <div class="wizard-step" id="step-4">
                     <h2 class="wizard-title">Select Plan Structure</h2>
+                    <p class="wizard-subtitle">Choose the components you want generated.</p>
                     
                     <div class="option-card" onclick="selectPlanType('workout_diet', this)">
-                        <div class="option-card-content">
-                            <h4>Workout & Diet Plan (Recommended)</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="sparkles"></i></div>
+                            <div class="option-card-content">
+                                <h4>Workout & Diet Plan</h4>
+                                <p>Complete synergy (Recommended)</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectPlanType('workout_only', this)">
-                        <div class="option-card-content">
-                            <h4>Workout Only</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="dumbbell"></i></div>
+                            <div class="option-card-content">
+                                <h4>Workout Only</h4>
+                                <p>Exercise routines and progressive loads</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectPlanType('diet_only', this)">
-                        <div class="option-card-content">
-                            <h4>Diet Plan Only</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="utensils"></i></div>
+                            <div class="option-card-content">
+                                <h4>Diet Plan Only</h4>
+                                <p>Macro split and structured daily meals</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <button class="btn" id="btn-next-4" disabled onclick="nextStep(5)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(3)">Back</button>
@@ -921,21 +1102,37 @@
                 <!-- STEP 5: CURRENT PHYSIQUE -->
                 <div class="wizard-step" id="step-5">
                     <h2 class="wizard-title">Current Body Physique</h2>
+                    <p class="wizard-subtitle">Allows precise calculation of fat-free mass.</p>
                     
                     <div class="option-card" onclick="selectPhysique('slim', this)">
-                        <div class="option-card-content">
-                            <h4>Slim / Lean</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="user-check"></i></div>
+                            <div class="option-card-content">
+                                <h4>Slim / Lean</h4>
+                                <p>Low body fat percentage base</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectPhysique('average', this)">
-                        <div class="option-card-content">
-                            <h4>Average / Athletic</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="user"></i></div>
+                            <div class="option-card-content">
+                                <h4>Average / Athletic</h4>
+                                <p>Moderate body fat with base muscle mass</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <div class="option-card" onclick="selectPhysique('more_fat', this)">
-                        <div class="option-card-content">
-                            <h4>More Body Fat / Heavy</h4>
+                        <div class="option-card-left">
+                            <div class="option-icon"><i data-lucide="user-plus"></i></div>
+                            <div class="option-card-content">
+                                <h4>More Body Fat / Heavy</h4>
+                                <p>Higher body fat percentage base</p>
+                            </div>
                         </div>
+                        <div class="option-radio"></div>
                     </div>
                     <button class="btn" id="btn-next-5" disabled onclick="nextStep(6)">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(4)">Back</button>
@@ -944,24 +1141,39 @@
                 <!-- STEP 6: PROGRAM DURATION & DAYS/WEEK -->
                 <div class="wizard-step" id="step-6">
                     <h2 class="wizard-title">Program Setup</h2>
+                    <p class="wizard-subtitle">Select timeline commitment and weekly training frequency.</p>
                     
-                    <!-- Change 1: Cards without dropdown for Program Duration (30, 90 days, 6 months) -->
                     <div class="input-group">
                         <label>Program Duration</label>
                         <div class="option-card" onclick="selectDuration(30, this)">
-                            <div class="option-card-content">
-                                <h4>30 Days Transformation</h4>
+                            <div class="option-card-left">
+                                <div class="option-icon"><i data-lucide="calendar"></i></div>
+                                <div class="option-card-content">
+                                    <h4>30 Days Transformation</h4>
+                                    <p>Rapid kickstart program</p>
+                                </div>
                             </div>
+                            <div class="option-radio"></div>
                         </div>
                         <div class="option-card selected" onclick="selectDuration(90, this)">
-                            <div class="option-card-content">
-                                <h4>90 Days Complete Overhaul</h4>
+                            <div class="option-card-left">
+                                <div class="option-icon"><i data-lucide="calendar"></i></div>
+                                <div class="option-card-content">
+                                    <h4>90 Days Complete Overhaul</h4>
+                                    <p>Full physical transformation cycle</p>
+                                </div>
                             </div>
+                            <div class="option-radio"></div>
                         </div>
                         <div class="option-card" onclick="selectDuration(180, this)">
-                            <div class="option-card-content">
-                                <h4>6 Months Athletic Evolution</h4>
+                            <div class="option-card-left">
+                                <div class="option-icon"><i data-lucide="calendar"></i></div>
+                                <div class="option-card-content">
+                                    <h4>6 Months Athletic Evolution</h4>
+                                    <p>Long-term lifestyle conditioning</p>
+                                </div>
                             </div>
+                            <div class="option-radio"></div>
                         </div>
                     </div>
 
@@ -979,11 +1191,12 @@
                     <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
                 </div>
 
-                <!-- STEP 7: BIOMETRICS -->
+                <!-- STEP 7: BIOMETRICS (IMAGE 1 REDESIGN) -->
                 <div class="wizard-step" id="step-7">
-                    <h2 class="wizard-title">Biometric Measurements</h2>
+                    <h2 class="wizard-title">Biometrics</h2>
+                    <p class="wizard-subtitle">Used to calculate your calorie and protein targets.</p>
                     
-                    <!-- Change 2: Age group options in 2x2 grid, non-dropdown -->
+                    <!-- Age group options in 2x2 grid -->
                     <div class="input-group">
                         <label>Age Group</label>
                         <div class="grid-2x2">
@@ -1002,49 +1215,40 @@
                         </div>
                     </div>
 
-                    <!-- Change 3: Input box 3x smaller with right-side vertical conversion toggle -->
+                    <!-- WEIGHT CARD (MATCHING IMAGE 1) -->
                     <div class="input-group">
                         <label>Weight</label>
-                        <div class="stepper-row-compact">
-                            <div class="stepper-container-compact">
-                                <div class="btn-stepper" onclick="adjustValue('user-weight', -1)">-</div>
-                                <input type="number" id="user-weight" class="input-control" value="75">
-                                <div class="btn-stepper" onclick="adjustValue('user-weight', 1)">+</div>
+                        <div class="measurement-card">
+                            <div class="measurement-controls">
+                                <div class="btn-circle-stepper" onclick="adjustWeight(-1)">−</div>
+                                <div class="measurement-display">
+                                    <span class="measurement-value" id="weight-val-display">75</span>
+                                    <span class="measurement-unit" id="weight-unit-display">kg</span>
+                                </div>
+                                <div class="btn-circle-stepper" onclick="adjustWeight(1)">+</div>
                             </div>
-                            <div class="vertical-unit-toggle">
-                                <button class="unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">KG</button>
-                                <button class="unit-btn" id="btn-lbs" onclick="setWeightUnit('lbs')">LB</button>
+                            <div class="pill-unit-toggle">
+                                <button class="pill-unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">KG</button>
+                                <button class="pill-unit-btn" id="btn-lbs" onclick="setWeightUnit('lbs')">LB</button>
                             </div>
                         </div>
                     </div>
 
+                    <!-- HEIGHT CARD (MATCHING IMAGE 1) -->
                     <div class="input-group">
-                        <label>Height</label>
-                        <div id="height-cm-container">
-                            <div class="stepper-row-compact">
-                                <div class="stepper-container-compact">
-                                    <div class="btn-stepper" onclick="adjustValue('user-height-cm', -1)">-</div>
-                                    <input type="number" id="user-height-cm" class="input-control" value="180">
-                                    <div class="btn-stepper" onclick="adjustValue('user-height-cm', 1)">+</div>
+                        <label>And your height?</label>
+                        <div class="measurement-card">
+                            <div class="measurement-controls">
+                                <div class="btn-circle-stepper" onclick="adjustHeight(-1)">−</div>
+                                <div class="measurement-display">
+                                    <span class="measurement-value" id="height-val-display">180</span>
+                                    <span class="measurement-unit" id="height-unit-display">cm</span>
                                 </div>
-                                <div class="vertical-unit-toggle">
-                                    <button class="unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
-                                    <button class="unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">FT</button>
-                                </div>
+                                <div class="btn-circle-stepper" onclick="adjustHeight(1)">+</div>
                             </div>
-                        </div>
-
-                        <div id="height-ft-container" style="display: none;">
-                            <div class="stepper-row-compact">
-                                <div class="stepper-container-compact">
-                                    <div class="btn-stepper" onclick="adjustValue('user-height-ft', -0.1)">-</div>
-                                    <input type="number" step="0.1" id="user-height-ft" class="input-control" value="5.11">
-                                    <div class="btn-stepper" onclick="adjustValue('user-height-ft', 0.1)">+</div>
-                                </div>
-                                <div class="vertical-unit-toggle">
-                                    <button class="unit-btn" id="btn-cm-2" onclick="setHeightUnit('cm')">CM</button>
-                                    <button class="unit-btn active" id="btn-ft-2" onclick="setHeightUnit('ft')">FT</button>
-                                </div>
+                            <div class="pill-unit-toggle">
+                                <button class="pill-unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
+                                <button class="pill-unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">IN</button>
                             </div>
                         </div>
                     </div>
@@ -1089,7 +1293,7 @@
                     </div>
                 </div>
 
-                <!-- Change 6: Moved Daily Macro Targets directly below Calorie Target and Total Progress -->
+                <!-- DAILY MACRO TARGETS -->
                 <div class="card">
                     <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
                         <i data-lucide="pie-chart" style="color: var(--accent-green); width: 18px;"></i> Daily Macro Targets
@@ -1143,7 +1347,6 @@
                 <div class="card" style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <!-- Change 7: Removed "Full Body Training" text and the surrounding header box text structure -->
                             <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">DAY 1 ROUTINE</span>
                             <h2 style="font-size: 1.2rem; font-weight: 800; margin-top: 2px;" id="workout-session-title"></h2>
                         </div>
@@ -1179,7 +1382,6 @@
                     <p style="font-size: 0.8rem; color: var(--text-muted);" id="profile-user-goal">Goal: Weight Loss</p>
                 </div>
 
-                <!-- Change 9: Displaying ALL onboarding selections in Plan Configuration -->
                 <div class="card">
                     <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px;">Plan Configuration</h3>
                     <div class="stat-pill"><span class="label">Gender</span><span class="val" id="prof-gender">Male</span></div>
@@ -1242,10 +1444,10 @@
         </div>
     </div>
 
-    <!-- LOADING OVERLAY SCREEN -->
+    <!-- LOADING OVERLAY SCREEN (MATCHING IMAGE 3) -->
     <div id="loading-overlay">
-        <div class="spinner"></div>
-        <div class="loading-status-text" id="loading-status-msg">Calculating Basal Metabolic Rate...</div>
+        <div class="loading-spinner-ring"></div>
+        <div class="loading-steps-list" id="loading-steps-container"></div>
     </div>
 
     <script>
@@ -1335,13 +1537,11 @@
             document.getElementById('btn-next-5').disabled = false;
         }
 
-        /* Change 1 helper */
         function selectDuration(days, element) {
             userData.duration = days;
             highlightSingleOption(element);
         }
 
-        /* Change 2 helper */
         function selectAgeGroup(age, element) {
             userData.ageGroup = age;
             highlightSingleOption(element);
@@ -1353,79 +1553,121 @@
             element.classList.add('selected');
         }
 
-        function adjustValue(inputId, delta) {
-            const input = document.getElementById(inputId);
-            let val = parseFloat(input.value) || 0;
-            val = Math.max(1, val + delta);
-            input.value = Number.isInteger(delta) ? val : val.toFixed(1);
+        /* WEIGHT & HEIGHT CARD LOGIC (IMAGE 1) */
+        function adjustWeight(delta) {
+            if (userData.weightUnit === 'kg') {
+                userData.weight = Math.max(30, userData.weight + delta);
+                document.getElementById('weight-val-display').innerText = userData.weight;
+            } else {
+                let lbsVal = Math.round(userData.weight * 2.20462);
+                lbsVal = Math.max(66, lbsVal + delta);
+                userData.weight = lbsVal / 2.20462;
+                document.getElementById('weight-val-display').innerText = lbsVal;
+            }
         }
 
         function setWeightUnit(unit) {
             userData.weightUnit = unit;
             document.getElementById('btn-kg').classList.toggle('active', unit === 'kg');
             document.getElementById('btn-lbs').classList.toggle('active', unit === 'lbs');
+            
+            if (unit === 'kg') {
+                document.getElementById('weight-val-display').innerText = Math.round(userData.weight);
+                document.getElementById('weight-unit-display').innerText = 'kg';
+            } else {
+                document.getElementById('weight-val-display').innerText = Math.round(userData.weight * 2.20462);
+                document.getElementById('weight-unit-display').innerText = 'lbs';
+            }
+        }
+
+        function adjustHeight(delta) {
+            if (userData.heightUnit === 'cm') {
+                userData.heightCm = Math.max(100, userData.heightCm + delta);
+                document.getElementById('height-val-display').innerText = userData.heightCm;
+            } else {
+                let inches = Math.round(userData.heightCm / 2.54);
+                inches = Math.max(40, inches + delta);
+                userData.heightCm = Math.round(inches * 2.54);
+                document.getElementById('height-val-display').innerText = inches;
+            }
         }
 
         function setHeightUnit(unit) {
             userData.heightUnit = unit;
             document.getElementById('btn-cm').classList.toggle('active', unit === 'cm');
             document.getElementById('btn-ft').classList.toggle('active', unit === 'ft');
-            if (document.getElementById('btn-cm-2')) {
-                document.getElementById('btn-cm-2').classList.toggle('active', unit === 'cm');
-                document.getElementById('btn-ft-2').classList.toggle('active', unit === 'ft');
-            }
 
             if (unit === 'cm') {
-                document.getElementById('height-cm-container').style.display = 'block';
-                document.getElementById('height-ft-container').style.display = 'none';
+                document.getElementById('height-val-display').innerText = userData.heightCm;
+                document.getElementById('height-unit-display').innerText = 'cm';
             } else {
-                document.getElementById('height-cm-container').style.display = 'none';
-                document.getElementById('height-ft-container').style.display = 'block';
+                const totalInches = Math.round(userData.heightCm / 2.54);
+                document.getElementById('height-val-display').innerText = totalInches;
+                document.getElementById('height-unit-display').innerText = 'in';
             }
         }
 
+        /* LOADING PHASE CHECKLIST ANIMATION (IMAGE 3) */
         function triggerPlanGeneration() {
             userData.workoutDays = parseInt(document.getElementById('workout-days-select').value) || 4;
 
-            if (userData.weightUnit === 'kg') {
-                userData.weight = parseFloat(document.getElementById('user-weight').value) || 75;
-            } else {
-                userData.weight = (parseFloat(document.getElementById('user-weight').value) || 165) * 0.453592;
-            }
-
-            if (userData.heightUnit === 'cm') {
-                userData.heightCm = parseFloat(document.getElementById('user-height-cm').value) || 180;
-            } else {
-                const ftVal = parseFloat(document.getElementById('user-height-ft').value) || 5.11;
-                const feet = Math.floor(ftVal);
-                const inches = (ftVal - feet) * 10;
-                userData.heightCm = Math.round((feet * 30.48) + (inches * 2.54));
-            }
-
             const overlay = document.getElementById('loading-overlay');
-            const msg = document.getElementById('loading-status-msg');
             overlay.style.display = 'flex';
 
-            const loadingMessages = [
-                "Calculating Basal Metabolic Rate...",
-                "Optimizing daily caloric & macro targets...",
-                "Establishing exercise progressions...",
-                "Structuring custom unique daily meal plans...",
-                "Finalizing personalized transformation plan..."
+            const loadingSteps = [
+                "Analyzing your profile...",
+                "Calculating your daily calorie target...",
+                "Balancing your protein, carbs and fat...",
+                "Building your weekly training split...",
+                "Selecting meals for your preferences...",
+                "Putting together your progress calendar...",
+                "Finalizing your plan..."
             ];
 
-            let msgIndex = 0;
-            /* Change 4: Slowed down the loading phase step transition interval from 750ms to 1800ms for extra realism */
+            const container = document.getElementById('loading-steps-container');
+            container.innerHTML = '';
+
+            // Build DOM list items matching image 3
+            loadingSteps.forEach((stepText, idx) => {
+                const stepEl = document.createElement('div');
+                stepEl.className = `loading-step-item ${idx === 0 ? 'active' : ''}`;
+                stepEl.id = `loading-step-${idx}`;
+                stepEl.innerHTML = `
+                    <div class="step-check-icon">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <span>${stepText}</span>
+                `;
+                container.appendChild(stepEl);
+            });
+
+            lucide.createIcons();
+
+            let currentStep = 0;
             const interval = setInterval(() => {
-                msgIndex++;
-                if (msgIndex < loadingMessages.length) {
-                    msg.innerText = loadingMessages[msgIndex];
+                // Mark current as completed
+                const curEl = document.getElementById(`loading-step-${currentStep}`);
+                if (curEl) {
+                    curEl.classList.remove('active');
+                    curEl.classList.add('completed');
+                }
+
+                currentStep++;
+
+                // Activate next step
+                if (currentStep < loadingSteps.length) {
+                    const nextEl = document.getElementById(`loading-step-${currentStep}`);
+                    if (nextEl) {
+                        nextEl.classList.add('active');
+                    }
                 } else {
                     clearInterval(interval);
-                    completeOnboarding();
-                    overlay.style.display = 'none';
+                    setTimeout(() => {
+                        completeOnboarding();
+                        overlay.style.display = 'none';
+                    }, 600);
                 }
-            }, 1800);
+            }, 1000);
         }
 
         function completeOnboarding() {
@@ -1494,7 +1736,6 @@
 
             document.getElementById('profile-user-goal').innerText = `Goal: ${(userData.goal || 'General').toUpperCase()}`;
             
-            // Change 9: Populating all onboarding choices in Plan Configuration tab
             document.getElementById('prof-gender').innerText = (userData.gender || 'Male').toUpperCase();
             document.getElementById('prof-goal').innerText = (userData.goal || 'Weight Loss').toUpperCase();
             document.getElementById('prof-loc').innerText = userData.location === 'gym' ? 'At the Gym' : 'At Home';
@@ -1516,7 +1757,7 @@
             }
 
             if (userData.heightUnit === 'ft') {
-                document.getElementById('prof-height').innerText = `${userData.heightFt || 5.11} ft`;
+                document.getElementById('prof-height').innerText = `${Math.round(userData.heightCm / 2.54)} in`;
             } else {
                 document.getElementById('prof-height').innerText = `${userData.heightCm || 180} cm`;
             }
@@ -1609,7 +1850,6 @@
 
             const workoutPlan = getDailyWorkoutPlan(dayIdx, isGym);
 
-            // Change 7: Removed "Full Body Training" text title
             document.getElementById('workout-session-title').innerText = workoutPlan.title || "";
             document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • ROUTINE`;
             document.getElementById('workout-est-time').innerText = `${workoutPlan.estTime} Min`;
@@ -1658,10 +1898,9 @@
             }
         }
 
-        /* Change 8: Expanded 7 distinct workout routines so workouts do not repeat every 2 days */
         function getDailyWorkoutPlan(dayIdx, isGym) {
             const routines = [
-                // ROUTINE 1: UPPER BODY HYPERTROPHY / PUSH
+                // ROUTINE 1: UPPER BODY HYPERTROPHY
                 {
                     title: "Upper Body Hypertrophy",
                     estTime: "55",
@@ -1715,7 +1954,7 @@
                         { name: "Doorway / Towel Rows", sets: 3, reps: "15", rest: 45, desc: "Constant tension pull." }
                     ]
                 },
-                // ROUTINE 4: SHOULDERS & ABS METABOLIC
+                // ROUTINE 4: SHOULDERS & ABS
                 {
                     title: "Shoulder & Core Conditioning",
                     estTime: "45",
@@ -1733,7 +1972,7 @@
                         { name: "Bicycle Crunches", sets: 3, reps: "20 per side", rest: 45, desc: "Oblique activation." }
                     ]
                 },
-                // ROUTINE 5: CHEST & ARMS SCULPT
+                // ROUTINE 5: CHEST & ARMS
                 {
                     title: "Chest & Arms Sculpt",
                     estTime: "55",
@@ -1769,7 +2008,7 @@
                         { name: "Fire Hydrants", sets: 3, reps: "20 per leg", rest: 30, desc: "Outer hip & glute builder." }
                     ]
                 },
-                // ROUTINE 7: FUNCTIONAL FULL BODY ATHLETIC
+                // ROUTINE 7: FUNCTIONAL ATHLETIC
                 {
                     title: "Functional Athletic Conditioning",
                     estTime: "45",
@@ -1818,7 +2057,6 @@
 
         function getDailyMealPlan(dayIdx) {
             const mealPlans = [
-                // DAY 1 MENU
                 [
                     { type: "1. Breakfast", title: "Oatmeal with Whey & Berries", calories: "420", details: "60g oats, 1 scoop whey protein, 50g blueberries, 10g almonds." },
                     { type: "2. Morning Snack", title: "Greek Yogurt & Honey", calories: "210", details: "170g non-fat Greek yogurt, 15g honey, chia seeds." },
@@ -1827,7 +2065,6 @@
                     { type: "5. Dinner", title: "Baked Salmon & Sweet Potato", calories: "580", details: "160g Atlantic salmon, 180g baked sweet potato, roasted asparagus." },
                     { type: "6. Before-Bed Snack", title: "Cottage Cheese & Walnuts", calories: "180", details: "150g low-fat cottage cheese with 10g crushed walnuts." }
                 ],
-                // DAY 2 MENU
                 [
                     { type: "1. Breakfast", title: "Scrambled Eggs & Whole Wheat Toast", calories: "450", details: "3 whole eggs, 2 slices whole grain toast, 1/2 avocado." },
                     { type: "2. Morning Snack", title: "Apple & Almond Butter", calories: "220", details: "1 medium apple, 15g natural almond butter." },
@@ -1836,7 +2073,6 @@
                     { type: "5. Dinner", title: "Sirloin Steak & Roasted Baby Potatoes", calories: "600", details: "170g lean sirloin steak, 150g roasted baby potatoes, green beans." },
                     { type: "6. Before-Bed Snack", title: "Greek Yogurt with Peanut Butter", calories: "190", details: "150g Greek yogurt, 10g natural peanut butter." }
                 ],
-                // DAY 3 MENU
                 [
                     { type: "1. Breakfast", title: "Protein Pancakes with Maple Syrup", calories: "440", details: "3 oat-based protein pancakes, 15ml pure maple syrup, strawberries." },
                     { type: "2. Morning Snack", title: "Handful of Mixed Nuts & Dried Cranberries", calories: "210", details: "25g raw almonds, cashew nuts, and dried cranberries." },
@@ -1844,42 +2080,6 @@
                     { type: "4. Post-Workout Snack", title: "Whey Protein & Rice Crackers", calories: "220", details: "1 scoop whey protein, 3 crunchy sea salt rice crackers." },
                     { type: "5. Dinner", title: "Grilled Cod & Brown Rice", calories: "560", details: "190g fresh cod fillet, 140g brown rice, sautéed zucchini." },
                     { type: "6. Before-Bed Snack", title: "Casein Protein Shake", calories: "160", details: "1 scoop slow-digesting micellar casein protein with water." }
-                ],
-                // DAY 4 MENU
-                [
-                    { type: "1. Breakfast", title: "Egg White Omelet with Spinach & Feta", calories: "410", details: "4 egg whites, 1 whole egg, 30g feta cheese, fresh spinach." },
-                    { type: "2. Morning Snack", title: "Berry Smoothie Bowl", calories: "230", details: "150g blended frozen mixed berries, chia seeds, coconut flakes." },
-                    { type: "3. Lunch", title: "Beef Steak Fajita Bowl", calories: "570", details: "170g grilled flank steak strips, bell peppers, onions, black beans." },
-                    { type: "4. Post-Workout Snack", title: "Hard Boiled Eggs & Whole Fruit", calories: "240", details: "2 large hard-boiled eggs, 1 fresh orange." },
-                    { type: "5. Dinner", title: "Herb Roasted Chicken Thighs", calories: "590", details: "180g skinless chicken thigh, 160g roasted sweet potato wedges." },
-                    { type: "6. Before-Bed Snack", title: "High-Protein Pudding", calories: "170", details: "150g chocolate high-protein pudding or Greek yogurt dessert." }
-                ],
-                // DAY 5 MENU
-                [
-                    { type: "1. Breakfast", title: "Avocado Toast & Poached Eggs", calories: "460", details: "2 poached eggs, 1 slice sourdough toast, smashed avocado, hemp seeds." },
-                    { type: "2. Morning Snack", title: "Protein Bar & Green Tea", calories: "220", details: "1 low-sugar protein bar (20g protein) with unsweetened green tea." },
-                    { type: "3. Lunch", title: "Lemon Herb Grilled Chicken Rice Bowl", calories: "530", details: "180g lemon marinated chicken breast, basmati rice, cucumber salad." },
-                    { type: "4. Post-Workout Snack", title: "Protein Shake & Rice Cake Spread", calories: "250", details: "1 scoop protein, 2 rice cakes topped with sugar-free jam." },
-                    { type: "5. Dinner", title: "Grilled Shrimp & Quinoa Salad", calories: "550", details: "200g jumbo shrimp, 140g cooked quinoa, cherry tomatoes, olive oil." },
-                    { type: "6. Before-Bed Snack", title: "Cottage Cheese & Blueberries", calories: "170", details: "150g low-fat cottage cheese with fresh blueberries." }
-                ],
-                // DAY 6 MENU
-                [
-                    { type: "1. Breakfast", title: "Chai Spice Protein Oatmeal", calories: "430", details: "60g oats, 1 scoop vanilla protein, cinnamon, nutmeg, flaxseeds." },
-                    { type: "2. Morning Snack", title: "Edamame Beans & Sea Salt", calories: "190", details: "150g steamed edamame pods sprinkled with coarse sea salt." },
-                    { type: "3. Lunch", title: "Baked Lean Turkey Meatballs", calories: "560", details: "180g turkey meatballs, whole wheat pasta, tomato marinara sauce." },
-                    { type: "4. Post-Workout Snack", title: "Greek Yogurt Berry Parfait", calories: "240", details: "150g Greek yogurt layered with raspberries and sliced almonds." },
-                    { type: "5. Dinner", title: "Pan-Seared White Fish & Couscous", calories: "570", details: "180g sea bass or tilapia, 130g whole wheat couscous, roasted broccoli." },
-                    { type: "6. Before-Bed Snack", title: "Almond Milk Casein Shake", calories: "160", details: "1 scoop casein protein mixed with unsweetened almond milk." }
-                ],
-                // DAY 7 MENU
-                [
-                    { type: "1. Breakfast", title: "Smoked Salmon & Scrambled Eggs", calories: "470", details: "3 scrambled eggs, 50g smoked salmon, whole grain toast, dill." },
-                    { type: "2. Morning Snack", title: "Sliced Pear & Walnut Kernels", calories: "210", details: "1 ripe pear, 15g raw walnut halves." },
-                    { type: "3. Lunch", title: "Grilled Chicken Caesar Salad Wrap", calories: "540", details: "180g chicken, romaine lettuce, light Caesar dressing, whole wheat wrap." },
-                    { type: "4. Post-Workout Snack", title: "Clear Whey Protein & Rice Crisp", calories: "210", details: "1 scoop clear whey isolate drink, 1 low-calorie rice bar." },
-                    { type: "5. Dinner", title: "Lean Pork Tenderloin & Mash", calories: "580", details: "170g pork tenderloin, 150g mashed potatoes, garlic green beans." },
-                    { type: "6. Before-Bed Snack", title: "Protein Mug Cake / Yogurt Dip", calories: "180", details: "Warm protein mug cake or 150g Greek yogurt with cocoa powder." }
                 ]
             ];
 
