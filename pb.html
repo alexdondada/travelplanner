@@ -11,9 +11,10 @@
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            --accent-green: #16a34a; 
-            --accent-green-glow: rgba(22, 163, 74, 0.35);
-            --accent-green-dark: #15803d;
+            /* Change 5: Updated green palette to #34E0A1 */
+            --accent-green: #34E0A1; 
+            --accent-green-glow: rgba(52, 224, 161, 0.35);
+            --accent-green-dark: #20ad7b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --input-bg: #0f172a;
@@ -173,7 +174,7 @@
 
         .option-card:hover, .option-card.selected {
             border-color: var(--accent-green);
-            background: rgba(22, 163, 74, 0.08);
+            background: rgba(52, 224, 161, 0.08);
         }
 
         .option-card.selected {
@@ -184,13 +185,28 @@
             font-size: 1rem;
         }
 
+        /* Change 2: 2x2 Grid Layout for Age Selection */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .grid-2x2 .option-card {
+            margin-bottom: 0;
+            justify-content: center;
+            text-align: center;
+            padding: 14px;
+        }
+
         .btn {
             width: 100%;
             padding: 16px;
             border-radius: 14px;
             border: none;
             background: var(--accent-green);
-            color: #ffffff;
+            color: #0f172a; /* Dark text for optimal contrast on bright #34E0A1 */
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
@@ -249,36 +265,57 @@
             border-color: var(--accent-green);
         }
 
-        .unit-toggle {
+        /* Change 3: Compact Stepper Layout with Vertical Conversion Toggle */
+        .stepper-row-compact {
             display: flex;
-            background: var(--input-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 2px;
-            margin-bottom: 12px;
+            align-items: center;
+            gap: 8px;
         }
 
-        .unit-btn {
+        .stepper-container-compact {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             flex: 1;
-            padding: 6px;
+        }
+
+        .stepper-container-compact .input-control {
+            width: 70px; /* 3x smaller input box */
+            padding: 10px 4px;
+            font-size: 0.95rem;
+        }
+
+        .stepper-container-compact .btn-stepper {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+
+        .vertical-unit-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: var(--input-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 2px;
+        }
+
+        .vertical-unit-toggle .unit-btn {
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
             border: none;
             background: transparent;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
         }
 
-        .unit-btn.active {
+        .vertical-unit-toggle .unit-btn.active {
             background: var(--card-bg);
             color: var(--accent-green);
-        }
-
-        .stepper-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .btn-stepper {
@@ -301,7 +338,7 @@
 
         .btn-stepper:active {
             background: var(--accent-green);
-            color: #fff;
+            color: #0f172a;
             transform: scale(0.95);
         }
 
@@ -413,7 +450,7 @@
         }
 
         .date-card.active span {
-            color: #fff !important;
+            color: #0f172a !important;
         }
 
         .date-card .day-name {
@@ -437,7 +474,7 @@
             text-transform: uppercase;
         }
 
-        /* EXERCISE BOXES & UPDATE 1: STRIKETHROUGH AND ROUND CHECK */
+        /* EXERCISE BOXES */
         .exercise-box {
             background: var(--card-bg);
             border: 2px solid var(--card-border);
@@ -452,7 +489,7 @@
 
         .exercise-box.completed {
             border-color: var(--accent-green);
-            background: rgba(22, 163, 74, 0.08);
+            background: rgba(52, 224, 161, 0.08);
             box-shadow: 0 0 18px var(--accent-green-glow);
         }
 
@@ -473,7 +510,6 @@
             transition: all 0.2s ease;
         }
 
-        /* Update 1: Strikethrough effect on title when completed */
         .exercise-box.completed .exercise-title span {
             text-decoration: line-through;
             color: var(--text-muted);
@@ -493,7 +529,6 @@
             line-height: 1.3;
         }
 
-        /* Update 1: Checkbox Round Circle Icon */
         .check-circle-icon {
             width: 22px;
             height: 22px;
@@ -510,7 +545,7 @@
         .exercise-box.completed .check-circle-icon {
             background: var(--accent-green);
             border-color: var(--accent-green);
-            color: #ffffff;
+            color: #0f172a;
         }
 
         .check-circle-icon svg {
@@ -568,7 +603,7 @@
         }
 
         .hydration-icon {
-            background: rgba(22, 163, 74, 0.15);
+            background: rgba(52, 224, 161, 0.15);
             color: var(--accent-green);
             padding: 12px;
             border-radius: 12px;
@@ -688,7 +723,7 @@
         }
 
         .calendar-cell.has-workout {
-            background: rgba(22, 163, 74, 0.2);
+            background: rgba(52, 224, 161, 0.2);
         }
 
         /* STATS PILLS */
@@ -777,7 +812,7 @@
 
                 <!-- WELCOME SCREEN (STEP 0) -->
                 <div class="wizard-step active" id="step-0" style="text-align: center; padding-top: 40px;">
-                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(22, 163, 74, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
+                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(52, 224, 161, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
                         <i data-lucide="activity" style="width: 48px; height: 48px;"></i>
                     </div>
                     <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">FitPulse AI</h1>
@@ -910,13 +945,24 @@
                 <div class="wizard-step" id="step-6">
                     <h2 class="wizard-title">Program Setup</h2>
                     
+                    <!-- Change 1: Cards without dropdown for Program Duration (30, 90 days, 6 months) -->
                     <div class="input-group">
                         <label>Program Duration</label>
-                        <select class="input-control" id="program-duration-select">
-                            <option value="30">30 Days Transformation</option>
-                            <option value="60">60 Days Build Plan</option>
-                            <option value="90" selected>90 Days Complete Overhaul</option>
-                        </select>
+                        <div class="option-card" onclick="selectDuration(30, this)">
+                            <div class="option-card-content">
+                                <h4>30 Days Transformation</h4>
+                            </div>
+                        </div>
+                        <div class="option-card selected" onclick="selectDuration(90, this)">
+                            <div class="option-card-content">
+                                <h4>90 Days Complete Overhaul</h4>
+                            </div>
+                        </div>
+                        <div class="option-card" onclick="selectDuration(180, this)">
+                            <div class="option-card-content">
+                                <h4>6 Months Athletic Evolution</h4>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="input-group">
@@ -937,49 +983,68 @@
                 <div class="wizard-step" id="step-7">
                     <h2 class="wizard-title">Biometric Measurements</h2>
                     
+                    <!-- Change 2: Age group options in 2x2 grid, non-dropdown -->
                     <div class="input-group">
                         <label>Age Group</label>
-                        <select class="input-control" id="user-age-group">
-                            <option value="18-25">18 - 25</option>
-                            <option value="25-30" selected>25 - 30</option>
-                            <option value="30-35">30 - 35</option>
-                            <option value="35+">35+</option>
-                        </select>
+                        <div class="grid-2x2">
+                            <div class="option-card" onclick="selectAgeGroup('18-25', this)">
+                                <h4>18 - 25</h4>
+                            </div>
+                            <div class="option-card selected" onclick="selectAgeGroup('25-30', this)">
+                                <h4>25 - 30</h4>
+                            </div>
+                            <div class="option-card" onclick="selectAgeGroup('30-35', this)">
+                                <h4>30 - 35</h4>
+                            </div>
+                            <div class="option-card" onclick="selectAgeGroup('35+', this)">
+                                <h4>35+</h4>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- Change 3: Input box 3x smaller with right-side vertical conversion toggle -->
                     <div class="input-group">
                         <label>Weight</label>
-                        <div class="unit-toggle">
-                            <button class="unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">KG</button>
-                            <button class="unit-btn" id="btn-lbs" onclick="setWeightUnit('lbs')">LBS</button>
-                        </div>
-                        <div class="stepper-container">
-                            <div class="btn-stepper" onclick="adjustValue('user-weight', -1)">-</div>
-                            <input type="number" id="user-weight" class="input-control" value="75">
-                            <div class="btn-stepper" onclick="adjustValue('user-weight', 1)">+</div>
+                        <div class="stepper-row-compact">
+                            <div class="stepper-container-compact">
+                                <div class="btn-stepper" onclick="adjustValue('user-weight', -1)">-</div>
+                                <input type="number" id="user-weight" class="input-control" value="75">
+                                <div class="btn-stepper" onclick="adjustValue('user-weight', 1)">+</div>
+                            </div>
+                            <div class="vertical-unit-toggle">
+                                <button class="unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">KG</button>
+                                <button class="unit-btn" id="btn-lbs" onclick="setWeightUnit('lbs')">LB</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="input-group">
                         <label>Height</label>
-                        <div class="unit-toggle">
-                            <button class="unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
-                            <button class="unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">FT</button>
-                        </div>
-                        
                         <div id="height-cm-container">
-                            <div class="stepper-container">
-                                <div class="btn-stepper" onclick="adjustValue('user-height-cm', -1)">-</div>
-                                <input type="number" id="user-height-cm" class="input-control" value="180">
-                                <div class="btn-stepper" onclick="adjustValue('user-height-cm', 1)">+</div>
+                            <div class="stepper-row-compact">
+                                <div class="stepper-container-compact">
+                                    <div class="btn-stepper" onclick="adjustValue('user-height-cm', -1)">-</div>
+                                    <input type="number" id="user-height-cm" class="input-control" value="180">
+                                    <div class="btn-stepper" onclick="adjustValue('user-height-cm', 1)">+</div>
+                                </div>
+                                <div class="vertical-unit-toggle">
+                                    <button class="unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
+                                    <button class="unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">FT</button>
+                                </div>
                             </div>
                         </div>
 
                         <div id="height-ft-container" style="display: none;">
-                            <div class="stepper-container">
-                                <div class="btn-stepper" onclick="adjustValue('user-height-ft', -0.1)">-</div>
-                                <input type="number" step="0.1" id="user-height-ft" class="input-control" value="5.11">
-                                <div class="btn-stepper" onclick="adjustValue('user-height-ft', 0.1)">+</div>
+                            <div class="stepper-row-compact">
+                                <div class="stepper-container-compact">
+                                    <div class="btn-stepper" onclick="adjustValue('user-height-ft', -0.1)">-</div>
+                                    <input type="number" step="0.1" id="user-height-ft" class="input-control" value="5.11">
+                                    <div class="btn-stepper" onclick="adjustValue('user-height-ft', 0.1)">+</div>
+                                </div>
+                                <div class="vertical-unit-toggle">
+                                    <button class="unit-btn" id="btn-cm-2" onclick="setHeightUnit('cm')">CM</button>
+                                    <button class="unit-btn active" id="btn-ft-2" onclick="setHeightUnit('ft')">FT</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1024,10 +1089,29 @@
                     </div>
                 </div>
 
+                <!-- Change 6: Moved Daily Macro Targets directly below Calorie Target and Total Progress -->
+                <div class="card">
+                    <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="pie-chart" style="color: var(--accent-green); width: 18px;"></i> Daily Macro Targets
+                    </h3>
+                    <div class="stat-pill">
+                        <span class="label">Protein Target</span>
+                        <span class="val" id="dash-protein-val">160g</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="label">Carbohydrates Target</span>
+                        <span class="val" id="dash-carbs-val">240g</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="label">Healthy Fats Target</span>
+                        <span class="val" id="dash-fats-val">65g</span>
+                    </div>
+                </div>
+
                 <!-- CONSISTENCY STREAK CARD -->
                 <div class="card" style="display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="background: rgba(22, 163, 74, 0.15); color: var(--accent-green); padding: 12px; border-radius: 14px;">
+                        <div style="background: rgba(52, 224, 161, 0.15); color: var(--accent-green); padding: 12px; border-radius: 14px;">
                             <i data-lucide="flame" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div>
@@ -1050,25 +1134,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- NUTRITION BREAKDOWN MACROS -->
-                <div class="card">
-                    <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
-                        <i data-lucide="pie-chart" style="color: var(--accent-green); width: 18px;"></i> Daily Macro Targets
-                    </h3>
-                    <div class="stat-pill">
-                        <span class="label">Protein Target</span>
-                        <span class="val" id="dash-protein-val">160g</span>
-                    </div>
-                    <div class="stat-pill">
-                        <span class="label">Carbohydrates Target</span>
-                        <span class="val" id="dash-carbs-val">240g</span>
-                    </div>
-                    <div class="stat-pill">
-                        <span class="label">Healthy Fats Target</span>
-                        <span class="val" id="dash-fats-val">65g</span>
-                    </div>
-                </div>
             </div>
 
             <!-- WORKOUT VIEW -->
@@ -1078,9 +1143,9 @@
                 <div class="card" style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <!-- Update 2: Simplified subtitle without "Full Body A/B" labels -->
+                            <!-- Change 7: Removed "Full Body Training" text and the surrounding header box text structure -->
                             <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">DAY 1 ROUTINE</span>
-                            <h2 style="font-size: 1.2rem; font-weight: 800; margin-top: 2px;" id="workout-session-title">Full Body Training</h2>
+                            <h2 style="font-size: 1.2rem; font-weight: 800; margin-top: 2px;" id="workout-session-title"></h2>
                         </div>
                         <div style="text-align: right;">
                             <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Est. Duration</span>
@@ -1107,19 +1172,26 @@
             <!-- PROFILE / SETTINGS VIEW -->
             <div id="profile-tab" style="display: none;">
                 <div class="card" style="text-align: center; padding: 28px 20px;">
-                    <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--accent-green); color: #fff; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
+                    <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--accent-green); color: #0f172a; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
                         FP
                     </div>
                     <h2 style="font-size: 1.2rem; font-weight: 800;" id="profile-user-name">FitPulse Athlete</h2>
                     <p style="font-size: 0.8rem; color: var(--text-muted);" id="profile-user-goal">Goal: Weight Loss</p>
                 </div>
 
+                <!-- Change 9: Displaying ALL onboarding selections in Plan Configuration -->
                 <div class="card">
                     <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px;">Plan Configuration</h3>
+                    <div class="stat-pill"><span class="label">Gender</span><span class="val" id="prof-gender">Male</span></div>
+                    <div class="stat-pill"><span class="label">Primary Goal</span><span class="val" id="prof-goal">Weight Loss</span></div>
                     <div class="stat-pill"><span class="label">Location</span><span class="val" id="prof-loc">Gym</span></div>
+                    <div class="stat-pill"><span class="label">Plan Structure</span><span class="val" id="prof-plan-type">Workout & Diet</span></div>
                     <div class="stat-pill"><span class="label">Physique</span><span class="val" id="prof-physique">Average</span></div>
-                    <div class="stat-pill"><span class="label">Program Length</span><span class="val" id="prof-duration">90 Days</span></div>
+                    <div class="stat-pill"><span class="label">Program Duration</span><span class="val" id="prof-duration">90 Days</span></div>
                     <div class="stat-pill"><span class="label">Frequency</span><span class="val" id="prof-freq">4 Days/Wk</span></div>
+                    <div class="stat-pill"><span class="label">Age Group</span><span class="val" id="prof-age-group">25-30</span></div>
+                    <div class="stat-pill"><span class="label">Weight</span><span class="val" id="prof-weight">75 kg</span></div>
+                    <div class="stat-pill"><span class="label">Height</span><span class="val" id="prof-height">180 cm</span></div>
                 </div>
 
                 <button class="btn btn-secondary" onclick="resetOnboarding()" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">Reset & Create New Plan</button>
@@ -1263,6 +1335,18 @@
             document.getElementById('btn-next-5').disabled = false;
         }
 
+        /* Change 1 helper */
+        function selectDuration(days, element) {
+            userData.duration = days;
+            highlightSingleOption(element);
+        }
+
+        /* Change 2 helper */
+        function selectAgeGroup(age, element) {
+            userData.ageGroup = age;
+            highlightSingleOption(element);
+        }
+
         function highlightSingleOption(element) {
             const parent = element.parentElement;
             parent.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
@@ -1286,6 +1370,10 @@
             userData.heightUnit = unit;
             document.getElementById('btn-cm').classList.toggle('active', unit === 'cm');
             document.getElementById('btn-ft').classList.toggle('active', unit === 'ft');
+            if (document.getElementById('btn-cm-2')) {
+                document.getElementById('btn-cm-2').classList.toggle('active', unit === 'cm');
+                document.getElementById('btn-ft-2').classList.toggle('active', unit === 'ft');
+            }
 
             if (unit === 'cm') {
                 document.getElementById('height-cm-container').style.display = 'block';
@@ -1297,8 +1385,6 @@
         }
 
         function triggerPlanGeneration() {
-            userData.ageGroup = document.getElementById('user-age-group').value;
-            userData.duration = parseInt(document.getElementById('program-duration-select').value) || 90;
             userData.workoutDays = parseInt(document.getElementById('workout-days-select').value) || 4;
 
             if (userData.weightUnit === 'kg') {
@@ -1323,12 +1409,13 @@
             const loadingMessages = [
                 "Calculating Basal Metabolic Rate...",
                 "Optimizing daily caloric & macro targets...",
-                "Establishing full-body exercise progressions...",
+                "Establishing exercise progressions...",
                 "Structuring custom unique daily meal plans...",
                 "Finalizing personalized transformation plan..."
             ];
 
             let msgIndex = 0;
+            /* Change 4: Slowed down the loading phase step transition interval from 750ms to 1800ms for extra realism */
             const interval = setInterval(() => {
                 msgIndex++;
                 if (msgIndex < loadingMessages.length) {
@@ -1338,7 +1425,7 @@
                     completeOnboarding();
                     overlay.style.display = 'none';
                 }
-            }, 750);
+            }, 1800);
         }
 
         function completeOnboarding() {
@@ -1406,10 +1493,33 @@
             document.getElementById('dash-fats-val').innerText = `${calculatedPlan.fats}g`;
 
             document.getElementById('profile-user-goal').innerText = `Goal: ${(userData.goal || 'General').toUpperCase()}`;
+            
+            // Change 9: Populating all onboarding choices in Plan Configuration tab
+            document.getElementById('prof-gender').innerText = (userData.gender || 'Male').toUpperCase();
+            document.getElementById('prof-goal').innerText = (userData.goal || 'Weight Loss').toUpperCase();
             document.getElementById('prof-loc').innerText = userData.location === 'gym' ? 'At the Gym' : 'At Home';
+            
+            let planTypeFormatted = 'Workout & Diet';
+            if (userData.planType === 'workout_only') planTypeFormatted = 'Workout Only';
+            else if (userData.planType === 'diet_only') planTypeFormatted = 'Diet Plan Only';
+            document.getElementById('prof-plan-type').innerText = planTypeFormatted;
+            
             document.getElementById('prof-physique').innerText = (userData.physique || 'Average').toUpperCase();
-            document.getElementById('prof-duration').innerText = `${userData.duration} Days`;
-            document.getElementById('prof-freq').innerText = `${userData.workoutDays} Days / Wk`;
+            document.getElementById('prof-duration').innerText = `${userData.duration || 90} Days`;
+            document.getElementById('prof-freq').innerText = `${userData.workoutDays || 4} Days / Wk`;
+            document.getElementById('prof-age-group').innerText = userData.ageGroup || '25-30';
+            
+            if (userData.weightUnit === 'lbs') {
+                document.getElementById('prof-weight').innerText = `${Math.round(userData.weight * 2.20462)} lbs`;
+            } else {
+                document.getElementById('prof-weight').innerText = `${Math.round(userData.weight)} kg`;
+            }
+
+            if (userData.heightUnit === 'ft') {
+                document.getElementById('prof-height').innerText = `${userData.heightFt || 5.11} ft`;
+            } else {
+                document.getElementById('prof-height').innerText = `${userData.heightCm || 180} cm`;
+            }
 
             renderDateBars();
         }
@@ -1490,7 +1600,6 @@
             renderMealsList();
         }
 
-        // WORKOUT SESSION RENDER (Update 1: Strikethrough + Round Check Icon & Update 2: Simplified Title)
         function renderWorkoutSession() {
             const container = document.getElementById('workout-exercise-list');
             container.innerHTML = '';
@@ -1500,8 +1609,8 @@
 
             const workoutPlan = getDailyWorkoutPlan(dayIdx, isGym);
 
-            // Update 2: Removed "Full Body A/B" naming
-            document.getElementById('workout-session-title').innerText = "Full Body Training";
+            // Change 7: Removed "Full Body Training" text title
+            document.getElementById('workout-session-title').innerText = workoutPlan.title || "";
             document.getElementById('workout-session-subtitle').innerText = `PROGRAM DAY ${dayIdx + 1} • ROUTINE`;
             document.getElementById('workout-est-time').innerText = `${workoutPlan.estTime} Min`;
 
@@ -1509,7 +1618,6 @@
                 const isCompleted = (completedExercisesMap[dayIdx] && completedExercisesMap[dayIdx][index]);
                 const completedClass = isCompleted ? 'completed' : '';
 
-                // Update 1: Added Strikethrough & Round Check Circle
                 const exHtml = `
                     <div class="exercise-box ${completedClass}" onclick="toggleExerciseBox(${dayIdx}, ${index}, this)">
                         <div class="exercise-header">
@@ -1550,38 +1658,133 @@
             }
         }
 
+        /* Change 8: Expanded 7 distinct workout routines so workouts do not repeat every 2 days */
         function getDailyWorkoutPlan(dayIdx, isGym) {
             const routines = [
+                // ROUTINE 1: UPPER BODY HYPERTROPHY / PUSH
                 {
-                    estTime: "60",
+                    title: "Upper Body Hypertrophy",
+                    estTime: "55",
                     exercises: isGym ? [
-                        { name: "Barbell Squats", sets: 4, reps: "8-10", rest: 90, desc: "Primary quad & lower body developer." },
-                        { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Compound upper body chest activation." },
-                        { name: "Bent-Over Rows", sets: 4, reps: "10", rest: 75, desc: "Build back density and posture." },
-                        { name: "Overhead Dumbbell Press", sets: 3, reps: "10-12", rest: 60, desc: "Shoulder strength and core stability." },
-                        { name: "Tricep Rope Pushdowns", sets: 3, reps: "12", rest: 60, desc: "Target triceps lateral head." },
-                        { name: "Hanging Leg Raises", sets: 3, reps: "15", rest: 45, desc: "Lower core stabilization." }
+                        { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Compound chest activation." },
+                        { name: "Incline Dumbbell Press", sets: 4, reps: "10-12", rest: 75, desc: "Target upper pectoral fibers." },
+                        { name: "Overhead Dumbbell Press", sets: 3, reps: "10-12", rest: 60, desc: "Shoulder strength & stability." },
+                        { name: "Tricep Rope Pushdowns", sets: 3, reps: "12-15", rest: 60, desc: "Tricep lateral head isolation." },
+                        { name: "Cable Lateral Raises", sets: 4, reps: "15", rest: 45, desc: "Deltoid side head focus." }
                     ] : [
-                        { name: "Goblet Squats", sets: 4, reps: "12-15", rest: 75, desc: "Quad loading with dumbbell." },
-                        { name: "Standard Push-ups", sets: 4, reps: "15-20", rest: 60, desc: "Chest, front delt, and triceps activator." },
-                        { name: "Single-Arm Dumbbell Row", sets: 4, reps: "12", rest: 60, desc: "Unilateral upper back pull." },
-                        { name: "Dumbbell Shoulder Press", sets: 3, reps: "12", rest: 60, desc: "Vertical shoulder pressing." },
-                        { name: "Plank Hold", sets: 3, reps: "45 Sec", rest: 45, desc: "Core stability hold." }
+                        { name: "Standard Push-ups", sets: 4, reps: "15-20", rest: 60, desc: "Chest & triceps activator." },
+                        { name: "Dumbbell Shoulder Press", sets: 4, reps: "12", rest: 60, desc: "Vertical pressing power." },
+                        { name: "Dumbbell Floor Press", sets: 3, reps: "12-15", rest: 60, desc: "Chest pressing alternative." },
+                        { name: "Overhead Dumbbell Tricep Extension", sets: 3, reps: "12", rest: 60, desc: "Tricep long head stretch." },
+                        { name: "Lateral Deltoid Raises", sets: 4, reps: "15", rest: 45, desc: "Isolation for wider shoulders." }
                     ]
                 },
+                // ROUTINE 2: LOWER BODY FOCUS
                 {
-                    estTime: "65",
+                    title: "Lower Body Strength",
+                    estTime: "60",
                     exercises: isGym ? [
-                        { name: "Romanian Deadlifts", sets: 4, reps: "10", rest: 90, desc: "Hamstrings and posterior chain focus." },
-                        { name: "Incline Dumbbell Press", sets: 4, reps: "10-12", rest: 75, desc: "Upper chest fibers." },
-                        { name: "Lat Pulldowns", sets: 4, reps: "12", rest: 60, desc: "Lat width and upper back density." },
-                        { name: "Dumbbell Lateral Raises", sets: 4, reps: "15", rest: 45, desc: "Side deltoid isolation." },
-                        { name: "Barbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Strict arm curl progression." }
+                        { name: "Barbell Squats", sets: 4, reps: "8-10", rest: 90, desc: "Primary quad & core strength builder." },
+                        { name: "Romanian Deadlifts", sets: 4, reps: "10", rest: 90, desc: "Hamstrings & glutes hinge." },
+                        { name: "Leg Press", sets: 3, reps: "12", rest: 75, desc: "Quad hypertrophic volume." },
+                        { name: "Lying Leg Curls", sets: 3, reps: "12-15", rest: 60, desc: "Isolated hamstring flexion." },
+                        { name: "Standing Calf Raises", sets: 4, reps: "15", rest: 45, desc: "Gastrocnemius volume." }
                     ] : [
-                        { name: "Dumbbell Romanian Deadlifts", sets: 4, reps: "12", rest: 75, desc: "Hamstring and glute hinge." },
-                        { name: "Incline Push-ups (Feet Elevated)", sets: 4, reps: "12-15", rest: 60, desc: "Upper chest emphasis." },
-                        { name: "Resistance Band Pulldowns", sets: 4, reps: "15", rest: 45, desc: "Squeeze lats at bottom." },
-                        { name: "Dumbbell Standing Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Full range bicep curl." }
+                        { name: "Goblet Squats", sets: 4, reps: "12-15", rest: 75, desc: "Dumbbell loaded quad squat." },
+                        { name: "Dumbbell Romanian Deadlifts", sets: 4, reps: "12", rest: 75, desc: "Hamstring and posterior hinge." },
+                        { name: "Dumbbell Walking Lunges", sets: 3, reps: "12 per leg", rest: 60, desc: "Unilateral leg & balance stability." },
+                        { name: "Glute Bridges", sets: 3, reps: "15-20", rest: 45, desc: "Glute activation hold." },
+                        { name: "Single-Leg Calf Raises", sets: 4, reps: "20", rest: 45, desc: "Bodyweight calf endurance." }
+                    ]
+                },
+                // ROUTINE 3: BACK & BICEPS PULL
+                {
+                    title: "Back & Bicep Pull",
+                    estTime: "50",
+                    exercises: isGym ? [
+                        { name: "Lat Pulldowns", sets: 4, reps: "10-12", rest: 75, desc: "Lat width and upper back density." },
+                        { name: "Bent-Over Barbell Rows", sets: 4, reps: "8-10", rest: 90, desc: "Mid-back thickness." },
+                        { name: "Seated Cable Rows", sets: 3, reps: "12", rest: 60, desc: "Rhomboid & lower trap pull." },
+                        { name: "Barbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Bicep peak contractor." },
+                        { name: "Hammer Curls", sets: 3, reps: "12-15", rest: 60, desc: "Brachialis & forearm width." }
+                    ] : [
+                        { name: "Single-Arm Dumbbell Row", sets: 4, reps: "12", rest: 60, desc: "Unilateral back pulling." },
+                        { name: "Inverted Rows / Band Pulls", sets: 4, reps: "12-15", rest: 60, desc: "Upper back engagement." },
+                        { name: "Dumbbell Standing Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Full range bicep curl." },
+                        { name: "Dumbbell Hammer Curls", sets: 3, reps: "12", rest: 60, desc: "Brachialis conditioning." },
+                        { name: "Doorway / Towel Rows", sets: 3, reps: "15", rest: 45, desc: "Constant tension pull." }
+                    ]
+                },
+                // ROUTINE 4: SHOULDERS & ABS METABOLIC
+                {
+                    title: "Shoulder & Core Conditioning",
+                    estTime: "45",
+                    exercises: isGym ? [
+                        { name: "Seated Military Barbell Press", sets: 4, reps: "8-10", rest: 90, desc: "Anterior deltoid power." },
+                        { name: "Face Pulls", sets: 4, reps: "15", rest: 45, desc: "Rear delt & rotator cuff posture." },
+                        { name: "Dumbbell Front Raises", sets: 3, reps: "12", rest: 60, desc: "Isolated front delt builder." },
+                        { name: "Hanging Leg Raises", sets: 4, reps: "15", rest: 45, desc: "Lower abdomen elevation." },
+                        { name: "Cable Woodchoppers", sets: 3, reps: "12 per side", rest: 45, desc: "Rotational oblique strength." }
+                    ] : [
+                        { name: "Pike Push-ups", sets: 4, reps: "10-12", rest: 60, desc: "Bodyweight overhead shoulder press." },
+                        { name: "Rear Delt Dumbbell Flyes", sets: 4, reps: "15", rest: 45, desc: "Posterior deltoid squeeze." },
+                        { name: "Dumbbell Front Raises", sets: 3, reps: "12", rest: 45, desc: "Front delt isolation." },
+                        { name: "Plank Hold", sets: 4, reps: "60 Sec", rest: 45, desc: "Core anti-extension stability." },
+                        { name: "Bicycle Crunches", sets: 3, reps: "20 per side", rest: 45, desc: "Oblique activation." }
+                    ]
+                },
+                // ROUTINE 5: CHEST & ARMS SCULPT
+                {
+                    title: "Chest & Arms Sculpt",
+                    estTime: "55",
+                    exercises: isGym ? [
+                        { name: "Incline Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Upper chest focus." },
+                        { name: "Cable Chest Flyes", sets: 4, reps: "12-15", rest: 60, desc: "Inner pectoral contraction." },
+                        { name: "Skullbreakers (EZ Bar)", sets: 3, reps: "10-12", rest: 60, desc: "Tricep long head mass." },
+                        { name: "Incline Dumbbell Curls", sets: 3, reps: "12", rest: 60, desc: "Max bicep stretch." },
+                        { name: "Dips (Chest Leaned)", sets: 3, reps: "10-12", rest: 60, desc: "Lower chest & tricep builder." }
+                    ] : [
+                        { name: "Decline Push-ups (Feet Raised)", sets: 4, reps: "12-15", rest: 60, desc: "Upper chest focus." },
+                        { name: "Dumbbell Chest Flyes on Floor", sets: 4, reps: "12-15", rest: 60, desc: "Pectoral stretch on floor." },
+                        { name: "Chair / Bench Dips", sets: 3, reps: "15", rest: 60, desc: "Bodyweight tricep extension." },
+                        { name: "Concentration Curls", sets: 3, reps: "12 per arm", rest: 60, desc: "Isolated bicep peak builder." },
+                        { name: "Diamond Push-ups", sets: 3, reps: "10-12", rest: 60, desc: "Tricep & inner chest burnout." }
+                    ]
+                },
+                // ROUTINE 6: POSTERIOR CHAIN & GLUTES
+                {
+                    title: "Posterior Chain & Glutes",
+                    estTime: "50",
+                    exercises: isGym ? [
+                        { name: "Conventional Deadlifts", sets: 3, reps: "6-8", rest: 120, desc: "Total posterior chain dominance." },
+                        { name: "Barbell Hip Thrusts", sets: 4, reps: "10-12", rest: 90, desc: "Direct glute activation." },
+                        { name: "Bulgarian Split Squats", sets: 3, reps: "10 per leg", rest: 75, desc: "Unilateral quad & glute depth." },
+                        { name: "Seated Leg Curls", sets: 3, reps: "12", rest: 60, desc: "Hamstring isolation." },
+                        { name: "Abductor Machine", sets: 3, reps: "15", rest: 45, desc: "Gluteus medius conditioning." }
+                    ] : [
+                        { name: "Single-Leg Romanian Deadlifts", sets: 4, reps: "10 per leg", rest: 60, desc: "Balance & hamstring activation." },
+                        { name: "Weighted Glute Bridge", sets: 4, reps: "15", rest: 60, desc: "Glute thrust with dumbbell." },
+                        { name: "Bulgarian Split Squats", sets: 3, reps: "10 per leg", rest: 60, desc: "Single-leg hypertrophy." },
+                        { name: "Hamstring Walkouts", sets: 3, reps: "10", rest: 45, desc: "Hamstring strain prevention." },
+                        { name: "Fire Hydrants", sets: 3, reps: "20 per leg", rest: 30, desc: "Outer hip & glute builder." }
+                    ]
+                },
+                // ROUTINE 7: FUNCTIONAL FULL BODY ATHLETIC
+                {
+                    title: "Functional Athletic Conditioning",
+                    estTime: "45",
+                    exercises: isGym ? [
+                        { name: "Kettlebell / Dumbbell Swings", sets: 4, reps: "20", rest: 60, desc: "Explosiveness & posterior chain." },
+                        { name: "Chin-ups / Pull-ups", sets: 4, reps: "8-10", rest: 75, desc: "Lat & upper body vertical pull." },
+                        { name: "Dumbbell Thrusters", sets: 3, reps: "12", rest: 75, desc: "Full body compound power." },
+                        { name: "Ab Wheel Rollouts", sets: 3, reps: "12", rest: 60, desc: "Core anti-extension strength." },
+                        { name: "Farmer's Walk", sets: 3, reps: "45 Sec", rest: 60, desc: "Grip & trap isometric endurance." }
+                    ] : [
+                        { name: "Dumbbell Swings", sets: 4, reps: "20", rest: 60, desc: "Hinge power & conditioning." },
+                        { name: "Burpees", sets: 3, reps: "12", rest: 60, desc: "Full body cardiovascular power." },
+                        { name: "Dumbbell Clean & Press", sets: 3, reps: "10", rest: 60, desc: "Total body explosive push." },
+                        { name: "Mountain Climbers", sets: 4, reps: "30 Sec", rest: 45, desc: "High intensity core dynamic." },
+                        { name: "Suitcase Carry", sets: 3, reps: "45 Sec per side", rest: 45, desc: "Unilateral core stabilization." }
                     ]
                 }
             ];
@@ -1613,7 +1816,6 @@
             });
         }
 
-        // Update 3: 7 UNIQUE DAILY MEAL PLANS (Rotating Unique Menus Per Day)
         function getDailyMealPlan(dayIdx) {
             const mealPlans = [
                 // DAY 1 MENU
