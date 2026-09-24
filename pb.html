@@ -11,9 +11,9 @@
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            --accent-green: #34E0A1; 
-            --accent-green-glow: rgba(52, 224, 161, 0.35);
-            --accent-green-dark: #20ad7b;
+            --accent-green: #0BDA51; 
+            --accent-green-glow: rgba(11, 218, 81, 0.35);
+            --accent-green-dark: #0a9136;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --input-bg: #0f172a;
@@ -203,7 +203,7 @@
 
         .option-card:hover, .option-card.selected {
             border-color: var(--accent-green);
-            background: rgba(52, 224, 161, 0.08);
+            background: rgba(11, 218, 81, 0.08);
         }
 
         .option-card.selected .option-icon {
@@ -332,7 +332,7 @@
             border-color: var(--accent-green);
         }
 
-        /* REDESIGNED WEIGHT & HEIGHT CARDS (SHORTER VERTICALLY & SMALLER FONTS) */
+        /* MEASUREMENT CARDS */
         .measurement-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -424,79 +424,23 @@
             color: #0f172a;
         }
 
-        /* CIRCULAR PROGRESS STYLES */
-        .gauge-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 8px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gauge-svg {
-            transform: rotate(-90deg);
+        /* HORIZONTAL PROGRESS BAR STYLES */
+        .progress-bar-container {
             width: 100%;
+            background: var(--input-bg);
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            margin-top: 10px;
+        }
+
+        .progress-bar-fill {
             height: 100%;
-        }
-
-        .gauge-bg {
-            fill: none;
-            stroke: var(--card-border);
-            stroke-width: 8;
-        }
-
-        .gauge-fill {
-            fill: none;
-            stroke: var(--accent-green);
-            stroke-width: 8;
-            stroke-linecap: round;
-            stroke-dasharray: 283;
-            stroke-dashoffset: 283;
-            transition: stroke-dashoffset 0.8s ease;
-        }
-
-        .gauge-text {
-            position: absolute;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gauge-val {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.1;
-        }
-
-        .gauge-lbl {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
-
-        /* DASHBOARD SPLIT ROW */
-        .dashboard-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .dashboard-split .card {
-            margin-bottom: 0;
-            padding: 16px 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            background: var(--accent-green);
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
         }
 
         /* DATE SELECTOR BAR */
@@ -571,7 +515,7 @@
 
         .exercise-box.completed {
             border-color: var(--accent-green);
-            background: rgba(52, 224, 161, 0.08);
+            background: rgba(11, 218, 81, 0.08);
             box-shadow: 0 0 18px var(--accent-green-glow);
         }
 
@@ -670,28 +614,6 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 4px;
-        }
-
-        /* WATER HYDRATION NOTE BOX */
-        .hydration-note-box {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px dashed var(--accent-green);
-            border-radius: 16px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
-        }
-
-        .hydration-icon {
-            background: rgba(52, 224, 161, 0.15);
-            color: var(--accent-green);
-            padding: 12px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         /* NAVBAR */
@@ -805,7 +727,7 @@
         }
 
         .calendar-cell.has-workout {
-            background: rgba(52, 224, 161, 0.2);
+            background: rgba(11, 218, 81, 0.2);
         }
 
         /* STATS PILLS */
@@ -875,7 +797,7 @@
             align-items: center;
             gap: 14px;
             font-size: 0.92rem;
-            color: #475569; /* Muted pending state */
+            color: #475569;
             transition: all 0.3s ease;
         }
 
@@ -943,7 +865,7 @@
 
                 <!-- WELCOME SCREEN (STEP 0) -->
                 <div class="wizard-step active" id="step-0" style="text-align: center; padding-top: 40px;">
-                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(52, 224, 161, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
+                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(11, 218, 81, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
                         <i data-lucide="activity" style="width: 48px; height: 48px;"></i>
                     </div>
                     <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">FitPulse AI</h1>
@@ -1138,7 +1060,7 @@
                     <button class="btn btn-secondary" onclick="prevStep(4)">Back</button>
                 </div>
 
-                <!-- STEP 6: PROGRAM DURATION & DAYS/WEEK (CHANGE 3: REMOVED PRE-SELECTION) -->
+                <!-- STEP 6: PROGRAM DURATION & DAYS/WEEK -->
                 <div class="wizard-step" id="step-6">
                     <h2 class="wizard-title">Program Setup</h2>
                     <p class="wizard-subtitle">Select timeline commitment and weekly training frequency.</p>
@@ -1191,7 +1113,7 @@
                     <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
                 </div>
 
-                <!-- STEP 7: BIOMETRICS (CHANGE 4: REMOVED AGE PRE-SELECTION, CHANGE 5: COMPACT WEIGHT/HEIGHT CARDS) -->
+                <!-- STEP 7: BIOMETRICS -->
                 <div class="wizard-step" id="step-7">
                     <h2 class="wizard-title">Biometrics</h2>
                     <p class="wizard-subtitle">Used to calculate your calorie and protein targets.</p>
@@ -1215,7 +1137,7 @@
                         </div>
                     </div>
 
-                    <!-- WEIGHT CARD (SHORTER & SMALLER) -->
+                    <!-- WEIGHT CARD -->
                     <div class="input-group">
                         <label>Weight</label>
                         <div class="measurement-card">
@@ -1234,7 +1156,7 @@
                         </div>
                     </div>
 
-                    <!-- HEIGHT CARD (SHORTER & SMALLER) -->
+                    <!-- HEIGHT CARD -->
                     <div class="input-group">
                         <label>And your height?</label>
                         <div class="measurement-card">
@@ -1258,16 +1180,27 @@
                 </div>
             </div>
 
-            <!-- DASHBOARD HOME VIEW (CHANGES 1, 2 & 6: REORGANIZED CARDS & STREAK / PROGRESS split) -->
+            <!-- DASHBOARD HOME VIEW -->
             <div id="dashboard-home" style="display: none;">
                 
-                <!-- DAILY MACRO TARGETS (MOVED TO TOP WITH CALORIES ADDED, NO CIRCLE) -->
+                <!-- FULL WIDTH TOTAL PROGRESS CARD (HORIZONTAL LINE) -->
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); text-transform: uppercase;">Total Progress</span>
+                        <span style="font-size: 0.85rem; font-weight: 800; color: var(--accent-green);" id="dash-progress-text">Day 1 / 90</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="total-progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- DAILY MACRO TARGETS -->
                 <div class="card">
                     <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
                         <i data-lucide="pie-chart" style="color: var(--accent-green); width: 18px;"></i> Daily Macro Targets
                     </h3>
                     <div class="stat-pill">
-                        <span class="label">Daily Calorie Target</span>
+                        <span class="label">Calorie Target</span>
                         <span class="val" id="dash-calories-val">2,450 kcal</span>
                     </div>
                     <div class="stat-pill">
@@ -1284,45 +1217,6 @@
                     </div>
                 </div>
 
-                <!-- SPLIT ROW: CONSISTENCY STREAK (LEFT) & TOTAL PROGRESS CARD (RIGHT) -->
-                <div class="dashboard-split">
-                    <!-- CONSISTENCY STREAK (LEFT) -->
-                    <div class="card">
-                        <div style="background: rgba(52, 224, 161, 0.15); color: var(--accent-green); padding: 12px; border-radius: 50%; margin-bottom: 12px; display: inline-flex;">
-                            <i data-lucide="flame" style="width: 28px; height: 28px;"></i>
-                        </div>
-                        <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px;" id="streak-counter-val">1 Day</div>
-                        <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Consistency Streak</div>
-                    </div>
-
-                    <!-- TOTAL PROGRESS HALF CARD (RIGHT) -->
-                    <div class="card">
-                        <div class="gauge-container" style="width: 85px; height: 85px; margin-bottom: 6px;">
-                            <svg class="gauge-svg" viewBox="0 0 100 100">
-                                <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
-                                <circle class="gauge-fill" id="total-progress-gauge-fill" cx="50" cy="50" r="45"></circle>
-                            </svg>
-                            <div class="gauge-text">
-                                <span class="gauge-val" style="font-size: 0.95rem;" id="dash-progress-days">Day 1</span>
-                                <span class="gauge-lbl" style="font-size: 0.6rem;" id="dash-total-days">/ 90</span>
-                            </div>
-                        </div>
-                        <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Total Progress</div>
-                    </div>
-                </div>
-
-                <!-- HYDRATION NOTE BOX -->
-                <div class="hydration-note-box">
-                    <div class="hydration-icon">
-                        <i data-lucide="droplet" style="width: 24px; height: 24px;"></i>
-                    </div>
-                    <div>
-                        <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px;">Daily Hydration Target</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);" id="hydration-recommendation-text">
-                            Recommended intake: 2.8 - 3.5 Liters of water daily.
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- WORKOUT VIEW -->
@@ -1333,7 +1227,6 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">DAY 1 ROUTINE</span>
-                            <!-- CHANGE 7: SESSION TITLE FONT SIZE MADE SMALLER (1rem) MATCHING EXERCISE TITLES -->
                             <h2 style="font-size: 1rem; font-weight: 700; margin-top: 2px;" id="workout-session-title"></h2>
                         </div>
                         <div style="text-align: right;">
@@ -1358,7 +1251,7 @@
                 <div id="meals-list-container"></div>
             </div>
 
-            <!-- PROFILE / SETTINGS VIEW (CHANGE 8: VALUES WITH FIRST LETTER CAPITAL ONLY) -->
+            <!-- PROFILE / SETTINGS VIEW -->
             <div id="profile-tab" style="display: none;">
                 <div class="card" style="text-align: center; padding: 28px 20px;">
                     <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--accent-green); color: #0f172a; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
@@ -1604,7 +1497,7 @@
 
             const loadingSteps = [
                 "Analyzing your profile...",
-                "Calculating your daily calorie target...",
+                "Calculating your calorie target...",
                 "Balancing your protein, carbs and fat...",
                 "Building your weekly training split...",
                 "Selecting meals for your preferences...",
@@ -1702,7 +1595,6 @@
             lucide.createIcons();
         }
 
-        // HELPER FOR CAPITALIZING FIRST LETTER ONLY
         function capitalizeFirstLetter(str) {
             if (!str) return '';
             str = str.toLowerCase();
@@ -1714,16 +1606,10 @@
 
             updateTotalProgressUI();
 
-            document.getElementById('streak-counter-val').innerText = `${userData.streak} Active Day${userData.streak > 1 ? 's' : ''}`;
-
-            document.getElementById('hydration-recommendation-text').innerText = 
-                `Recommended intake: ${calculatedPlan.recommendedWaterLiters} Liters of water daily for optimum recovery.`;
-
             document.getElementById('dash-protein-val').innerText = `${calculatedPlan.protein}g`;
             document.getElementById('dash-carbs-val').innerText = `${calculatedPlan.carbs}g`;
             document.getElementById('dash-fats-val').innerText = `${calculatedPlan.fats}g`;
 
-            // PROFILE TAB CAPITALIZATION UPDATES (CHANGE 8)
             let formattedGoal = 'Weight loss';
             if (userData.goal === 'gain') formattedGoal = 'Build muscle';
             else if (userData.goal === 'maintain') formattedGoal = 'Maintain & tone';
@@ -1760,14 +1646,12 @@
         }
 
         function updateTotalProgressUI() {
-            document.getElementById('dash-progress-days').innerText = `Day ${userData.currentProgramDay}`;
-            document.getElementById('dash-total-days').innerText = `/ ${userData.duration || 90}`;
-
-            const totalProgressGauge = document.getElementById('total-progress-gauge-fill');
             const totalDays = userData.duration || 90;
-            const fraction = Math.min(userData.currentProgramDay / totalDays, 1);
-            const offset = 283 - (283 * fraction);
-            totalProgressGauge.style.strokeDashoffset = offset;
+            document.getElementById('dash-progress-text').innerText = `Day ${userData.currentProgramDay} / ${totalDays}`;
+
+            const progressBarFill = document.getElementById('total-progress-bar-fill');
+            const percentage = Math.min((userData.currentProgramDay / totalDays) * 100, 100);
+            progressBarFill.style.width = `${percentage}%`;
         }
 
         function switchTab(tabName, element) {
@@ -1893,7 +1777,6 @@
             }
         }
 
-        // CHANGE 7: CLEAN & SHORT WORKOUT SESSION TITLES
         function getDailyWorkoutPlan(dayIdx, isGym) {
             const routines = [
                 {
