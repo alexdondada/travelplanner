@@ -628,16 +628,6 @@
             transition: all 0.2s ease;
         }
 
-        .meal-box.completed {
-            border-color: var(--accent-green);
-            background: rgba(24, 182, 61, 0.08);
-        }
-
-        .meal-box.completed .meal-title {
-            text-decoration: line-through;
-            color: var(--text-muted);
-        }
-
         .meal-header {
             display: flex;
             justify-content: space-between;
@@ -704,7 +694,7 @@
             z-index: 999;
         }
 
-        /* NAVBAR */
+        /* NAVBAR & DISABLED TABS */
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -745,6 +735,13 @@
             width: 22px;
             height: 22px;
             stroke-width: 2px;
+        }
+
+        .nav-item.disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            pointer-events: none;
+            text-decoration: line-through;
         }
 
         /* CALENDAR MODAL */
@@ -1105,7 +1102,7 @@
                         </div>
                         <div class="option-radio"></div>
                     </div>
-                    <button class="btn" id="btn-next-4" disabled onclick="nextStep(5)">Continue <i data-lucide="arrow-right"></i></button>
+                    <button class="btn" id="btn-next-4" disabled onclick="handlePlanTypeNext()">Continue <i data-lucide="arrow-right"></i></button>
                     <button class="btn btn-secondary" onclick="prevStep(3)">Back</button>
                 </div>
 
@@ -1198,7 +1195,7 @@
                     </div>
 
                     <button class="btn" id="btn-next-6" disabled onclick="nextStep(7)">Continue <i data-lucide="arrow-right"></i></button>
-                    <button class="btn btn-secondary" onclick="prevStep(5)">Back</button>
+                    <button class="btn btn-secondary" onclick="handleStep6Back()">Back</button>
                 </div>
 
                 <!-- STEP 7: BIOMETRICS -->
@@ -1350,8 +1347,12 @@
                 <div class="date-selector-container" id="meals-date-bar"></div>
 
                 <div class="card" style="margin-bottom: 16px;">
-                    <h2 style="font-size: 1.1rem; font-weight: 800;" id="meals-day-title">Daily Nutrition Schedule</h2>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);" id="meals-day-subtitle">Custom structured menu for optimal metabolic response.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="meals-day-subtitle">Custom structured menu for optimal metabolic response.</span>
+                            <h2 style="font-size: 1rem; font-weight: 700; margin-top: 2px;" id="meals-day-title">Day 1 Custom Nutrition Plan</h2>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="meals-list-container"></div>
@@ -1475,7 +1476,6 @@
         };
 
         let completedExercisesMap = {};
-        let completedMealsMap = {};
         let mealSwapsMap = {};
         let timerInterval = null;
 
@@ -1503,6 +1503,22 @@
 
         function prevStep(stepNumber) {
             nextStep(stepNumber);
+        }
+
+        function handlePlanTypeNext() {
+            if (userData.planType === 'diet_only') {
+                nextStep(5);
+            } else {
+                nextStep(5);
+            }
+        }
+
+        function handleStep6Back() {
+            if (userData.planType === 'diet_only') {
+                nextStep(5);
+            } else {
+                nextStep(5);
+            }
         }
 
         function selectGender(gender, element) {
@@ -1709,11 +1725,16 @@
             document.getElementById('app-nav-bar').style.display = 'flex';
             document.getElementById('calendar-toggle-btn').style.display = 'flex';
             
-            // Hide Workout Tab in Navbar if Diet Only Plan
+            const navWorkout = document.getElementById('nav-workout');
+            const navMeals = document.getElementById('nav-meals');
+
+            navWorkout.classList.remove('disabled');
+            navMeals.classList.remove('disabled');
+
             if (userData.planType === 'diet_only') {
-                document.getElementById('nav-workout').style.display = 'none';
-            } else {
-                document.getElementById('nav-workout').style.display = 'flex';
+                navWorkout.classList.add('disabled');
+            } else if (userData.planType === 'workout_only') {
+                navMeals.classList.add('disabled');
             }
 
             updateDashboardUI();
@@ -1721,9 +1742,14 @@
             lucide.createIcons();
         }
 
+        function cleanString(str) {
+            if (!str) return '';
+            return str.replace(/_/g, ' ');
+        }
+
         function capitalizeFirstLetter(str) {
             if (!str) return '';
-            str = str.toLowerCase();
+            str = cleanString(str).toLowerCase();
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
@@ -1745,18 +1771,18 @@
             document.getElementById('profile-user-goal').innerText = `Goal: ${formattedGoal}`;
             
             document.getElementById('prof-gender').innerText = capitalizeFirstLetter(userData.gender || 'male');
-            document.getElementById('prof-goal').innerText = formattedGoal;
+            document.getElementById('prof-goal').innerText = cleanString(formattedGoal);
             document.getElementById('prof-loc').innerText = userData.location === 'gym' ? 'At the gym' : 'At home';
             
             let planTypeFormatted = 'Workout & diet';
             if (userData.planType === 'workout_only') planTypeFormatted = 'Workout only';
             else if (userData.planType === 'diet_only') planTypeFormatted = 'Diet plan only';
-            document.getElementById('prof-plan-type').innerText = planTypeFormatted;
+            document.getElementById('prof-plan-type').innerText = cleanString(planTypeFormatted);
             
             document.getElementById('prof-physique').innerText = capitalizeFirstLetter(userData.physique || 'average');
             document.getElementById('prof-duration').innerText = `${userData.duration || 90} Days`;
             document.getElementById('prof-freq').innerText = `${userData.workoutDays || 4} Days/wk`;
-            document.getElementById('prof-age-group').innerText = userData.ageGroup || '25-30';
+            document.getElementById('prof-age-group').innerText = cleanString(userData.ageGroup || '25-30');
             
             if (userData.weightUnit === 'lbs') {
                 document.getElementById('prof-weight').innerText = `${Math.round(userData.weight * 2.20462)} lbs`;
@@ -1790,6 +1816,9 @@
         }
 
         function switchTab(tabName, element) {
+            if (tabName === 'workout' && userData.planType === 'diet_only') return;
+            if (tabName === 'meals' && userData.planType === 'workout_only') return;
+
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             if (element) element.classList.add('active');
 
@@ -1980,7 +2009,7 @@
 
             const routines = [
                 {
-                    title: "Chest, Shoulders & Triceps (Push)",
+                    title: "Chest, Shoulders & Triceps",
                     estTime: "55",
                     exercises: isGym ? [
                         { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Compound chest activation." },
@@ -2014,20 +2043,20 @@
                     ]
                 },
                 {
-                    title: "Triceps & Back",
+                    title: "Back & Biceps Focus",
                     estTime: "50",
                     exercises: isGym ? [
                         { name: "Lat Pulldowns", sets: 4, reps: "10-12", rest: 75, desc: "Lat width and upper back density." },
                         { name: "Bent-Over Barbell Rows", sets: 4, reps: "8-10", rest: 90, desc: "Mid-back thickness." },
-                        { name: "Seated Cable Rows", sets: 3, reps: "12", rest: 60, desc: "Rhomboid & lower trap pull." },
-                        { name: "Barbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Bicep peak contractor." },
-                        { name: "Hammer Curls", sets: 3, reps: "12-15", rest: 60, desc: "Brachialis & forearm width." }
+                        { name: "Barbell Bicep Curls", sets: 4, reps: "10-12", rest: 60, desc: "Direct bicep hypertrophy." },
+                        { name: "Incline Dumbbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Maximum long-head bicep stretch." },
+                        { name: "Hammer Curls", sets: 3, reps: "12-15", rest: 60, desc: "Brachialis & forearm thickness." }
                     ] : [
                         { name: "Single-Arm Dumbbell Row", sets: 4, reps: "12", rest: 60, desc: "Unilateral back pulling." },
                         { name: "Inverted Rows / Band Pulls", sets: 4, reps: "12-15", rest: 60, desc: "Upper back engagement." },
-                        { name: "Dumbbell Standing Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Full range bicep curl." },
-                        { name: "Dumbbell Hammer Curls", sets: 3, reps: "12", rest: 60, desc: "Brachialis conditioning." },
-                        { name: "Doorway / Towel Rows", sets: 3, reps: "15", rest: 45, desc: "Constant tension pull." }
+                        { name: "Dumbbell Standing Bicep Curls", sets: 4, reps: "12", rest: 60, desc: "Strict form bicep builder." },
+                        { name: "Dumbbell Concentration Curls", sets: 3, reps: "12 per arm", rest: 60, desc: "Isolated bicep peak work." },
+                        { name: "Dumbbell Hammer Curls", sets: 3, reps: "12", rest: 60, desc: "Brachialis conditioning." }
                     ]
                 },
                 {
@@ -2048,20 +2077,20 @@
                     ]
                 },
                 {
-                    title: "Chest & Arms",
+                    title: "Chest & Bicep / Arm Peak",
                     estTime: "55",
                     exercises: isGym ? [
                         { name: "Incline Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Upper chest focus." },
                         { name: "Cable Chest Flyes", sets: 4, reps: "12-15", rest: 60, desc: "Inner pectoral contraction." },
+                        { name: "EZ Bar Preacher Bicep Curls", sets: 4, reps: "10-12", rest: 60, desc: "Strict bicep isolation." },
                         { name: "Skullbreakers (EZ Bar)", sets: 3, reps: "10-12", rest: 60, desc: "Tricep long head mass." },
-                        { name: "Incline Dumbbell Curls", sets: 3, reps: "12", rest: 60, desc: "Max bicep stretch." },
-                        { name: "Dips (Chest Leaned)", sets: 3, reps: "10-12", rest: 60, desc: "Lower chest & tricep builder." }
+                        { name: "High Cable Bicep Peak Curls", sets: 3, reps: "15", rest: 45, desc: "Peak contraction finisher." }
                     ] : [
                         { name: "Decline Push-ups (Feet Raised)", sets: 4, reps: "12-15", rest: 60, desc: "Upper chest focus." },
                         { name: "Dumbbell Chest Flyes on Floor", sets: 4, reps: "12-15", rest: 60, desc: "Pectoral stretch on floor." },
+                        { name: "Dumbbell Bicep Isolation Curls", sets: 4, reps: "12", rest: 60, desc: "Bicep peak contractor." },
                         { name: "Chair / Bench Dips", sets: 3, reps: "15", rest: 60, desc: "Bodyweight tricep extension." },
-                        { name: "Concentration Curls", sets: 3, reps: "12 per arm", rest: 60, desc: "Isolated bicep peak builder." },
-                        { name: "Diamond Push-ups", sets: 3, reps: "10-12", rest: 60, desc: "Tricep & inner chest burnout." }
+                        { name: "Concentration Curls", sets: 3, reps: "12 per arm", rest: 60, desc: "Isolated bicep peak builder." }
                     ]
                 },
                 {
@@ -2086,7 +2115,7 @@
             return routines[selectedRoutineIndex];
         }
 
-        /* MEAL CHECKLISTS & SWAP OPTION */
+        /* MEAL LIST & SWAP OPTION */
         function renderMealsList() {
             const container = document.getElementById('meals-list-container');
             container.innerHTML = '';
@@ -2097,26 +2126,20 @@
             document.getElementById('meals-day-title').innerText = `Day ${dayIdx + 1} Custom Nutrition Plan`;
 
             mealsData.forEach((meal, mIdx) => {
-                const isCompleted = (completedMealsMap[dayIdx] && completedMealsMap[dayIdx][mIdx]);
                 const activeSwapIndex = (mealSwapsMap[dayIdx] && mealSwapsMap[dayIdx][mIdx]) || 0;
                 const currentMealOption = meal.options ? meal.options[activeSwapIndex] : meal;
 
                 const mealHtml = `
-                    <div class="meal-box ${isCompleted ? 'completed' : ''}" id="meal-box-${dayIdx}-${mIdx}">
+                    <div class="meal-box" id="meal-box-${dayIdx}-${mIdx}">
                         <div class="meal-header">
                             <span class="meal-type">${meal.type}</span>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-green);">${currentMealOption.calories} kcal</span>
-                                <div class="check-circle-icon" onclick="toggleMealBox(${dayIdx}, ${mIdx})" style="cursor: pointer;">
-                                    <i data-lucide="check"></i>
-                                </div>
-                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-green);">${currentMealOption.calories} kcal</span>
                         </div>
                         <div class="meal-title">${currentMealOption.title}</div>
                         <div class="meal-details">${currentMealOption.details}</div>
                         ${meal.options && meal.options.length > 1 ? `
                             <button class="btn-swap-meal" onclick="swapMealOption(${dayIdx},${mIdx})">
-                                <i data-lucide="refresh-cw" style="width: 12px; height: 12px;"></i> Swap Alternative
+                                <i data-lucide="refresh-cw" style="width: 12px; height: 12px;"></i> Alternative
                             </button>
                         ` : ''}
                     </div>
@@ -2125,13 +2148,6 @@
             });
 
             lucide.createIcons();
-        }
-
-        function toggleMealBox(dayIdx, mIdx) {
-            if (!completedMealsMap[dayIdx]) completedMealsMap[dayIdx] = {};
-            completedMealsMap[dayIdx][mIdx] = !completedMealsMap[dayIdx][mIdx];
-            saveUserData();
-            renderMealsList();
         }
 
         function swapMealOption(dayIdx, mIdx) {
@@ -2239,7 +2255,6 @@
             localStorage.setItem('fitpulse_user_data', JSON.stringify(userData));
             localStorage.setItem('fitpulse_plan_data', JSON.stringify(calculatedPlan));
             localStorage.setItem('fitpulse_completed_exercises', JSON.stringify(completedExercisesMap));
-            localStorage.setItem('fitpulse_completed_meals', JSON.stringify(completedMealsMap));
             localStorage.setItem('fitpulse_meal_swaps', JSON.stringify(mealSwapsMap));
         }
 
@@ -2247,14 +2262,12 @@
             const savedUser = localStorage.getItem('fitpulse_user_data');
             const savedPlan = localStorage.getItem('fitpulse_plan_data');
             const savedExercises = localStorage.getItem('fitpulse_completed_exercises');
-            const savedMeals = localStorage.getItem('fitpulse_completed_meals');
             const savedSwaps = localStorage.getItem('fitpulse_meal_swaps');
 
             if (savedUser && savedPlan) {
                 userData = JSON.parse(savedUser);
                 calculatedPlan = JSON.parse(savedPlan);
                 if (savedExercises) completedExercisesMap = JSON.parse(savedExercises);
-                if (savedMeals) completedMealsMap = JSON.parse(savedMeals);
                 if (savedSwaps) mealSwapsMap = JSON.parse(savedSwaps);
                 showMainApp();
             }
