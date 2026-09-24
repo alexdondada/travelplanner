@@ -257,7 +257,7 @@
             padding: 14px;
         }
 
-        /* UPDATED COMPACT MACRO GRID UI STYLES */
+        /* COMPACT MACRO GRID UI STYLES */
         .macro-grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -2018,14 +2018,23 @@
             const workoutBar = document.getElementById('workout-date-bar');
             const mealsBar = document.getElementById('meals-date-bar');
             const totalDays = Math.min(14, userData.duration);
+            const today = new Date();
 
             let html = '';
-            for (let i = 1; i <= totalDays; i++) {
+            for (let i = 0; i < totalDays; i++) {
+                const dateObj = new Date(today);
+                dateObj.setDate(today.getDate() + i);
+                
+                const dayNumIndex = i + 1;
+                const dayName = dateObj.toLocaleDateString(currentLang, { weekday: 'short' });
+                const dateNum = dateObj.getDate();
+                const monthName = dateObj.toLocaleDateString(currentLang, { month: 'short' });
+
                 html += `
-                    <div class="date-card ${i === 1 ? 'active' : ''}" onclick="selectDay(${i}, this)">
-                        <span class="day-name">DAY</span>
-                        <span class="day-num">${i}</span>
-                        <span class="day-month">PLAN</span>
+                    <div class="date-card ${dayNumIndex === 1 ? 'active' : ''}" onclick="selectDay(${dayNumIndex}, this)">
+                        <span class="day-name">${dayName}</span>
+                        <span class="day-num">${dateNum}</span>
+                        <span class="day-month">${monthName}</span>
                     </div>
                 `;
             }
@@ -2037,8 +2046,8 @@
             currentSelectedDay = dayNum;
             selectedMealDay = dayNum;
 
-            document.querySelectorAll('.date-card').forEach(c => {
-                if (c.querySelector('.day-num').textContent == dayNum) {
+            document.querySelectorAll('.date-card').forEach((c, idx) => {
+                if (idx + 1 === dayNum) {
                     c.classList.add('active');
                 } else {
                     c.classList.remove('active');
@@ -2130,7 +2139,7 @@
             document.getElementById('rest-timer-bar').style.display = 'none';
         }
 
-        // RENDER MEALS TAB CONTENT WITH FIXED DAILY ROTATION AND CALORIES
+        // RENDER MEALS TAB CONTENT WITH CALORIES IN MEAL HEADER
         function renderMealsTabContent() {
             const dict = i18n[currentLang] || i18n['en'];
             
@@ -2141,7 +2150,6 @@
             const listContainer = document.getElementById('meals-list-container');
             const langMeals = mealDatabase[currentLang] || mealDatabase['en'];
             
-            // Fix bug: Select dynamic meal array by cycling through available days
             const dayMealIndex = (selectedMealDay - 1) % langMeals.length;
             const mealsList = langMeals[dayMealIndex];
 
@@ -2153,9 +2161,9 @@
                 return `
                     <div class="meal-box">
                         <div class="meal-header">
-                            <span class="meal-type">${mealTypeLabel}</span>
+                            <span class="meal-type">${mealTypeLabel} • ${mealObj.calories} kcal</span>
                         </div>
-                        <h4 class="meal-title">${activeMeal.title} • ${mealObj.calories} kcal</h4>
+                        <h4 class="meal-title">${activeMeal.title}</h4>
                         <p class="meal-details">${activeMeal.details}</p>
                         <button class="btn-swap-meal" onclick="swapMeal(${idx})">
                             <i data-lucide="refresh-cw" style="width: 13px; height: 13px;"></i>
