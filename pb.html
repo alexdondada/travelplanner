@@ -285,8 +285,8 @@
         }
 
         .macro-header i {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             color: var(--accent-green);
         }
 
@@ -687,24 +687,6 @@
             color: var(--accent-green);
             border-color: var(--accent-green);
             background: rgba(24, 182, 61, 0.1);
-        }
-
-        .rest-timer-bar {
-            position: fixed;
-            bottom: 75px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 32px);
-            max-width: 440px;
-            background: var(--card-bg);
-            border: 2px solid var(--accent-green);
-            border-radius: 16px;
-            padding: 12px 16px;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 999;
         }
 
         .nav-bar {
@@ -1256,7 +1238,7 @@
                 <!-- TOTAL PROGRESS CARD WITH LUCIDE TARGET ICON -->
                 <div class="card">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
                             <i data-lucide="target" style="width: 16px; height: 16px; color: var(--accent-green);"></i> <span data-i18n="total_progress">Total Progress</span>
                         </span>
                         <span style="font-size: 0.85rem; font-weight: 800; color: var(--accent-green);" id="dash-progress-text">Day 1 / 90</span>
@@ -1269,33 +1251,33 @@
                 <!-- DAILY MACRO TARGETS (COMPACT GRID WITH SMALL ICONS & ACCENTED FONTS) -->
                 <div class="card">
                     <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                        <i data-lucide="pie-chart" style="color: var(--accent-green); width: 16px;"></i> <span data-i18n="macro_targets">Daily Macro Targets</span>
+                        <i data-lucide="pie-chart" style="color: var(--accent-green); width: 14px; height: 14px;"></i> <span data-i18n="macro_targets">Daily Macro Targets</span>
                     </h3>
                     <div class="macro-grid-container">
                         <div class="macro-box">
                             <div class="macro-header">
-                                <i data-lucide="flame"></i>
+                                <i data-lucide="flame" style="width: 12px; height: 12px;"></i>
                                 <span class="label" data-i18n="calorie_target">Calories</span>
                             </div>
                             <span class="val" id="dash-calories-val">2,450 kcal</span>
                         </div>
                         <div class="macro-box">
                             <div class="macro-header">
-                                <i data-lucide="biceps-flexed"></i>
+                                <i data-lucide="biceps-flexed" style="width: 12px; height: 12px;"></i>
                                 <span class="label" data-i18n="protein_target">Protein</span>
                             </div>
                             <span class="val" id="dash-protein-val">160g</span>
                         </div>
                         <div class="macro-box">
                             <div class="macro-header">
-                                <i data-lucide="wheat"></i>
+                                <i data-lucide="wheat" style="width: 12px; height: 12px;"></i>
                                 <span class="label" data-i18n="carbs_target">Carbohydrates</span>
                             </div>
                             <span class="val" id="dash-carbs-val">240g</span>
                         </div>
                         <div class="macro-box">
                             <div class="macro-header">
-                                <i data-lucide="droplets"></i>
+                                <i data-lucide="droplets" style="width: 12px; height: 12px;"></i>
                                 <span class="label" data-i18n="fats_target">Fats</span>
                             </div>
                             <span class="val" id="dash-fats-val">65g</span>
@@ -1323,7 +1305,7 @@
                 <div class="card" style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">DAY 1 ROUTINE</span>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green); font-weight: 800;" id="workout-session-subtitle">WORKOUT SESSION DAY 1</span>
                             <h2 style="font-size: 1rem; font-weight: 700; margin-top: 2px;" id="workout-session-title"></h2>
                         </div>
                         <div style="text-align: right;">
@@ -1380,15 +1362,6 @@
             </div>
 
         </main>
-
-        <!-- REST TIMER BAR -->
-        <div id="rest-timer-bar" class="rest-timer-bar">
-            <div>
-                <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="rest_timer">REST TIMER</span>
-                <span style="font-size: 1.2rem; font-weight: 800; color: var(--accent-green);" id="timer-display">00:60</span>
-            </div>
-            <button onclick="stopRestTimer()" style="background: var(--input-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600;" data-i18n="skip">Skip</button>
-        </div>
 
         <!-- BOTTOM NAVBAR -->
         <nav class="nav-bar" id="app-nav-bar" style="display: none;">
@@ -1513,8 +1486,6 @@
                 duration: "Program Duration",
                 frequency: "Frequency",
                 reset_plan: "Reset & Create New Plan",
-                rest_timer: "REST TIMER",
-                skip: "Skip",
                 home: "Home",
                 workout: "Workout",
                 meals: "Meals",
@@ -1646,8 +1617,6 @@
                 duration: "Διάρκεια",
                 frequency: "Συχνότητα",
                 reset_plan: "Επαναφορά & Νέο Πλάνο",
-                rest_timer: "ΧΡΟΝΟΜΕΤΡΟ ΔΙΑΛΕΙΜΜΑΤΟΣ",
-                skip: "Παράλειψη",
                 home: "Αρχική",
                 workout: "Προπόνηση",
                 meals: "Γεύματα",
@@ -1736,33 +1705,33 @@
             el: [
                 // Day 1
                 [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "Ομελέτα με 3 Αυγά & Σπανάκι", details: "3 αυγά, 50g σπανάκι, 1 φέτα ψωμί ολικής, 50g αβοκάντο (420 kcal | 28g P)" }, alt: { typeKey: "breakfast", title: "Scrambled Eggs σε Τοστ με Αβοκάντο", details: "3 αυγά scrambled, 2 φέτες ψωμί ολικής, 40g αβοκάντο (440 kcal | 24g P)" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Κοτόπουλο Στήθος με Κινόα & Μπρόκολο", details: "180g στήθος κοτόπουλο, 150g μαγειρεμένη κινόα, 100g μπρόκολο (580 kcal | 48g P)" }, alt: { typeKey: "lunch", title: "Φιλέτο Γαλοπούλας με Πατάτες Φούρνου", details: "190g στήθος γαλοπούλας, 180g πατάτες φούρνου, σαλάτα (540 kcal | 50g P)" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Γιαούρτι Στραγγιστό με Αμύγδαλα & Μέλι", details: "200g ελληνικό γιαούρτι 2%, 15g αμύγδαλα, 1 κ.γ. μέλι (260 kcal | 22g P)" }, alt: { typeKey: "snack", title: "Cottage Cheese με Καρύδια & Μούρα", details: "200g cottage cheese 2%, 15g καρύδια, 50g μούρα (250 kcal | 26g P)" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Σολομός Ψητός με Γλυκοπατάτα", details: "160g φιλέτο σολομού, 150g ψητή γλυκοπατάτα, πράσινη σαλάτα (520 kcal | 36g P)" }, alt: { typeKey: "dinner", title: "Τσιπούρα Ψητή με Χόρτα & Ελαιόλαδο", details: "200g φιλέτο τσιπούρας, 200g βραστά χόρτα, 1 κ.σ. ελαιόλαδο (460 kcal | 38g P)" } }
+                    { calories: 420, primary: { typeKey: "breakfast", title: "Ομελέτα με 3 Αυγά & Σπανάκι", details: "3 αυγά, 50g σπανάκι, 1 φέτα ψωμί ολικής, 50g αβοκάντο" }, alt: { typeKey: "breakfast", title: "Scrambled Eggs σε Τοστ με Αβοκάντο", details: "3 αυγά scrambled, 2 φέτες ψωμί ολικής, 40g αβοκάντο" } },
+                    { calories: 580, primary: { typeKey: "lunch", title: "Κοτόπουλο Στήθος με Κινόα & Μπρόκολο", details: "180g στήθος κοτόπουλο, 150g μαγειρεμένη κινόα, 100g μπρόκολο" }, alt: { typeKey: "lunch", title: "Φιλέτο Γαλοπούλας με Πατάτες Φούρνου", details: "190g στήθος γαλοπούλας, 180g πατάτες φούρνου, σαλάτα" } },
+                    { calories: 260, primary: { typeKey: "snack", title: "Γιαούρτι Στραγγιστό με Αμύγδαλα & Μέλι", details: "200g ελληνικό γιαούρτι 2%, 15g αμύγδαλα, 1 κ.γ. μέλι" }, alt: { typeKey: "snack", title: "Cottage Cheese με Καρύδια & Μούρα", details: "200g cottage cheese 2%, 15g καρύδια, 50g μούρα" } },
+                    { calories: 520, primary: { typeKey: "dinner", title: "Σολομός Ψητός με Γλυκοπατάτα", details: "160g φιλέτο σολομού, 150g ψητή γλυκοπατάτα, πράσινη σαλάτα" }, alt: { typeKey: "dinner", title: "Τσιπούρα Ψητή με Χόρτα & Ελαιόλαδο", details: "200g φιλέτο τσιπούρας, 200g βραστά χόρτα, 1 κ.σ. ελαιόλαδο" } }
                 ],
                 // Day 2
                 [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Πρωτεϊνική Βρώμη με Μπανάνες", details: "60g βρώμη, 1 scoop πρωτεΐνη, 1/2 μπανάνα, γάλα αμυγδάλου (410 kcal | 32g P)" }, alt: { typeKey: "breakfast", title: "Pancakes Βρώμης με Ταχίνι", details: "50g βρώμη, 2 ασπράδια, 1 αυγό, 15g ταχίνι (430 kcal | 26g P)" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Μπιφτέκια Μοσχαρίσια με Ρύζι Basmati", details: "180g μπιφτέκια μοσχαρίσια, 150g ρύζι basmati, λαχανικά (610 kcal | 45g P)" }, alt: { typeKey: "lunch", title: "Τονοσαλάτα με Καλαμπόκι & Ελιές", details: "160g τόνος σε νερό, 50g καλαμπόκι, 150g πατάτα βραστή (520 kcal | 42g P)" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Cottage Cheese με Καρύδια", details: "200g cottage cheese 2%, 15g καρύδια, 50g μούρα (250 kcal | 26g P)" }, alt: { typeKey: "snack", title: "Ρυζογκοφρέτες με Φυστικοβούτυρο", details: "3 ρυζογκοφρέτες, 20g φυστικοβούτυρο, κανέλα (270 kcal | 10g P)" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Φιλέτο Λαυράκι με Βραστά Λαχανικά", details: "180g λαυράκι, 200g κολοκυθάκια & καρότα, 1 κ.σ. ελαιόλαδο (480 kcal | 35g P)" }, alt: { typeKey: "dinner", title: "Ομελέτα Φούρνου με Λαχανικά & Ανθότυρο", details: "3 αυγά, 60g ανθότυρο, πιπεριές, μανιτάρια (450 kcal | 28g P)" } }
+                    { calories: 410, primary: { typeKey: "breakfast", title: "Πρωτεϊνική Βρώμη με Μπανάνες", details: "60g βρώμη, 1 scoop πρωτεΐνη, 1/2 μπανάνα, γάλα αμυγδάλου" }, alt: { typeKey: "breakfast", title: "Pancakes Βρώμης με Ταχίνι", details: "50g βρώμη, 2 ασπράδια, 1 αυγό, 15g ταχίνι" } },
+                    { calories: 610, primary: { typeKey: "lunch", title: "Μπιφτέκια Μοσχαρίσια με Ρύζι Basmati", details: "180g μπιφτέκια μοσχαρίσια, 150g ρύζι basmati, λαχανικά" }, alt: { typeKey: "lunch", title: "Τονοσαλάτα με Καλαμπόκι & Ελιές", details: "160g τόνος σε νερό, 50g καλαμπόκι, 150g πατάτα βραστή" } },
+                    { calories: 250, primary: { typeKey: "snack", title: "Cottage Cheese με Καρύδια", details: "200g cottage cheese 2%, 15g καρύδια, 50g μούρα" }, alt: { typeKey: "snack", title: "Ρυζογκοφρέτες με Φυστικοβούτυρο", details: "3 ρυζογκοφρέτες, 20g φυστικοβούτυρο, κανέλα" } },
+                    { calories: 480, primary: { typeKey: "dinner", title: "Φιλέτο Λαυράκι με Βραστά Λαχανικά", details: "180g λαυράκι, 200g κολοκυθάκια & καρότα, 1 κ.σ. ελαιόλαδο" }, alt: { typeKey: "dinner", title: "Ομελέτα Φούρνου με Λαχανικά & Ανθότυρο", details: "3 αυγά, 60g ανθότυρο, πιπεριές, μανιτάρια" } }
                 ]
             ],
             en: [
                 // Day 1
                 [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "3-Egg Spinach & Avocado Omelet", details: "3 eggs, 50g spinach, 1 slice whole wheat toast, 50g avocado (420 kcal | 28g P)" }, alt: { typeKey: "breakfast", title: "Protein Oatmeal with Banana", details: "60g oats, 1 scoop whey protein, 1/2 banana, almond milk (410 kcal | 32g P)" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Grilled Chicken Breast with Quinoa", details: "180g chicken breast, 150g cooked quinoa, 100g steamed broccoli (580 kcal | 48g P)" }, alt: { typeKey: "lunch", title: "Lean Beef Patties with Basmati Rice", details: "180g lean beef patties, 150g basmati rice, grilled vegetables (610 kcal | 45g P)" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Greek Yogurt with Almonds & Honey", details: "200g Greek yogurt 2%, 15g almonds, 1 tsp honey (260 kcal | 22g P)" }, alt: { typeKey: "snack", title: "Cottage Cheese with Walnuts & Berries", details: "200g low-fat cottage cheese, 15g walnuts, 50g berries (250 kcal | 26g P)" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Baked Salmon with Sweet Potato", details: "160g salmon fillet, 150g roasted sweet potato, green salad (520 kcal | 36g P)" }, alt: { typeKey: "dinner", title: "Tuna Salad with Sweetcorn & Olives", details: "160g tuna in water, mixed greens, 50g corn, 5 olives, olive oil (430 kcal | 40g P)" } }
+                    { calories: 420, primary: { typeKey: "breakfast", title: "3-Egg Spinach & Avocado Omelet", details: "3 eggs, 50g spinach, 1 slice whole wheat toast, 50g avocado" }, alt: { typeKey: "breakfast", title: "Protein Oatmeal with Banana", details: "60g oats, 1 scoop whey protein, 1/2 banana, almond milk" } },
+                    { calories: 580, primary: { typeKey: "lunch", title: "Grilled Chicken Breast with Quinoa", details: "180g chicken breast, 150g cooked quinoa, 100g steamed broccoli" }, alt: { typeKey: "lunch", title: "Lean Beef Patties with Basmati Rice", details: "180g lean beef patties, 150g basmati rice, grilled vegetables" } },
+                    { calories: 260, primary: { typeKey: "snack", title: "Greek Yogurt with Almonds & Honey", details: "200g Greek yogurt 2%, 15g almonds, 1 tsp honey" }, alt: { typeKey: "snack", title: "Cottage Cheese with Walnuts & Berries", details: "200g low-fat cottage cheese, 15g walnuts, 50g berries" } },
+                    { calories: 520, primary: { typeKey: "dinner", title: "Baked Salmon with Sweet Potato", details: "160g salmon fillet, 150g roasted sweet potato, green salad" }, alt: { typeKey: "dinner", title: "Tuna Salad with Sweetcorn & Olives", details: "160g tuna in water, mixed greens, 50g corn, 5 olives, olive oil" } }
                 ],
                 // Day 2
                 [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Protein Oatmeal with Banana", details: "60g oats, 1 scoop whey protein, 1/2 banana, almond milk (410 kcal | 32g P)" }, alt: { typeKey: "breakfast", title: "Oat Pancakes with Peanut Butter", details: "50g oat flour, 2 egg whites, 1 egg, 15g peanut butter (430 kcal | 26g P)" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Lean Beef Patties with Basmati Rice", details: "180g lean beef patties, 150g basmati rice, grilled vegetables (610 kcal | 45g P)" }, alt: { typeKey: "lunch", title: "Turkey Breast with Sweet Potato Mash", details: "190g turkey, 180g sweet potato, asparagus (540 kcal | 50g P)" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Cottage Cheese with Walnuts & Berries", details: "200g low-fat cottage cheese, 15g walnuts, 50g berries (250 kcal | 26g P)" }, alt: { typeKey: "snack", title: "Rice Cakes with Almond Butter", details: "3 rice cakes, 20g almond butter, cinnamon (270 kcal | 10g P)" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Sea Bass Fillet with Steamed Greens", details: "180g sea bass, 200g steamed zucchini, 1 tbsp olive oil (480 kcal | 35g P)" }, alt: { typeKey: "dinner", title: "Veggie Omelet with Feta Cheese", details: "3 eggs, 50g feta cheese, peppers, mushrooms (450 kcal | 28g P)" } }
+                    { calories: 410, primary: { typeKey: "breakfast", title: "Protein Oatmeal with Banana", details: "60g oats, 1 scoop whey protein, 1/2 banana, almond milk" }, alt: { typeKey: "breakfast", title: "Oat Pancakes with Peanut Butter", details: "50g oat flour, 2 egg whites, 1 egg, 15g peanut butter" } },
+                    { calories: 610, primary: { typeKey: "lunch", title: "Lean Beef Patties with Basmati Rice", details: "180g lean beef patties, 150g basmati rice, grilled vegetables" }, alt: { typeKey: "lunch", title: "Turkey Breast with Sweet Potato Mash", details: "190g turkey, 180g sweet potato, asparagus" } },
+                    { calories: 250, primary: { typeKey: "snack", title: "Cottage Cheese with Walnuts & Berries", details: "200g low-fat cottage cheese, 15g walnuts, 50g berries" }, alt: { typeKey: "snack", title: "Rice Cakes with Almond Butter", details: "3 rice cakes, 20g almond butter, cinnamon" } },
+                    { calories: 480, primary: { typeKey: "dinner", title: "Sea Bass Fillet with Steamed Greens", details: "180g sea bass, 200g steamed zucchini, 1 tbsp olive oil" }, alt: { typeKey: "dinner", title: "Veggie Omelet with Feta Cheese", details: "3 eggs, 50g feta cheese, peppers, mushrooms" } }
                 ]
             ]
         };
@@ -1789,7 +1758,6 @@
         let activeTab = 'home';
         let currentSelectedDay = 1;
         let selectedMealDay = 1;
-        let restTimerInterval = null;
         let swappableMealState = {};
 
         // INITIALIZATION
@@ -2020,7 +1988,9 @@
             const totalDays = Math.min(14, userData.duration);
             const today = new Date();
 
-            let html = '';
+            let workoutHtml = '';
+            let mealsHtml = '';
+
             for (let i = 0; i < totalDays; i++) {
                 const dateObj = new Date(today);
                 dateObj.setDate(today.getDate() + i);
@@ -2030,31 +2000,35 @@
                 const dateNum = dateObj.getDate();
                 const monthName = dateObj.toLocaleDateString(currentLang, { month: 'short' });
 
-                html += `
-                    <div class="date-card ${dayNumIndex === 1 ? 'active' : ''}" onclick="selectDay(${dayNumIndex}, this)">
+                workoutHtml += `
+                    <div class="date-card ${dayNumIndex === currentSelectedDay ? 'active' : ''}" onclick="selectDay(${dayNumIndex})">
+                        <span class="day-name">${dayName}</span>
+                        <span class="day-num">${dateNum}</span>
+                        <span class="day-month">${monthName}</span>
+                    </div>
+                `;
+
+                mealsHtml += `
+                    <div class="date-card ${dayNumIndex === selectedMealDay ? 'active' : ''}" onclick="selectMealDayFunc(${dayNumIndex})">
                         <span class="day-name">${dayName}</span>
                         <span class="day-num">${dateNum}</span>
                         <span class="day-month">${monthName}</span>
                     </div>
                 `;
             }
-            workoutBar.innerHTML = html;
-            mealsBar.innerHTML = html;
+            workoutBar.innerHTML = workoutHtml;
+            mealsBar.innerHTML = mealsHtml;
         }
 
-        function selectDay(dayNum, el) {
+        function selectDay(dayNum) {
             currentSelectedDay = dayNum;
-            selectedMealDay = dayNum;
-
-            document.querySelectorAll('.date-card').forEach((c, idx) => {
-                if (idx + 1 === dayNum) {
-                    c.classList.add('active');
-                } else {
-                    c.classList.remove('active');
-                }
-            });
-
+            renderDateBars();
             renderWorkoutTabContent();
+        }
+
+        function selectMealDayFunc(dayNum) {
+            selectedMealDay = dayNum;
+            renderDateBars();
             renderMealsTabContent();
         }
 
@@ -2063,7 +2037,7 @@
             const routineIndex = (currentSelectedDay - 1) % workoutDatabase.length;
             const routine = workoutDatabase[routineIndex];
             
-            document.getElementById('workout-session-subtitle').textContent = `DAY ${currentSelectedDay} ROUTINE`;
+            document.getElementById('workout-session-subtitle').textContent = `WORKOUT SESSION DAY ${currentSelectedDay}`;
             document.getElementById('workout-session-title').textContent = dict.routines[routine.routineKey] || routine.routineKey;
             document.getElementById('workout-est-time').textContent = `${routine.estMinutes} ${dict.min}`;
 
@@ -2084,7 +2058,7 @@
             listContainer.innerHTML = routine.exercises.map(ex => {
                 const desc = dict.ex_desc[ex.descKey] || "";
                 return `
-                    <div class="exercise-box" id="ex-card-${ex.id}" onclick="toggleExerciseCompletion('${ex.id}', ${ex.restSeconds})">
+                    <div class="exercise-box" id="ex-card-${ex.id}" onclick="toggleExerciseCompletion('${ex.id}')">
                         <div class="exercise-header">
                             <div class="exercise-title">
                                 <i data-lucide="dumbbell" class="exercise-dumbbell-icon"></i>
@@ -2105,38 +2079,10 @@
             lucide.createIcons();
         }
 
-        function toggleExerciseCompletion(exId, restSec) {
+        function toggleExerciseCompletion(exId) {
             const card = document.getElementById(`ex-card-${exId}`);
             if (!card) return;
-
-            const isCompleted = card.classList.toggle('completed');
-            if (isCompleted && restSec > 0) {
-                startRestTimer(restSec);
-            }
-        }
-
-        function startRestTimer(seconds) {
-            stopRestTimer();
-            const bar = document.getElementById('rest-timer-bar');
-            const display = document.getElementById('timer-display');
-            bar.style.display = 'flex';
-
-            let left = seconds;
-            display.textContent = `00:${left < 10 ? '0' : ''}${left}`;
-
-            restTimerInterval = setInterval(() => {
-                left--;
-                if (left <= 0) {
-                    stopRestTimer();
-                } else {
-                    display.textContent = `00:${left < 10 ? '0' : ''}${left}`;
-                }
-            }, 1000);
-        }
-
-        function stopRestTimer() {
-            if (restTimerInterval) clearInterval(restTimerInterval);
-            document.getElementById('rest-timer-bar').style.display = 'none';
+            card.classList.toggle('completed');
         }
 
         // RENDER MEALS TAB CONTENT WITH CALORIES IN MEAL HEADER
