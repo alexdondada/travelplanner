@@ -71,32 +71,6 @@
             letter-spacing: -0.5px;
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-icon-top {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 8px 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .btn-icon-top:active {
-            transform: scale(0.95);
-            background: var(--card-border);
-        }
-
         .content-area {
             padding: 20px;
             flex: 1;
@@ -765,77 +739,6 @@
             text-decoration: line-through;
         }
 
-        /* CALENDAR MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            position: relative;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .calendar-day-head {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            padding: 4px 0;
-        }
-
-        .calendar-cell {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            background: var(--input-bg);
-            border: 1px solid transparent;
-            cursor: pointer;
-        }
-
-        .calendar-cell.active-day {
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-            font-weight: 800;
-        }
-
-        .calendar-cell.has-workout {
-            background: rgba(24, 182, 61, 0.2);
-        }
-
         /* STATS PILLS */
         .stat-pill {
             background: var(--input-bg);
@@ -955,11 +858,6 @@
         <header class="header">
             <div class="logo">
                 <i data-lucide="activity"></i> FitPulse AI
-            </div>
-            <div class="header-actions">
-                <button class="btn-icon-top" id="calendar-toggle-btn" onclick="openCalendarModal()" style="display: none;">
-                    <i data-lucide="calendar" style="width: 16px; height: 16px;"></i> <span data-i18n="calendar">Calendar</span>
-                </button>
             </div>
         </header>
 
@@ -1503,28 +1401,6 @@
         </nav>
     </div>
 
-    <!-- CALENDAR MODAL -->
-    <div class="modal" id="calendar-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 style="font-size: 1.1rem; font-weight: 800;" id="modal-month-title" data-i18n="program_calendar">Program Calendar</h3>
-                <button onclick="closeCalendarModal()" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="calendar-grid">
-                <div class="calendar-day-head" data-i18n="day_m">M</div>
-                <div class="calendar-day-head" data-i18n="day_t">T</div>
-                <div class="calendar-day-head" data-i18n="day_w">W</div>
-                <div class="calendar-day-head" data-i18n="day_t2">T</div>
-                <div class="calendar-day-head" data-i18n="day_f">F</div>
-                <div class="calendar-day-head" data-i18n="day_s">S</div>
-                <div class="calendar-day-head" data-i18n="day_s2">S</div>
-            </div>
-            <div class="calendar-grid" id="full-calendar-days"></div>
-        </div>
-    </div>
-
     <!-- LOADING OVERLAY SCREEN -->
     <div id="loading-overlay">
         <div class="loading-spinner-ring"></div>
@@ -1535,7 +1411,6 @@
         // TRANSLATIONS DATA DICTIONARY
         const i18n = {
             en: {
-                calendar: "Calendar",
                 welcome_desc: "Your personalized AI fitness and custom nutrition engine built for real physical transformations.",
                 build_plan: "Build My Plan",
                 fitness_profile: "FITNESS PROFILE",
@@ -1616,6 +1491,10 @@
                 sets: "Sets",
                 reps: "Reps",
                 rest: "Rest",
+                breakfast: "Breakfast",
+                lunch: "Lunch",
+                dinner: "Dinner",
+                snack: "Snack",
                 meals_subtitle: "Custom structured menu for optimal metabolic response.",
                 day_x_nutrition: "Day {day} Custom Nutrition Plan",
                 alternative: "Alternative",
@@ -1634,15 +1513,12 @@
                 workout: "Workout",
                 meals: "Meals",
                 profile: "Profile",
-                program_calendar: "Program Calendar",
-                day_m: "M", day_t: "T", day_w: "W", day_t2: "T", day_f: "F", day_s: "S", day_s2: "S",
                 loading_1: "Analyzing your profile...",
                 loading_2: "Calculating your calorie target...",
                 loading_3: "Balancing your protein, carbs and fat...",
                 loading_4: "Building your weekly training split...",
                 loading_5: "Selecting meals for your preferences...",
-                loading_6: "Putting together your progress calendar...",
-                loading_7: "Finalizing your plan...",
+                loading_6: "Finalizing your plan...",
                 routines: {
                     cst: "Chest, Shoulders & Triceps",
                     cl: "Core & Legs",
@@ -1654,7 +1530,6 @@
                 }
             },
             el: {
-                calendar: "Ημερολόγιο",
                 welcome_desc: "Η εξατομικευμένη AI εφαρμογή σας για γυμναστική και διατροφή, σχεδιασμένη για πραγματικές σωματικές αλλαγές.",
                 build_plan: "Δημιουργία Πλάνου",
                 fitness_profile: "ΠΡΟΦΙΛ ΦΥΣΙΚΗΣ ΚΑΤΑΣΤΑΣΗΣ",
@@ -1735,6 +1610,10 @@
                 sets: "Σετ",
                 reps: "Επαναλήψεις",
                 rest: "Ξεκούραση",
+                breakfast: "Πρωινό",
+                lunch: "Μεσημεριανό",
+                dinner: "Βραδινό",
+                snack: "Σνακ",
                 meals_subtitle: "Εξατομικευμένο μενού για βέλτιστο μεταβολισμό.",
                 day_x_nutrition: "Πλάνο Διατροφής Ημέρας {day}",
                 alternative: "Εναλλακτική",
@@ -1753,15 +1632,12 @@
                 workout: "Προπόνηση",
                 meals: "Γεύματα",
                 profile: "Προφίλ",
-                program_calendar: "Ημερολόγιο Προγράμματος",
-                day_m: "Δ", day_t: "Τ", day_w: "Τ", day_t2: "Π", day_f: "Π", day_s: "Σ", day_s2: "Κ",
                 loading_1: "Ανάλυση προφίλ...",
                 loading_2: "Υπολογισμός θερμιδικού στόχου...",
                 loading_3: "Ισορροπία πρωτεΐνης, υδατανθράκων και λιπαρών...",
                 loading_4: "Δημιουργία εβδομαδιαίου προγράμματος...",
                 loading_5: "Επιλογή γευμάτων ανάλογα με τις προτιμήσεις...",
-                loading_6: "Σύνταξη ημερολογίου προόδου...",
-                loading_7: "Ολοκλήρωση πλάνου...",
+                loading_6: "Ολοκλήρωση πλάνου...",
                 routines: {
                     cst: "Στήθος, Ώμοι & Τρικέφαλοι",
                     cl: "Κορμός & Πόδια",
@@ -1773,7 +1649,6 @@
                 }
             },
             it: {
-                calendar: "Calendario",
                 welcome_desc: "Il tuo programma d'allenamento e nutrizione personalizzato tramite IA per trasformazioni reali.",
                 build_plan: "Crea il mio piano",
                 fitness_profile: "PROFILO FITNESS",
@@ -1854,6 +1729,10 @@
                 sets: "Serie",
                 reps: "Ripetizioni",
                 rest: "Pausa",
+                breakfast: "Colazione",
+                lunch: "Pranzo",
+                dinner: "Cena",
+                snack: "Spuntino",
                 meals_subtitle: "Menu strutturato per una risposta metabolica ottimale.",
                 day_x_nutrition: "Piano Nutrizionale Giorno {day}",
                 alternative: "Alternativa",
@@ -1872,15 +1751,12 @@
                 workout: "Allenamento",
                 meals: "Pasti",
                 profile: "Profilo",
-                program_calendar: "Calendario Programma",
-                day_m: "L", day_t: "M", day_w: "M", day_t2: "G", day_f: "V", day_s: "S", day_s2: "D",
                 loading_1: "Analisi del tuo profilo...",
                 loading_2: "Calcolo del target calorico...",
                 loading_3: "Bilanciamento di proteine, carboidrati e grassi...",
                 loading_4: "Creazione della scheda settimanale...",
                 loading_5: "Selezione dei pasti personalizzati...",
-                loading_6: "Generazione del calendario dei progressi...",
-                loading_7: "Finalizzazione del piano...",
+                loading_6: "Finalizzazione del piano...",
                 routines: {
                     cst: "Petto, Spalle e Tricipiti",
                     cl: "Gambe e Core",
@@ -1892,7 +1768,6 @@
                 }
             },
             fr: {
-                calendar: "Calendrier",
                 welcome_desc: "Votre moteur d'entraînement et de nutrition IA personnalisé pour de vraies transformations physiques.",
                 build_plan: "Créer mon programme",
                 fitness_profile: "PROFIL FITNESS",
@@ -1973,6 +1848,10 @@
                 sets: "Séries",
                 reps: "Répétitions",
                 rest: "Repos",
+                breakfast: "Petit-déjeuner",
+                lunch: "Déjeuner",
+                dinner: "Dîner",
+                snack: "Collation",
                 meals_subtitle: "Menu structuré pour une réponse métabolique optimale.",
                 day_x_nutrition: "Plan de Nutrition Jour {day}",
                 alternative: "Alternative",
@@ -1991,15 +1870,12 @@
                 workout: "Entraînement",
                 meals: "Repas",
                 profile: "Profil",
-                program_calendar: "Calendrier du Programme",
-                day_m: "L", day_t: "M", day_w: "M", day_t2: "J", day_f: "V", day_s: "S", day_s2: "D",
                 loading_1: "Analyse de votre profil...",
                 loading_2: "Calcul de l'objectif calorique...",
                 loading_3: "Équilibrage des protéines, glucides et lipides...",
                 loading_4: "Création de votre programme d'entraînement...",
                 loading_5: "Sélection des repas selon vos préférences...",
-                loading_6: "Préparation de votre calendrier de progression...",
-                loading_7: "Finalisation de votre plan...",
+                loading_6: "Finalisation de votre plan...",
                 routines: {
                     cst: "Pectoraux, Épaules & Triceps",
                     cl: "Jambes & Core",
@@ -2011,7 +1887,6 @@
                 }
             },
             es: {
-                calendar: "Calendario",
                 welcome_desc: "Tu motor de entrenamiento y nutrición con IA personalizado para transformaciones físicas reales.",
                 build_plan: "Crear Mi Plan",
                 fitness_profile: "PERFIL DE FITNESS",
@@ -2092,6 +1967,10 @@
                 sets: "Series",
                 reps: "Reps",
                 rest: "Descanso",
+                breakfast: "Desayuno",
+                lunch: "Almuerzo",
+                dinner: "Cena",
+                snack: "Merienda",
                 meals_subtitle: "Menú estructurado para una respuesta metabólica óptima.",
                 day_x_nutrition: "Plan de Nutrición Día {day}",
                 alternative: "Alternativa",
@@ -2110,15 +1989,12 @@
                 workout: "Rutina",
                 meals: "Comidas",
                 profile: "Perfil",
-                program_calendar: "Calendario del Programa",
-                day_m: "L", day_t: "M", day_w: "X", day_t2: "J", day_f: "V", day_s: "S", day_s2: "D",
                 loading_1: "Analizando tu perfil...",
                 loading_2: "Calculando tu objetivo de calorías...",
                 loading_3: "Ajustando proteínas, carbohidratos y grasas...",
                 loading_4: "Diseñando tu distribución semanal de entrenamiento...",
                 loading_5: "Seleccionando menú según tus preferencias...",
-                loading_6: "Generando tu calendario de progreso...",
-                loading_7: "Finalizando tu plan...",
+                loading_6: "Finalizando tu plan...",
                 routines: {
                     cst: "Pecho, Hombros y Tríceps",
                     cl: "Pierna y Core",
@@ -2130,7 +2006,6 @@
                 }
             },
             ru: {
-                calendar: "Календарь",
                 welcome_desc: "Ваш персональный ИИ-тренер и диетолог для реального физического преображения.",
                 build_plan: "Создать Мой План",
                 fitness_profile: "ФИТНЕС-ПРОФИЛЬ",
@@ -2211,6 +2086,10 @@
                 sets: "Сеты",
                 reps: "Повторы",
                 rest: "Отдых",
+                breakfast: "Завтрак",
+                lunch: "Обед",
+                dinner: "Ужин",
+                snack: "Перекус",
                 meals_subtitle: "Рацион для оптимального метаболического отклика.",
                 day_x_nutrition: "План Питания: День {day}",
                 alternative: "Заменить",
@@ -2229,15 +2108,12 @@
                 workout: "Тренировка",
                 meals: "Питание",
                 profile: "Профиль",
-                program_calendar: "Календарь Программы",
-                day_m: "ПН", day_t: "ВТ", day_w: "СР", day_t2: "ЧТ", day_f: "ПТ", day_s: "СБ", day_s2: "ВС",
                 loading_1: "Анализ профиля...",
                 loading_2: "Расчет норматива калорий...",
                 loading_3: "Балансировка белков, жиров и углеводов...",
                 loading_4: "Составление графика тренировок...",
                 loading_5: "Подбор оптимального рациона...",
-                loading_6: "Формирование календаря прогресса...",
-                loading_7: "Завершение настройки...",
+                loading_6: "Завершение настройки...",
                 routines: {
                     cst: "Грудь, Плечи и Трицепс",
                     cl: "Ноги и Кор",
@@ -2249,6 +2125,169 @@
                 }
             }
         };
+
+        // MULTI-LANGUAGE MEALS DATABASE (VARIED PER DAY)
+        const mealDatabase = {
+            en: {
+                breakfast: [
+                    { title: "Oatmeal with Berries & Protein", details: "80g Oats, 1 scoop Whey, 50g Blueberries, 10g Almonds", calories: "450 kcal | P: 32g, C: 55g, F: 10g" },
+                    { title: "Scrambled Eggs on Whole Wheat Toast", details: "3 Whole Eggs, 2 Slices Toast, 1/2 Avocado", calories: "480 kcal | P: 28g, C: 35g, F: 22g" },
+                    { title: "Greek Yogurt Parfait", details: "250g Greek Yogurt 0%, 1 Banana, 15g Honey, 30g Granola", calories: "420 kcal | P: 30g, C: 60g, F: 6g" },
+                    { title: "Protein Smoothie Bowl", details: "1 Scoop Whey, 100g Frozen Berries, 100ml Almond Milk, Chia seeds", calories: "380 kcal | P: 35g, C: 40g, F: 8g" }
+                ],
+                lunch: [
+                    { title: "Grilled Chicken Breast with Brown Rice", details: "180g Chicken, 150g Rice, Steamed Broccoli & Olive Oil", calories: "620 kcal | P: 48g, C: 65g, F: 12g" },
+                    { title: "Turkey & Quinoa Salad Bowl", details: "170g Turkey breast, 140g Quinoa, Cucumber, Cherry Tomatoes", calories: "580 kcal | P: 44g, C: 58g, F: 10g" },
+                    { title: "Lean Beef Burger with Sweet Potato", details: "160g Beef Patty 95% lean, 200g Baked Sweet Potato, Side Salad", calories: "650 kcal | P: 42g, C: 52g, F: 18g" },
+                    { title: "Tuna Salad Whole Wheat Wrap", details: "1 Can Tuna, 1 Large Tortilla, Light Mayo, Greens", calories: "540 kcal | P: 40g, C: 48g, F: 14g" }
+                ],
+                dinner: [
+                    { title: "Baked Salmon Fillet with Asparagus", details: "180g Wild Salmon, Asparagus spears, 150g Roasted Potatoes", calories: "590 kcal | P: 42g, C: 35g, F: 24g" },
+                    { title: "Grilled White Fish & Brown Rice", details: "200g Cod/Tilapia, 150g Brown Rice, Mixed Vegetables", calories: "510 kcal | P: 45g, C: 55g, F: 8g" },
+                    { title: "Sirloin Steak & Roasted Vegetables", details: "170g Lean Sirloin Steak, Zucchini, Bell Peppers, Olive oil", calories: "560 kcal | P: 46g, C: 20g, F: 22g" },
+                    { title: "Chicken Stir-Fry with Noodles", details: "180g Chicken Breast, Whole Wheat Noodles, Soy Sauce, Veggies", calories: "600 kcal | P: 45g, C: 65g, F: 11g" }
+                ],
+                snack: [
+                    { title: "Rice Cakes with Peanut Butter & Banana", details: "2 Rice cakes, 15g Peanut Butter, 1/2 Sliced Banana", calories: "240 kcal | P: 7g, C: 34g, F: 9g" },
+                    { title: "Cottage Cheese & Apple Slices", details: "200g Low-fat Cottage Cheese, 1 Red Apple", calories: "220 kcal | P: 24g, C: 22g, F: 2g" },
+                    { title: "Handful of Almonds & Dried Cranberries", details: "30g Raw Almonds, 20g Dried Cranberries", calories: "250 kcal | P: 7g, C: 22g, F: 15g" },
+                    { title: "Whey Protein Shake & Rice Crackers", details: "1 Scoop Whey Isolate, 300ml Water, 3 Rice Crackers", calories: "210 kcal | P: 26g, C: 20g, F: 2g" }
+                ]
+            },
+            el: {
+                breakfast: [
+                    { title: "Ομελέτα με Ασπράδια & Βρώμη", details: "3 Ασπράδια + 1 Ολόκληρο Αυγό, 60g Βρώμη, 1/2 Μπανάνες", calories: "420 kcal | P: 30g, C: 50g, F: 10g" },
+                    { title: "Ελληνικό Στραγγιστό Γιαούρτι με Μέλι", details: "200g Γιαούρτι 2%, 15g Μέλι, 20g Καρύδια, Κανέλα", calories: "390 kcal | P: 24g, C: 35g, F: 14g" },
+                    { title: "Τοστ Ολικής Άλεσης με Γαλοπούλα & Αβοκάντο", details: "2 Φέτες Ψωμί Ολικής, 40g Γαλοπούλα, 40g Αβοκάντο", calories: "380 kcal | P: 22g, C: 38g, F: 12g" },
+                    { title: "Pancakes Βρώμης με Πρωτεΐνη", details: "50g Αλεσμένη Βρώμη, 1 Scoop Πρωτεΐνη, 100ml Γάλα, Μούρα", calories: "410 kcal | P: 34g, C: 48g, F: 7g" }
+                ],
+                lunch: [
+                    { title: "Φιλέτο Κοτόπουλο με Καστανό Ρύζι", details: "180g Κοτόπουλο, 150g Ρύζι, Μπρόκολο Ατμού, Ελαιόλαδο", calories: "600 kcal | P: 48g, C: 60g, F: 11g" },
+                    { title: "Μπιφτέκια Μοσχαρίσια με Πατάτες Φούρνου", details: "180g Άπαχος Μοσχαρίσιος Κιμάς, 180g Πατάτες, Πράσινη Σαλάτα", calories: "640 kcal | P: 45g, C: 50g, F: 18g" },
+                    { title: "Τσιπούρα Φιλέτο με Πλίγουρι & Σαλάτα", details: "200g Ψάρι, 140g Πλίγουρι, Ντομάτα, Αγγούρι, Ελαιόλαδο", calories: "550 kcal | P: 42g, C: 45g, F: 16g" },
+                    { title: "Σαλάτα Μακαρονιών Ολικής με Τόνο", details: "120g Μακαρόνια, 1 Κονσέρβα Τόνος σε Νερό, Καλαμπόκι, Ελαφριά Σος", calories: "580 kcal | P: 40g, C: 65g, F: 10g" }
+                ],
+                dinner: [
+                    { title: "Σολομός Ψητός με Σπαράγγια & Γλυκοπατάτα", details: "170g Σολομός, 150g 💥 Ψητή Γλυκοπατάτα, Σπαράγγια", calories: "580 kcal | P: 38g, C: 40g, F: 22g" },
+                    { title: "Φιλέτο Γαλοπούλας με Κινόα & Λαχανικά", details: "180g Γαλοπούλα, 140g Κινόα, Κολοκυθάκια Ψητά", calories: "520 kcal | P: 44g, C: 48g, F: 9g" },
+                    { title: "Ομελέτα 4 Αυγών με Μανιτάρια & Σπανάκι", details: "2 Ολόκληρα + 2 Ασπράδια, 30g Τυρί Feta Light, Σαλάτα", calories: "460 kcal | P: 32g, C: 12g, F: 28g" },
+                    { title: "Καλαμάκια Κοτόπουλο με Πίτα Ολικής & Τζατζίκι Light", details: "2 Καλαμάκια Κοτόπουλο, 1 Πίτα Ολικής, Σαλάτα Ντομάτα", calories: "560 kcal | P: 46g, C: 42g, F: 14g" }
+                ],
+                snack: [
+                    { title: "Ρυζογκοφρέτες με Ταχίνι & Μπανάνες", details: "2 Ρυζογκοφρέτες, 15g Ταχίνι, 1/2 Μπανάνες", calories: "230 kcal | P: 6g, C: 32g, F: 9g" },
+                    { title: "Πρωτεϊνικό Shake & Αμύγδαλα", details: "1 Scoop Whey, 15g Αμύγδαλα", calories: "220 kcal | P: 27g, C: 6g, F: 9g" },
+                    { title: "Ανθότυρο / Katiki με Κριτσίνια Ολικής", details: "100g Ανθότυρο, 2 Κριτσίνια Ολικής", calories: "240 kcal | P: 16g, C: 22g, F: 8g" },
+                    { title: "Πράσινο Μήλο & Φυστικοβούτυρο", details: "1 Μήλο, 15g Φυστικοβούτυρο", calories: "200 kcal | P: 4g, C: 26g, F: 8g" }
+                ]
+            },
+            it: {
+                breakfast: [
+                    { title: "Avena con Frutti di Bosco e Proteine", details: "80g Avena, 1 scoop Proteine, 50g Mirtilli", calories: "430 kcal | P: 30g, C: 55g, F: 8g" },
+                    { title: "Uova Strapazzate e Pane Integrale", details: "3 Uova, 2 Fette Pane Integrale, Pomodorini", calories: "450 kcal | P: 26g, C: 32g, F: 20g" },
+                    { title: "Yogurt Greco con Miele e Noci", details: "200g Yogurt Greco 0%, 15g Miele, 15g Noci", calories: "380 kcal | P: 25g, C: 38g, F: 12g" },
+                    { title: "Pancake Proteici alla Banana", details: "1 Banana, 2 Uova, 40g Farina d'Avena", calories: "410 kcal | P: 22g, C: 50g, F: 11g" }
+                ],
+                lunch: [
+                    { title: "Petto di Pollo con Riso Basmati", details: "180g Pollo, 150g Riso Basmati, Zucchine al vapore", calories: "600 kcal | P: 46g, C: 62g, F: 10g" },
+                    { title: "Pasta Integrale al Tonno", details: "100g Pasta Integrale, 120g Tonno al naturale, Olio d'Oliva", calories: "580 kcal | P: 38g, C: 68g, F: 12g" },
+                    { title: "Tagliata di Manzo con Patate", details: "170g Manzo Magro, 200g Patate al forno, Insalata", calories: "630 kcal | P: 44g, C: 48g, F: 17g" },
+                    { title: "Insalata di Quinoa e Tacchino", details: "160g Tacchino, 130g Quinoa, Pomodori, Cetrioli", calories: "540 kcal | P: 40g, C: 52g, F: 10g" }
+                ],
+                dinner: [
+                    { title: "Salmone al Forno con Verdure", details: "180g Salmone, Asparagi, 150g Patate dolci", calories: "580 kcal | P: 38g, C: 35g, F: 22g" },
+                    { title: "Merluzzo alla Griglia con Riso", details: "200g Merluzzo, 140g Riso Integrale, Broccoli", calories: "500 kcal | P: 42g, C: 52g, F: 7g" },
+                    { title: "Omelette Integrale con Ricotta e Spinaci", details: "3 Uova, 50g Ricotta Light, Spinaci fresh", calories: "440 kcal | P: 28g, C: 10g, F: 26g" },
+                    { title: "Bistecca di Maiale Magro e Zucchine", details: "170g Maile magro, Zucchine e Melanzane grigliate", calories: "520 kcal | P: 42g, C: 15g, F: 20g" }
+                ],
+                snack: [
+                    { title: "Gallette di Riso con Burro d'Arachidi", details: "2 Gallette, 15g Burro d'Arachidi", calories: "210 kcal | P: 6g, C: 24g, F: 9g" },
+                    { title: "Shake Proteico e Mandorle", details: "1 Scoop Whey, 15g Mandorle", calories: "220 kcal | P: 26g, C: 5g, F: 9g" },
+                    { title: "Mela e Fiocchi di Latte", details: "1 Mela verde, 150g Fiocchi di Latte Light", calories: "200 kcal | P: 18g, C: 22g, F: 3g" },
+                    { title: "Yogurt Proteico e Frutta", details: "150g Yogurt alto in proteine, Frutti di bosco", calories: "180 kcal | P: 20g, C: 18g, F: 1g" }
+                ]
+            },
+            fr: {
+                breakfast: [
+                    { title: "Flocons d'Avoine & Protéines", details: "80g Avoine, 1 scoop Whey, 50g Myrtilles", calories: "440 kcal | P: 32g, C: 55g, F: 8g" },
+                    { title: "Œufs Brouillés sur Pain Complet", details: "3 Œufs, 2 Tranches Pain Complet, 1/2 Avocat", calories: "470 kcal | P: 27g, C: 34g, F: 21g" },
+                    { title: "Fromage Blanc 0% & Miel", details: "250g Fromage blanc, 15g Miel, 20g Granola", calories: "390 kcal | P: 28g, C: 45g, F: 5g" },
+                    { title: "Smoothie Proteiné Banane-Mûre", details: "1 Scoop Whey, 1 Banane, 150ml Lait d'amande", calories: "370 kcal | P: 30g, C: 48g, F: 6g" }
+                ],
+                lunch: [
+                    { title: "Poulet Grillé & Riz Basmati", details: "180g Poulet, 150g Riz, Brocolis à la vapeur", calories: "610 kcal | P: 48g, C: 62g, F: 10g" },
+                    { title: "Pavé de Thon & Quinoa", details: "160g Thon, 140g Quinoa, Courgettes grillées", calories: "560 kcal | P: 42g, C: 50g, F: 12g" },
+                    { title: "Steak Haché 5% & Patates Douces", details: "170g Steak 5%, 200g Patates douces", calories: "620 kcal | P: 44g, C: 48g, F: 15g" },
+                    { title: "Salade de Pâtes Complètes au Poulet", details: "120g Pâtes, 150g Poulet, Tomates cerises", calories: "590 kcal | P: 42g, C: 64g, F: 11g" }
+                ],
+                dinner: [
+                    { title: "Saumon Rôti & Légumes Verts", details: "180g Saumon, Haricots verts, 120g Pommes de terre", calories: "570 kcal | P: 38g, C: 32g, F: 22g" },
+                    { title: "Filet de Cabillaud & Riz Complet", details: "200g Cabillaud, 140g Riz complet, Ratatouille", calories: "490 kcal | P: 42g, C: 52g, F: 6g" },
+                    { title: "Omelette aux Champignons & Salade", details: "3 Œufs, Champignons, Salade verte, Huile d'olive", calories: "430 kcal | P: 26g, C: 10g, F: 25g" },
+                    { title: "Emincé de Dinde & Quinoa Rôti", details: "180g Dinde, 130g Quinoa, Poivrons grillés", calories: "530 kcal | P: 45g, C: 46g, F: 9g" }
+                ],
+                snack: [
+                    { title: "Galettes de Riz & Beurre de Cacahuète", details: "2 Galettes, 15g Beurre de cacahuète", calories: "220 kcal | P: 6g, C: 24g, F: 9g" },
+                    { title: "Shaker de Protéine & Amandes", details: "1 Scoop Whey, 15g Amandes", calories: "220 kcal | P: 26g, C: 5g, F: 9g" },
+                    { title: "Pomme Verte & Fromage Blanc", details: "1 Pomme, 150g Fromage blanc 0%", calories: "190 kcal | P: 16g, C: 22g, F: 1g" },
+                    { title: "Barre Proteinée & Thé Vert", details: "1 Barre protéinée (20g P)", calories: "210 kcal | P: 20g, C: 20g, F: 6g" }
+                ]
+            },
+            es: {
+                breakfast: [
+                    { title: "Avena con Frutos Rojos y Proteína", details: "80g Avena, 1 scoop Proteína, 50g Arándanos", calories: "440 kcal | P: 32g, C: 55g, F: 8g" },
+                    { title: "Huevos Revueltos con Tostada Integrales", details: "3 Huevos, 2 Tostadas Integrales, 1/2 Aguacate", calories: "470 kcal | P: 27g, C: 34g, F: 21g" },
+                    { title: "Yogur Griego con Miel y Granola", details: "200g Yogur Griego 0%, 15g Miel, 25g Granola", calories: "390 kcal | P: 26g, C: 48g, F: 7g" },
+                    { title: "Tortitas de Avena y Plátano", details: "1 Plátano, 2 Huevos, 40g Avena", calories: "410 kcal | P: 22g, C: 50g, F: 11g" }
+                ],
+                lunch: [
+                    { title: "Pechuga de Pollo con Arroz Basmati", details: "180g Pollo, 150g Arroz, Brócoli al vapor", calories: "600 kcal | P: 48g, C: 62g, F: 10g" },
+                    { title: "Hamburguesa de Ternera con Boniato", details: "170g Ternera magra, 200g Boniato asado", calories: "630 kcal | P: 44g, C: 50g, F: 16g" },
+                    { title: "Filete de Merluza con Quinoa", details: "200g Merluza, 140g Quinoa, Verduras asadas", calories: "520 kcal | P: 42g, C: 48g, F: 8g" },
+                    { title: "Ensalada de Pasta Integrales con Atún", details: "120g Pasta, 1 Lata Atún, Maíz, Tomate", calories: "580 kcal | P: 40g, C: 65g, F: 10g" }
+                ],
+                dinner: [
+                    { title: "Salmón al Horno con Verduras", details: "180g Salmón, Espárragos, 120g Patata asada", calories: "570 kcal | P: 38g, C: 32g, F: 22g" },
+                    { title: "Pavo a la Plancha con Arroz Integral", details: "180g Pavo, 140g Arroz integral, Verduras", calories: "510 kcal | P: 44g, C: 52g, F: 7g" },
+                    { title: "Tortilla de Espinacas y Queso Light", details: "3 Huevos, Espinacas, 30g Queso light", calories: "430 kcal | P: 28g, C: 10g, F: 25g" },
+                    { title: "Brochetas de Pollo con Pimiento", details: "200g Pollo, Pimientos rojos y verdes, Ensalada", calories: "500 kcal | P: 46g, C: 18g, F: 11g" }
+                ],
+                snack: [
+                    { title: "Tortitas de Arroz con Crema de Cacahuete", details: "2 Tortitas, 15g Crema de cacahuete", calories: "220 kcal | P: 6g, C: 24g, F: 9g" },
+                    { title: "Batido Proteico y Almendras", details: "1 Scoop Whey, 15g Almendras", calories: "220 kcal | P: 26g, C: 5g, F: 9g" },
+                    { title: "Manzana Verde con Queso Fresco Light", details: "1 Manzana, 150g Queso fresco", calories: "190 kcal | P: 18g, C: 22g, F: 2g" },
+                    { title: "Yogur Proteico con Arándanos", details: "150g Yogur proteico, Arándanos", calories: "180 kcal | P: 20g, C: 18g, F: 1g" }
+                ]
+            },
+            ru: {
+                breakfast: [
+                    { title: "Овсянка с ягодами и протеином", details: "80г Овсянки, 1 черпак Протеина, 50г Черники", calories: "440 ккал | Б: 32г, У: 55г, Ж: 8г" },
+                    { title: "Яичница на цельнозерновом тосте", details: "3 Яйца, 2 Тоста, 1/2 Авокадо", calories: "470 ккал | Б: 27г, У: 34г, Ж: 21г" },
+                    { title: "Греческий йогурт с медом и орехами", details: "200г Йогурта 0%, 15г Меда, 15г Грецких орехов", calories: "380 ккал | Б: 25г, У: 38г, Ж: 12г" },
+                    { title: "Протеиновые овсяные блинчики", details: "1 Банан, 2 Яйца, 40г Овсяной муки", calories: "410 ккал | Б: 22г, У: 50г, Ж: 11г" }
+                ],
+                lunch: [
+                    { title: "Куриная грудка с бурым рисом", details: "180г Куриного филе, 150г Риса, Брокколи", calories: "600 ккал | Б: 48г, У: 62г, Ж: 10г" },
+                    { title: "Говяжий котлета с запеченным картофелем", details: "170г Постной говядины, 200г Картофеля", calories: "630 ккал | Б: 44г, У: 50г, Ж: 16г" },
+                    { title: "Филе минтая / трески с киноа", details: "200г Рыбы, 140г Киноа, Овощи на пару", calories: "510 ккал | Б: 42г, У: 48г, Ж: 7г" },
+                    { title: "Салат с тунцом и макаронами", details: "120г Макарон тв. сортов, 1 банка Тунца, Кукуруза", calories: "580 ккал | Б: 40г, У: 65г, Ж: 10г" }
+                ],
+                dinner: [
+                    { title: "Лосось на гриле со спаржей", details: "180г Лосося, Спаржа, 120г Картофеля", calories: "570 ккал | Б: 38г, У: 32г, Ж: 22г" },
+                    { title: "Филе индейки с овощным рагу", details: "180г Индейки, Кабачки, Перец, 100г Риса", calories: "510 ккал | Б: 44г, У: 45г, Ж: 8г" },
+                    { title: "Омлет со шпинатом и легким сыром", details: "3 Яйца, Шпинат, 30г Легкого сыра", calories: "430 ккал | Б: 28г, У: 10г, Ж: 25г" },
+                    { title: "Шашлычки из куриного филе с овощами", details: "200г Куриного филе, Свежие овощи", calories: "490 ккал | Б: 46г, У: 15г, Ж: 10г" }
+                ],
+                snack: [
+                    { title: "Рисовые хлебцы с арахисовой пастой", details: "2 Хлебца, 15г Арахисовой пасты", calories: "220 ккал | Б: 6г, У: 24г, Ж: 9г" },
+                    { title: "Протеиновый коктейль и миндаль", details: "1 Черпак Протеина, 15г Миндаля", calories: "220 ккал | Б: 26г, У: 5г, Ж: 9г" },
+                    { title: "Творог 5% с зеленым яблоком", details: "180г Творога, 1 Зеленое яблоко", calories: "210 ккал | Б: 28г, У: 20г, Ж: 4г" },
+                    { title: "Протеиновый йогурт с ягодами", details: "150г Йогурта, 50г Ягод", calories: "180 ккал | Б: 20г, У: 18г, Ж: 1г" }
+                ]
+            }
+        };
+
+        // EXERCISE ROUTINES MAP
+        const workoutRoutineKeys = ['cst', 'cl', 'bb', 'sa', 'cb', 'gh'];
 
         // GLOBAL STATE
         let currentLang = 'en';
@@ -2300,6 +2339,17 @@
                 text = text.replace(`{${k}}`, v);
             }
             return text;
+        }
+
+        function getRoutineText(routineKey) {
+            let dict = i18n[currentLang] || i18n['en'];
+            if (dict.routines && dict.routines[routineKey]) {
+                return dict.routines[routineKey];
+            }
+            if (i18n['en'].routines && i18n['en'].routines[routineKey]) {
+                return i18n['en'].routines[routineKey];
+            }
+            return routineKey;
         }
 
         function selectLanguage(lang, element) {
@@ -2471,8 +2521,7 @@
                 getText('loading_3'),
                 getText('loading_4'),
                 getText('loading_5'),
-                getText('loading_6'),
-                getText('loading_7')
+                getText('loading_6')
             ];
 
             const container = document.getElementById('loading-steps-container');
@@ -2483,182 +2532,65 @@
                 stepEl.className = `loading-step-item ${idx === 0 ? 'active' : ''}`;
                 stepEl.id = `loading-step-${idx}`;
                 stepEl.innerHTML = `
-                    <div class="step-check-icon">
-                        <i data-lucide="check"></i>
-                    </div>
+                    <div class="step-check-icon"><i data-lucide="${idx === 0 ? 'loader' : 'check'}"></i></div>
                     <span>${stepText}</span>
                 `;
                 container.appendChild(stepEl);
             });
-
             lucide.createIcons();
 
             let currentStep = 0;
             const interval = setInterval(() => {
-                const curEl = document.getElementById(`loading-step-${currentStep}`);
-                if (curEl) {
-                    curEl.classList.remove('active');
-                    curEl.classList.add('completed');
-                }
+                if (currentStep < loadingSteps.length - 1) {
+                    const prevEl = document.getElementById(`loading-step-${currentStep}`);
+                    prevEl.classList.remove('active');
+                    prevEl.classList.add('completed');
+                    prevEl.querySelector('.step-check-icon').innerHTML = `<i data-lucide="check"></i>`;
 
-                currentStep++;
-
-                if (currentStep < loadingSteps.length) {
+                    currentStep++;
                     const nextEl = document.getElementById(`loading-step-${currentStep}`);
-                    if (nextEl) {
-                        nextEl.classList.add('active');
-                    }
+                    nextEl.classList.add('active');
+                    lucide.createIcons();
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        completeOnboarding();
                         overlay.style.display = 'none';
+                        finishPlanGeneration();
                     }, 600);
                 }
-            }, 1000);
+            }, 550);
         }
 
-        function completeOnboarding() {
-            generateCalculatedPlan();
+        function finishPlanGeneration() {
+            calculateMacros();
             saveUserData();
-            showMainApp();
-        }
 
-        function generateCalculatedPlan() {
-            let ageNum = 26;
-            if (userData.ageGroup === '18-25') ageNum = 22;
-            else if (userData.ageGroup === '30-35') ageNum = 32;
-            else if (userData.ageGroup === '35+') ageNum = 40;
-
-            let bmr = (10 * userData.weight) + (6.25 * userData.heightCm) - (5 * ageNum);
-            bmr += (userData.gender === 'male') ? 5 : -161;
-
-            let activityMultiplier = 1.375;
-            if (userData.workoutDays >= 5) activityMultiplier = 1.55;
-
-            let tdee = bmr * activityMultiplier;
-
-            if (userData.goal === 'lose') {
-                calculatedPlan.targetCalories = Math.round(tdee - 450);
-            } else if (userData.goal === 'gain') {
-                calculatedPlan.targetCalories = Math.round(tdee + 350);
-            } else {
-                calculatedPlan.targetCalories = Math.round(tdee);
-            }
-
-            calculatedPlan.protein = Math.round(userData.weight * 2.1);
-            calculatedPlan.fats = Math.round((calculatedPlan.targetCalories * 0.25) / 9);
-            calculatedPlan.carbs = Math.round((calculatedPlan.targetCalories - (calculatedPlan.protein * 4) - (calculatedPlan.fats * 9)) / 4);
-
-            const minWater = (userData.weight * 0.038).toFixed(1);
-            const maxWater = (userData.weight * 0.045).toFixed(1);
-            calculatedPlan.recommendedWaterLiters = `${minWater} - ${maxWater}`;
-        }
-
-        function showMainApp() {
-            applyTranslations();
             document.getElementById('wizard-container').style.display = 'none';
             document.getElementById('app-nav-bar').style.display = 'flex';
-            document.getElementById('calendar-toggle-btn').style.display = 'flex';
-            
-            const navWorkout = document.getElementById('nav-workout');
-            const navMeals = document.getElementById('nav-meals');
 
-            navWorkout.classList.remove('disabled');
-            navMeals.classList.remove('disabled');
-
-            if (userData.planType === 'diet_only') {
-                navWorkout.classList.add('disabled');
-            } else if (userData.planType === 'workout_only') {
-                navMeals.classList.add('disabled');
-            }
-
-            updateDashboardUI();
-            switchTab('home', document.getElementById('nav-home'));
-            lucide.createIcons();
-        }
-
-        function cleanString(str) {
-            if (!str) return '';
-            return str.replace(/_/g, ' ');
-        }
-
-        function capitalizeFirstLetter(str) {
-            if (!str) return '';
-            str = cleanString(str).toLowerCase();
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-
-        function updateDashboardUI() {
-            document.getElementById('dash-calories-val').innerText = `${calculatedPlan.targetCalories.toLocaleString()} kcal`;
-
-            updateTotalProgressUI();
-
-            document.getElementById('dash-protein-val').innerText = `${calculatedPlan.protein}g`;
-            document.getElementById('dash-carbs-val').innerText = `${calculatedPlan.carbs}g`;
-            document.getElementById('dash-fats-val').innerText = `${calculatedPlan.fats}g`;
-            document.getElementById('water-goal-display').innerText = `${getText('goal_x_l', { val: calculatedPlan.recommendedWaterLiters })}`;
-            document.getElementById('water-current-val').innerText = (userData.currentWaterLiters || 0).toFixed(2);
-
-            let formattedGoal = getText('lose_fat');
-            if (userData.goal === 'gain') formattedGoal = getText('build_muscle');
-            else if (userData.goal === 'maintain') formattedGoal = getText('maintain_tone');
-
-            document.getElementById('profile-user-goal').innerText = `${getText('primary_goal')}: ${formattedGoal}`;
-            
-            document.getElementById('prof-gender').innerText = userData.gender === 'female' ? getText('female') : getText('male');
-            document.getElementById('prof-goal').innerText = formattedGoal;
-            document.getElementById('prof-loc').innerText = userData.location === 'gym' ? getText('at_gym') : getText('at_home');
-            
-            let planTypeFormatted = getText('workout_diet_plan');
-            if (userData.planType === 'workout_only') planTypeFormatted = getText('workout_only');
-            else if (userData.planType === 'diet_only') planTypeFormatted = getText('diet_only');
-            document.getElementById('prof-plan-type').innerText = planTypeFormatted;
-            
-            let physKey = 'average_athletic';
-            if (userData.physique === 'slim') physKey = 'slim_lean';
-            else if (userData.physique === 'more_fat') physKey = 'heavy_fat';
-            document.getElementById('prof-physique').innerText = getText(physKey);
-
-            document.getElementById('prof-duration').innerText = `${userData.duration || 90} Days`;
-            document.getElementById('prof-freq').innerText = `${userData.workoutDays || 4} Days/wk`;
-            document.getElementById('prof-age-group').innerText = cleanString(userData.ageGroup || '25-30');
-            
-            if (userData.weightUnit === 'lbs') {
-                document.getElementById('prof-weight').innerText = `${Math.round(userData.weight * 2.20462)} lbs`;
-            } else {
-                document.getElementById('prof-weight').innerText = `${Math.round(userData.weight)} kg`;
-            }
-
-            if (userData.heightUnit === 'ft') {
-                document.getElementById('prof-height').innerText = `${Math.round(userData.heightCm / 2.54)} in`;
-            } else {
-                document.getElementById('prof-height').innerText = `${userData.heightCm || 180} cm`;
-            }
-
+            updateNavState();
+            renderDashboard();
             renderDateBars();
+            renderWorkoutTab();
+            renderMealsTab();
+            renderProfileTab();
+
+            switchTab('home', document.getElementById('nav-home'));
         }
 
-        /* WATER TRACKER LOGIC */
-        function updateWater(delta) {
-            userData.currentWaterLiters = Math.max(0, (userData.currentWaterLiters || 0) + delta);
-            document.getElementById('water-current-val').innerText = userData.currentWaterLiters.toFixed(2);
-            saveUserData();
+        function calculateMacros() {
+            let baseCals = userData.gender === 'male' ? 2400 : 1900;
+            if (userData.goal === 'gain') baseCals += 400;
+            if (userData.goal === 'lose') baseCals -= 400;
+
+            calculatedPlan.targetCalories = baseCals;
+            calculatedPlan.protein = Math.round((baseCals * 0.3) / 4);
+            calculatedPlan.carbs = Math.round((baseCals * 0.45) / 4);
+            calculatedPlan.fats = Math.round((baseCals * 0.25) / 9);
         }
 
-        function updateTotalProgressUI() {
-            const totalDays = userData.duration || 90;
-            document.getElementById('dash-progress-text').innerText = getText('day_x_of_y', { curr: userData.currentProgramDay, total: totalDays });
-
-            const progressBarFill = document.getElementById('total-progress-bar-fill');
-            const percentage = Math.min((userData.currentProgramDay / totalDays) * 100, 100);
-            progressBarFill.style.width = `${percentage}%`;
-        }
-
+        // TAB SWITCHING & DISABLED TABS LOGIC
         function switchTab(tabName, element) {
-            if (tabName === 'workout' && userData.planType === 'diet_only') return;
-            if (tabName === 'meals' && userData.planType === 'workout_only') return;
-
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             if (element) element.classList.add('active');
 
@@ -2667,83 +2599,110 @@
             document.getElementById('meals-tab').style.display = 'none';
             document.getElementById('profile-tab').style.display = 'none';
 
-            if (tabName === 'home') {
-                document.getElementById('dashboard-home').style.display = 'block';
-            } else if (tabName === 'workout') {
-                document.getElementById('workout-tab').style.display = 'block';
-                renderWorkoutSession();
-            } else if (tabName === 'meals') {
-                document.getElementById('meals-tab').style.display = 'block';
-                renderMealsList();
-            } else if (tabName === 'profile') {
-                document.getElementById('profile-tab').style.display = 'block';
-            }
-
-            lucide.createIcons();
+            if (tabName === 'home') document.getElementById('dashboard-home').style.display = 'block';
+            if (tabName === 'workout') document.getElementById('workout-tab').style.display = 'block';
+            if (tabName === 'meals') document.getElementById('meals-tab').style.display = 'block';
+            if (tabName === 'profile') document.getElementById('profile-tab').style.display = 'block';
         }
 
+        function updateNavState() {
+            const workoutNav = document.getElementById('nav-workout');
+            const mealsNav = document.getElementById('nav-meals');
+
+            if (userData.planType === 'diet_only') {
+                workoutNav.classList.add('disabled');
+            } else {
+                workoutNav.classList.remove('disabled');
+            }
+
+            if (userData.planType === 'workout_only') {
+                mealsNav.classList.add('disabled');
+            } else {
+                mealsNav.classList.remove('disabled');
+            }
+        }
+
+        /* DASHBOARD HOME RENDER */
+        function renderDashboard() {
+            const totalDays = userData.duration || 90;
+            document.getElementById('dash-progress-text').innerText = getText('day_x_of_y', { curr: userData.currentProgramDay, total: totalDays });
+            
+            const progressPct = (userData.currentProgramDay / totalDays) * 100;
+            document.getElementById('total-progress-bar-fill').style.width = `${progressPct}%`;
+
+            document.getElementById('dash-calories-val').innerText = `${calculatedPlan.targetCalories} kcal`;
+            document.getElementById('dash-protein-val').innerText = `${calculatedPlan.protein}g`;
+            document.getElementById('dash-carbs-val').innerText = `${calculatedPlan.carbs}g`;
+            document.getElementById('dash-fats-val').innerText = `${calculatedPlan.fats}g`;
+
+            document.getElementById('water-current-val').innerText = userData.currentWaterLiters.toFixed(2);
+        }
+
+        function updateWater(delta) {
+            userData.currentWaterLiters = Math.max(0, userData.currentWaterLiters + delta);
+            document.getElementById('water-current-val').innerText = userData.currentWaterLiters.toFixed(2);
+            saveUserData();
+        }
+
+        /* DATE BAR RENDER FOR WORKOUT & MEALS */
         function renderDateBars() {
-            const workoutBar = document.getElementById('workout-date-bar');
-            const mealsBar = document.getElementById('meals-date-bar');
+            const totalDays = userData.duration || 90;
+            const workoutContainer = document.getElementById('workout-date-bar');
+            const mealsContainer = document.getElementById('meals-date-bar');
 
-            workoutBar.innerHTML = '';
-            mealsBar.innerHTML = '';
+            workoutContainer.innerHTML = '';
+            mealsContainer.innerHTML = '';
 
-            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+            for (let i = 1; i <= Math.min(totalDays, 14); i++) {
+                const isActive = (i - 1) === userData.selectedDateIndex;
 
-            const today = new Date();
-
-            for (let i = 0; i < 14; i++) {
-                const dateObj = new Date();
-                dateObj.setDate(today.getDate() + i);
-
-                const dayNameStr = dayNames[dateObj.getDay()];
-                const dayNumStr = dateObj.getDate();
-                const monthStr = monthNames[dateObj.getMonth()];
-
-                const isActive = (i === userData.selectedDateIndex) ? 'active' : '';
-
-                const dateCardHtml = `
-                    <div class="date-card ${isActive}" onclick="selectDateIndex(${i})">
-                        <span class="day-name">${dayNameStr}</span>
-                        <span class="day-num">${dayNumStr}</span>
-                        <span class="day-month">${monthStr}</span>
-                    </div>
+                const dateCard = document.createElement('div');
+                dateCard.className = `date-card ${isActive ? 'active' : ''}`;
+                dateCard.onclick = () => selectProgramDay(i - 1);
+                dateCard.innerHTML = `
+                    <span class="day-name">${getText('program_day')}</span>
+                    <span class="day-num">${i}</span>
                 `;
 
-                workoutBar.innerHTML += dateCardHtml;
-                mealsBar.innerHTML += dateCardHtml;
+                workoutContainer.appendChild(dateCard.cloneNode(true));
+                mealsContainer.appendChild(dateCard.cloneNode(true));
             }
+
+            // Bind click events properly after clone
+            Array.from(workoutContainer.children).forEach((child, idx) => {
+                child.onclick = () => selectProgramDay(idx);
+            });
+            Array.from(mealsContainer.children).forEach((child, idx) => {
+                child.onclick = () => selectProgramDay(idx);
+            });
         }
 
-        function selectDateIndex(idx) {
-            userData.selectedDateIndex = idx;
-            userData.currentProgramDay = idx + 1;
-            saveUserData();
-            updateTotalProgressUI();
+        function selectProgramDay(index) {
+            userData.selectedDateIndex = index;
             renderDateBars();
-            renderWorkoutSession();
-            renderMealsList();
+            renderWorkoutTab();
+            renderMealsTab();
         }
 
-        function renderWorkoutSession() {
-            const container = document.getElementById('workout-exercise-list');
-            container.innerHTML = '';
+        /* WORKOUT TAB RENDER */
+        function renderWorkoutTab() {
+            const dayNum = userData.selectedDateIndex + 1;
+            const isRestDay = (dayNum % 7 === 0) || (dayNum % 2 === 0 && userData.workoutDays <= 3);
 
-            const dayIdx = userData.selectedDateIndex;
-            const isGym = userData.location === 'gym';
+            const titleEl = document.getElementById('workout-session-title');
+            const subtitleEl = document.getElementById('workout-session-subtitle');
+            const estTimeEl = document.getElementById('workout-est-time');
+            const listEl = document.getElementById('workout-exercise-list');
 
-            const workoutPlan = getDailyWorkoutPlan(dayIdx, isGym);
+            subtitleEl.innerText = `${getText('program_day')} ${dayNum}`;
 
-            document.getElementById('workout-session-title').innerText = workoutPlan.title || "";
-            document.getElementById('workout-session-subtitle').innerText = `${getText('program_day')} ${dayIdx + 1} • ${getText('routine')}`;
-            document.getElementById('workout-est-time').innerText = `${workoutPlan.estTime} ${getText('min')}`;
-
-            if (workoutPlan.exercises.length === 0) {
-                container.innerHTML = `
-                    <div class="card" style="text-align: center; padding: 30px;">
-                        <i data-lucide="coffee" style="width: 40px; height: 40px; color: var(--accent-green); margin-bottom: 10px;"></i>
+            if (isRestDay) {
+                const restText = getRoutineText('rest');
+                titleEl.innerText = restText;
+                estTimeEl.innerText = "0 Min";
+                listEl.innerHTML = `
+                    <div class="card" style="text-align: center; padding: 30px 20px;">
+                        <i data-lucide="coffee" style="width: 40px; height: 40px; color: var(--accent-green); margin-bottom: 12px;"></i>
                         <h3 style="font-size: 1.1rem; font-weight: 700;">${getText('rest_day')}</h3>
                         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">${getText('rest_day_desc')}</p>
                     </div>
@@ -2752,74 +2711,91 @@
                 return;
             }
 
-            workoutPlan.exercises.forEach((ex, index) => {
-                const isCompleted = (completedExercisesMap[dayIdx] && completedExercisesMap[dayIdx][index]);
-                const completedClass = isCompleted ? 'completed' : '';
+            const routineKey = workoutRoutineKeys[(dayNum - 1) % workoutRoutineKeys.length];
+            const routineTitle = getRoutineText(routineKey);
 
-                const exHtml = `
-                    <div class="exercise-box ${completedClass}" onclick="toggleExerciseBox(${dayIdx}, ${index}, this, ${ex.rest || 60})">
-                        <div class="exercise-header">
-                            <div class="exercise-title">
-                                <i data-lucide="dumbbell" style="width: 18px; height: 18px;"></i>
-                                <span>${ex.name}</span>
-                            </div>
-                            <div class="check-circle-icon">
-                                <i data-lucide="check"></i>
-                            </div>
+            titleEl.innerText = routineTitle;
+            estTimeEl.innerText = "50-60 Min";
+
+            const exercises = getExercisesForRoutine(routineKey);
+            listEl.innerHTML = '';
+
+            exercises.forEach((ex, idx) => {
+                const exKey = `ex_${dayNum}_${idx}`;
+                const isCompleted = completedExercisesMap[exKey] || false;
+
+                const exCard = document.createElement('div');
+                exCard.className = `exercise-box ${isCompleted ? 'completed' : ''}`;
+                exCard.onclick = () => toggleExerciseComplete(exKey, exCard);
+
+                exCard.innerHTML = `
+                    <div class="exercise-header">
+                        <div class="exercise-title">
+                            <div class="check-circle-icon"><i data-lucide="check"></i></div>
+                            <span>${ex.name}</span>
                         </div>
-                        <div class="exercise-meta">
-                            <span><strong>${getText('sets')}:</strong> ${ex.sets}</span>
-                            <span><strong>${getText('reps')}:</strong> ${ex.reps}</span>
-                            <span><strong>${getText('rest')}:</strong> ${ex.rest}s</span>
-                        </div>
-                        <div class="exercise-desc">${ex.desc}</div>
                     </div>
+                    <div class="exercise-meta">
+                        <span><strong>${getText('sets')}:</strong> ${ex.sets}</span>
+                        <span><strong>${getText('reps')}:</strong> ${ex.reps}</span>
+                        <span><strong>${getText('rest')}:</strong> ${ex.rest}s</span>
+                    </div>
+                    <div class="exercise-desc">${ex.desc}</div>
                 `;
-                container.innerHTML += exHtml;
+                listEl.appendChild(exCard);
             });
 
             lucide.createIcons();
         }
 
-        /* REST TIMER MODAL / FLOATING BAR */
-        function toggleExerciseBox(dayIdx, exIdx, element, restSec) {
-            if (!completedExercisesMap[dayIdx]) {
-                completedExercisesMap[dayIdx] = {};
+        function getExercisesForRoutine(key) {
+            const loc = userData.location || 'gym';
+            if (loc === 'home') {
+                return [
+                    { name: "Dumbbell Floor Press", sets: 4, reps: "10-12", rest: 60, desc: "Focus on controlled eccentric phase and full chest stretch." },
+                    { name: "Resistance Band Shoulder Press", sets: 3, reps: "12-15", rest: 45, desc: "Keep core tight, press overhead without arching back." },
+                    { name: "Push-ups to Failure", sets: 3, reps: "Max", rest: 60, desc: "Maintain rigid plank line, chest to floor." },
+                    { name: "Dumbbell Lateral Raises", sets: 4, reps: "15", rest: 45, desc: "Slight forward lean, raise elbows to shoulder height." }
+                ];
+            } else {
+                return [
+                    { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Drive feet into floor, retract scapula, bar to mid-chest." },
+                    { name: "Incline Dumbbell Press", sets: 3, reps: "10-12", rest: 60, desc: "Set bench at 30 degrees, press with controlled tempo." },
+                    { name: "Overhead Dumbbell Extension", sets: 3, reps: "12", rest: 60, desc: "Keep elbows tucked in close to ears." },
+                    { name: "Cable Lateral Raises", sets: 4, reps: "12-15", rest: 45, desc: "Continuous tension on deltoids throughout range." }
+                ];
             }
+        }
 
-            const currentState = !!completedExercisesMap[dayIdx][exIdx];
-            completedExercisesMap[dayIdx][exIdx] = !currentState;
+        function toggleExerciseComplete(exKey, element) {
+            const currentState = completedExercisesMap[exKey] || false;
+            completedExercisesMap[exKey] = !currentState;
+            element.classList.toggle('completed', !currentState);
 
             if (!currentState) {
-                element.classList.add('completed');
-                startRestTimer(restSec || 60);
-                userData.currentProgramDay = Math.max(userData.currentProgramDay, dayIdx + 1);
-                updateTotalProgressUI();
-            } else {
-                element.classList.remove('completed');
+                startRestTimer(60);
             }
-
             saveUserData();
         }
 
+        /* REST TIMER */
         function startRestTimer(seconds) {
             clearInterval(timerInterval);
-            let timeLeft = seconds;
             const timerBar = document.getElementById('rest-timer-bar');
             const display = document.getElementById('timer-display');
-            
+
+            let timeLeft = seconds;
             timerBar.style.display = 'flex';
-            display.innerText = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
 
             timerInterval = setInterval(() => {
-                timeLeft--;
+                const mins = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+                const secs = String(timeLeft % 60).padStart(2, '0');
+                display.innerText = `${mins}:${secs}`;
+
                 if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    timerBar.style.display = 'none';
-                    if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-                } else {
-                    display.innerText = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+                    stopRestTimer();
                 }
+                timeLeft--;
             }, 1000);
         }
 
@@ -2828,301 +2804,100 @@
             document.getElementById('rest-timer-bar').style.display = 'none';
         }
 
-        /* WORKOUT SCHEDULER MATCHING USER DAYS / WEEK (3, 4, 5, 6) */
-        function getDailyWorkoutPlan(dayIdx, isGym) {
-            const freq = userData.workoutDays || 4;
-            const dayOfWeekIndex = dayIdx % 7; // 0..6 mapped to Mon-Sun cycle
+        /* MEALS TAB RENDER (FIXED DYNAMIC REVOLVING MEALS PER DAY) */
+        function renderMealsTab() {
+            const dayNum = userData.selectedDateIndex + 1;
+            document.getElementById('meals-day-title').innerText = getText('day_x_nutrition', { day: dayNum });
 
-            const scheduleMaps = {
-                3: [0, 6, 1, 6, 2, 6, 6],
-                4: [0, 1, 6, 2, 3, 6, 6],
-                5: [0, 1, 2, 6, 3, 4, 6],
-                6: [0, 1, 2, 3, 4, 5, 6]
-            };
-
-            const selectedRoutineIndex = (scheduleMaps[freq] || scheduleMaps[4])[dayOfWeekIndex];
-
-            if (selectedRoutineIndex === 6) {
-                return { title: getText('routines.rest'), estTime: "0", exercises: [] };
-            }
-
-            // NOTE: Exercise names remain strictly in English as requested.
-            const routines = [
-                {
-                    titleKey: "cst",
-                    estTime: "55",
-                    exercises: isGym ? [
-                        { name: "Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Compound chest activation." },
-                        { name: "Incline Dumbbell Press", sets: 4, reps: "10-12", rest: 75, desc: "Target upper pectoral fibers." },
-                        { name: "Overhead Dumbbell Press", sets: 3, reps: "10-12", rest: 60, desc: "Shoulder strength & stability." },
-                        { name: "Tricep Rope Pushdowns", sets: 3, reps: "12-15", rest: 60, desc: "Tricep lateral head isolation." },
-                        { name: "Cable Lateral Raises", sets: 4, reps: "15", rest: 45, desc: "Deltoid side head focus." }
-                    ] : [
-                        { name: "Standard Push-ups", sets: 4, reps: "15-20", rest: 60, desc: "Chest & triceps activator." },
-                        { name: "Dumbbell Shoulder Press", sets: 4, reps: "12", rest: 60, desc: "Vertical pressing power." },
-                        { name: "Dumbbell Floor Press", sets: 3, reps: "12-15", rest: 60, desc: "Chest pressing alternative." },
-                        { name: "Overhead Dumbbell Tricep Extension", sets: 3, reps: "12", rest: 60, desc: "Tricep long head stretch." },
-                        { name: "Lateral Deltoid Raises", sets: 4, reps: "15", rest: 45, desc: "Isolation for wider shoulders." }
-                    ]
-                },
-                {
-                    titleKey: "cl",
-                    estTime: "60",
-                    exercises: isGym ? [
-                        { name: "Barbell Squats", sets: 4, reps: "8-10", rest: 90, desc: "Primary quad & core strength builder." },
-                        { name: "Romanian Deadlifts", sets: 4, reps: "10", rest: 90, desc: "Hamstrings & glutes hinge." },
-                        { name: "Leg Press", sets: 3, reps: "12", rest: 75, desc: "Quad hypertrophic volume." },
-                        { name: "Lying Leg Curls", sets: 3, reps: "12-15", rest: 60, desc: "Isolated hamstring flexion." },
-                        { name: "Standing Calf Raises", sets: 4, reps: "15", rest: 45, desc: "Gastrocnemius volume." }
-                    ] : [
-                        { name: "Goblet Squats", sets: 4, reps: "12-15", rest: 75, desc: "Dumbbell loaded quad squat." },
-                        { name: "Dumbbell Romanian Deadlifts", sets: 4, reps: "12", rest: 75, desc: "Hamstring and posterior hinge." },
-                        { name: "Dumbbell Walking Lunges", sets: 3, reps: "12 per leg", rest: 60, desc: "Unilateral leg & balance stability." },
-                        { name: "Glute Bridges", sets: 3, reps: "15-20", rest: 45, desc: "Glute activation hold." },
-                        { name: "Single-Leg Calf Raises", sets: 4, reps: "20", rest: 45, desc: "Bodyweight calf endurance." }
-                    ]
-                },
-                {
-                    titleKey: "bb",
-                    estTime: "50",
-                    exercises: isGym ? [
-                        { name: "Lat Pulldowns", sets: 4, reps: "10-12", rest: 75, desc: "Lat width and upper back density." },
-                        { name: "Bent-Over Barbell Rows", sets: 4, reps: "8-10", rest: 90, desc: "Mid-back thickness." },
-                        { name: "Barbell Bicep Curls", sets: 4, reps: "10-12", rest: 60, desc: "Direct bicep hypertrophy." },
-                        { name: "Incline Dumbbell Bicep Curls", sets: 3, reps: "12", rest: 60, desc: "Maximum long-head bicep stretch." },
-                        { name: "Hammer Curls", sets: 3, reps: "12-15", rest: 60, desc: "Brachialis & forearm thickness." }
-                    ] : [
-                        { name: "Single-Arm Dumbbell Row", sets: 4, reps: "12", rest: 60, desc: "Unilateral back pulling." },
-                        { name: "Inverted Rows / Band Pulls", sets: 4, reps: "12-15", rest: 60, desc: "Upper back engagement." },
-                        { name: "Dumbbell Standing Bicep Curls", sets: 4, reps: "12", rest: 60, desc: "Strict form bicep builder." },
-                        { name: "Dumbbell Concentration Curls", sets: 3, reps: "12 per arm", rest: 60, desc: "Isolated bicep peak work." },
-                        { name: "Dumbbell Hammer Curls", sets: 3, reps: "12", rest: 60, desc: "Brachialis conditioning." }
-                    ]
-                },
-                {
-                    titleKey: "sa",
-                    estTime: "45",
-                    exercises: isGym ? [
-                        { name: "Seated Military Barbell Press", sets: 4, reps: "8-10", rest: 90, desc: "Anterior deltoid power." },
-                        { name: "Face Pulls", sets: 4, reps: "15", rest: 45, desc: "Rear delt & rotator cuff posture." },
-                        { name: "Dumbbell Front Raises", sets: 3, reps: "12", rest: 60, desc: "Isolated front delt builder." },
-                        { name: "Hanging Leg Raises", sets: 4, reps: "15", rest: 45, desc: "Lower abdomen elevation." },
-                        { name: "Cable Woodchoppers", sets: 3, reps: "12 per side", rest: 45, desc: "Rotational oblique strength." }
-                    ] : [
-                        { name: "Pike Push-ups", sets: 4, reps: "10-12", rest: 60, desc: "Bodyweight overhead shoulder press." },
-                        { name: "Rear Delt Dumbbell Flyes", sets: 4, reps: "15", rest: 45, desc: "Posterior deltoid squeeze." },
-                        { name: "Dumbbell Front Raises", sets: 3, reps: "12", rest: 45, desc: "Front delt isolation." },
-                        { name: "Plank Hold", sets: 4, reps: "60 Sec", rest: 45, desc: "Core anti-extension stability." },
-                        { name: "Bicycle Crunches", sets: 3, reps: "20 per side", rest: 45, desc: "Oblique activation." }
-                    ]
-                },
-                {
-                    titleKey: "cb",
-                    estTime: "55",
-                    exercises: isGym ? [
-                        { name: "Incline Barbell Bench Press", sets: 4, reps: "8-10", rest: 90, desc: "Upper chest focus." },
-                        { name: "Cable Chest Flyes", sets: 4, reps: "12-15", rest: 60, desc: "Inner pectoral contraction." },
-                        { name: "EZ Bar Preacher Bicep Curls", sets: 4, reps: "10-12", rest: 60, desc: "Strict bicep isolation." },
-                        { name: "Skullbreakers (EZ Bar)", sets: 3, reps: "10-12", rest: 60, desc: "Tricep long head mass." },
-                        { name: "High Cable Bicep Peak Curls", sets: 3, reps: "15", rest: 45, desc: "Peak contraction finisher." }
-                    ] : [
-                        { name: "Decline Push-ups (Feet Raised)", sets: 4, reps: "12-15", rest: 60, desc: "Upper chest focus." },
-                        { name: "Dumbbell Chest Flyes on Floor", sets: 4, reps: "12-15", rest: 60, desc: "Pectoral stretch on floor." },
-                        { name: "Dumbbell Bicep Isolation Curls", sets: 4, reps: "12", rest: 60, desc: "Bicep peak contractor." },
-                        { name: "Chair / Bench Dips", sets: 3, reps: "15", rest: 60, desc: "Bodyweight tricep extension." },
-                        { name: "Concentration Curls", sets: 3, reps: "12 per arm", rest: 60, desc: "Isolated bicep peak builder." }
-                    ]
-                },
-                {
-                    titleKey: "gh",
-                    estTime: "50",
-                    exercises: isGym ? [
-                        { name: "Conventional Deadlifts", sets: 3, reps: "6-8", rest: 120, desc: "Total posterior chain dominance." },
-                        { name: "Barbell Hip Thrusts", sets: 4, reps: "10-12", rest: 90, desc: "Direct glute activation." },
-                        { name: "Bulgarian Split Squats", sets: 3, reps: "10 per leg", rest: 75, desc: "Unilateral quad & glute depth." },
-                        { name: "Seated Leg Curls", sets: 3, reps: "12", rest: 60, desc: "Hamstring isolation." },
-                        { name: "Abductor Machine", sets: 3, reps: "15", rest: 45, desc: "Gluteus medius conditioning." }
-                    ] : [
-                        { name: "Single-Leg Romanian Deadlifts", sets: 4, reps: "10 per leg", rest: 60, desc: "Balance & hamstring activation." },
-                        { name: "Weighted Glute Bridge", sets: 4, reps: "15", rest: 60, desc: "Glute thrust with dumbbell." },
-                        { name: "Bulgarian Split Squats", sets: 3, reps: "10 per leg", rest: 60, desc: "Single-leg hypertrophy." },
-                        { name: "Hamstring Walkouts", sets: 3, reps: "10", rest: 45, desc: "Hamstring strain prevention." },
-                        { name: "Fire Hydrants", sets: 3, reps: "20 per leg", rest: 30, desc: "Outer hip & glute builder." }
-                    ]
-                }
-            ];
-
-            const routine = routines[selectedRoutineIndex];
-            return {
-                title: getText(`routines.${routine.titleKey}`),
-                estTime: routine.estTime,
-                exercises: routine.exercises
-            };
-        }
-
-        /* MEAL LIST & SWAP OPTION */
-        function renderMealsList() {
             const container = document.getElementById('meals-list-container');
             container.innerHTML = '';
 
-            const dayIdx = userData.selectedDateIndex;
-            const mealsData = getDailyMealPlan(dayIdx);
+            const langDb = mealDatabase[currentLang] || mealDatabase['en'];
+            const mealTypes = ['breakfast', 'lunch', 'dinner', 'snack'];
 
-            document.getElementById('meals-day-title').innerText = getText('day_x_nutrition', { day: dayIdx + 1 });
+            mealTypes.forEach((type) => {
+                const typeList = langDb[type] || mealDatabase['en'][type];
+                const swapOffset = mealSwapsMap[`m_${dayNum}_${type}`] || 0;
+                
+                // Rotate meals based on dayNum and user swap offset
+                const mealIndex = (dayNum - 1 + swapOffset) % typeList.length;
+                const meal = typeList[mealIndex];
 
-            mealsData.forEach((meal, mIdx) => {
-                const activeSwapIndex = (mealSwapsMap[dayIdx] && mealSwapsMap[dayIdx][mIdx]) || 0;
-                const currentMealOption = meal.options ? meal.options[activeSwapIndex] : meal;
-
-                const mealHtml = `
-                    <div class="meal-box" id="meal-box-${dayIdx}-${mIdx}">
-                        <div class="meal-header">
-                            <span class="meal-type">${meal.type}</span>
-                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-green);">${currentMealOption.calories} kcal</span>
-                        </div>
-                        <div class="meal-title">${currentMealOption.title}</div>
-                        <div class="meal-details">${currentMealOption.details}</div>
-                        ${meal.options && meal.options.length > 1 ? `
-                            <button class="btn-swap-meal" onclick="swapMealOption(${dayIdx},${mIdx})">
-                                <i data-lucide="refresh-cw" style="width: 12px; height: 12px;"></i> ${getText('alternative')}
-                            </button>
-                        ` : ''}
+                const mealCard = document.createElement('div');
+                mealCard.className = 'meal-box';
+                mealCard.innerHTML = `
+                    <div class="meal-header">
+                        <span class="meal-type">${getText(type)}</span>
+                        <span class="meal-title">${meal.title}</span>
+                    </div>
+                    <div class="meal-details">${meal.details}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                        <span style="font-size: 0.75rem; color: var(--accent-green); font-weight: 700;">${meal.calories}</span>
+                        <button class="btn-swap-meal" onclick="swapMeal('${type}', ${dayNum})">
+                            <i data-lucide="refresh-cw" style="width: 12px; height: 12px;"></i> ${getText('alternative')}
+                        </button>
                     </div>
                 `;
-                container.innerHTML += mealHtml;
+                container.appendChild(mealCard);
             });
 
             lucide.createIcons();
         }
 
-        function swapMealOption(dayIdx, mIdx) {
-            if (!mealSwapsMap[dayIdx]) mealSwapsMap[dayIdx] = {};
-            const currentSwap = mealSwapsMap[dayIdx][mIdx] || 0;
-            mealSwapsMap[dayIdx][mIdx] = (currentSwap + 1) % 3;
+        function swapMeal(type, dayNum) {
+            const key = `m_${dayNum}_${type}`;
+            const currentOffset = mealSwapsMap[key] || 0;
+            mealSwapsMap[key] = currentOffset + 1;
+            renderMealsTab();
             saveUserData();
-            renderMealsList();
         }
 
-        function getDailyMealPlan(dayIdx) {
-            const mealPlans = [
-                [
-                    { 
-                        type: "1. Breakfast", 
-                        options: [
-                            { title: "Oatmeal with Whey & Berries", calories: "420", details: "60g oats, 1 scoop whey protein, 50g blueberries, 10g almonds." },
-                            { title: "Egg White & Spinach Omelet", calories: "415", details: "5 egg whites, 1 whole egg, 1 slice sourdough toast, spinach." },
-                            { title: "Greek Yogurt Berry Bowl", calories: "425", details: "200g Greek yogurt, 1 scoop whey, mixed berries, chia seeds." }
-                        ]
-                    },
-                    { 
-                        type: "2. Morning Snack", 
-                        options: [
-                            { title: "Greek Yogurt & Honey", calories: "210", details: "170g non-fat Greek yogurt, 15g honey, chia seeds." },
-                            { title: "Cottage Cheese & Pineapple", calories: "210", details: "150g low-fat cottage cheese, 80g fresh pineapple chunks." },
-                            { title: "Protein Shake & Almonds", calories: "215", details: "1 scoop whey protein isolate, 10 raw almonds." }
-                        ]
-                    },
-                    { 
-                        type: "3. Lunch", 
-                        options: [
-                            { title: "Grilled Chicken Breast & Jasmine Rice", calories: "550", details: "180g chicken breast, 150g cooked jasmine rice, steamed broccoli." },
-                            { title: "Turkey & Quinoa Power Bowl", calories: "545", details: "180g lean turkey, 140g quinoa, roasted vegetables." },
-                            { title: "Tuna & Sweet Potato Mash", calories: "555", details: "170g drained tuna, 180g sweet potato, green beans." }
-                        ]
-                    },
-                    { 
-                        type: "4. Post-Workout Snack", 
-                        options: [
-                            { title: "Rice Cakes & Whey Shake", calories: "230", details: "2 rice cakes, 1 scoop whey protein isolate mixed with water." },
-                            { title: "Banana & Protein Smoothie", calories: "235", details: "1 medium banana, 1 scoop whey protein, cold water." },
-                            { title: "Whole Wheat Toast & Jam", calories: "225", details: "2 slices whole wheat toast, 1 tbsp fruit jam, 3 egg whites." }
-                        ]
-                    },
-                    { 
-                        type: "5. Dinner", 
-                        options: [
-                            { title: "Baked Salmon & Sweet Potato", calories: "580", details: "160g Atlantic salmon, 180g baked sweet potato, roasted asparagus." },
-                            { title: "Lean Sirloin Steak & Potatoes", calories: "585", details: "160g sirloin steak, 150g roasted baby potatoes, side salad." },
-                            { title: "Grilled Shrimp & Brown Rice", calories: "575", details: "200g tiger shrimp, 160g brown rice, grilled zucchini." }
-                        ]
-                    },
-                    { 
-                        type: "6. Before-Bed Snack", 
-                        options: [
-                            { title: "Cottage Cheese & Walnuts", calories: "180", details: "150g low-fat cottage cheese with 10g crushed walnuts." },
-                            { title: "Micellar Casein Pudding", calories: "180", details: "1 scoop casein protein mixed thick with water and cinnamon." },
-                            { title: "Greek Yogurt & Peanut Butter", calories: "185", details: "120g Greek yogurt, 10g natural peanut butter." }
-                        ]
-                    }
-                ]
-            ];
-
-            return mealPlans[0];
-        }
-
-        /* CALENDAR MODAL DYNAMIC SYNC */
-        function openCalendarModal() {
-            const modal = document.getElementById('calendar-modal');
-            const grid = document.getElementById('full-calendar-days');
-            grid.innerHTML = '';
-
-            const daysInMonth = userData.duration || 30;
-            for (let d = 1; d <= daysInMonth; d++) {
-                const isCurrent = (d === userData.currentProgramDay);
-                const isWorkoutDone = completedExercisesMap[d - 1] && Object.values(completedExercisesMap[d - 1]).some(v => v);
-
-                const cellHtml = `
-                    <div class="calendar-cell ${isCurrent ? 'active-day' : ''} ${isWorkoutDone ? 'has-workout' : ''}" onclick="selectDateFromCalendar(${d})">
-                        ${d}
-                    </div>
-                `;
-                grid.innerHTML += cellHtml;
-            }
-
-            modal.style.display = 'flex';
-        }
-
-        function selectDateFromCalendar(dayNumber) {
-            userData.currentProgramDay = dayNumber;
-            userData.selectedDateIndex = dayNumber - 1;
-            saveUserData();
-            closeCalendarModal();
-            updateDashboardUI();
-            renderWorkoutSession();
-            renderMealsList();
-        }
-
-        function closeCalendarModal() {
-            document.getElementById('calendar-modal').style.display = 'none';
-        }
-
-        function saveUserData() {
-            localStorage.setItem('fitpulse_user_data', JSON.stringify(userData));
-            localStorage.setItem('fitpulse_plan_data', JSON.stringify(calculatedPlan));
-            localStorage.setItem('fitpulse_completed_exercises', JSON.stringify(completedExercisesMap));
-            localStorage.setItem('fitpulse_meal_swaps', JSON.stringify(mealSwapsMap));
-        }
-
-        function loadUserData() {
-            const savedUser = localStorage.getItem('fitpulse_user_data');
-            const savedPlan = localStorage.getItem('fitpulse_plan_data');
-            const savedExercises = localStorage.getItem('fitpulse_completed_exercises');
-            const savedSwaps = localStorage.getItem('fitpulse_meal_swaps');
-
-            if (savedUser && savedPlan) {
-                userData = JSON.parse(savedUser);
-                calculatedPlan = JSON.parse(savedPlan);
-                currentLang = userData.lang || 'en';
-                if (savedExercises) completedExercisesMap = JSON.parse(savedExercises);
-                if (savedSwaps) mealSwapsMap = JSON.parse(savedSwaps);
-                showMainApp();
-            }
+        /* PROFILE TAB RENDER */
+        function renderProfileTab() {
+            document.getElementById('prof-gender').innerText = userData.gender ? getText(userData.gender) : 'Male';
+            document.getElementById('prof-goal').innerText = userData.goal ? getText(userData.goal === 'gain' ? 'build_muscle' : userData.goal === 'lose' ? 'lose_fat' : 'maintain_tone') : 'Weight loss';
+            document.getElementById('prof-loc').innerText = userData.location ? getText(userData.location === 'home' ? 'at_home' : 'at_gym') : 'Gym';
+            document.getElementById('prof-plan-type').innerText = userData.planType ? getText(userData.planType === 'workout_diet' ? 'workout_diet_plan' : userData.planType === 'workout_only' ? 'workout_only' : 'diet_only') : 'Workout & Diet';
+            document.getElementById('prof-physique').innerText = userData.physique ? getText(userData.physique === 'slim' ? 'slim_lean' : userData.physique === 'average' ? 'average_athletic' : 'heavy_fat') : 'Average';
+            document.getElementById('prof-duration').innerText = userData.duration ? `${userData.duration} Days` : '90 Days';
+            document.getElementById('prof-freq').innerText = userData.workoutDays ? `${userData.workoutDays} Days/wk` : '4 Days/wk';
+            document.getElementById('prof-age-group').innerText = userData.ageGroup || '25-30';
+            document.getElementById('prof-weight').innerText = `${userData.weight} ${userData.weightUnit}`;
+            document.getElementById('prof-height').innerText = `${userData.heightCm} cm`;
         }
 
         function resetOnboarding() {
-            if (confirm("Reset program and create a new personalized plan?")) {
-                localStorage.clear();
-                location.reload();
+            localStorage.removeItem('fitpulse_user_data');
+            location.reload();
+        }
+
+        // PERSISTENCE
+        function saveUserData() {
+            const payload = {
+                userData,
+                calculatedPlan,
+                completedExercisesMap,
+                mealSwapsMap
+            };
+            localStorage.setItem('fitpulse_user_data', JSON.stringify(payload));
+        }
+
+        function loadUserData() {
+            const stored = localStorage.getItem('fitpulse_user_data');
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    userData = parsed.userData || userData;
+                    calculatedPlan = parsed.calculatedPlan || calculatedPlan;
+                    completedExercisesMap = parsed.completedExercisesMap || {};
+                    mealSwapsMap = parsed.mealSwapsMap || {};
+                    currentLang = userData.lang || 'en';
+
+                    applyTranslations();
+                    finishPlanGeneration();
+                } catch (e) {
+                    console.error("Failed to load user state", e);
+                }
             }
         }
     </script>
