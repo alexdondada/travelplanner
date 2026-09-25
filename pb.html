@@ -12,11 +12,18 @@
             --card-bg: #1e293b;
             --card-border: #334155;
             --accent-green: #00a86b; 
-            --accent-green-glow: rgba(24, 182, 61, 0.35);
+            --accent-green-glow: rgba(0, 168, 107, 0.35);
             --accent-green-dark: #128c2e;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --input-bg: #0f172a;
+        }
+
+        /* POST-ONBOARDING ACCENT COLOR OVERRIDE (#2596be) */
+        .app-main-view {
+            --accent-green: #2596be !important;
+            --accent-green-glow: rgba(37, 150, 190, 0.35) !important;
+            --accent-green-dark: #1b6d8a !important;
         }
 
         * {
@@ -54,11 +61,11 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--card-border);
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 4000; /* Stays visible above loading overlay */
         }
 
         .logo {
@@ -183,7 +190,7 @@
 
         .option-card:hover, .option-card.selected {
             border-color: var(--accent-green);
-            background: rgba(24, 182, 61, 0.08);
+            background: rgba(37, 150, 190, 0.08);
         }
 
         .option-card.selected .option-icon {
@@ -257,7 +264,6 @@
             padding: 14px;
         }
 
-        /* COMPACT MACRO GRID UI STYLES */
         .macro-grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -559,7 +565,7 @@
 
         .exercise-box.completed {
             border-color: var(--accent-green);
-            background: rgba(24, 182, 61, 0.08);
+            background: rgba(37, 150, 190, 0.08);
             box-shadow: 0 0 18px var(--accent-green-glow);
         }
 
@@ -686,7 +692,7 @@
         .btn-swap-meal:hover, .btn-swap-meal:active {
             color: var(--accent-green);
             border-color: var(--accent-green);
-            background: rgba(24, 182, 61, 0.1);
+            background: rgba(37, 150, 190, 0.1);
         }
 
         .nav-bar {
@@ -753,13 +759,14 @@
             color: var(--accent-green);
         }
 
+        /* UPDATED LOADING OVERLAY DESIGN WITH VISUALLY BETTER SPINNER */
         #loading-overlay {
             display: none;
-            position: fixed;
-            top: 0;
+            position: absolute;
+            top: 57px; /* Positioned directly under sticky header */
             left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100% - 57px);
             background: var(--bg-dark);
             z-index: 3000;
             flex-direction: column;
@@ -768,14 +775,39 @@
             padding: 30px;
         }
 
-        .loading-spinner-ring {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top: 3px solid var(--accent-green);
-            border-radius: 50%;
-            animation: spin 0.9s linear infinite;
+        .loading-spinner-wrapper {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 30px;
+        }
+
+        .loading-spinner-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0%, var(--accent-green) 100%);
+            animation: spin 0.8s linear infinite;
+            mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #fff calc(100% - 4px));
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #fff calc(100% - 4px));
+        }
+
+        .loading-spinner-glow {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(37, 150, 190, 0.15);
+            box-shadow: 0 0 25px var(--accent-green-glow);
+            animation: pulseGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(0.85); opacity: 0.5; }
+            100% { transform: scale(1.15); opacity: 1; }
         }
 
         @keyframes spin {
@@ -844,7 +876,7 @@
 <body>
 
     <div id="app-container">
-        <!-- HEADER -->
+        <!-- HEADER (REMAINS VISIBLE DURING LOADING) -->
         <header class="header">
             <div class="logo">
                 <i data-lucide="activity"></i> FitPulse AI
@@ -916,9 +948,9 @@
                     <button class="btn" id="btn-next-lang" disabled onclick="confirmLanguage()">Continue <i data-lucide="arrow-right"></i></button>
                 </div>
 
-                <!-- WELCOME SCREEN (STEP 0) -->
+                <!-- WELCOME SCREEN -->
                 <div class="wizard-step" id="step-0" style="text-align: center; padding-top: 40px;">
-                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(24, 182, 61, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
+                    <div style="width: 90px; height: 90px; border-radius: 24px; background: rgba(0, 168, 107, 0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
                         <i data-lucide="activity" style="width: 48px; height: 48px;"></i>
                     </div>
                     <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">FitPulse AI</h1>
@@ -1166,7 +1198,7 @@
                     <button class="btn btn-secondary" onclick="handleStep6Back()" data-i18n="back">Back</button>
                 </div>
 
-                <!-- STEP 7: BIOMETRICS -->
+                <!-- STEP 7: BIOMETRICS (HEIGHT UNIT OPTION SET TO CM & FT ONLY) -->
                 <div class="wizard-step" id="step-7">
                     <h2 class="wizard-title" data-i18n="biometrics">Biometrics</h2>
                     <p class="wizard-subtitle" data-i18n="biometrics_subtitle">Used to calculate your calorie and protein targets.</p>
@@ -1208,7 +1240,7 @@
                         </div>
                     </div>
 
-                    <!-- HEIGHT CARD -->
+                    <!-- HEIGHT CARD (UPDATED TO FT OPTION) -->
                     <div class="input-group">
                         <label data-i18n="height">And your height?</label>
                         <div class="measurement-card">
@@ -1222,7 +1254,7 @@
                             </div>
                             <div class="pill-unit-toggle">
                                 <button class="pill-unit-btn active" id="btn-cm" onclick="setHeightUnit('cm')">CM</button>
-                                <button class="pill-unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">IN</button>
+                                <button class="pill-unit-btn" id="btn-ft" onclick="setHeightUnit('ft')">FT</button>
                             </div>
                         </div>
                     </div>
@@ -1235,10 +1267,10 @@
             <!-- DASHBOARD HOME VIEW -->
             <div id="dashboard-home" style="display: none;">
                 
-                <!-- TOTAL PROGRESS CARD WITH LUCIDE TARGET ICON -->
+                <!-- TOTAL PROGRESS CARD (FONT SIZE MATCHED TO MACRO TARGETS) -->
                 <div class="card">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;">
                             <i data-lucide="target" style="width: 16px; height: 16px; color: var(--accent-green);"></i> <span data-i18n="total_progress">Total Progress</span>
                         </span>
                         <span style="font-size: 0.85rem; font-weight: 800; color: var(--accent-green);" id="dash-progress-text">Day 1 / 90</span>
@@ -1248,7 +1280,7 @@
                     </div>
                 </div>
 
-                <!-- DAILY MACRO TARGETS (COMPACT GRID WITH SMALL ICONS & ACCENTED FONTS) -->
+                <!-- DAILY MACRO TARGETS -->
                 <div class="card">
                     <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
                         <i data-lucide="pie-chart" style="color: var(--accent-green); width: 14px; height: 14px;"></i> <span data-i18n="macro_targets">Daily Macro Targets</span>
@@ -1384,14 +1416,17 @@
         </nav>
     </div>
 
-    <!-- LOADING OVERLAY SCREEN -->
+    <!-- LOADING OVERLAY SCREEN (UPDATED VISUALLY BETTER SPINNER) -->
     <div id="loading-overlay">
-        <div class="loading-spinner-ring"></div>
+        <div class="loading-spinner-wrapper">
+            <div class="loading-spinner-glow"></div>
+            <div class="loading-spinner-ring"></div>
+        </div>
         <div class="loading-steps-list" id="loading-steps-container"></div>
     </div>
 
     <script>
-        // TRANSLATIONS DATA DICTIONARY WITH FULL EXERCISE DESCRIPTIONS & MACRO KEYS
+        // TRANSLATIONS DATA DICTIONARY
         const i18n = {
             en: {
                 welcome_desc: "Your personalized AI fitness and custom nutrition engine built for real physical transformations.",
@@ -1830,7 +1865,7 @@
                 heavy_fat: "Plus de Gras / Fort",
                 heavy_fat_desc: "Pourcentage de masse grasse plus élevé",
                 program_setup: "Configuration du Programme",
-                program_setup_subtitle: "Sélectionnez la durée et la fréquence d'entraînement hebdomadaire.",
+                program_setup_subtitle: "Sélectionnez la durée et la fréquence d'entraînement hebdomdaire.",
                 program_duration: "Durée du Programme",
                 duration_30: "Transformation en 30 Jours",
                 duration_30_desc: "Programme de démarrage rapide",
@@ -2122,7 +2157,7 @@
                 fats_target: "Жиры",
                 est_duration: "Время Тренировки",
                 min: "Мин",
-                routine: "ПРОГРАММА",
+                routine: "ПРОГРАМΜΑ",
                 program_day: "ДЕНЬ ПРОГРАММЫ",
                 rest_day: "День Отдыха и Восстановления",
                 rest_day_desc: "Сегодня нет тренировки. Сосредоточьтесь на питьевом режиме и полезной еде!",
@@ -2181,9 +2216,9 @@
             }
         };
 
-        // EXERCISE ROUTINE DATABASE WITH REST TIMINGS AND LOCALIZED DESCRIPTIONS
+        // EXERCISE ROUTINE DATABASE WITH DURATIONS CONSTRAINED TO MIN 50 / MAX 70 MINS
         const workoutDatabase = [
-            // Day 1 Routine: Chest, Shoulders & Triceps
+            // Day 1 Routine: Chest, Shoulders & Triceps (55 Min)
             {
                 routineKey: "cst",
                 estMinutes: 55,
@@ -2195,10 +2230,10 @@
                     { id: "ex5", name: "Tricep Cable Pushdowns", descKey: "tricep_pushdowns", sets: 3, reps: "12-15", restSeconds: 45 }
                 ]
             },
-            // Day 2 Routine: Core & Legs
+            // Day 2 Routine: Core & Legs (60 Min)
             {
                 routineKey: "cl",
-                estMinutes: 50,
+                estMinutes: 60,
                 exercises: [
                     { id: "ex6", name: "Goblet Squats", descKey: "goblet_squats", sets: 4, reps: "12", restSeconds: 90 },
                     { id: "ex7", name: "Romanian Deadlift", descKey: "romanian_deadlift", sets: 4, reps: "10", restSeconds: 90 },
@@ -2212,7 +2247,7 @@
                 estMinutes: 0,
                 exercises: []
             },
-            // Day 4 Routine: Back & Biceps Focus
+            // Day 4 Routine: Back & Biceps Focus (50 Min)
             {
                 routineKey: "bb",
                 estMinutes: 50,
@@ -2224,529 +2259,540 @@
             }
         ];
 
-        // MEAL DATABASE MULTI-DAY VARIATION (FIXED BUGS & ADDED CALORIE METRICS)
-        const mealDatabase = {
-            el: [
-                // Day 1
-                [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "Ομελέτα με 3 Αυγά & Σπανάκι", details: "3 αυγά, 50g σπανάκι, 1 φέτα ψωμί ολικής, 50g αβοκάντο" }, alt: { typeKey: "breakfast", title: "Scrambled Eggs σε Τοστ με Αβοκάντο", details: "3 αυγά scrambled, 2 φέτες ψωμί ολικής, 40g αβοκάντο" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Κοτόπουλο Στήθος με Κινόα & Μπρόκολο", details: "180g στήθος κοτόπουλο, 150g μαγειρεμένη κινόα, 100g μπρόκολο" }, alt: { typeKey: "lunch", title: "Φιλέτο Γαλοπούλας με Πατάτες Φούρνου", details: "190g στήθος γαλοπούλας, 180g πατάτες φούρνου, σαλάτα" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Γιαούρτι Στραγγιστό με Αμύγδαλα & Μέλι", details: "200g ελληνικό γιαούρτι 2%, 15g αμύγδαλα, 1 κ.γ. μέλι" }, alt: { typeKey: "snack", title: "Cottage Cheese με Καρύδια & Μούρα", details: "200g cottage cheese 2%, 15g καρύδια, 50g μούρα" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Σολομός Ψητός με Γλυκοπατάτα", details: "160g φιλέτο σολομού, 150g ψητή γλυκοπατάτα, πράσινη σαλάτα" }, alt: { typeKey: "dinner", title: "Τσιπούρα Ψητή με Χόρτα & Ελαιόλαδο", details: "200g φιλέτο τσιπούρας, 200g βραστά χόρτα, 1 κ.σ. ελαιόλαδο" } }
-                ],
-                // Day 2
-                [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Πρωτεϊνική Βρώμη με Μπανάνες", details: "60g βρώμη, 1 scoop πρωτεΐνη, 1/2 μπανάνα, γάλα αμυγδάλου" }, alt: { typeKey: "breakfast", title: "Pancakes Βρώμης με Ταχίνι", details: "50g βρώμη, 2 ασπράδια, 1 αυγό, 15g ταχίνι" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Μπιφτέκια Μοσχαρίσια με Ρύζι Basmati", details: "180g μπιφτέκια μοσχαρίσια, 150g ρύζι basmati, λαχανικά" }, alt: { typeKey: "lunch", title: "Τονοσαλάτα με Καλαμπόκι & Ελιές", details: "160g τόνος σε νερό, 50g καλαμπόκι, 150g πατάτα βραστή" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Cottage Cheese με Καρύδια", details: "200g cottage cheese 2%, 15g καρύδια, 50g μούρα" }, alt: { typeKey: "snack", title: "Ρυζογκοφρέτες με Φυστικοβούτυρο", details: "3 ρυζογκοφρέτες, 20g φυστικοβούτυρο, κανέλα" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Φιλέτο Λαυράκι με Βραστά Λαχανικά", details: "180g λαυράκι, 200g κολοκυθάκια & καρότα, 1 κ.σ. ελαιόλαδο" }, alt: { typeKey: "dinner", title: "Ομελέτα Φούρνου με Λαχανικά & Ανθότυρο", details: "3 αυγά, 60g ανθότυρο, πιπεριές, μανιτάρια" } }
-                ]
+        // MEAL POOL FOR DYNAMIC UNIQUE DAILY GENERATION
+        const mealPools = {
+            breakfast: [
+                { title: "Egg & Spinach Omelet", details: "3 eggs, 50g spinach, 1 slice whole wheat toast, 50g avocado" },
+                { title: "Protein Oatmeal Bowl", details: "60g oats, 1 scoop whey, 1/2 banana, chia seeds, almond milk" },
+                { title: "Avocado & Poached Eggs", details: "2 poached eggs, 60g crushed avocado, sourdough slice" },
+                { title: "Greek Yogurt Parfait", details: "200g 0% Greek yogurt, 30g granola, mixed berries, honey" },
+                { title: "Protein Oat Pancakes", details: "50g oats, 1 egg, 2 whites, 15g peanut butter" }
             ],
-            en: [
-                // Day 1
-                [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "3-Egg Spinach & Avocado Omelet", details: "3 eggs, 50g spinach, 1 slice whole wheat toast, 50g avocado" }, alt: { typeKey: "breakfast", title: "Protein Oatmeal with Banana", details: "60g oats, 1 scoop whey protein, 1/2 banana, almond milk" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Grilled Chicken Breast with Quinoa", details: "180g chicken breast, 150g cooked quinoa, 100g steamed broccoli" }, alt: { typeKey: "lunch", title: "Lean Beef Patties with Basmati Rice", details: "180g lean beef patties, 150g basmati rice, grilled vegetables" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Greek Yogurt with Almonds & Honey", details: "200g Greek yogurt 2%, 15g almonds, 1 tsp honey" }, alt: { typeKey: "snack", title: "Cottage Cheese with Walnuts & Berries", details: "200g low-fat cottage cheese, 15g walnuts, 50g berries" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Baked Salmon with Sweet Potato", details: "160g salmon fillet, 150g roasted sweet potato, green salad" }, alt: { typeKey: "dinner", title: "Tuna Salad with Sweetcorn & Olives", details: "160g tuna in water, mixed greens, 50g corn, 5 olives, olive oil" } }
-                ],
-                // Day 2
-                [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Protein Oatmeal with Banana", details: "60g oats, 1 scoop whey protein, 1/2 banana, almond milk" }, alt: { typeKey: "breakfast", title: "Oat Pancakes with Peanut Butter", details: "50g oat flour, 2 egg whites, 1 egg, 15g peanut butter" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Lean Beef Patties with Basmati Rice", details: "180g lean beef patties, 150g basmati rice, grilled vegetables" }, alt: { typeKey: "lunch", title: "Turkey Breast with Sweet Potato Mash", details: "190g turkey, 180g sweet potato, asparagus" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Cottage Cheese with Walnuts & Berries", details: "200g low-fat cottage cheese, 15g walnuts, 50g berries" }, alt: { typeKey: "snack", title: "Rice Cakes with Almond Butter", details: "3 rice cakes, 20g almond butter, cinnamon" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Sea Bass Fillet with Steamed Greens", details: "180g sea bass, 200g steamed zucchini, 1 tbsp olive oil" }, alt: { typeKey: "dinner", title: "Veggie Omelet with Feta Cheese", details: "3 eggs, 50g feta cheese, peppers, mushrooms" } }
-                ]
+            lunch: [
+                { title: "Grilled Chicken & Quinoa", details: "180g chicken breast, 150g quinoa, steamed broccoli" },
+                { title: "Lean Beef Basmati Bowl", details: "170g lean beef patties, 160g basmati rice, green beans" },
+                { title: "Tuna & Sweet Potato Salad", details: "160g tuna in water, 180g roasted sweet potato, olive oil" },
+                { title: "Turkey Breast & Rice", details: "190g turkey fillet, 150g white rice, grilled asparagus" },
+                { title: "Salmon Grain Bowl", details: "160g baked salmon, 140g brown rice, mixed salad greens" }
             ],
-            it: [
-                // Day 1
-                [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "Omelette con 3 Uova, Spinaci e Avocado", details: "3 uova, 50g spinaci, 1 fetta di pane integrale, 50g avocado" }, alt: { typeKey: "breakfast", title: "Porridge Proteico con Banana", details: "60g avena, 1 scoop proteine, 1/2 banana, latte di mandorla" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Petto di Pollo alla Griglia con Quinoa", details: "180g petto di pollo, 150g quinoa cotta, 100g broccoli al vapore" }, alt: { typeKey: "lunch", title: "Hamburger di Manzo Magro con Riso Basmati", details: "180g hamburger di manzo, 150g riso basmati, verdure alla griglia" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Yogurt Greco con Mandorle e Miele", details: "200g yogurt greco 2%, 15g mandorle, 1 cucchiaino di miele" }, alt: { typeKey: "snack", title: "Fiocchi di Latte con Noci e Frutti di Bosco", details: "200g fiocchi di latte magri, 15g noci, 50g frutti di bosco" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Salmone al Forno con Patate Dolci", details: "160g filetto di salmone, 150g patate dolci al forno, insalata verde" }, alt: { typeKey: "dinner", title: "Insalata di Tonno con Mais e Olive", details: "160g tonno al naturale, insalata mista, 50g mais, 5 olive, olio d'oliva" } }
-                ],
-                // Day 2
-                [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Porridge Proteico con Banana", details: "60g avena, 1 scoop proteine, 1/2 banana, latte di mandorla" }, alt: { typeKey: "breakfast", title: "Pancake d'Avena con Burro di Arachidi", details: "50g farina d'avena, 2 albumi, 1 uovo, 15g burro di arachidi" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Hamburger di Manzo Magro con Riso Basmati", details: "180g hamburger di manzo, 150g riso basmati, verdure alla griglia" }, alt: { typeKey: "lunch", title: "Fesa di Tacchino con Purè di Patate Dolci", details: "190g tacchino, 180g patate dolci, asparagi" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Fiocchi di Latte con Noci e Frutti di Bosco", details: "200g fiocchi di latte magri, 15g noci, 50g frutti di bosco" }, alt: { typeKey: "snack", title: "Gallette di Riso con Burro di Mandorle", details: "3 gallette di riso, 20g burro di mandorle, cannella" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Filetto di Spigola con Verdure al Vapore", details: "180g spigola, 200g zucchine al vapore, 1 cucchiaio di olio d'oliva" }, alt: { typeKey: "dinner", title: "Omelette alle Verdure con Feta", details: "3 uova, 50g feta, peperoni, funghi" } }
-                ]
+            snack: [
+                { title: "Greek Yogurt & Almonds", details: "200g Greek yogurt 2%, 15g almonds, honey" },
+                { title: "Cottage Cheese & Walnuts", details: "200g cottage cheese, 15g walnuts, blueberries" },
+                { title: "Rice Cakes & Peanut Butter", details: "3 rice cakes, 20g natural peanut butter" },
+                { title: "Whey Shake & Apple", details: "1 scoop protein, 250ml water, 1 crisp apple" },
+                { title: "Hard-Boiled Eggs & Nuts", details: "2 whole eggs, 15g cashews, cucumber slices" }
             ],
-            fr: [
-                // Day 1
-                [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "Omelette aux 3 Œufs, Épinards & Avocat", details: "3 œufs, 50g épinards, 1 tranche de pain complet, 50g avocat" }, alt: { typeKey: "breakfast", title: "Porridge Protéiné à la Banane", details: "60g flocons d'avoine, 1 dose de protéine, 1/2 banane, lait d'amande" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Blanc de Poulet Grillé et Quinoa", details: "180g blanc de poulet, 150g quinoa cuit, 100g brocolis à la vapeur" }, alt: { typeKey: "lunch", title: "Steaks Hachés Maigres et Riz Basmati", details: "180g steaks hachés 5%, 150g riz basmati, légumes grillés" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Yaourt Grec aux Amandes & Miel", details: "200g yaourt grec 2%, 15g amandes, 1 c.à.c de miel" }, alt: { typeKey: "snack", title: "Fromage Blanc aux Noix & Fruits Rouges", details: "200g fromage blanc 0%, 15g noix, 50g fruits rouges" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Pavé de Saumon au Four & Patate Douce", details: "160g pavé de saumon, 150g patate douce rôtie, salade verte" }, alt: { typeKey: "dinner", title: "Salade de Thon au Maïs & Olives", details: "160g thon au naturel, salade composée, 50g maïs, 5 olives, huile d'olive" } }
-                ],
-                // Day 2
-                [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Porridge Protéiné à la Banane", details: "60g flocons d'avoine, 1 dose de protéine, 1/2 banane, lait d'amande" }, alt: { typeKey: "breakfast", title: "Pancakes à l'Avoine & Beurre de Cacahuète", details: "50g farine d'avoine, 2 blancs d'œufs, 1 œuf, 15g beurre de cacahuète" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Steaks Hachés Maigres et Riz Basmati", details: "180g steaks hachés 5%, 150g riz basmati, légumes grillés" }, alt: { typeKey: "lunch", title: "Filet de Dinde & Purée de Patate Douce", details: "190g dinde, 180g patate douce, asperges" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Fromage Blanc aux Noix & Fruits Rouges", details: "200g fromage blanc 0%, 15g noix, 50g fruits rouges" }, alt: { typeKey: "snack", title: "Galettes de Riz au Beurre d'Amande", details: "3 galettes de riz, 20g beurre d'amande, cannelle" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Filet de Bar & Légumes Vapeur", details: "180g filet de bar, 200g courgettes vapeur, 1 c.à.s d'huile d'olive" }, alt: { typeKey: "dinner", title: "Omelette aux Légumes & Féta", details: "3 œufs, 50g féta, poivrons, champignons" } }
-                ]
-            ],
-            es: [
-                // Day 1
-                [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "Tortilla de 3 Huevos con Espinacas y Aguacate", details: "3 huevos, 50g espinacas, 1 rebanada pan integral, 50g aguacate" }, alt: { typeKey: "breakfast", title: "Avena Proteica con Plátano", details: "60g avena, 1 cacito proteína, 1/2 plátano, leche de almendras" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Pechuga de Pollo a la Plancha con Quinua", details: "180g pechuga de pollo, 150g quinua cocida, 100g brócoli al vapor" }, alt: { typeKey: "lunch", title: "Hamburguesas de Ternera Magra con Arroz Basmati", details: "180g ternera magra, 150g arroz basmati, verduras a la plancha" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Yogur Griego con Almendras y Miel", details: "200g yogur griego 2%, 15g almendras, 1 cucharadita de miel" }, alt: { typeKey: "snack", title: "Queso Cottage con Nueces y Frutos Rojos", details: "200g queso cottage bajo en grasa, 15g nueces, 50g frutos rojos" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Salmón al Horno con Boniato", details: "160g filete de salmón, 150g boniato asado, ensalada verde" }, alt: { typeKey: "dinner", title: "Ensalada de Atún con Maíz y Aceitunas", details: "160g atún al natural, ensalada mixta, 50g maíz, 5 aceitunas, aceite de oliva" } }
-                ],
-                // Day 2
-                [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Avena Proteica con Plátano", details: "60g avena, 1 cacito proteína, 1/2 plátano, leche de almendras" }, alt: { typeKey: "breakfast", title: "Tortitas de Avena con Crema de Cacahuete", details: "50g harina de avena, 2 claras, 1 huevo, 15g crema de cacahuete" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Hamburguesas de Ternera Magra con Arroz Basmati", details: "180g ternera magra, 150g arroz basmati, verduras a la plancha" }, alt: { typeKey: "lunch", title: "Pechuga de Pavo con Puré de Boniato", details: "190g pavo, 180g boniato, espárragos" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Queso Cottage con Nueces y Frutos Rojos", details: "200g queso cottage bajo en grasa, 15g nueces, 50g frutos rojos" }, alt: { typeKey: "snack", title: "Tortitas de Arroz con Mantequilla de Almendra", details: "3 tortitas de arroz, 20g mantequilla de almendra, canela" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Filete de Lubina con Verduras al Vapor", details: "180g lubina, 200g calabacín al vapor, 1 cucharada de aceite de oliva" }, alt: { typeKey: "dinner", title: "Tortilla de Verduras con Queso Feta", details: "3 huevos, 50g queso feta, pimientos, champiñones" } }
-                ]
-            ],
-            ru: [
-                // Day 1
-                [
-                    { calories: 420, primary: { typeKey: "breakfast", title: "Омлет из 3 Яиц со Шпинатом и Авокадо", details: "3 яйца, 50г шпината, 1 кусочек цельнозернового хлеба, 50г авокадо" }, alt: { typeKey: "breakfast", title: "Протеиновая Овсянка с Бананом", details: "60г овсянки, 1 скуп протеина, 1/2 банана, миндальное молоко" } },
-                    { calories: 580, primary: { typeKey: "lunch", title: "Куриная Грудка на Гриле с Киноа", details: "180г куриного филе, 150г вареного киноа, 100г брокколи на пару" }, alt: { typeKey: "lunch", title: "Котлеты из Нежирной Говядины с Рисом Басмати", details: "180г говяжьих котлет, 150г риса басмати, овощи на гриле" } },
-                    { calories: 260, primary: { typeKey: "snack", title: "Греческий Йогурт с Миндалем и Медом", details: "200г греческого йогурта 2%, 15г миндаля, 1 ч. л. меда" }, alt: { typeKey: "snack", title: "Зерненый Творог с Грецкими Орехами и Ягодами", details: "200г обезжиренного творога, 15г орехов, 50г ягод" } },
-                    { calories: 520, primary: { typeKey: "dinner", title: "Запеченный Лосось с Бататом", details: "160г филе лосося, 150г запеченного батата, зеленый салат" }, alt: { typeKey: "dinner", title: "Салат с Тунцом, Кукурузой и Оливками", details: "160г тунца в с/с, микс салатов, 50г кукурузы, 5 оливок, оливковое масло" } }
-                ],
-                // Day 2
-                [
-                    { calories: 410, primary: { typeKey: "breakfast", title: "Протеиновая Овсянка с Бананом", details: "60г овсянки, 1 скуп протеина, 1/2 банана, миндальное молоко" }, alt: { typeKey: "breakfast", title: "Овсяные Панкейки с Арахисовой Пастой", details: "50г овсяной муки, 2 белка, 1 яйцо, 15г арахисовой пасты" } },
-                    { calories: 610, primary: { typeKey: "lunch", title: "Котлеты из Нежирной Говядины с Рисом Басмати", details: "180г говяжьих котлет, 150г риса басмати, овощи на гриле" }, alt: { typeKey: "lunch", title: "Филе Индейки с Пюре из Батата", details: "190г индейки, 180г батата, спаржа" } },
-                    { calories: 250, primary: { typeKey: "snack", title: "Зерненый Творог с Грецкими Орехами и Ягодами", details: "200г обезжиренного творога, 15г орехов, 50г ягод" }, alt: { typeKey: "snack", title: "Рисовые Хлебцы с Миндальной Пастой", details: "3 рисовых хлебца, 20г миндальной пасты, корица" } },
-                    { calories: 480, primary: { typeKey: "dinner", title: "Филе Сибаса с Овощами на Пару", details: "180г сибаса, 200г кабачков на пару, 1 ст. л. оливкового масла" }, alt: { typeKey: "dinner", title: "Овощной Омлет с Сыром Фета", details: "3 яйца, 50г феты, перец, шампиньоны" } }
-                ]
+            dinner: [
+                { title: "Seared Salmon & Sweet Potato", details: "160g salmon fillet, 150g sweet potato, garden salad" },
+                { title: "Baked Seabass & Vegetables", details: "180g seabass, 200g zucchini & carrots, 1 tbsp olive oil" },
+                { title: "Grilled Chicken Fajita Plate", details: "180g chicken, sautéed peppers, 1 whole wheat tortilla" },
+                { title: "Lean Steak & Asparagus", details: "170g sirloin steak, 150g roasted potatoes, asparagus" },
+                { title: "Turkey Meatballs & Zucchini Noodles", details: "180g turkey meatballs, zucchini noodles, marinara" }
             ]
         };
 
-        // GLOBAL STATE
-        let currentLang = 'en';
-
-        let userData = {
+        // GLOBAL APP STATE
+        const state = {
             lang: 'en',
+            currentStep: 'lang',
             gender: null,
             goal: null,
             location: null,
             planType: null,
             physique: null,
-            duration: 90,
-            workoutDays: 4,
-            ageGroup: null,
-            weight: 75,
+            durationDays: 90,
+            workoutDaysPerWeek: 4,
+            ageGroup: '25-30',
+            weightKg: 75,
             weightUnit: 'kg',
-            height: 180,
-            heightUnit: 'cm'
+            heightCm: 180,
+            heightUnit: 'cm',
+            selectedDay: 1,
+            completedExercises: {},
+            swappedMeals: {}
         };
 
-        let activeTab = 'home';
-        let currentSelectedDay = 1;
-        let selectedMealDay = 1;
-        let swappableMealState = {};
-
         // INITIALIZATION
-        window.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            updateLanguageStrings();
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
         });
 
-        function selectLanguage(lang, el) {
-            currentLang = lang;
-            userData.lang = lang;
+        // LANGUAGE LOGIC
+        function selectLanguage(langCode, cardElem) {
+            state.lang = langCode;
             document.querySelectorAll('#step-lang .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
+            cardElem.classList.add('selected');
             document.getElementById('btn-next-lang').disabled = false;
         }
 
         function confirmLanguage() {
-            updateLanguageStrings();
+            applyTranslations();
             nextStep(0);
         }
 
-        function updateLanguageStrings() {
-            const dict = i18n[currentLang] || i18n['en'];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key]) {
-                    el.textContent = dict[key];
-                }
+        function applyTranslations() {
+            const dict = i18n[state.lang] || i18n.en;
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (dict[key]) elem.innerText = dict[key];
             });
         }
 
-        function nextStep(step) {
-            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
-            
-            if (step > 0) {
+        function t(key) {
+            const dict = i18n[state.lang] || i18n.en;
+            return dict[key] || key;
+        }
+
+        // STEP SWITCHING LOGIC
+        function nextStep(stepNum) {
+            hideAllSteps();
+            state.currentStep = stepNum;
+
+            if (stepNum > 0 && stepNum <= 7) {
                 document.getElementById('wizard-step-header').style.display = 'block';
-                document.getElementById('step-counter-text').textContent = `Step ${step} / 7`;
-                document.getElementById('wizard-progress-bar').style.width = `${(step / 7) * 100}%`;
+                document.getElementById('step-counter-text').innerText = t('step_of').replace('{step}', stepNum);
+                document.getElementById('wizard-progress-bar').style.width = ((stepNum / 7) * 100) + '%';
             } else {
                 document.getElementById('wizard-step-header').style.display = 'none';
             }
 
-            const targetStepId = step === 0 ? 'step-0' : `step-${step}`;
-            document.getElementById(targetStepId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const stepElem = document.getElementById(`step-${stepNum}`);
+            if (stepElem) stepElem.classList.add('active');
         }
 
-        function prevStep(step) {
-            nextStep(step);
+        function prevStep(stepNum) {
+            nextStep(stepNum);
         }
 
-        function selectGender(val, el) {
-            userData.gender = val;
-            document.querySelectorAll('#step-1 .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
+        function hideAllSteps() {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+        }
+
+        // STEP SELECTION HANDLERS
+        function selectGender(val, elem) {
+            state.gender = val;
+            highlightSelection('#step-1', elem);
             document.getElementById('btn-next-1').disabled = false;
         }
 
-        function selectGoal(val, el) {
-            userData.goal = val;
-            document.querySelectorAll('#step-2 .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
+        function selectGoal(val, elem) {
+            state.goal = val;
+            highlightSelection('#step-2', elem);
             document.getElementById('btn-next-2').disabled = false;
         }
 
-        function selectLocation(val, el) {
-            userData.location = val;
-            document.querySelectorAll('#step-3 .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
+        function selectLocation(val, elem) {
+            state.location = val;
+            highlightSelection('#step-3', elem);
             document.getElementById('btn-next-3').disabled = false;
         }
 
-        function selectPlanType(val, el) {
-            userData.planType = val;
-            document.querySelectorAll('#step-4 .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
+        function selectPlanType(val, elem) {
+            state.planType = val;
+            highlightSelection('#step-4', elem);
             document.getElementById('btn-next-4').disabled = false;
         }
 
         function handlePlanTypeNext() {
-            nextStep(5);
+            if (state.planType === 'diet_only') {
+                nextStep(6);
+            } else {
+                nextStep(5);
+            }
         }
 
-        function selectPhysique(val, el) {
-            userData.physique = val;
-            document.querySelectorAll('#step-5 .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
+        function selectPhysique(val, elem) {
+            state.physique = val;
+            highlightSelection('#step-5', elem);
             document.getElementById('btn-next-5').disabled = false;
         }
 
-        function selectDuration(val, el) {
-            userData.duration = val;
-            document.querySelectorAll('#step-6 .input-group:first-child .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
-            checkStep6Validation();
+        function selectDuration(val, elem) {
+            state.durationDays = val;
+            highlightSelection('#step-6', elem);
+            checkStep6Validity();
         }
 
-        function checkStep6Validation() {
-            if (userData.duration) {
+        function checkStep6Validity() {
+            if (state.durationDays) {
                 document.getElementById('btn-next-6').disabled = false;
             }
         }
 
         function handleStep6Back() {
-            prevStep(5);
+            if (state.planType === 'diet_only') {
+                prevStep(4);
+            } else {
+                prevStep(5);
+            }
         }
 
-        function selectAgeGroup(val, el) {
-            userData.ageGroup = val;
-            document.querySelectorAll('#step-7 .grid-2x2 .option-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
-            checkStep7Validation();
+        function selectAgeGroup(val, elem) {
+            state.ageGroup = val;
+            highlightSelection('#step-7 .grid-2x2', elem);
+            checkStep7Validity();
         }
 
-        function adjustWeight(delta) {
-            userData.weight = Math.max(30, Math.min(200, userData.weight + delta));
-            document.getElementById('weight-val-display').textContent = userData.weight;
-        }
-
-        function setWeightUnit(unit) {
-            userData.weightUnit = unit;
-            document.getElementById('weight-unit-display').textContent = unit;
-            document.getElementById('btn-kg').classList.toggle('active', unit === 'kg');
-            document.getElementById('btn-lbs').classList.toggle('active', unit === 'lbs');
-        }
-
-        function adjustHeight(delta) {
-            userData.height = Math.max(120, Math.min(220, userData.height + delta));
-            document.getElementById('height-val-display').textContent = userData.height;
-        }
-
-        function setHeightUnit(unit) {
-            userData.heightUnit = unit;
-            document.getElementById('height-unit-display').textContent = unit;
-            document.getElementById('btn-cm').classList.toggle('active', unit === 'cm');
-            document.getElementById('btn-ft').classList.toggle('active', unit === 'ft');
-        }
-
-        function checkStep7Validation() {
-            if (userData.ageGroup) {
+        function checkStep7Validity() {
+            if (state.ageGroup) {
                 document.getElementById('btn-next-7').disabled = false;
             }
         }
 
+        function highlightSelection(parentSelector, targetElem) {
+            const container = document.querySelector(parentSelector);
+            if (container) {
+                container.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+            }
+            targetElem.classList.add('selected');
+        }
+
+        // BIOMETRIC STEPPERS & HEIGHT FT TOGGLE
+        function adjustWeight(delta) {
+            if (state.weightUnit === 'kg') {
+                state.weightKg = Math.max(30, Math.min(200, state.weightKg + delta));
+                document.getElementById('weight-val-display').innerText = state.weightKg;
+            } else {
+                let lbs = Math.round(state.weightKg * 2.20462) + delta;
+                lbs = Math.max(66, Math.min(440, lbs));
+                state.weightKg = Math.round(lbs / 2.20462);
+                document.getElementById('weight-val-display').innerText = lbs;
+            }
+        }
+
+        function setWeightUnit(unit) {
+            state.weightUnit = unit;
+            document.getElementById('btn-kg').classList.toggle('active', unit === 'kg');
+            document.getElementById('btn-lbs').classList.toggle('active', unit === 'lbs');
+            document.getElementById('weight-unit-display').innerText = unit;
+
+            if (unit === 'kg') {
+                document.getElementById('weight-val-display').innerText = state.weightKg;
+            } else {
+                document.getElementById('weight-val-display').innerText = Math.round(state.weightKg * 2.20462);
+            }
+        }
+
+        function adjustHeight(delta) {
+            state.heightCm = Math.max(120, Math.min(220, state.heightCm + delta));
+            renderHeightDisplay();
+        }
+
+        function setHeightUnit(unit) {
+            state.heightUnit = unit;
+            document.getElementById('btn-cm').classList.toggle('active', unit === 'cm');
+            document.getElementById('btn-ft').classList.toggle('active', unit === 'ft');
+            renderHeightDisplay();
+        }
+
+        function renderHeightDisplay() {
+            if (state.heightUnit === 'cm') {
+                document.getElementById('height-val-display').innerText = state.heightCm;
+                document.getElementById('height-unit-display').innerText = 'cm';
+            } else {
+                const totalInches = Math.round(state.heightCm / 2.54);
+                const feet = Math.floor(totalInches / 12);
+                const inches = totalInches % 12;
+                document.getElementById('height-val-display').innerText = `${feet}'${inches}"`;
+                document.getElementById('height-unit-display').innerText = 'ft';
+            }
+        }
+
+        // LOADING & PLAN GENERATION
         function triggerPlanGeneration() {
-            userData.workoutDays = parseInt(document.getElementById('workout-days-select').value) || 4;
+            const selectDays = document.getElementById('workout-days-select');
+            if (selectDays) state.workoutDaysPerWeek = parseInt(selectDays.value, 10);
+
             const overlay = document.getElementById('loading-overlay');
             const container = document.getElementById('loading-steps-container');
-            const dict = i18n[currentLang] || i18n['en'];
-
-            const steps = [
-                dict.loading_1,
-                dict.loading_2,
-                dict.loading_3,
-                dict.loading_4,
-                dict.loading_5,
-                dict.loading_6
-            ];
-
-            container.innerHTML = steps.map((text, idx) => `
-                <div class="loading-step-item" id="loading-step-${idx}">
-                    <div class="step-check-icon"><i data-lucide="check"></i></div>
-                    <span>${text}</span>
-                </div>
-            `).join('');
-
-            lucide.createIcons();
             overlay.style.display = 'flex';
+            container.innerHTML = '';
 
-            let currentStep = 0;
+            const loadingKeys = ['loading_1', 'loading_2', 'loading_3', 'loading_4', 'loading_5', 'loading_6'];
+            
+            loadingKeys.forEach((key, index) => {
+                const item = document.createElement('div');
+                item.className = 'loading-step-item';
+                item.id = `loading-step-${index}`;
+                item.innerHTML = `
+                    <div class="step-check-icon"><i data-lucide="check"></i></div>
+                    <span>${t(key)}</span>
+                `;
+                container.appendChild(item);
+            });
+            
+            if (window.lucide) lucide.createIcons();
+
+            let currentStepIdx = 0;
             const stepInterval = setInterval(() => {
-                if (currentStep > 0) {
-                    const prevEl = document.getElementById(`loading-step-${currentStep - 1}`);
-                    if (prevEl) {
-                        prevEl.classList.remove('active');
-                        prevEl.classList.add('completed');
+                if (currentStepIdx > 0) {
+                    const prev = document.getElementById(`loading-step-${currentStepIdx - 1}`);
+                    if (prev) {
+                        prev.classList.remove('active');
+                        prev.classList.add('completed');
                     }
                 }
-
-                if (currentStep < steps.length) {
-                    const currEl = document.getElementById(`loading-step-${currentStep}`);
-                    if (currEl) currEl.classList.add('active');
-                    currentStep++;
+                if (currentStepIdx < loadingKeys.length) {
+                    const curr = document.getElementById(`loading-step-${currentStepIdx}`);
+                    if (curr) curr.classList.add('active');
+                    currentStepIdx++;
                 } else {
                     clearInterval(stepInterval);
                     setTimeout(() => {
                         overlay.style.display = 'none';
-                        renderDashboard();
+                        completeOnboardingAndLaunchApp();
                     }, 400);
                 }
             }, 600);
         }
 
-        function renderDashboard() {
+        function completeOnboardingAndLaunchApp() {
+            // APPLY COLOR CHANGE OVERRIDE FOR APP AFTER ONBOARDING (#2596be)
+            document.getElementById('app-container').classList.add('app-main-view');
+
             document.getElementById('wizard-container').style.display = 'none';
             document.getElementById('app-nav-bar').style.display = 'flex';
-            
-            calculateAndDisplayMacros();
-            renderDateBars();
-            renderWorkoutTabContent();
-            renderMealsTabContent();
-            populateProfileTab();
-            
+
+            renderProfileTab();
+            renderDashboardHome();
+            renderWorkoutTab();
+            renderMealsTab();
+
             switchTab('home', document.getElementById('nav-home'));
         }
 
-        function calculateAndDisplayMacros() {
-            let calories = 2200;
-            if (userData.goal === 'gain') calories = 2750;
-            if (userData.goal === 'lose') calories = 1950;
-            
-            let protein = Math.round(userData.weight * 2.0);
-            let fats = Math.round((calories * 0.25) / 9);
-            let carbs = Math.round((calories - (protein * 4) - (fats * 9)) / 4);
+        // TAB SWITCHING
+        function switchTab(tabName, navBtn) {
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+            if (navBtn) navBtn.classList.add('active');
 
-            document.getElementById('dash-calories-val').textContent = `${calories} kcal`;
-            document.getElementById('dash-protein-val').textContent = `${protein}g`;
-            document.getElementById('dash-carbs-val').textContent = `${carbs}g`;
-            document.getElementById('dash-fats-val').textContent = `${fats}g`;
+            document.getElementById('dashboard-home').style.display = 'none';
+            document.getElementById('workout-tab').style.display = 'none';
+            document.getElementById('meals-tab').style.display = 'none';
+            document.getElementById('profile-tab').style.display = 'none';
 
-            document.getElementById('dash-progress-text').textContent = `Day 1 / ${userData.duration}`;
-            document.getElementById('total-progress-bar-fill').style.width = `${(1 / userData.duration) * 100}%`;
+            if (tabName === 'home') document.getElementById('dashboard-home').style.display = 'block';
+            if (tabName === 'workout') document.getElementById('workout-tab').style.display = 'block';
+            if (tabName === 'meals') document.getElementById('meals-tab').style.display = 'block';
+            if (tabName === 'profile') document.getElementById('profile-tab').style.display = 'block';
         }
 
-        function renderDateBars() {
-            const workoutBar = document.getElementById('workout-date-bar');
-            const mealsBar = document.getElementById('meals-date-bar');
-            const totalDays = Math.min(14, userData.duration);
-            const today = new Date();
+        // RENDER FUNCTIONS
+        function renderDashboardHome() {
+            document.getElementById('dash-progress-text').innerText = t('day_x_of_y').replace('{curr}', state.selectedDay).replace('{total}', state.durationDays);
+            const fillPct = Math.min(100, (state.selectedDay / state.durationDays) * 100);
+            document.getElementById('total-progress-bar-fill').style.width = fillPct + '%';
 
-            let workoutHtml = '';
-            let mealsHtml = '';
+            let cals = 2200, prot = 150, carbs = 220, fats = 60;
+            if (state.goal === 'gain') { cals = 2800; prot = 175; carbs = 310; fats = 75; }
+            if (state.goal === 'lose') { cals = 1850; prot = 160; carbs = 160; fats = 50; }
 
-            for (let i = 0; i < totalDays; i++) {
-                const dateObj = new Date(today);
-                dateObj.setDate(today.getDate() + i);
+            document.getElementById('dash-calories-val').innerText = `${cals} kcal`;
+            document.getElementById('dash-protein-val').innerText = `${prot}g`;
+            document.getElementById('dash-carbs-val').innerText = `${carbs}g`;
+            document.getElementById('dash-fats-val').innerText = `${fats}g`;
+        }
+
+        function renderWorkoutTab() {
+            renderDateBar('workout-date-bar', (dayNum) => {
+                state.selectedDay = dayNum;
+                renderWorkoutTab();
+                renderMealsTab();
+            });
+
+            document.getElementById('workout-session-subtitle').innerText = `${t('program_day')} ${state.selectedDay}`;
+
+            // GET ROUTINE BASED ON DAY INDEX WITH DURATION 50 TO 70 MIN
+            const routineIndex = (state.selectedDay - 1) % workoutDatabase.length;
+            const routineData = workoutDatabase[routineIndex];
+            const dict = i18n[state.lang] || i18n.en;
+
+            // DYNAMICALLY MAP ESTIMATED DURATION IN RANGE 50-70 MIN
+            let durationMin = 50 + ((state.selectedDay * 5) % 25); // Gives 50, 55, 60, 65, 70
+            if (routineData.routineKey === 'rest') durationMin = 0;
+
+            if (routineData.routineKey === 'rest') {
+                document.getElementById('workout-session-title').innerText = dict.routines.rest;
+                document.getElementById('workout-est-time').innerText = `0 ${t('min')}`;
                 
-                const dayNumIndex = i + 1;
-                const dayName = dateObj.toLocaleDateString(currentLang, { weekday: 'short' });
-                const dateNum = dateObj.getDate();
-                const monthName = dateObj.toLocaleDateString(currentLang, { month: 'short' });
-
-                workoutHtml += `
-                    <div class="date-card ${dayNumIndex === currentSelectedDay ? 'active' : ''}" onclick="selectDay(${dayNumIndex})">
-                        <span class="day-name">${dayName}</span>
-                        <span class="day-num">${dateNum}</span>
-                        <span class="day-month">${monthName}</span>
+                document.getElementById('workout-exercise-list').innerHTML = `
+                    <div class="card" style="text-align: center; padding: 40px 20px;">
+                        <i data-lucide="coffee" style="width: 42px; height: 42px; color: var(--accent-green); margin-bottom: 12px;"></i>
+                        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${dict.rest_day}</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">${dict.rest_day_desc}</p>
                     </div>
                 `;
+            } else {
+                document.getElementById('workout-session-title').innerText = dict.routines[routineData.routineKey] || routineData.routineKey;
+                document.getElementById('workout-est-time').innerText = `${durationMin} ${t('min')}`;
 
-                mealsHtml += `
-                    <div class="date-card ${dayNumIndex === selectedMealDay ? 'active' : ''}" onclick="selectMealDayFunc(${dayNumIndex})">
-                        <span class="day-name">${dayName}</span>
-                        <span class="day-num">${dateNum}</span>
-                        <span class="day-month">${monthName}</span>
-                    </div>
-                `;
-            }
-            workoutBar.innerHTML = workoutHtml;
-            mealsBar.innerHTML = mealsHtml;
-        }
+                let html = '';
+                routineData.exercises.forEach(ex => {
+                    const isDone = !!state.completedExercises[`d${state.selectedDay}_${ex.id}`];
+                    const exDescText = dict.ex_desc[ex.descKey] || '';
 
-        function selectDay(dayNum) {
-            currentSelectedDay = dayNum;
-            renderDateBars();
-            renderWorkoutTabContent();
-        }
-
-        function selectMealDayFunc(dayNum) {
-            selectedMealDay = dayNum;
-            renderDateBars();
-            renderMealsTabContent();
-        }
-
-        function renderWorkoutTabContent() {
-            const dict = i18n[currentLang] || i18n['en'];
-            const routineIndex = (currentSelectedDay - 1) % workoutDatabase.length;
-            const routine = workoutDatabase[routineIndex];
-            
-            document.getElementById('workout-session-subtitle').textContent = `WORKOUT SESSION DAY ${currentSelectedDay}`;
-            document.getElementById('workout-session-title').textContent = dict.routines[routine.routineKey] || routine.routineKey;
-            document.getElementById('workout-est-time').textContent = `${routine.estMinutes} ${dict.min}`;
-
-            const listContainer = document.getElementById('workout-exercise-list');
-
-            if (routine.exercises.length === 0) {
-                listContainer.innerHTML = `
-                    <div class="card" style="text-align: center; padding: 30px;">
-                        <i data-lucide="coffee" style="width: 40px; height: 40px; color: var(--accent-green); margin-bottom: 10px;"></i>
-                        <h3 style="font-size: 1.1rem; margin-bottom: 6px;">${dict.rest_day}</h3>
-                        <p style="font-size: 0.82rem; color: var(--text-muted);">${dict.rest_day_desc}</p>
-                    </div>
-                `;
-                lucide.createIcons();
-                return;
-            }
-
-            listContainer.innerHTML = routine.exercises.map(ex => {
-                const desc = dict.ex_desc[ex.descKey] || "";
-                return `
-                    <div class="exercise-box" id="ex-card-${ex.id}" onclick="toggleExerciseCompletion('${ex.id}')">
-                        <div class="exercise-header">
-                            <div class="exercise-title">
-                                <i data-lucide="dumbbell" class="exercise-dumbbell-icon"></i>
-                                <span>${ex.name}</span>
+                    html += `
+                        <div class="exercise-box ${isDone ? 'completed' : ''}" onclick="toggleExercise('${ex.id}')">
+                            <div class="exercise-header">
+                                <div class="exercise-title">
+                                    <i data-lucide="dumbbell" class="exercise-dumbbell-icon"></i>
+                                    <span>${ex.name}</span>
+                                </div>
+                                <div class="check-circle-icon"><i data-lucide="check"></i></div>
                             </div>
-                            <div class="check-circle-icon"><i data-lucide="check"></i></div>
+                            <div class="exercise-meta">
+                                <span><strong>${ex.sets}</strong> ${t('sets')}</span>
+                                <span>•</span>
+                                <span><strong>${ex.reps}</strong> ${t('reps')}</span>
+                                <span>•</span>
+                                <span><strong>${ex.restSeconds}s</strong> ${t('rest')}</span>
+                            </div>
+                            <p class="exercise-desc">${exDescText}</p>
                         </div>
-                        <div class="exercise-meta">
-                            <span>${dict.sets}: <strong>${ex.sets}</strong></span>
-                            <span>${dict.reps}: <strong>${ex.reps}</strong></span>
-                            <span>${dict.rest}: <strong>${ex.restSeconds}s</strong></span>
-                        </div>
-                        ${desc ? `<p class="exercise-desc">${desc}</p>` : ''}
-                    </div>
-                `;
-            }).join('');
+                    `;
+                });
+                document.getElementById('workout-exercise-list').innerHTML = html;
+            }
 
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
-        function toggleExerciseCompletion(exId) {
-            const card = document.getElementById(`ex-card-${exId}`);
-            if (!card) return;
-            card.classList.toggle('completed');
+        function toggleExercise(exId) {
+            const key = `d${state.selectedDay}_${exId}`;
+            state.completedExercises[key] = !state.completedExercises[key];
+            renderWorkoutTab();
         }
 
-        // RENDER MEALS TAB CONTENT WITH CALORIES IN MEAL HEADER
-        function renderMealsTabContent() {
-            const dict = i18n[currentLang] || i18n['en'];
-            
-            // Dynamic text Header update
-            document.getElementById('meals-day-subtitle').textContent = `MEAL PLAN DAY ${selectedMealDay}`;
-            document.getElementById('meals-day-title').textContent = dict.day_x_nutrition;
+        function renderMealsTab() {
+            renderDateBar('meals-date-bar', (dayNum) => {
+                state.selectedDay = dayNum;
+                renderWorkoutTab();
+                renderMealsTab();
+            });
 
-            const listContainer = document.getElementById('meals-list-container');
-            const langMeals = mealDatabase[currentLang] || mealDatabase['en'];
-            
-            const dayMealIndex = (selectedMealDay - 1) % langMeals.length;
-            const mealsList = langMeals[dayMealIndex];
+            document.getElementById('meals-day-subtitle').innerText = `${t('meals_subtitle').replace('{day}', state.selectedDay)}`;
 
-            listContainer.innerHTML = mealsList.map((mealObj, idx) => {
-                const isSwapped = swappableMealState[`d${selectedMealDay}_m${idx}`] || false;
-                const activeMeal = isSwapped ? mealObj.alt : mealObj.primary;
-                const mealTypeLabel = dict[activeMeal.typeKey] || activeMeal.typeKey;
+            // GENERATE UNIQUE DAILY MEAL OPTIONS FOR EVERY SINGLE DAY
+            const dayIdx = state.selectedDay - 1;
+            const bIdx = dayIdx % mealPools.breakfast.length;
+            const lIdx = dayIdx % mealPools.lunch.length;
+            const sIdx = dayIdx % mealPools.snack.length;
+            const dIdx = dayIdx % mealPools.dinner.length;
 
-                return `
+            const bAltIdx = (dayIdx + 1) % mealPools.breakfast.length;
+            const lAltIdx = (dayIdx + 1) % mealPools.lunch.length;
+            const sAltIdx = (dayIdx + 1) % mealPools.snack.length;
+            const dAltIdx = (dayIdx + 1) % mealPools.dinner.length;
+
+            const dailyMeals = [
+                { typeKey: "breakfast", primary: mealPools.breakfast[bIdx], alt: mealPools.breakfast[bAltIdx] },
+                { typeKey: "lunch", primary: mealPools.lunch[lIdx], alt: mealPools.lunch[lAltIdx] },
+                { typeKey: "snack", primary: mealPools.snack[sIdx], alt: mealPools.snack[sAltIdx] },
+                { typeKey: "dinner", primary: mealPools.dinner[dIdx], alt: mealPools.dinner[dAltIdx] }
+            ];
+
+            let html = '';
+            dailyMeals.forEach((m, idx) => {
+                const swapKey = `d${state.selectedDay}_m${idx}`;
+                const isSwapped = !!state.swappedMeals[swapKey];
+                const activeMeal = isSwapped ? m.alt : m.primary;
+                const mealTypeLabel = t(m.typeKey);
+
+                html += `
                     <div class="meal-box">
                         <div class="meal-header">
-                            <span class="meal-type">${mealTypeLabel} • ${mealObj.calories} kcal</span>
+                            <span class="meal-type">${mealTypeLabel}</span>
                         </div>
-                        <h4 class="meal-title">${activeMeal.title}</h4>
-                        <p class="meal-details">${activeMeal.details}</p>
-                        <button class="btn-swap-meal" onclick="swapMeal(${idx})">
-                            <i data-lucide="refresh-cw" style="width: 13px; height: 13px;"></i>
-                            <span>${dict.alternative}</span>
+                        <div class="meal-title">${activeMeal.title}</div>
+                        <div class="meal-details">${activeMeal.details}</div>
+                        <button class="btn-swap-meal" onclick="toggleMealSwap('${swapKey}')">
+                            <i data-lucide="refresh-cw" style="width: 12px; height: 12px;"></i>
+                            <span>${isSwapped ? t('breakfast') : t('alternative')}</span>
                         </button>
                     </div>
                 `;
-            }).join('');
+            });
 
-            lucide.createIcons();
+            document.getElementById('meals-list-container').innerHTML = html;
+            if (window.lucide) lucide.createIcons();
         }
 
-        function swapMeal(mealIdx) {
-            const key = `d${selectedMealDay}_m${mealIdx}`;
-            swappableMealState[key] = !swappableMealState[key];
-            renderMealsTabContent();
+        function toggleMealSwap(swapKey) {
+            state.swappedMeals[swapKey] = !state.swappedMeals[swapKey];
+            renderMealsTab();
         }
 
-        function populateProfileTab() {
-            document.getElementById('prof-gender').textContent = userData.gender || 'Male';
-            document.getElementById('prof-goal').textContent = userData.goal || 'Build Muscle';
-            document.getElementById('prof-loc').textContent = userData.location || 'Gym';
-            document.getElementById('prof-plan-type').textContent = userData.planType || 'Workout & Diet';
-            document.getElementById('prof-physique').textContent = userData.physique || 'Average';
-            document.getElementById('prof-duration').textContent = `${userData.duration} Days`;
-            document.getElementById('prof-freq').textContent = `${userData.workoutDays} Days/wk`;
-            document.getElementById('prof-age-group').textContent = userData.ageGroup || '25-30';
-            document.getElementById('prof-weight').textContent = `${userData.weight} ${userData.weightUnit}`;
-            document.getElementById('prof-height').textContent = `${userData.height} ${userData.heightUnit}`;
+        function renderDateBar(containerId, onSelectCallback) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            let html = '';
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+            const startDate = new Date();
+
+            for (let i = 1; i <= Math.min(30, state.durationDays); i++) {
+                const curDate = new Date();
+                curDate.setDate(startDate.getDate() + (i - 1));
+
+                const dayName = days[curDate.getDay()];
+                const dayNum = curDate.getDate();
+                const monthName = months[curDate.getMonth()];
+                const isActive = (i === state.selectedDay);
+
+                html += `
+                    <div class="date-card ${isActive ? 'active' : ''}" onclick="selectDate(${i})">
+                        <span class="day-name">${dayName}</span>
+                        <span class="day-num">${dayNum}</span>
+                        <span class="day-month">${monthName}</span>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
         }
 
-        function switchTab(tabName, el) {
-            activeTab = tabName;
-            
-            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
-            if (el) el.classList.add('active');
+        function selectDate(dayNum) {
+            state.selectedDay = dayNum;
+            renderDashboardHome();
+            renderWorkoutTab();
+            renderMealsTab();
+        }
 
-            document.getElementById('dashboard-home').style.display = tabName === 'home' ? 'block' : 'none';
-            document.getElementById('workout-tab').style.display = tabName === 'workout' ? 'block' : 'none';
-            document.getElementById('meals-tab').style.display = tabName === 'meals' ? 'block' : 'none';
-            document.getElementById('profile-tab').style.display = tabName === 'profile' ? 'block' : 'none';
+        function renderProfileTab() {
+            document.getElementById('prof-gender').innerText = state.gender ? t(state.gender) : 'Male';
+            document.getElementById('prof-goal').innerText = state.goal ? t(state.goal) : 'Build muscle';
+            document.getElementById('prof-loc').innerText = state.location ? t(state.location === 'home' ? 'at_home' : 'at_gym') : 'Gym';
+            document.getElementById('prof-plan-type').innerText = state.planType || 'Workout & Diet';
+            document.getElementById('prof-physique').innerText = state.physique ? t(state.physique) : 'Average';
+            document.getElementById('prof-duration').innerText = `${state.durationDays} Days`;
+            document.getElementById('prof-freq').innerText = `${state.workoutDaysPerWeek} Days/wk`;
+            document.getElementById('prof-age-group').innerText = state.ageGroup || '25-30';
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const wUnit = state.weightUnit === 'kg' ? 'kg' : 'lbs';
+            const wVal = state.weightUnit === 'kg' ? state.weightKg : Math.round(state.weightKg * 2.20462);
+            document.getElementById('prof-weight').innerText = `${wVal} ${wUnit}`;
+
+            if (state.heightUnit === 'cm') {
+                document.getElementById('prof-height').innerText = `${state.heightCm} cm`;
+            } else {
+                const totalInches = Math.round(state.heightCm / 2.54);
+                const feet = Math.floor(totalInches / 12);
+                const inches = totalInches % 12;
+                document.getElementById('prof-height').innerText = `${feet}'${inches}" ft`;
+            }
         }
 
         function resetOnboarding() {
-            if (confirm("Are you sure you want to reset your configuration?")) {
-                location.reload();
-            }
+            document.getElementById('app-container').classList.remove('app-main-view');
+            document.getElementById('dashboard-home').style.display = 'none';
+            document.getElementById('workout-tab').style.display = 'none';
+            document.getElementById('meals-tab').style.display = 'none';
+            document.getElementById('profile-tab').style.display = 'none';
+            document.getElementById('app-nav-bar').style.display = 'none';
+
+            document.getElementById('wizard-container').style.display = 'block';
+            nextStep('lang');
         }
     </script>
 </body>
