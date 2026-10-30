@@ -50,6 +50,7 @@ h1{margin:0;font-size:1.65rem;line-height:1.15;font-weight:600;letter-spacing:-.
 .link:hover{border-color:var(--line-strong);background:var(--surface-hover);box-shadow:0 0 22px var(--halo-hover)}
 .link:focus-visible,.chip:focus-visible,.share:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .ic{flex:none;width:1.3rem;height:1.3rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.ic-img{flex:none;width:1.4rem;height:1.4rem;object-fit:contain}
 .link .t{flex:1;min-width:0}
 .link small{display:block;font-weight:400;color:var(--muted);font-size:.84rem;margin-top:.1rem}
 .arrow{flex:none;width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.4;transition:transform .2s,opacity .2s}
@@ -84,7 +85,9 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:1.75rem;
 </main>
 
 <script>
-/* Edit this block: your links and socials live here. */
+/* Edit this block: your links and socials live here.
+   Icons: add img:"https://your-host/icon.png" to any link to use an image instead of the built-in SVG.
+   Use transparent PNG or SVG files; a white-background JPG will show as a white square. */
 var LINKS=[
   {title:"Autumn print drop",sub:"12 new risographs, limited run",url:"https://example.com/shop",icon:"book",feature:true},
   {title:"Watch the latest video",sub:"Studio tour and process",url:"https://example.com/video",icon:"chat"},
@@ -108,7 +111,7 @@ var ICONS={
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 document.getElementById("links").innerHTML=LINKS.map(function(l){
   return '<li><a class="link'+(l.feature?' feature':'')+'" href="'+esc(l.url)+'" target="_blank" rel="noopener">'+
-  '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[l.icon]||ICONS.grid)+'</svg>'+
+  (l.img?'<img class="ic-img" src="'+esc(l.img)+'" alt="" width="22" height="22" loading="lazy">':'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[l.icon]||ICONS.grid)+'</svg>')+
   '<span class="t">'+esc(l.title)+(l.sub?'<small>'+esc(l.sub)+'</small>':'')+'</span>'+
   '<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>';
 }).join("");
