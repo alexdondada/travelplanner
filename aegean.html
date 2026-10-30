@@ -71,10 +71,8 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:1.75rem;
 <body>
 <main>
   <header class="profile">
-    <div class="avatar" aria-hidden="true">MO</div>
-    <h1>Maya Ortega</h1>
-    <p class="role">Illustrator &amp; print maker</p>
-    <p class="bio">New prints every month. Start with the links below.</p>
+    <div class="avatar" aria-hidden="true">AGS</div>
+    <h1>Aegean Gas Stop</h1>
   </header>
 
   <ul class="links" id="links"></ul>
@@ -86,17 +84,13 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:1.75rem;
 <script>
 /* Edit this block: your links and socials live here. Icons: set img to your own file or URL. */
 var LINKS=[
-  {title:"MENU",url:"https://example.com/shop",img:"https://i.ibb.co/tTbcKhPF/menu.png",feature:true},
+  {title:"MENU",url:"https://example.com/shop",img:"https://cdn-icons-png.flaticon.com/128/890/890964.png",feature:true},
   {title:"Signal App",url:"https://example.com/video",img:"https://i.ibb.co/4Rm75kD5/Signal-ultramarine-icon.png"},
   {title:"Threema",url:"https://example.com/work",img:"https://i.ibb.co/8nxZHXvT/unnamed.png"},
-  {title:"Telegram",url:"https://example.com/news",img:"https://i.ibb.co/1Gs45yJY/telegram-6896827-1280.webp"},
-  {title:"Book a commission",url:"https://example.com/book",img:"example5.png"}
+  {title:"Telegram",url:"https://example.com/news",img:"https://i.ibb.co/1Gs45yJY/telegram-6896827-1280.webp"}
 ];
 var SOCIALS=[
-  {name:"Instagram",url:"https://instagram.com/"},
-  {name:"TikTok",url:"https://tiktok.com/"},
-  {name:"YouTube",url:"https://youtube.com/"},
-  {name:"Email",url:"mailto:hello@example.com"}
+  {name:"Instagram",url:"https://instagram.com/"}
 ];
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 document.getElementById("links").innerHTML=LINKS.map(function(l){
