@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Maya Ortega · All my links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#0b0c0f; --surface:#14161b; --surface-hover:#1a1d23; --ink:#eef0f4; --muted:#8b91a1;
+  --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.20);
+  --feature-bg:#eef0f4; --feature-ink:#0b0c0f;
+  --halo:rgba(255,255,255,.10); --halo-soft:rgba(255,255,255,.05); --halo-hover:rgba(255,255,255,.10);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  background:radial-gradient(60rem 30rem at 50% -8rem,rgba(110,130,210,.14),transparent 70%),var(--bg);
+  background-attachment:fixed;
+  font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.45;-webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+main{max-width:28rem;margin:0 auto;padding:3rem 1.25rem 3rem}
+.profile{text-align:center;margin-bottom:2.25rem}
+.avatar{
+  width:5.5rem;height:5.5rem;margin:0 auto 1.25rem;border-radius:50%;
+  display:grid;place-items:center;font-weight:500;font-size:1.7rem;letter-spacing:.02em;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line-strong);
+  box-shadow:0 0 0 6px var(--bg),0 0 0 7px var(--line),0 0 26px 2px var(--halo);
+}
+h1{margin:0;font-size:1.65rem;line-height:1.15;font-weight:600;letter-spacing:-.02em}
+.role{margin:.35rem 0 0;color:var(--muted);font-size:.95rem}
+.bio{margin:1rem auto 0;max-width:22rem;color:var(--muted);font-size:.95rem}
+.links{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.link{
+  display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:1rem 1.1rem;font-weight:500;font-size:.98rem;
+  box-shadow:0 0 18px var(--halo-soft);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+}
+.link:hover{border-color:var(--line-strong);background:var(--surface-hover);box-shadow:0 0 22px var(--halo-hover)}
+.link:focus-visible,.chip:focus-visible,.share:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.ic{flex:none;width:1.3rem;height:1.3rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.link .t{flex:1;min-width:0}
+.link small{display:block;font-weight:400;color:var(--muted);font-size:.84rem;margin-top:.1rem}
+.arrow{flex:none;width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.4;transition:transform .2s,opacity .2s}
+.link:hover .arrow{transform:translateX(3px);opacity:.85}
+.link.feature{background:var(--feature-bg);color:var(--feature-ink);border-color:transparent;box-shadow:0 0 24px rgba(255,255,255,.14)}
+.link.feature:hover{background:var(--feature-bg);box-shadow:0 0 30px rgba(255,255,255,.22)}
+.link.feature small{color:inherit;opacity:.65}
+.link.feature .ic{opacity:.9}
+.socials{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:2.25rem 0 1.5rem}
+.chip{font-size:.85rem;font-weight:500;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.4rem .95rem;transition:color .15s,border-color .15s}
+.chip:hover{color:var(--ink);border-color:var(--line-strong)}
+.share{display:block;margin:0 auto;font:inherit;font-weight:500;font-size:.85rem;color:var(--muted);background:none;border:0;cursor:pointer}
+.share:hover{color:var(--ink)}
+footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:1.75rem;opacity:.7}
+@media (prefers-reduced-motion:reduce){.link,.arrow,.chip{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <header class="profile">
+    <div class="avatar" aria-hidden="true">MO</div>
+    <h1>Maya Ortega</h1>
+    <p class="role">Illustrator &amp; print maker</p>
+    <p class="bio">New prints every month. Start with the links below.</p>
+  </header>
+
+  <ul class="links" id="links"></ul>
+
+  <nav class="socials" id="socials" aria-label="Social profiles"></nav>
+  <button class="share" id="share" type="button">Copy link to this page</button>
+  <footer>© <span id="yr"></span> Maya Ortega</footer>
+</main>
+
+<script>
+/* Edit this block: your links and socials live here. */
+var LINKS=[
+  {title:"Autumn print drop",sub:"12 new risographs, limited run",url:"https://example.com/shop",icon:"book",feature:true},
+  {title:"Watch the latest video",sub:"Studio tour and process",url:"https://example.com/video",icon:"chat"},
+  {title:"Join the newsletter",sub:"One email a month",url:"https://example.com/news",icon:"mail"},
+  {title:"Portfolio",sub:"Selected work 2020–2026",url:"https://example.com/work",icon:"grid"},
+  {title:"Book a commission",sub:"Open for November",url:"https://example.com/book",icon:"cal"}
+];
+var SOCIALS=[
+  {name:"Instagram",url:"https://instagram.com/"},
+  {name:"TikTok",url:"https://tiktok.com/"},
+  {name:"YouTube",url:"https://youtube.com/"},
+  {name:"Email",url:"mailto:hello@example.com"}
+];
+var ICONS={
+  book:'<path d="M12 7c-1.5-1.2-3.5-2-6-2H4v13h2c2.5 0 4.5.8 6 2 1.5-1.2 3.5-2 6-2h2V5h-2c-2.5 0-4.5.8-6 2z"/><path d="M12 7v13"/>',
+  chat:'<path d="M5 5h14a2 2 0 012 2v8a2 2 0 01-2 2h-7l-5 4v-4H5a2 2 0 01-2-2V7a2 2 0 012-2z"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  grid:'<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',
+  cal:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>'
+};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+document.getElementById("links").innerHTML=LINKS.map(function(l){
+  return '<li><a class="link'+(l.feature?' feature':'')+'" href="'+esc(l.url)+'" target="_blank" rel="noopener">'+
+  '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[l.icon]||ICONS.grid)+'</svg>'+
+  '<span class="t">'+esc(l.title)+(l.sub?'<small>'+esc(l.sub)+'</small>':'')+'</span>'+
+  '<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>';
+}).join("");
+document.getElementById("socials").innerHTML=SOCIALS.map(function(s){
+  return '<a class="chip" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.name)+'</a>';
+}).join("");
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+var shareBtn=document.getElementById("share");
+shareBtn.addEventListener("click",function(){
+  function done(){shareBtn.textContent="Link copied";setTimeout(function(){shareBtn.textContent="Copy link to this page"},1800)}
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(location.href).then(done,function(){})}
+  }catch(e){}
+});
+</script>
+</body>
+</html>
