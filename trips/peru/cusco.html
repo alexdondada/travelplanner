@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Περού: Machu Picchu, Rainbow Mountain & Λίμνη Humantay | Offset Travel Design</title>
-  <meta name="description" content="Οργανωμένο 8ήμερο ταξίδι στο Περού: Λίμα, Ιερή Κοιλάδα, Machu Picchu, Κούσκο και πεζοπορία στη Λίμνη Humantay. Πτήσεις, διαμονή, τρένο Vistadome και Ελληνόφωνος συνοδός σε ένα πλήρες πακέτο." />
+  <meta name="description" content="Οργανωμένο 8ήμερο ταξίδι στο Περού: Λίμα, Ιερή Κοιλάδα, Machu Picchu, Κούσκο, Λίμνη Humantay και Rainbow Mountain. Πτήσεις, διαμονή, τρένο Vistadome και Ελληνόφωνος συνοδός σε ένα πλήρες πακέτο." />
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,31 +57,21 @@
       margin: 0;
     }
 
-    /* Επιλογές μέσα στην Ημέρα 7 */
-    .day-option {
-      border-top: 1px solid var(--border, #e2dfd7);
-      margin-top: 20px;
-      padding-top: 20px;
+    /* Πλαίσια πλαϊνής στήλης: πράσινο για τα περιλαμβανόμενα, κίτρινο για τα προαιρετικά */
+    .box-included {
+      background: #eef7ef;
+      border: 1px solid #c9e4cd;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
     }
 
-    .day-option h4 {
-      font-family: var(--font-heading);
-      color: var(--primary, #1b2a4a);
-      font-size: 1.05rem;
-      margin: 0 0 8px 0;
-    }
-
-    .badge-optional {
-      background: #f8f6f0;
-      color: var(--accent, #c48b5f);
-      border: 1px solid var(--accent, #c48b5f);
-      padding: 2px 10px;
-      border-radius: 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-left: 8px;
-      vertical-align: middle;
+    .box-optional {
+      background: #fff8e1;
+      border: 1px solid #f0dc9b;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
     }
 
     .sidebar-card { 
@@ -98,7 +88,7 @@
     .inc-exc-list { list-style: none; padding: 0; margin: 0; }
     .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
     .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
-    .opt-list li::before { content: "+"; position: absolute; left: 0; color: var(--accent, #c48b5f); font-weight: bold; }
+    .opt-list li::before { content: "+"; position: absolute; left: 0; color: #b7791f; font-weight: bold; }
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
@@ -182,8 +172,8 @@
 
   <header class="trip-hero">
     <span class="badge">SOUTH AMERICA EXPLORER</span>
-    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Περού: Machu Picchu, Κούσκο & Λίμνη Humantay</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">8 Ημέρες • 7 Διανυκτερεύσεις • Λίμα • Ιερή Κοιλάδα • Machu Picchu • Κούσκο • Λίμνη Humantay</p>
+    <h1 style="font-size:2.8rem; margin:15px 0 10px;">Περού: Machu Picchu, Rainbow Mountain & Λίμνη Humantay</h1>
+    <p style="font-size:1.1rem; opacity:0.9;">8 Ημέρες • 7 Διανυκτερεύσεις • Λίμα • Ιερή Κοιλάδα • Machu Picchu • Κούσκο • Rainbow Mountain</p>
   </header>
 
   <main class="container section">
@@ -198,7 +188,7 @@
       <div>
         <div class="itinerary-day">
           <h3>Ημέρα 1: Άφιξη στη Λίμα – Καλωσόρισμα</h3>
-          <p>Άφιξη στη Λίμα (πτήση με στάση), υποδοχή από τον τοπικό αντιπρόσωπο και μεταφορά στο 5* ξενοδοχείο μας. Η ώρα στο Περού είναι 8 ώρες πίσω από την Ελλάδα τον Σεπτέμβριο, γι' αυτό η πρώτη ημέρα είναι ήρεμη, με δείπνο καλωσορίσματος και αυθεντική περουβιανή κουζίνα.</p>
+          <p>Άφιξη στη Λίμα (πτήση με στάση), υποδοχή από τον τοπικό αντιπρόσωπο και μεταφορά στο ξενοδοχείο μας. Η ώρα στο Περού είναι 8 ώρες πίσω από την Ελλάδα τον Σεπτέμβριο, γι' αυτό η πρώτη ημέρα είναι ήρεμη, με δείπνο καλωσορίσματος και αυθεντική περουβιανή κουζίνα.</p>
         </div>
 
         <div class="itinerary-day">
@@ -208,37 +198,27 @@
 
         <div class="itinerary-day">
           <h3>Ημέρα 3: Ιερή Κοιλάδα – Maras, Moray & Ollantaytambo</h3>
-          <p>Εξερεύνηση της Ιερής Κοιλάδας: οι αλυκές Maras, οι κυκλικοί αναβαθμοί Moray και το φρούριο Ollantaytambo. Διανυκτέρευση στην Ιερή Κοιλάδα.</p>
+          <p>Εξερεύνηση της Ιερής Κοιλάδας: οι αλυκές Maras, οι κυκλικοί αναβαθμοί Moray και το φρούριο Ollantaytambo. Το απόγευμα επιβιβαζόμαστε στο πανοραμικό τρένο Vistadome για το Aguas Calientes, όπου διανυκτερεύουμε.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Τρένο Vistadome – Machu Picchu & Aguas Calientes</h3>
-          <p>Με το πανοραμικό τρένο Vistadome φτάνουμε στο Aguas Calientes και ανεβαίνουμε στο Machu Picchu για ξενάγηση στη «Χαμένη Πόλη των Ίνκας». Διανυκτέρευση στο Aguas Calientes.</p>
+          <h3>Ημέρα 4: Machu Picchu – Επιστροφή στο Κούσκο</h3>
+          <p>Πρωινή ανάβαση στο Machu Picchu για ξενάγηση στη «Χαμένη Πόλη των Ίνκας». Το απόγευμα επιστρέφουμε με το τρένο στο Κούσκο.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Επιστροφή στο Κούσκο & Εργαστήριο Σοκολάτας</h3>
-          <p>Επιστροφή με το τρένο στο Κούσκο και απογευματινό εργαστήριο σοκολάτας (ChocoMuseo), όπου φτιάχνουμε τις δικές μας χειροποίητες σοκολάτες από περουβιανό κακάο.</p>
+          <h3>Ημέρα 5: Λίμνη Humantay (4.200 m)</h3>
+          <p>Πρωινή εξόρμηση στις Άνδεις και πεζοπορία προς τη γαλαζοπράσινη παγετώδη λίμνη Humantay, κάτω από τον παγετώνα Salkantay. Επιστροφή στο Κούσκο το απόγευμα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: Κούσκο – Qorikancha, Sacsayhuamán & Plaza de Armas</h3>
-          <p>Ήπια ημέρα για προσαρμογή στο υψόμετρο: ξενάγηση στο ιστορικό Κούσκο, με τον Καθεδρικό, τον ναό Qorikancha και το φρούριο Sacsayhuamán.</p>
+          <h3>Ημέρα 6: Κούσκο – Ξενάγηση & Εργαστήριο Σοκολάτας</h3>
+          <p>Ήπια ημέρα για ξεκούραση και προσαρμογή στο υψόμετρο: ξενάγηση στο ιστορικό Κούσκο, με τον Καθεδρικό, τον ναό Qorikancha και το φρούριο Sacsayhuamán, και απογευματινό εργαστήριο σοκολάτας (ChocoMuseo).</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 7: Επιλέξτε τη Μέρα σας – Λίμνη Humantay ή Rainbow Mountain</h3>
-          <p>Δύο επιλογές για την τελευταία ολόκληρη ημέρα. Δηλώστε την προτίμησή σας στη φόρμα κράτησης.</p>
-
-          <div class="day-option">
-            <h4>Επιλογή Α: Λίμνη Humantay (4.200 m) <span class="badge-optional">Περιλαμβάνεται</span></h4>
-            <p>Πρωινή εξόρμηση στις Άνδεις και πεζοπορία προς τη γαλαζοπράσινη παγετώδη λίμνη Humantay, κάτω από τον παγετώνα Salkantay. Επιστροφή στο Κούσκο το απόγευμα.</p>
-          </div>
-
-          <div class="day-option">
-            <h4>Επιλογή Β: Rainbow Mountain – Vinicunca (πάνω από 5.000 m) <span class="badge-optional">Προαιρετικό, με επιπλέον κόστος</span></h4>
-            <p>Αναχώρηση πολύ νωρίς το πρωί για τα πολύχρωμα ορυκτά στρώματα του Vinicunca. Απαιτεί καλή φυσική κατάσταση και προσαρμογή στο υψόμετρο.</p>
-          </div>
+          <h3>Ημέρα 7: Rainbow Mountain (Vinicunca, 5.036 m) & Αποχαιρετιστήριο Δείπνο</h3>
+          <p>Αναχώρηση πολύ νωρίς το πρωί για τα πολύχρωμα ορυκτά στρώματα του Vinicunca. Επιστροφή στο Κούσκο το βράδυ για αποχαιρετιστήριο δείπνο με παραδοσιακή μουσική των Άνδεων.</p>
         </div>
 
         <div class="itinerary-day">
@@ -249,34 +229,33 @@
 
       <div>
         <div class="sidebar-card">
-          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
-          <ul class="inc-exc-list inc-list">
-            <li>Διεθνείς πτήσεις Αθήνα - Λίμα με επιστροφή (με στάση)</li>
-            <li>Για αναχώρηση από Θεσσαλονίκη: πτήσεις Θεσσαλονίκη - Αθήνα με επιστροφή (ξεχωριστά εισιτήρια)</li>
-            <li>Εσωτερικές πτήσεις Λίμα - Κούσκο - Λίμα</li>
-            <li>1 διανυκτέρευση σε 5* ξενοδοχείο στη Λίμα με πρωινό</li>
-            <li>2 διανυκτερεύσεις σε boutique resort στην Ιερή Κοιλάδα με πρωινό</li>
-            <li>1 διανυκτέρευση σε 4* ξενοδοχείο στο Aguas Calientes με πρωινό</li>
-            <li>3 διανυκτερεύσεις σε 5* ιστορικό ξενοδοχείο στο Κούσκο με πρωινό</li>
-            <li>Εισιτήρια πανοραμικού τρένου Vistadome (Ollantaytambo - Aguas Calientes - Κούσκο)</li>
-            <li>Εισιτήριο εισόδου στο Machu Picchu & λεωφορείο Aguas Calientes - Machu Picchu</li>
-            <li>Επίσημος οδηγός στο Machu Picchu</li>
-            <li>Ξενάγηση & εισιτήρια στο Κούσκο (Qorikancha, Sacsayhuamán)</li>
-            <li>Πεζοπορία στη Λίμνη Humantay με οδηγό (Ημέρα 7, Επιλογή Α)</li>
-            <li>Εργαστήριο σοκολάτας (ChocoMuseo)</li>
-            <li>Όλες οι μεταφορές με πολυτελή κλιματιζόμενα πούλμαν</li>
-            <li>Ελληνόφωνος αρχηγός / συνοδός καθ' όλη τη διάρκεια του ταξιδιού</li>
-            <li>Πλήρης ταξιδιωτική ασφάλιση & παροχή φιαλών οξυγόνου</li>
-          </ul>
+          <div class="box-included">
+            <h3 style="font-family: var(--font-heading); color: var(--primary); margin: 0 0 16px 0;">Τι Περιλαμβάνεται</h3>
+            <ul class="inc-exc-list inc-list">
+              <li>Διεθνείς πτήσεις Αθήνα - Λίμα με επιστροφή (με στάση)</li>
+              <li>Για αναχώρηση από Θεσσαλονίκη: πτήσεις Θεσσαλονίκη - Αθήνα με επιστροφή (ξεχωριστά εισιτήρια)</li>
+              <li>Εσωτερικές πτήσεις Λίμα - Κούσκο - Λίμα</li>
+              <li>7 διανυκτερεύσεις με πρωινό σε ξενοδοχεία, ανάλογα με τη διαθεσιμότητα: 1 στη Λίμα, 1 στην Ιερή Κοιλάδα, 1 στο Aguas Calientes και 4 στο Κούσκο</li>
+              <li>Εισιτήρια πανοραμικού τρένου Vistadome (Ollantaytambo - Aguas Calientes - Κούσκο)</li>
+              <li>Εισιτήριο εισόδου στο Machu Picchu & λεωφορείο Aguas Calientes - Machu Picchu</li>
+              <li>Επίσημος οδηγός στο Machu Picchu</li>
+              <li>Ξενάγηση & εισιτήρια στο Κούσκο (Qorikancha, Sacsayhuamán)</li>
+              <li>Εκδρομή & πεζοπορία στη Λίμνη Humantay με οδηγό</li>
+              <li>Εκδρομή & πεζοπορία στο Rainbow Mountain (Vinicunca) με οδηγό</li>
+              <li>Εργαστήριο σοκολάτας (ChocoMuseo)</li>
+              <li>Όλες οι μεταφορές με πολυτελή κλιματιζόμενα πούλμαν</li>
+              <li>Ελληνόφωνος αρχηγός / συνοδός καθ' όλη τη διάρκεια του ταξιδιού</li>
+              <li>Πλήρης ταξιδιωτική ασφάλιση & παροχή φιαλών οξυγόνου</li>
+            </ul>
+          </div>
 
-          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
-
-          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Προαιρετικά (με επιπλέον κόστος)</h3>
-          <ul class="inc-exc-list opt-list">
-            <li>Εκδρομή στο Rainbow Mountain (Vinicunca) στη θέση της Λίμνης Humantay (Ημέρα 7, Επιλογή Β)</li>
-          </ul>
-
-          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+          <div class="box-optional">
+            <h3 style="font-family: var(--font-heading); color: var(--primary); margin: 0 0 16px 0;">Προαιρετικά (με επιπλέον κόστος)</h3>
+            <ul class="inc-exc-list opt-list">
+              <li>Άλογο για το ανηφορικό τμήμα στη Humantay και στο Rainbow Mountain</li>
+              <li>Ανάβαση στο Huayna Picchu ή στο Machu Picchu Mountain (ξεχωριστό εισιτήριο, περιορισμένες θέσεις)</li>
+            </ul>
+          </div>
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
@@ -287,14 +266,14 @@
             <li>Προσωπικά έξοδα</li>
           </ul>
 
-          <!-- TODO: Έλεγχος τιμής. Πρόχειρη εκτίμηση κατ' άτομο (δίκλινο): πτήσεις ~800€, εσωτερικές πτήσεις ~140€, ξενοδοχεία ~465€ (παραδοχές ανά δωμάτιο: Λίμα 110€, Ιερή Κοιλάδα 130€, Aguas Calientes 110€, Κούσκο 150€), τρένο ~150€, εισιτήριο/λεωφορείο Machu Picchu ~55€, εκδρομές/εισόδους/εργαστήριο ~125€ = ~1.735€ άμεσο κόστος. Με ~400€ λειτουργικά έξοδα και ~12% περιθώριο προκύπτουν ~2.390€, δηλαδή ~2.070€ χωρίς τους φόρους αεροδρομίων (~320€). Το 2.480€ φαίνεται επαρκές. Οι τιμές ξενοδοχείων και εσωτερικών πτήσεων είναι παραδοχές και πρέπει να επιβεβαιωθούν με προσφορές. -->
+          <!-- TODO: Έλεγχος τιμής. Η τιμή βασίζεται αποκλειστικά σε πτήσεις, ξενοδοχεία και αξιοθέατα (χωρίς λειτουργικά έξοδα, γεύματα ή περιθώριο). Πρόχειρη εκτίμηση κατ' άτομο (δίκλινο): πτήσεις Αθήνα-Λίμα ~480€ (χωρίς φόρους αεροδρομίων), εσωτερικές πτήσεις ~140€, ξενοδοχεία ~475€ (παραδοχές ανά δωμάτιο/νύχτα: Λίμα 110€, Ιερή Κοιλάδα 130€, Aguas Calientes 110€, Κούσκο 150€), αξιοθέατα ~410€ (τρένο ~150€, Machu Picchu με λεωφορείο ~55€, Sacred Valley ~40€, Λίμα ~30€, Κούσκο ~35€, Humantay ~35€, Rainbow Mountain ~40€, εργαστήριο σοκολάτας ~25€) = ~1.505€. Το 1.550€ είναι στρογγυλοποίηση προς τα πάνω. Οι τιμές ξενοδοχείων, εσωτερικών πτήσεων και ορισμένων εκδρομών είναι παραδοχές και πρέπει να επιβεβαιωθούν με προσφορές. -->
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              2.480€
+              2.090€
             </div>
-            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 7 Νύχτες / 8 Ημέρες)</span>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πτήσεις, ξενοδοχεία & αξιοθέατα - 7 Νύχτες / 8 Ημέρες)</span>
           </div>
         </div>
       </div>
@@ -393,13 +372,6 @@
             <option value="ATH">ATH - Αθήνα (Αεροδρόμιο "Ελευθέριος Βενιζέλος")</option>
           </select>
           <small style="display:block; margin-top:6px; color: var(--text-muted);">Από Θεσσαλονίκη η διαδρομή γίνεται μέσω Αθήνας, με ξεχωριστά εισιτήρια Θεσσαλονίκη - Αθήνα (μετ' επιστροφής) και επαρκή χρόνο σύνδεσης.</small>
-        </div>
-        <div class="form-group">
-          <label for="day7">Ημέρα 7 – Επιλογή Προγράμματος</label>
-          <select id="day7" name="day7" style="width: 100%; padding: 12px; border: 1px solid var(--border, #e2dfd7); border-radius: 4px; font-size: 0.95rem; background: #fff; color: #2d3748;">
-            <option value="humantay" selected>Λίμνη Humantay (περιλαμβάνεται)</option>
-            <option value="rainbow">Rainbow Mountain (προαιρετικό, με επιπλέον κόστος)</option>
-          </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
       </form>
