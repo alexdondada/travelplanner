@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Οργανωμένο 6ήμερο ταξίδι στη Λαπωνία: Χωριό του Αϊ-Βασίλη, έλκηθρο με huskies, φάρμα ταράνδων, Ranua Wildlife Park, κυνήγι Βόρειου Σέλαος, εθνικό πάρκο και σκι στο Ρόβανιεμι." />
+  <meta name="description" content="Οργανωμένο 6ήμερο ταξίδι στη Λαπωνία: Χωριό του Αϊ-Βασίλη, έλκηθρο με huskies, φάρμα ταράνδων, Ranua Wildlife Park, κυνήγι Βόρειου Σέλαος, εθνικό πάρκο Riisitunturi και σκι στο Ρόβανιεμι." />
   <title>Λαπωνία: Ρόβανιεμι & Βόρειο Σέλας | Offset Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,6 +57,23 @@
       margin: 0;
     }
 
+    /* Πλαίσια πλαϊνής στήλης: πράσινο για τα περιλαμβανόμενα, κίτρινο για τα προαιρετικά */
+    .box-included {
+      background: #eef7ef;
+      border: 1px solid #c9e4cd;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .box-optional {
+      background: #fff8e1;
+      border: 1px solid #f0dc9b;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -71,6 +88,7 @@
     .inc-exc-list { list-style: none; padding: 0; margin: 0; }
     .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
     .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .opt-list li::before { content: "+"; position: absolute; left: 0; color: #b7791f; font-weight: bold; }
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
@@ -113,6 +131,7 @@
     }
 
     .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-2x1 { grid-column: span 2; grid-row: span 1; }
     .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
     .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
     .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
@@ -133,8 +152,8 @@
 
   <nav class="navbar">
     <div class="nav-container">
-                <a href="../../index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
-              <ul class="nav-links" id="navLinks">
+      <a href="../../index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
         <li><a href="../../index.html#gallery">Εμπειρίες</a></li>
@@ -154,83 +173,94 @@
   <header class="trip-hero">
     <span class="badge">ARCTIC WINTER WONDERLAND</span>
     <h1 style="font-size:2.8rem; margin:15px 0 10px;">Λαπωνία: Ρόβανιεμι & Βόρειο Σέλας</h1>
-    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Χωριό Αϊ-Βασίλη • Huskies & Τάρανδοι • Ζωολογικός Κήπος Ranua</p>
+    <p style="font-size:1.1rem; opacity:0.9;">6 Ημέρες • 5 Διανυκτερεύσεις • Χωριό Αϊ-Βασίλη • Huskies & Τάρανδοι • Ranua Wildlife Park • Βόρειο Σέλας</p>
   </header>
 
   <main class="container section">
 
     <div class="itinerary-header">
-      <span class="badge-date">📅 10 - 15 ΙΑΝΟΥΑΡΙΟΥ 2027</span>
-      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα</h2>
+      <span class="badge-date">📅 26 - 31 ΙΑΝΟΥΑΡΙΟΥ 2027</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Πρόγραμμα Ημέρα προς Ημέρα (6 Ημέρες / 5 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στο Ρόβανιεμι – Ξεκούραση & Τακτοποίηση</h3>
-          <p>Πτήση προς το Ρόβανιεμι, την πρωτεύουσα της Λαπωνίας. Τον Ιανουάριο η Φινλανδία βρίσκεται στην ίδια ζώνη ώρας με την Ελλάδα, οπότε δεν υπάρχει jet lag — ωστόσο η πρώτη ημέρα κρατιέται ήσυχη λόγω της διάρκειας του ταξιδιού: τακτοποίηση στο ξενοδοχείο μας, ώστε να είστε ξεκούραστοι για το πλούσιο πρόγραμμα που ακολουθεί.</p>
+          <h3>Ημέρα 1: Άφιξη στο Ρόβανιεμι – Τακτοποίηση</h3>
+          <p>Πτήση προς το Ρόβανιεμι, την πρωτεύουσα της Λαπωνίας (με στάση στο Ελσίνκι). Η Φινλανδία έχει την ίδια ώρα με την Ελλάδα, οπότε δεν υπάρχει jet lag. Μεταφορά και τακτοποίηση στο ξενοδοχείο μας, ώστε να είστε ξεκούραστοι για το πρόγραμμα που ακολουθεί.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Χωριό του Αϊ-Βασίλη, Έλκηθρο με Huskies & Επίσκεψη σε Φάρμα Ταράνδων</h3>
-          <p>Μια ημέρα αφιερωμένη στην κλασική μαγεία της Λαπωνίας, με όλες τις δραστηριότητες συγκεντρωμένες στην ίδια περιοχή γύρω από τον Αρκτικό Κύκλο. Επισκεπτόμαστε το διάσημο Χωριό του Αϊ-Βασίλη, περνάμε τη γραμμή του Αρκτικού Κύκλου και συναντάμε τον ίδιο τον Άγιο Βασίλη. Συνεχίζουμε με μια συναρπαστική βόλτα σε έλκηθρο με Σιβιρικά huskies μέσα στο χιονισμένο τοπίο, και ολοκληρώνουμε με επίσκεψη σε φάρμα ταράνδων, όπου μαθαίνουμε για την παράδοση των Σάμι και ταΐζουμε τα ζώα.</p>
+          <h3>Ημέρα 2: Χωριό του Αϊ-Βασίλη, Έλκηθρο με Huskies & Φάρμα Ταράνδων</h3>
+          <p>Επισκεπτόμαστε το Χωριό του Αϊ-Βασίλη, περνάμε τη γραμμή του Αρκτικού Κύκλου και συναντάμε τον ίδιο τον Άγιο Βασίλη. Συνεχίζουμε με βόλτα σε έλκηθρο με Σιβηρικά huskies στο χιονισμένο τοπίο και με επίσκεψη σε φάρμα ταράνδων, όπου μαθαίνουμε για την παράδοση των Σάμι.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Ζωολογικό Πάρκο Ranua & Βραδινή Αναζήτηση για το Βόρειο Σέλας</h3>
-          <p>Ημερήσια εκδρομή στο Ranua Wildlife Park, το βορειότερο ζωολογικό πάρκο του κόσμου, όπου ζουν ελεύθερα αρκτικά ζώα όπως πολικές αρκούδες, λύγκες και αρκτικές αλεπούδες στο φυσικό τους περιβάλλον. Επιστρέφουμε το απόγευμα στο Ρόβανιεμι, και το βράδυ αναχωρούμε με έμπειρο οδηγό για να κυνηγήσουμε το Βόρειο Σέλας μακριά από τα φώτα της πόλης, με ζεστά ροφήματα κάτω από τον έναστρο αρκτικό ουρανό.</p>
+          <h3>Ημέρα 3: Ranua Wildlife Park & Αναζήτηση για το Βόρειο Σέλας</h3>
+          <p>Εκδρομή στο Ranua Wildlife Park, το βορειότερο ζωολογικό πάρκο του κόσμου, περίπου μία ώρα από το Ρόβανιεμι, με αρκτικά ζώα όπως πολικές αρκούδες, λύγκες και αρκτικές αλεπούδες. Το βράδυ αναχωρούμε με έμπειρο οδηγό για να κυνηγήσουμε το Βόρειο Σέλας μακριά από τα φώτα της πόλης, με ζεστά ροφήματα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Εθνικό Πάρκο Riisitunturi – Τα Χιονισμένα «Τέρατα του Χιονιού» & BBQ σε Φωτιά</h3>
-          <p>Παραλαβή από το ξενοδοχείο και αναχώρηση για το Εθνικό Πάρκο Riisitunturi, γνωστό για τα εντυπωσιακά "χιονότερατα" — έλατα τόσο βαριά φορτωμένα με χιόνι και πάχνη που παίρνουν αλλόκοτα, παραμυθένια σχήματα. Με χιονοπέδιλα περπατάμε ανάμεσά τους σε ένα τοπίο σαν βγαλμένο από παραμύθι, με πιθανότητα να συναντήσουμε ίχνη άγριας ζωής. Η ημέρα κλείνει με ζεστό γεύμα BBQ δίπλα σε παραδοσιακή φωτιά, πριν την επιστροφή στο Ρόβανιεμι το απόγευμα.</p>
-        
+          <h3>Ημέρα 4: Εθνικό Πάρκο Riisitunturi – Τα «Τέρατα του Χιονιού» & BBQ</h3>
+          <p>Ολοήμερη εκδρομή στο Riisitunturi, περίπου 2 ώρες από το Ρόβανιεμι, γνωστό για τα έλατα που φορτώνονται με χιόνι και παίρνουν παραμυθένια σχήματα. Πεζοπορία με χιονοπέδιλα και γεύμα BBQ δίπλα σε φωτιά, πριν την επιστροφή στο Ρόβανιεμι.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Ημέρα στο Χιονοδρομικό Κέντρο Ounasvaara του Ρόβανιεμι</h3>
-          <p>Τελευταία πλήρης ημέρα στο κοντινό χιονοδρομικό κέντρο Ounasvaara, μόλις λίγα λεπτά από το κέντρο της πόλης του Ρόβανιεμι. Δοκιμάζουμε σκι ή snowboard σε πίστες κατάλληλες για όλα τα επίπεδα, ή απολαμβάνουμε την πανοραμική θέα στο Ρόβανιεμι με τα πόδια. Το βράδυ, αποχαιρετιστήριο δείπνο με φινλανδικές γεύσεις.</p>
+          <h3>Ημέρα 5: Χιονοδρομικό Κέντρο Ounasvaara & Δεύτερη Αναζήτηση Σέλαος</h3>
+          <p>Ημέρα στο χιονοδρομικό κέντρο Ounasvaara, λίγα λεπτά από το κέντρο του Ρόβανιεμι: σκι ή snowboard σε πίστες για όλα τα επίπεδα, ή περίπατος με πανοραμική θέα. Το βράδυ αποχαιρετιστήριο δείπνο με φινλανδικές γεύσεις και δεύτερη εξόρμηση για το Βόρειο Σέλας, για περισσότερες πιθανότητες.</p>
         </div>
 
         <div class="itinerary-day">
           <h3>Ημέρα 6: Ρόβανιεμι – Πτήση Επιστροφής</h3>
-          <p>Ελεύθερος πρωινός χρόνος για τελευταίες αγορές χειροτεχνημάτων Σάμι ή φωτογραφίες στο κέντρο της πόλης. Μεταφορά στο αεροδρόμιο του Ρόβανιεμι για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τον μαγευτικό αρκτικό χειμώνα.</p>
+          <p>Ελεύθερος πρωινός χρόνος για αγορές χειροτεχνημάτων Σάμι στο κέντρο της πόλης και μεταφορά στο αεροδρόμιο για την πτήση επιστροφής προς Ελλάδα (με στάση στο Ελσίνκι).</p>
         </div>
       </div>
 
       <div>
         <div class="sidebar-card">
-          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
-          <ul class="inc-exc-list inc-list">
-            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ρόβανιεμι με επιστροφή</li>
-            <li>5 διανυκτερεύσεις σε ξενοδοχείο στο Ρόβανιεμι με πρωινό</li>
-            <li>Είσοδος στο Χωριό του Αϊ-Βασίλη & συνάντηση με τον Άγιο Βασίλη</li>
-            <li>Βόλτα σε έλκηθρο με huskies</li>
-            <li>Επίσκεψη σε φάρμα ταράνδων με τάισμα ζώων</li>
-            <li>Εισιτήριο στο Ζωολογικό Πάρκο Ranua</li>
-            <li>Βραδινή εξόρμηση κυνηγιού Βόρειου Σέλαος με οδηγό</li>
-            <li>Μεταφορά με όχημα στο Εθνικό Πάρκο Riisitunturi</li>
-            <li>Πεζοπορία με χιονοπέδιλα στο εθνικό πάρκο</li>
-            <li>Ταξιδιωτική ασφάλιση</li>
-          </ul>
+          <div class="box-included">
+            <h3 style="font-family: var(--font-heading); color: var(--primary); margin: 0 0 16px 0;">Τι Περιλαμβάνεται</h3>
+            <ul class="inc-exc-list inc-list">
+              <li>Διεθνείς πτήσεις Αθήνα - Ρόβανιεμι με επιστροφή (με στάση)</li>
+              <li>Για αναχώρηση από Θεσσαλονίκη: πτήσεις Θεσσαλονίκη - Αθήνα με επιστροφή (ξεχωριστά εισιτήρια)</li>
+              <li>5 διανυκτερεύσεις με πρωινό σε ξενοδοχείο στο Ρόβανιεμι, ανάλογα με τη διαθεσιμότητα</li>
+              <li>Χωριό του Αϊ-Βασίλη & συνάντηση με τον Άγιο Βασίλη</li>
+              <li>Βόλτα σε έλκηθρο με huskies</li>
+              <li>Επίσκεψη σε φάρμα ταράνδων</li>
+              <li>Εκδρομή στο Ranua Wildlife Park (μεταφορά & εισιτήριο)</li>
+              <li>Δύο βραδινές εξορμήσεις κυνηγιού Βόρειου Σέλαος με οδηγό</li>
+              <li>Ολοήμερη εκδρομή στο Εθνικό Πάρκο Riisitunturi με πεζοπορία με χιονοπέδιλα & BBQ</li>
+              <li>Ημερήσιο πάσο ανελκυστήρων στο Ounasvaara</li>
+              <li>Θερμικός εξοπλισμός (φόρμα, μπότες) στις δραστηριότητες</li>
+              <li>Ταξιδιωτική ασφάλιση</li>
+            </ul>
+          </div>
 
-          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+          <div class="box-optional">
+            <h3 style="font-family: var(--font-heading); color: var(--primary); margin: 0 0 16px 0;">Προαιρετικά (με επιπλέον κόστος)</h3>
+            <ul class="inc-exc-list opt-list">
+              <li>Σαφάρι με snowmobile</li>
+              <li>Φινλανδική σάουνα με βουτιά στον πάγο (avanto)</li>
+            </ul>
+          </div>
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
-            <li>Φόροι αεροδρομίων & καταλυμάτων</li>
+            <li>Φόροι αεροδρομίων (~100€)</li>
             <li>Ενοικίαση εξοπλισμού σκι/snowboard στο Ounasvaara</li>
             <li>Φιλοδωρήματα για τοπικούς οδηγούς</li>
             <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
           </ul>
 
+          <!-- TODO: Έλεγχος τιμής. Η τιμή βασίζεται αποκλειστικά σε πτήσεις, ξενοδοχεία και αξιοθέατα (χωρίς λειτουργικά έξοδα, γεύματα ή περιθώριο). Πρόχειρη εκτίμηση κατ' άτομο (δίκλινο, τέλη Ιανουαρίου): πτήσεις Αθήνα-Ρόβανιεμι ~230€ (χωρίς φόρους αεροδρομίων ~100€), ξενοδοχείο ~425€ (παραδοχή 170€ ανά δωμάτιο/νύχτα για 5 νύχτες), αξιοθέατα ~725€ (husky + φάρμα ταράνδων ~180€, Ranua ~100€, 2 εξορμήσεις Σέλαος ~200€, Riisitunturi ~205€, πάσο Ounasvaara ~40€) = ~1.380€. Το 1.400€ είναι στρογγυλοποίηση προς τα πάνω. Το πάσο Ounasvaara και η τιμή ξενοδοχείου είναι παραδοχές και πρέπει να επιβεβαιωθούν με προσφορές. -->
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              2.200€
+              1.400€
             </div>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πτήσεις, ξενοδοχεία & αξιοθέατα - 5 Νύχτες / 6 Ημέρες)</span>
           </div>
         </div>
       </div>
@@ -243,13 +273,13 @@
 
       <div class="photo-album-grid">
 
-        <!-- Block 1: Lapland forest hero + husky sled portrait -->
+        <!-- Block 1: Lapland forest hero + huskies portrait -->
         <div class="photo-block">
           <div class="photo-item photo-span-2x2">
             <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=1200&q=80" alt="Χιονισμένο δάσος στη Λαπωνία, Φινλανδία">
           </div>
           <div class="photo-item photo-span-1x2">
-            <img src="https://snowmobilepark.com/wp-content/uploads/2020/10/Santa-Claus-Village-3B2A7649-960x1149.jpg?auto=format&fit=crop&w=800&q=80" alt="Έλκηθρο με huskies στο χιόνι">
+            <img src="https://images.unsplash.com/photo-1573920932366-2c6d3c67c756?auto=format&fit=crop&w=800&q=80" alt="Ζευγάρι huskies σέρνουν έλκηθρο σε χιονισμένο πεδίο">
           </div>
         </div>
 
@@ -259,10 +289,10 @@
             <img src="https://images.unsplash.com/photo-1514773896690-40d0fd46f143?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος σέρνει έλκηθρο στο χιόνι, Λαπωνία">
           </div>
           <div class="photo-item photo-span-1x2">
-            <img src="https://snowmobilepark.com/wp-content/uploads/2021/08/Day-Trip-to-Santa-Village7-960x1149.jpg?auto=format&fit=crop&w=800&q=80" alt="Husky σέρνει έλκηθρο μέσα στο δάσος">
+            <img src="https://images.unsplash.com/photo-1735475184407-514375a6537d?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος με χάμουρα δίπλα σε δέντρο">
           </div>
           <div class="photo-item photo-span-1x2">
-            <img src="https://images.unsplash.com/photo-1735475184407-514375a6537d?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος με χάμουρα δίπλα σε δέντρο">
+            <img src="https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?auto=format&fit=crop&w=800&q=80" alt="Τάρανδος με μεγάλα κέρατα στο χιόνι">
           </div>
         </div>
 
@@ -286,16 +316,10 @@
           </div>
         </div>
 
-        <!-- Block 5: wide + tall + wide -->
+        <!-- Block 5: full-width banner -->
         <div class="photo-block">
-          <div class="photo-item photo-span-2x1">
-            <img src="https://images.unsplash.com/photo-1573920932366-2c6d3c67c756?auto=format&fit=crop&w=1000&q=80" alt="Ζευγάρι huskies σέρνουν έλκηθρο σε χιονισμένο πεδίο">
-          </div>
-          <div class="photo-item photo-span-2x1">
-            <img src="https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?auto=format&fit=crop&w=1000&q=80" alt="Τάρανδος με μεγάλα κέρατα στο χιόνι">
-          </div>
-          <div class="photo-item photo-span-2x1">
-            <img src="https://images.unsplash.com/photo-1630997304867-729e29ff7bf4?auto=format&fit=crop&w=1000&q=80" alt="Βόλτα με έλκηθρο στο χιόνι, Λαπωνία">
+          <div class="photo-item photo-span-3x1">
+            <img src="https://images.unsplash.com/photo-1630997304867-729e29ff7bf4?auto=format&fit=crop&w=1600&q=80" alt="Βόλτα με έλκηθρο στο χιόνι, Λαπωνία">
           </div>
         </div>
 
@@ -325,9 +349,10 @@
           <label for="departure">Αεροδρόμιο Αναχώρησης</label>
           <select id="departure" name="departure" required style="width: 100%; padding: 12px; border: 1px solid var(--border, #e2dfd7); border-radius: 4px; font-size: 0.95rem; background: #fff; color: #2d3748;">
             <option value="" disabled selected>Επιλέξτε αεροδρόμιο αναχώρησης...</option>
-            <option value="SKG">SKG - Θεσσαλονίκη (Αεροδρόμιο "Μακεδονία")</option>
+            <option value="SKG">SKG - Θεσσαλονίκη (μέσω Αθήνας)</option>
             <option value="ATH">ATH - Αθήνα (Αεροδρόμιο "Ελευθέριος Βενιζέλος")</option>
           </select>
+          <small style="display:block; margin-top:6px; color: var(--text-muted);">Από Θεσσαλονίκη η διαδρομή γίνεται μέσω Αθήνας, με ξεχωριστά εισιτήρια Θεσσαλονίκη - Αθήνα (μετ' επιστροφής) και επαρκή χρόνο σύνδεσης.</small>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
       </form>
