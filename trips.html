@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Όλα τα Ταξιδιωτικά Πακέτα | Offset Travel Design</title>
+  <meta name="description" content="Όλα τα οργανωμένα ταξιδιωτικά πακέτα της Offset Travel: Λαπωνία, Νέα Υόρκη, Ταϊλάνδη, Ρίο ντε Τζανέιρο, Περού, Ντουμπάι, Κάιρο και άλλα, με πτήσεις, διαμονή και αξιοθέατα." />
   
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
@@ -75,6 +75,14 @@
       justify-content: space-between;
       height: 100%;
     }
+
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--text-muted, #6b7280);
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -125,123 +133,75 @@
       <input type="text" id="tripSearch" class="search-input" placeholder="Αναζήτηση προορισμού..." onkeyup="searchTrips()">
     </div>
 
-    <!-- Grid of Trips -->
+    <!-- Grid of Trips (σε χρονολογική σειρά αναχώρησης) -->
     <div class="catalog-grid" id="tripsGrid">
-      
-      <!-- Thailand -->
-      <div class="card trip-card trip-card-catalog" data-category="asia" data-title="ταιλανδη thailand phuket phi phi island james bond island phang nga bay bangkok">
-        <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1755564662325-a84a76c742ba?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
-          <div style="padding: 20px;">
-            <span class="trip-dates">📅 10 - 20 ΝΟΕΜΒΡΙΟΥ 2026 • 10 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ταϊλάνδη & Τροπικά Νησιά</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πουκέτ, Phi Phi Islands, James Bond Island, Phang Nga Bay & διήμερη ξενάγηση στη ζωντανή Μπανγκόκ.</p>
-          </div>
-        </div>
-        <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
-          <a href="trips/thailand/phuket" class="btn btn-outline">Δείτε το Πακέτο</a>
-        </div>
-      </div>
-
-      <!-- Peru -->
-      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="περου peru machu picchu ausangate glacier παγετωνας cusco lima ινκας">
-        <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
-          <div style="padding: 20px;">
-            <span class="trip-dates">📅 02 - 14 ΜΑΪΟΥ 2027 • 6 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Περού: Εξερευνώντας το Machu Picchu</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Machu Picchu, Ιερή Κοιλάδα των Ίνκας, Κούσκο & σπάνια εμπειρία πεζοπορίας στον παγετώνα Ausangate (Walk on Ice).</p>
-          </div>
-        </div>
-        <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
-          <a href="trips/peru/cusco" class="btn btn-outline">Δείτε το Πακέτο</a>
-        </div>
-      </div>
-
-      <!-- Egypt -->
-      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="αιγυπτος egypt καϊρο cairo πυραμιδες pyramids γκιζα giza cleopatra statue κλεοπατρα νειλος">
-        <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
-          <div style="padding: 20px;">
-            <span class="trip-dates">📅 22 - 28 ΟΚΤΩΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Κάιρο: Πυραμίδες & Αρχαία Αίγυπτος</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πυραμίδες της Γκίζας, Σφίγγα, Μεγάλο Αρχαιολογικό Μουσείο Καΐρου & ατμοσφαιρική κρουαζιέρα στον Νείλο.</p>
-          </div>
-        </div>
-        <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.000€</span> / άτομο</div>
-          <a href="trips/egypt/cairo" class="btn btn-outline">Δείτε το Πακέτο</a>
-        </div>
-      </div>
 
       <!-- Lapland -->
-      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="λαπωνια lapland φινλανδια ρονβανιεμι aurora borealis husky santa βορειο σελας">
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="λαπωνια lapland φινλανδια finland ροβανιεμι rovaniemi aurora borealis βορειο σελας husky huskies santa αη βασιλης ranua riisitunturi ταρανδοι">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 10 - 16 ΙΑΝΟΥΑΡΙΟΥ 2027 • 7 ΗΜΕΡΕΣ</span>
+            <span class="trip-dates">📅 26 - 31 ΙΑΝΟΥΑΡΙΟΥ 2027 • 6 ΗΜΕΡΕΣ</span>
             <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Φινλανδία: Κυνηγώντας το Βόρειο Σέλας</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Περιλαμβάνει κυνήγι για το Βόρειο Σέλας, βόλτα σε έλκηθρο με ταράνδους, επίσκεψη στο Χωριό του Αϊ-Βασίλη & ζωολογικό κήπο με αρκτικά ζώα.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Δύο βραδινές εξορμήσεις για Βόρειο Σέλας, έλκηθρο με huskies, φάρμα ταράνδων, Χωριό του Αϊ-Βασίλη, Ranua Wildlife Park & εθνικό πάρκο Riisitunturi.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.990€</span> / άτομο</div>
           <a href="trips/finland/lapland" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
       <!-- New York -->
-      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="νεα υορκη new york ηπα usa manhattan times square broadway">
+      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="νεα υορκη new york ηπα usa manhattan times square broadway empire state central park brooklyn bridge statue of liberty">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 18 - 25 ΝΟΕΜΒΡΙΟΥ 2026 • 7 ΗΜΕΡΕΣ</span>
+            <span class="trip-dates">📅 2 - 7 ΜΑΡΤΙΟΥ 2027 • 6 ΗΜΕΡΕΣ</span>
             <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Νέα Υόρκη: Η Μαγεία του Μανχάτταν</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Times Square, Central Park, Άγαλμα της Ελευθερίας, Empire State Building, SUMMIT One Vanderbilt & παράσταση Broadway.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Times Square, Άγαλμα της Ελευθερίας, Empire State Building, Central Park, Metropolitan Museum, Brooklyn Bridge & παράσταση Broadway.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.990€</span> / άτομο</div>
           <a href="trips/newyork/nyc" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
-      <!-- Rio de Janeiro -->
-      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="ριο ντε τζανειρο rio de janeiro βραζιλια brazil christ redeemer copacabana sugarloaf">
+      <!-- Thailand -->
+      <div class="card trip-card trip-card-catalog" data-category="asia" data-title="ταιλανδη thailand μπανγκοκ bangkok πουκετ phuket phi phi island james bond island phang nga bay grand palace wat pho">
         <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1755564662325-a84a76c742ba?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
-            <span class="trip-dates">📅 10 - 18 ΦΕΒΡΟΥΑΡΙΟΥ 2027 • 9 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ρίο ντε Τζανέιρο & Copacabana</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Χριστός Λυτρωτής (Corcovado), Sugarloaf Mountain, Copacabana, Ipanema & βραδιά αυθεντικού Samba show.</p>
+            <span class="trip-dates">📅 2 - 9 ΜΑΡΤΙΟΥ 2027 • 8 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ταϊλάνδη & Τροπικά Νησιά</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Μπανγκόκ (Μεγάλο Παλάτι, Wat Pho), Πουκέτ, Phi Phi Islands, James Bond Island & Phang Nga Bay.</p>
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>2.150€</span> / άτομο</div>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.590€</span> / άτομο</div>
+          <a href="trips/thailand/phuket" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Rio de Janeiro -->
+      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="ριο ντε τζανειρο rio de janeiro βραζιλια brazil christ redeemer χριστος λυτρωτης copacabana sugarloaf maracana rocinha capoeira καπογειρα jiu jitsu τζιου τζιτσου λαπα">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 11 - 18 ΑΠΡΙΛΙΟΥ 2027 • 8 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ρίο ντε Τζανέιρο: Copacabana & Πολεμικές Τέχνες</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Χριστός Λυτρωτής, Pão de Açúcar, Λάπα, καπογέιρα & τζιου-τζίτσου, ξενάγηση στη Rocinha και στο στάδιο Maracanã.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.590€</span> / άτομο</div>
           <a href="trips/brazil/rio" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
-      <!-- Dubai -->
-      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="ντουμπαϊ dubai σαφαρι burj khalifa safari 4x4 μελλον">
-        <div>
-          <div style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
-          <div style="padding: 20px;">
-            <span class="trip-dates">📅 15 - 21 ΙΑΝΟΥΑΡΙΟΥ 2027 • 7 ΗΜΕΡΕΣ</span>
-            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ντουμπάι: Η πόλη του μέλλοντος</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Desert Safari 4x4 με δείπνο κάτω από τα αστερια, Quad Bikes, Burj Khalifa, Museum of the Future & βόλτα στο Παλιό Ντουμπάι.</p>
-          </div>
-        </div>
-        <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.000€</span> / άτομο</div>
-          <a href="trips/dubai/dxb" class="btn btn-outline">Δείτε το Πακέτο</a>
-        </div>
-      </div>
-
       <!-- Amalfi Coast -->
-      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="αμαλφι amalfi ιταλια positano capri ravello">
+      <div class="card trip-card trip-card-catalog" data-category="europe" data-title="αμαλφι amalfi ιταλια italy positano capri ravello τοσκανη tuscany">
         <div>
           <div style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
           <div style="padding: 20px;">
@@ -251,11 +211,10 @@
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>2.200€</span> / άτομο</div>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.200€</span> / άτομο</div>
           <a href="trips/amalfi/amalfi" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
-
 
       <!-- Greece Luxury -->
       <div class="card trip-card trip-card-catalog" data-category="greece" data-title="ελλαδα greece σαντορινη μυκονος κυκλαδες luxury santorini mykonos">
@@ -268,12 +227,62 @@
           </div>
         </div>
         <div style="padding: 0 20px 20px;">
-          <div class="trip-price" style="margin-bottom: 10px;">Πακέτο από <span>1.850€</span> / άτομο</div>
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.850€</span> / άτομο</div>
           <a href="trips/greekislands/santorini" class="btn btn-outline">Δείτε το Πακέτο</a>
         </div>
       </div>
 
+      <!-- Peru -->
+      <div class="card trip-card trip-card-catalog" data-category="americas" data-title="περου peru machu picchu rainbow mountain vinicunca humantay cusco κουσκο lima λιμα ινκας ιερη κοιλαδα">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 14 - 21 ΣΕΠΤΕΜΒΡΙΟΥ 2027 • 8 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Περού: Machu Picchu & Rainbow Mountain</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Machu Picchu, Ιερή Κοιλάδα των Ίνκας, Κούσκο, Λίμνη Humantay & Rainbow Mountain.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>2.090€</span> / άτομο</div>
+          <a href="trips/peru/cusco" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Dubai -->
+      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="ντουμπαϊ dubai σαφαρι safari burj khalifa 4x4 quad μελλον museum of the future">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 2 - 7 ΝΟΕΜΒΡΙΟΥ 2027 • 6 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Ντουμπάι: Η πόλη του μέλλοντος</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Desert Safari 4x4 με δείπνο κάτω από τα αστέρια, Quad Bikes, Burj Khalifa, Museum of the Future & βόλτα στο Παλιό Ντουμπάι.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>1.490€</span> / άτομο</div>
+          <a href="trips/dubai/dxb" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
+      <!-- Egypt -->
+      <div class="card trip-card trip-card-catalog" data-category="middle-east" data-title="αιγυπτος egypt καϊρο cairo πυραμιδες pyramids γκιζα giza grand egyptian museum σακκαρα saqqara νειλος felucca αλεξανδρεια alexandria">
+        <div>
+          <div style="background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80'); height: 200px; background-size: cover; background-position: center;"></div>
+          <div style="padding: 20px;">
+            <span class="trip-dates">📅 9 - 14 ΝΟΕΜΒΡΙΟΥ 2027 • 6 ΗΜΕΡΕΣ</span>
+            <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.3rem; margin: 6px 0;">Κάιρο: Πυραμίδες & Αρχαία Αίγυπτος</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Πυραμίδες της Γκίζας, Σφίγγα, Grand Egyptian Museum, Σακκάρα, Khan el-Khalili & πλεύση με felucca στον Νείλο.</p>
+          </div>
+        </div>
+        <div style="padding: 0 20px 20px;">
+          <div class="trip-price" style="margin-bottom: 10px;">Από <span>990€</span> / άτομο</div>
+          <a href="trips/egypt/cairo" class="btn btn-outline">Δείτε το Πακέτο</a>
+        </div>
+      </div>
+
     </div>
+
+    <div id="noResults" class="no-results">Δεν βρέθηκαν πακέτα για αυτή την αναζήτηση. Δοκιμάστε άλλη λέξη ή ζητήστε custom σχεδιασμό παρακάτω.</div>
   </section>
 
   <!-- Tailor Made Section -->
@@ -281,7 +290,7 @@
     <div class="container" style="max-width: 800px; text-align: center;">
       <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 2rem;">Δεν βρήκατε τον προορισμό που ψάχνετε;</h2>
       <p style="margin: 16px 0 24px 0; color: var(--text-muted);">Σχεδιάζουμε custom ταξιδιωτικές εμπειρίες προσαρμοσμένες 100% στις δικές σας προτιμήσεις, το budget και τις ημερομηνίες που επιθυμείτε.</p>
-      <a href="index.html#contact" class="btn btn-primary">Ζητήστε Custom Σχεδιασμό</a>
+      <a href="#contact" class="btn btn-primary">Ζητήστε Custom Σχεδιασμό</a>
     </div>
   </section>
 
@@ -335,11 +344,11 @@
       <div>
         <h4 style="color: #ffffff; font-size: 1.05rem; margin-bottom: 15px;">Γρήγορη Πλοήγηση</h4>
         <ul style="list-style: none; padding: 0; line-height: 2; font-size: 0.82rem;">
-          <li><a href="index.html#about" style="color: #a0aec0; text-decoration: none;">Γιατί Εμάς</a></li>
-          <li><a href="index.html#trips" style="color: #a0aec0; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
-          <li><a href="index.html#how-it-works" style="color: #a0aec0; text-decoration: none;">Πώς Λειτουργεί</a></li>
-          <li><a href="index.html#reviews" style="color: #a0aec0; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
-          <li><a href="index.html#contact" style="color: #a0aec0; text-decoration: none;">Επικοινωνία</a></li>
+          <li><a href="index.html#about" style="color: #8898aa; text-decoration: none;">Γιατί Εμάς</a></li>
+          <li><a href="trips.html" style="color: #8898aa; text-decoration: none;">Πακέτα Ταξιδιών</a></li>
+          <li><a href="index.html#how-it-works" style="color: #8898aa; text-decoration: none;">Πώς Λειτουργεί</a></li>
+          <li><a href="index.html#reviews" style="color: #8898aa; text-decoration: none;">Κριτικές Ταξιδιωτών</a></li>
+          <li><a href="#contact" style="color: #8898aa; text-decoration: none;">Επικοινωνία</a></li>
         </ul>
       </div>
 
@@ -381,35 +390,48 @@
   
   <!-- Filtering & Search Script -->
   <script>
-    function filterTrips(category, evt) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      if (evt) evt.target.classList.add('active');
+    let currentCategory = 'all';
 
+    // Αφαιρεί τόνους/διαλυτικά και ενοποιεί το τελικό ς με το σ, ώστε η αναζήτηση να δουλεύει είτε με τόνους είτε χωρίς
+    function normalize(text) {
+      return (text || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ς/g, 'σ');
+    }
+
+    // Εφαρμόζει μαζί την κατηγορία και την αναζήτηση
+    function applyFilters() {
+      const query = normalize(document.getElementById('tripSearch').value.trim());
       const cards = document.querySelectorAll('.trip-card');
+      let visibleCount = 0;
+
       cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
+        const matchesCategory = currentCategory === 'all' || card.getAttribute('data-category') === currentCategory;
+        const haystack = normalize(card.getAttribute('data-title') + ' ' + card.innerText);
+        const matchesQuery = !query || haystack.includes(query);
+
+        if (matchesCategory && matchesQuery) {
           card.style.display = 'flex';
+          visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+
+      document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function filterTrips(category, evt) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (evt) evt.target.classList.add('active');
+      applyFilters();
     }
 
     function searchTrips() {
-      const query = document.getElementById('tripSearch').value.toLowerCase();
-      const cards = document.querySelectorAll('.trip-card');
-
-      cards.forEach(card => {
-        const titleData = card.getAttribute('data-title').toLowerCase();
-        const cardText = card.innerText.toLowerCase();
-
-        if (titleData.includes(query) || cardText.includes(query)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      applyFilters();
     }
   </script>
 </body>
