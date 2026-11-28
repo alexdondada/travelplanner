@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Οργανωμένο 8ήμερο ταξίδι στο Ρίο ντε Τζανέιρο: Christ the Redeemer, Sugarloaf, Copacabana, Maracanã, καπογέιρα & τζιου-τζίτσου, τοπικός αγώνας ποδοσφαίρου και favela tour." />
-  <title>Ρίο ντε Τζανέιρο: Ποδόσφαιρο, Πολεμικές Τέχνες & Copacabana | Vanguard Travel Design</title>
+  <meta name="description" content="Οργανωμένο 8ήμερο ταξίδι στο Ρίο ντε Τζανέιρο: Christ the Redeemer, Sugarloaf, Copacabana, ιστορικό κέντρο, καπογέιρα & τζιου-τζίτσου, ξενάγηση στη Rocinha με τοπικό ξεναγό και ξενάγηση στο στάδιο Maracanã." />
+  <title>Ρίο ντε Τζανέιρο: Ποδόσφαιρο, Πολεμικές Τέχνες & Copacabana | Offset Travel Design</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +57,23 @@
       margin: 0;
     }
 
+    /* Πλαίσια πλαϊνής στήλης: πράσινο για τα περιλαμβανόμενα, κίτρινο για τα προαιρετικά */
+    .box-included {
+      background: #eef7ef;
+      border: 1px solid #c9e4cd;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .box-optional {
+      background: #fff8e1;
+      border: 1px solid #f0dc9b;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
     .sidebar-card { 
       background: #ffffff; 
       border: 1px solid var(--border, #e2dfd7); 
@@ -71,6 +88,7 @@
     .inc-exc-list { list-style: none; padding: 0; margin: 0; }
     .inc-exc-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.5; }
     .inc-list li::before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .opt-list li::before { content: "+"; position: absolute; left: 0; color: #b7791f; font-weight: bold; }
     .exc-list li::before { content: "✕"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
     .badge-date { background: var(--accent, #c48b5f); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
 
@@ -113,6 +131,7 @@
     }
 
     .photo-span-2x2 { grid-column: span 2; grid-row: span 2; }
+    .photo-span-2x1 { grid-column: span 2; grid-row: span 1; }
     .photo-span-1x2 { grid-column: span 1; grid-row: span 2; }
     .photo-span-3x1 { grid-column: span 3; grid-row: span 1; }
     .photo-span-1x1 { grid-column: span 1; grid-row: span 1; }
@@ -133,7 +152,7 @@
 
   <nav class="navbar">
     <div class="nav-container">
-      <a href="../../index.html" class="brand-logo">VANGUARD <span>TRAVEL</span></a>
+      <a href="../../index.html" class="brand-logo">OFFSET <span>TRAVEL</span></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="../../index.html#about">Γιατί Εμάς</a></li>
         <li><a href="../../trips.html" style="color: var(--accent);">Όλα τα Πακέτα</a></li>
@@ -160,91 +179,99 @@
   <main class="container section">
 
     <div class="itinerary-header">
-      <span class="badge-date">📅 10 - 17 ΦΕΒΡΟΥΑΡΙΟΥ 2027</span>
-      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Αναλυτικό Πρόγραμμα Ημέρα προς Ημέρα (8 Ημέρες / 7 Νύχτες)</h2>
+      <span class="badge-date">📅 11 - 18 ΑΠΡΙΛΙΟΥ 2027</span>
+      <h2 style="font-family: var(--font-heading); color: var(--primary); margin: 8px 0 0 0;">Πρόγραμμα Ημέρα προς Ημέρα (8 Ημέρες / 7 Νύχτες)</h2>
     </div>
 
     <div class="trip-grid">
       
       <div>
         <div class="itinerary-day">
-          <h3>Ημέρα 1: Άφιξη στο Ρίο ντε Τζανέιρο – Ξεκούραση & Προσαρμογή</h3>
-          <p>Πτήση προς το Ρίο ντε Τζανέιρο (με ενδιάμεση στάση). Λόγω της χρονικής διαφοράς (περίπου 5 ώρες πίσω από την Ελλάδα) και της μεγάλης διάρκειας του ταξιδιού, η πρώτη ημέρα δεν περιλαμβάνει προγραμματισμένες δραστηριότητες: υποδοχή από τον τοπικό αντιπρόσωπο, μεταφορά στο ξενοδοχείο μας στην Copacabana/Ipanema και ένα χαλαρό δείπνο καλωσορίσματος με πρώτη γεύση βραζιλιάνικης κουζίνας, ώστε να ξεκουραστείτε πλήρως πριν ξεκινήσει το πρόγραμμα.</p>
+          <h3>Ημέρα 1: Άφιξη στο Ρίο ντε Τζανέιρο – Καλωσόρισμα</h3>
+          <p>Άφιξη στο Ρίο (πτήση με στάση), υποδοχή από τον τοπικό αντιπρόσωπο και μεταφορά στο ξενοδοχείο μας στην Copacabana/Ipanema. Η ώρα στη Βραζιλία είναι 6 ώρες πίσω από την Ελλάδα τον Απρίλιο, γι' αυτό η πρώτη ημέρα είναι ήρεμη, με δείπνο καλωσορίσματος και πρώτη γεύση βραζιλιάνικης κουζίνας.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 2: Χριστός Λυτρωτής (Corcovado) & Ιστορική Σάντα Τερέζα</h3>
-          <p>Μετά από μια πλήρη νύχτα ξεκούρασης, ανεβαίνουμε νωρίς το πρωί με το γραφικό οδοντωτό τρένο στον λόφο Corcovado, για να θαυμάσουμε από κοντά το εμβληματικό άγαλμα του Χριστού Λυτρωτή και την πανοραμική θέα όλης της πόλης. Το απόγευμα περιηγούμαστε στην καλλιτεχνική συνοικία Santa Teresa, με τα παλιά αποικιακά αρχοντικά, τα ατελιέ καλλιτεχνών και μια βόλτα με το ιστορικό τραμ (bondinho) — και οι δύο προορισμοί βρίσκονται στην ίδια πλευρά της πόλης, χωρίς άσκοπες μετακινήσεις.</p>
+          <h3>Ημέρα 2: Χριστός Λυτρωτής (Corcovado) & Parque Lage</h3>
+          <p>Ανεβαίνουμε νωρίς το πρωί με το οδοντωτό τρένο στον Corcovado, για το άγαλμα του Χριστού Λυτρωτή και την πανοραμική θέα της πόλης. Συνεχίζουμε στο κοντινό Parque Lage, με το αρχοντικό και την τροπική βλάστηση. Όλη η ημέρα μένει στην ίδια περιοχή, χωρίς μετακινήσεις.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 3: Pão de Açúcar (Sugarloaf) & Γειτονιές Urca / Botafogo</h3>
-          <p>Επιβιβαζόμαστε στο διάσημο τελεφερίκ σε δύο στάδια που μας οδηγεί στην κορυφή του βράχου Pão de Açúcar, με θέα στον κόλπο Guanabara — ιδανικά προς το ηλιοβασίλεμα. Πριν την ανάβαση, περπατάμε στην παραθαλάσσια πλευρά της γειτονιάς Urca και στο γειτονικό Botafogo, μια ήσυχη και αυθεντική γωνιά του Ρίο, στην ίδια πλευρά της πόλης με τη χθεσινή μας διαδρομή.</p>
+          <h3>Ημέρα 3: Pão de Açúcar & Γειτονιά Urca</h3>
+          <p>Περπατάμε στην ήσυχη παραθαλάσσια γειτονιά Urca και ανεβαίνουμε με το τελεφερίκ σε δύο στάδια στο Pão de Açúcar, με θέα στον κόλπο Guanabara, ιδανικά προς το ηλιοβασίλεμα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 4: Copacabana & Ipanema – Παραλίες, Beach Football & Foot-Volley</h3>
-          <p>Μια ολόκληρη ημέρα αφιερωμένη στην κουλτούρα της παραλίας του Ρίο. Περπατάμε στο εμβληματικό μωσαϊκό πεζοδρόμιο της Copacabana, συνεχίζουμε στην κοσμοπολίτικη Ipanema και παρακολουθούμε (ή δοκιμάζουμε) beach football και foot-volley με τους ντόπιους, ένα από τα πιο χαρακτηριστικά κομμάτια της καθημερινής ζωής στο Ρίο. Η ημέρα κλείνει με ηλιοβασίλεμα στο βραχώδες ακρωτήρι Arpoador.</p>
+          <h3>Ημέρα 4: Ιστορικό Κέντρο, Santa Teresa & Λάπα</h3>
+          <p>Εξερεύνηση του ιστορικού Ρίο: η καλλιτεχνική συνοικία Santa Teresa, οι πολύχρωμες σκάλες Selarón και τα Arcos da Lapa. Γευσιγνωσία τοπικών πιάτων και ποτών στη Λάπα (feijoada, pastel, açaí, caipirinha) και το βράδυ ζωντανή samba/choro σε παραδοσιακό μπαρ της περιοχής.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 5: Πολεμικές Τέχνες της Βραζιλίας – Καπογέιρα & Τζιου-Τζίτσου</h3>
-          <p>Μια ημέρα αφιερωμένη στις πολεμικές τέχνες που γεννήθηκαν ή έφτασαν στο απόγειό τους στη Βραζιλία. Το πρωί παρακολουθούμε και δοκιμάζουμε τα πρώτα βήματα της καπογέιρα (Capoeira) σε παραδοσιακή "roda", με ζωντανό μπερίμπάου και εξήγηση της αφρο-βραζιλιάνικης ιστορίας της. Το απόγευμα επισκεπτόμαστε παραδοσιακή ακαδημία Βραζιλιάνικου Τζιου-Τζίτσου (το Ρίο θεωρείται η γενέτειρα του αθλήματος), με demo μαθήματος και γνωριμία με αθλητές της ακαδημίας.</p>
+          <h3>Ημέρα 5: Πολεμικές Τέχνες – Καπογέιρα & Τζιου-Τζίτσου</h3>
+          <p>Μάθημα καπογέιρα (Capoeira) σε παραδοσιακή roda στη Botafogo και εισαγωγικό μάθημα Βραζιλιάνικου Τζιου-Τζίτσου σε παραδοσιακή ακαδημία της Zona Sul, σε γειτονικές περιοχές και χωρίς μακρινές μετακινήσεις.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 6: Ακαδημία Ποδοσφαίρου, Ξενάγηση στο Maracanã & Αγώνας το Βράδυ</h3>
-          <p>Το πρωί επισκεπτόμαστε μια ακαδημία ποδοσφαίρου (CT) μεγάλου συλλόγου του Ρίο, γνωρίζοντας τη δομή ανάπτυξης νέων ταλέντων (ανάλογα με τη διαθεσιμότητα του συλλόγου). Το μεσημέρι πραγματοποιούμε ξενάγηση στο θρυλικό στάδιο Maracanã και στο Μουσείο Ποδοσφαίρου, περπατώντας στο τούνελ των παικτών και στα αποδυτήρια. Το βράδυ παρακολουθούμε ζωντανά έναν τοπικό αγώνα ποδοσφαίρου στο ίδιο στάδιο (ανάλογα με το πρόγραμμα της διοργάνωσης εκείνη την περίοδο), βιώνοντας από κοντά το πάθος των Καριόκα φιλάθλων και τη γαστρονομία των εξέδρων.</p>
+          <h3>Ημέρα 6: Rocinha με Τοπικό Ξεναγό & Παραλίες Ipanema / Copacabana</h3>
+          <p>Πρωινή ξενάγηση περίπου 3 ωρών στη Rocinha, με τοπικό ξεναγό που ζει στην κοινότητα (ανάλογα με τις συνθήκες ασφαλείας στην περιοχή). Το απόγευμα χαλαρώνουμε στις παραλίες της Ipanema και της Copacabana, με beach football και foot-volley και ηλιοβασίλεμα στο ακρωτήρι Arpoador. Η διαδρομή ακολουθεί την ακτή, από τα δυτικά προς τα ανατολικά, χωρίς πηγαινέλα.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 7: Favela (Προαιρετικά), Τοπική Γαστρονομία & Λάπα</h3>
-          <p>Προαιρετική πρωινή επίσκεψη σε favela (π.χ. Rocinha ή Santa Marta) με τοπικό, εγκεκριμένο ξεναγό από την ίδια την κοινότητα, για μια αυθεντική και σεβαστική γνωριμία με την καθημερινότητα και την κουλτούρα της. Το μεσημέρι δοκιμάζουμε τα πιο αντιπροσωπευτικά πιάτα και ποτά της Βραζιλίας (feijoada, pastel, açaí, caipirinha) στην ιστορική συνοικία Λάπα. Το βράδυ ολοκληρώνουμε με βόλτα στα εμβληματικά Arcos da Lapa και ζωντανή μουσική samba/choro σε παραδοσιακό μπαρ της περιοχής.</p>
+          <h3>Ημέρα 7: Στάδιο Maracanã – Ξενάγηση & Ελεύθερο Απόγευμα</h3>
+          <p>Ξενάγηση στο θρυλικό στάδιο Maracanã, στο Μουσείο Ποδοσφαίρου και στα παρασκήνια του σταδίου, στη βόρεια πλευρά της πόλης. Το υπόλοιπο της ημέρας είναι ελεύθερο για ξεκούραση, παραλία ή αγορές κοντά στο ξενοδοχείο.</p>
         </div>
 
         <div class="itinerary-day">
-          <h3>Ημέρα 8: Ελεύθερος Χρόνος – Πτήση Επιστροφής</h3>
-          <p>Ελεύθερος πρωινός χρόνος για τελευταίες βόλτες ή αγορές στην Ipanema (ή στην Feira Hippie, αν η αναχώρηση συμπίπτει με Κυριακή). Μεταφορά στο διεθνές αεροδρόμιο Galeão για την πτήση επιστροφής προς Αθήνα/Θεσσαλονίκη, γεμάτοι εικόνες από τον πολιτισμό, το ποδόσφαιρο και τις παραλίες του Ρίο.</p>
+          <h3>Ημέρα 8: Ipanema – Πτήση Επιστροφής</h3>
+          <p>Ελεύθερος πρωινός χρόνος για τελευταίες βόλτες ή αγορές στην Ipanema (την Κυριακή λειτουργεί η Feira Hippie) και μεταφορά στο διεθνές αεροδρόμιο Galeão για την πτήση επιστροφής προς Ελλάδα (με στάση).</p>
         </div>
       </div>
 
       <div>
         <div class="sidebar-card">
-          <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Περιλαμβάνεται</h3>
-          <ul class="inc-exc-list inc-list">
-            <li>Διεθνείς πτήσεις Αθήνα / Θεσσαλονίκη - Ρίο ντε Τζανέιρο με επιστροφή (με ενδιάμεση στάση)</li>
-            <li>7 διανυκτερεύσεις σε 4*/5* ξενοδοχείο στην Copacabana/Ipanema με πρωινό</li>
-            <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
-            <li>Εισιτήρια & ανάβαση με οδοντωτό τρένο στον Corcovado (Χριστός Λυτρωτής)</li>
-            <li>Εισιτήρια τελεφερίκ Pão de Açúcar (Sugarloaf)</li>
-            <li>Εισαγωγική συνεδρία καπογέιρα (Capoeira) με τοπικό mestre</li>
-            <li>Επίσκεψη & demo μαθήματος σε ακαδημία Βραζιλιάνικου Τζιου-Τζίτσου</li>
-            <li>Επίσκεψη σε ακαδημία ποδοσφαίρου (ανάλογα με τη διαθεσιμότητα του συλλόγου)</li>
-            <li>Ξενάγηση στο στάδιο Maracanã & στο Μουσείο Ποδοσφαίρου</li>
-            <li>Εισιτήριο για τοπικό αγώνα ποδοσφαίρου στο Maracanã (ανάλογα με το πρόγραμμα διοργάνωσης)</li>
-            <li>Γευσιγνωσία τοπικής κουζίνας στη Λάπα (feijoada, pastel, açaí, caipirinha)</li>
-            <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός καθ' όλη τη διάρκεια</li>
-            <li>Ταξιδιωτική ασφάλιση</li>
-          </ul>
+          <div class="box-included">
+            <h3 style="font-family: var(--font-heading); color: var(--primary); margin: 0 0 16px 0;">Τι Περιλαμβάνεται</h3>
+            <ul class="inc-exc-list inc-list">
+              <li>Διεθνείς πτήσεις Αθήνα - Ρίο ντε Τζανέιρο με επιστροφή (με στάση)</li>
+              <li>Για αναχώρηση από Θεσσαλονίκη: πτήσεις Θεσσαλονίκη - Αθήνα με επιστροφή (ξεχωριστά εισιτήρια)</li>
+              <li>7 διανυκτερεύσεις με πρωινό στην Copacabana/Ipanema, σε ξενοδοχείο ανάλογα με τη διαθεσιμότητα</li>
+              <li>Όλες οι μεταφορές με κλιματιζόμενο όχημα</li>
+              <li>Εισιτήρια & ανάβαση με οδοντωτό τρένο στον Corcovado (Χριστός Λυτρωτής)</li>
+              <li>Εισιτήρια τελεφερίκ Pão de Açúcar (Sugarloaf)</li>
+              <li>Γευσιγνωσία τοπικής κουζίνας στη Λάπα (feijoada, pastel, açaí, caipirinha)</li>
+              <li>Μάθημα καπογέιρα (Capoeira) με τοπικό mestre</li>
+              <li>Εισαγωγικό μάθημα Βραζιλιάνικου Τζιου-Τζίτσου σε ακαδημία</li>
+              <li>Ξενάγηση στη Rocinha με τοπικό ξεναγό από την κοινότητα (περίπου 3 ώρες)</li>
+              <li>Ξενάγηση στο στάδιο Maracanã & στο Μουσείο Ποδοσφαίρου (με εισιτήριο εισόδου)</li>
+              <li>Επίσημος Ελληνόφωνος / Αγγλόφωνος συνοδός καθ' όλη τη διάρκεια</li>
+              <li>Ταξιδιωτική ασφάλιση</li>
+            </ul>
+          </div>
 
-          <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border);">
+          <div class="box-optional">
+            <h3 style="font-family: var(--font-heading); color: var(--primary); margin: 0 0 16px 0;">Προαιρετικά (με επιπλέον κόστος)</h3>
+            <ul class="inc-exc-list opt-list">
+              <li>Πτήση με αιωρόπτερο (hang gliding) πάνω από το Ρίο, ανάλογα με τον καιρό</li>
+              <li>Μάθημα surf ή stand-up paddle στην Ipanema/Arpoador</li>
+            </ul>
+          </div>
 
           <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 16px;">Τι Δεν Περιλαμβάνεται</h3>
           <ul class="inc-exc-list exc-list">
             <li>Φόροι αεροδρομίων (~290€)</li>
-            <li>Προαιρετική ξενάγηση σε favela (κατόπιν αιτήματος, με επιπλέον κόστος)</li>
             <li>Φιλοδωρήματα για τοπικούς οδηγούς & αχθοφόρους (~30€)</li>
             <li>Γεύματα & ποτά εκτός των αναφερόμενων στο πρόγραμμα</li>
             <li>Προσωπικά έξοδα</li>
           </ul>
 
+          <!-- TODO: Έλεγχος τιμής. Η τιμή βασίζεται αποκλειστικά σε πτήσεις, ξενοδοχεία και αξιοθέατα (χωρίς λειτουργικά έξοδα, γεύματα ή περιθώριο). Πρόχειρη εκτίμηση κατ' άτομο (δίκλινο, μέσα Απριλίου): πτήσεις Αθήνα-Ρίο ~460€ (χωρίς φόρους αεροδρομίων ~290€), ξενοδοχείο ~368€ (παραδοχή ~105€ ανά δωμάτιο/νύχτα για 7 νύχτες), αξιοθέατα ~274€ (Corcovado + Sugarloaf ~79€, Λάπα γευσιγνωσία ~45€, καπογέιρα ~17€, τζιου-τζίτσου ~40€, Rocinha ~45€, Maracanã ξενάγηση με οδηγό και μεταφορά ~45€, Santa Teresa ~3€) = ~1.102€. Το 1.150€ είναι στρογγυλοποίηση προς τα πάνω. Οι τιμές ξενοδοχείου, γευσιγνωσίας και τζιου-τζίτσου είναι παραδοχές και πρέπει να επιβεβαιωθούν με προσφορές. -->
           <div style="margin-top:24px; padding: 16px; background: #f8f6f0; border-radius: 6px; text-align: center; border: 1px solid var(--border);">
             <span style="font-size: 0.9rem; color: var(--text-muted);">Τιμή Πακέτου κατ' άτομο</span>
             <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: baseline; justify-content: center; gap: 6px; margin-top: 4px;">
               <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 400;">Από</span>
-              2.150€
+              1.150€
             </div>
-            <span style="font-size:0.8rem; color: var(--text-muted);">(Πλήρες οργανωμένο πακέτο - 7 Νύχτες / 8 Ημέρες)</span>
+            <span style="font-size:0.8rem; color: var(--text-muted);">(Πτήσεις, ξενοδοχεία & αξιοθέατα - 7 Νύχτες / 8 Ημέρες)</span>
           </div>
         </div>
       </div>
@@ -339,9 +366,10 @@
           <label for="departure">Αεροδρόμιο Αναχώρησης</label>
           <select id="departure" name="departure" required style="width: 100%; padding: 12px; border: 1px solid var(--border, #e2dfd7); border-radius: 4px; font-size: 0.95rem; background: #fff; color: #2d3748;">
             <option value="" disabled selected>Επιλέξτε αεροδρόμιο αναχώρησης...</option>
-            <option value="SKG">SKG - Θεσσαλονίκη (Αεροδρόμιο "Μακεδονία")</option>
+            <option value="SKG">SKG - Θεσσαλονίκη (μέσω Αθήνας)</option>
             <option value="ATH">ATH - Αθήνα (Αεροδρόμιο "Ελευθέριος Βενιζέλος")</option>
           </select>
+          <small style="display:block; margin-top:6px; color: var(--text-muted);">Από Θεσσαλονίκη η διαδρομή γίνεται μέσω Αθήνας, με ξεχωριστά εισιτήρια Θεσσαλονίκη - Αθήνα (μετ' επιστροφής) και επαρκή χρόνο σύνδεσης.</small>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Αποστολή Αιτήματος</button>
       </form>
@@ -403,7 +431,7 @@
     <!-- Copyright Divider -->
     <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 20px 0; text-align: center;">
       <div class="container">
-        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Vanguard Travel. All rights reserved.</p>
+        <p style="font-size: 0.85rem; color: #718096; margin: 0;">&copy; 2026 Offset Travel. All rights reserved.</p>
       </div>
     </div>
   </footer>
